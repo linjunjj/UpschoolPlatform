@@ -10,6 +10,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mongo-schedule</artifactId>
-
+    <packaging>war</packaging>
+    <name>mongo-schedule</name>
+    <description>定时任务模块</description>
 
 </project>

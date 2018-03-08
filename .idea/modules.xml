@@ -2,6 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/mongo-admin/mongo-admin.iml" filepath="$PROJECT_DIR$/mongo-admin/mongo-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo-api/mongo-api.iml" filepath="$PROJECT_DIR$/mongo-api/mongo-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo-business/mongo-business.iml" filepath="$PROJECT_DIR$/mongo-business/mongo-business.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo-common/mongo-common.iml" filepath="$PROJECT_DIR$/mongo-common/mongo-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo-schedule/mongo-schedule.iml" filepath="$PROJECT_DIR$/mongo-schedule/mongo-schedule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo-shiro/mongo-shiro.iml" filepath="$PROJECT_DIR$/mongo-shiro/mongo-shiro.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongoPlatform.iml" filepath="$PROJECT_DIR$/mongoPlatform.iml" />
     </modules>
   </component>
