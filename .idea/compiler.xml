@@ -15,12 +15,19 @@
         <module name="mongo-shiro" />
         <module name="mongoshiro" />
       </profile>
+      <profile name="Annotation profile for mongoPlatform" enabled="true">
+        <sourceOutputDir name="../mongo-fromwork/target/generated-sources/annotations" />
+        <sourceTestOutputDir name="../mongo-fromwork/target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mongo-framework" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="mongo-admin" target="1.8" />
       <module name="mongo-api" target="1.8" />
       <module name="mongo-business" target="1.8" />
       <module name="mongo-common" target="1.8" />
+      <module name="mongo-framework" target="1.8" />
       <module name="mongo-fromwork" target="1.8" />
       <module name="mongo-schedule" target="1.8" />
       <module name="mongo-shiro" target="1.8" />

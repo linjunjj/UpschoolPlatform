@@ -19,6 +19,7 @@
         <qcloud-cos-version>4.4</qcloud-cos-version>
         <jackson.version>2.9.4</jackson.version>
         <poi.version>3.17</poi.version>
+        <baidu-version>0.10.28</baidu-version>
     </properties>
 
     <dependencies>
@@ -37,6 +38,12 @@
             <artifactId>cos_api</artifactId>
             <version>${qcloud-cos-version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.baidubce</groupId>
+            <artifactId>bce-java-sdk</artifactId>
+            <version>${baidu-version}</version>
+        </dependency>
+
 
         <!-- httpclient -->
         <dependency>
