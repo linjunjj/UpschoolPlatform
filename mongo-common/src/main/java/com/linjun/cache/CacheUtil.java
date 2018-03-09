@@ -13,7 +13,7 @@ public class CacheUtil implements InitializingBean {
     public  static  void init(){
         SysMacroDao macroDao= SpringContextUtils.getBean(SysMacroDao.class);
         if (null!=macroDao){
-            sysMacroEntityList=macroDao.queryList(new HashMap<>());
+            sysMacroEntityList=macroDao.queryList(new HashMap<String,Object>());
         }
     }
 

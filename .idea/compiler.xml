@@ -10,6 +10,7 @@
         <module name="mongo-api" />
         <module name="mongo-business" />
         <module name="mongo-common" />
+        <module name="mongo-fromwork" />
         <module name="mongo-schedule" />
         <module name="mongo-shiro" />
         <module name="mongoshiro" />
@@ -20,6 +21,7 @@
       <module name="mongo-api" target="1.8" />
       <module name="mongo-business" target="1.8" />
       <module name="mongo-common" target="1.8" />
+      <module name="mongo-fromwork" target="1.8" />
       <module name="mongo-schedule" target="1.8" />
       <module name="mongo-shiro" target="1.8" />
       <module name="mongoPlatform" target="1.8" />
