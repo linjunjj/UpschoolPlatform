@@ -15,7 +15,7 @@
         <module>mongo-common</module>
         <module>mongo-schedule</module>
         <module>mongo-business</module>
-        <module>mongo-fromwork</module>
+        <module>mongo-framework</module>
     </modules>
     <properties>
         <java-version>1.8</java-version>

@@ -10,16 +10,11 @@
         <module name="mongo-api" />
         <module name="mongo-business" />
         <module name="mongo-common" />
+        <module name="mongo-framework" />
         <module name="mongo-fromwork" />
         <module name="mongo-schedule" />
         <module name="mongo-shiro" />
         <module name="mongoshiro" />
-      </profile>
-      <profile name="Annotation profile for mongoPlatform" enabled="true">
-        <sourceOutputDir name="../mongo-fromwork/target/generated-sources/annotations" />
-        <sourceTestOutputDir name="../mongo-fromwork/target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="mongo-framework" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

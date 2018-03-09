@@ -6,4 +6,6 @@ package com.linjun.validator.group;
  * @desc
  **/
 public interface QiniuGroup {
+
+
 }
