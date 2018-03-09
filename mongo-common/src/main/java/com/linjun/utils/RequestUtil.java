@@ -89,7 +89,7 @@ public class RequestUtil {
                 stringBuilder.append(charBuffer,0,bytesRead);
             }
             }else {
-                stringBuilder.append(""),
+                stringBuilder.append("");
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -111,6 +111,7 @@ public class RequestUtil {
             key=keys.next();
             parames.put(key,jsonObject.get(key));
         }
+        return  parames;
     }
 
 
