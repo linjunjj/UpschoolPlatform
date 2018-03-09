@@ -2,8 +2,10 @@ package com.linjun.utils;
 
 
 import org.apache.commons.httpclient.*;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.log4j.Logger;
+import sun.invoke.empty.Empty;
 
 import java.io.IOException;
 import java.util.Map;
@@ -84,8 +86,21 @@ public class HttpUtil {
         return  response;
     }
     public  static  String URLGet(String url,Map<String,String> params,String enc){
-        String re
+        String response=EMPTY;
+        GetMethod getMethod=null;
+        StringBuffer stringBuffer=new StringBuffer(EMPTY);
+        if (stringBuffer.indexOf("?")==-1){
+            stringBuffer.append(url).append("?").append(getUrl());
+        }
     }
+
+  private  static  String getUrl(Map<String,String> map,String valueEnc){
+        if (map==null||map.keySet().size()==0){
+            return null;
+        }
+        StringBuffer url=new StringBuffer();
+        Set<String>
+  }
 
 
 
