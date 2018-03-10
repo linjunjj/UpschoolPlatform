@@ -248,5 +248,35 @@ private  String baiduSecretKey;
         this.qcloudRegion = qcloudRegion;
     }
 
+    public String getBaiduDomain() {
+        return baiduDomain;
+    }
 
+    public void setBaiduDomain(String baiduDomain) {
+        this.baiduDomain = baiduDomain;
+    }
+
+    public String getBaiduPrefix() {
+        return baiduPrefix;
+    }
+
+    public void setBaiduPrefix(String baiduPrefix) {
+        this.baiduPrefix = baiduPrefix;
+    }
+
+    public String getBaiduAccessKey() {
+        return baiduAccessKey;
+    }
+
+    public void setBaiduAccessKey(String baiduAccessKey) {
+        this.baiduAccessKey = baiduAccessKey;
+    }
+
+    public String getBaiduSecretKey() {
+        return baiduSecretKey;
+    }
+
+    public void setBaiduSecretKey(String baiduSecretKey) {
+        this.baiduSecretKey = baiduSecretKey;
+    }
 }

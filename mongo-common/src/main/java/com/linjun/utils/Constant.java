@@ -95,16 +95,12 @@ public class Constant {
         /**
          * 腾讯云
          */
-        QCLOUD(3);
-
-        /**
-         * 腾讯云
-         */
-
-
+        QCLOUD(3),
+//        百度云
+        BAIDU(4);
         private int value;
 
-        private CloudService(int value) {
+         CloudService(int value) {
             this.value = value;
         }
 
