@@ -16,12 +16,12 @@ public class PageUtils implements Serializable {
     private  int currPage;
     private List<?> list;
 
-    public PageUtils(int totalCount, int pageSize, int totalpage, int currPage, List<?> list) {
+    public PageUtils(List<?> list, int totalCount, int pageSize, int currPage) {
+        this.list = list;
         this.totalCount = totalCount;
         this.pageSize = pageSize;
-        this.totalpage = totalpage;
         this.currPage = currPage;
-        this.list = list;
+        this.totalpage = (int) Math.ceil((double) totalCount / pageSize);
     }
 
     public static long getSerialVersionUID() {
