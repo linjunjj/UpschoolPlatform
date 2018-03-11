@@ -13,5 +13,12 @@
     <packaging>war</packaging>
     <name>mongo-shiro</name>
     <description>权限管理模块</description>
+    <dependencies>
+        <dependency>
+            <groupId>mongoPlatform</groupId>
+            <artifactId>mongo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
