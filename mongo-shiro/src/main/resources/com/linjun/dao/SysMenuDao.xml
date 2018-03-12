@@ -42,7 +42,7 @@
 		select * from sys_menu where type != 2 AND status = 0 order by order_num asc
 	</select>
 
-    <select id="queryList" resultType="com.platform.linjun.SysMenuEntity">
+    <select id="queryList" resultType="com.linjun.entity.SysMenuEntity">
         select m.*,(select p.name from sys_menu p where p.menu_id = m.parent_id) as parentName
         from sys_menu m WHERE 1=1
         <if test="menuName != null and menuName.trim() != ''">
