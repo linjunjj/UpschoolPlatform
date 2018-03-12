@@ -39,7 +39,7 @@ public class DataFilterAspect {
             SysUserEntity userEntity= ShiroUtils.getUserEntity();
             if (userEntity.getUserId()!= Constant.SUPER_ADMIN){
                 Map map= (Map) params;
-                map.put("filterSql",);
+                map.put("filterSql",getFilterSQL(userEntity,joinPoint));
             }
             return;
         }
