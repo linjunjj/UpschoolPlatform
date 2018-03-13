@@ -2,9 +2,9 @@ package com.linjun.controller;
 
 import com.linjun.entity.ScheduleJobLogEntity;
 import com.linjun.service.ScheduleJobLogService;
-import com.linjun.utils.PageUtils;
+import com.linjun.utils.JsonResult;
+import com.linjun.utils.PageBean;
 import com.linjun.utils.Query;
-import com.linjun.utils.R;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,18 +27,18 @@ public class ScheduleJobLogController {
     private ScheduleJobLogService scheduleJobLogService;
     @RequestMapping("/list")
     @RequiresPermissions("sys:schedule:log")
-    public R list(@RequestParam Map<String,Object> params){
+    public JsonResult list(@RequestParam Map<String,Object> params){
         Query query=new Query(params);
         List<ScheduleJobLogEntity>  jobLogEntityList=scheduleJobLogService.queryList(query);
         int total=scheduleJobLogService.queryTotal(query);
-        PageUtils pageUtils=new PageUtils(jobLogEntityList,total,query.getLimit(),query.getPage());
-        return R.ok().put("page",pageUtils);
+        PageBean pageBean =new PageBean(jobLogEntityList,total,query.getLimit(),query.getPage());
+        return JsonResult.ok().put("page", pageBean);
     }
 //    定时任务日志
     @RequestMapping("/info/{logId}")
-    public  R info (@PathVariable("logId") Long logId){
+    public JsonResult info (@PathVariable("logId") Long logId){
         ScheduleJobLogEntity log=scheduleJobLogService.queryObject(logId);
-        return R.ok().put("log",log);
+        return JsonResult.ok().put("log",log);
     }
 
 }

@@ -8,7 +8,7 @@ import java.util.List;
  * @create 2018/3/9.
  * @desc
  **/
-public class PageUtils implements Serializable {
+public class PageBean implements Serializable {
     private  static  final  long serialVersionUID=1L;
     private  int totalCount;
     private  int pageSize;
@@ -16,7 +16,7 @@ public class PageUtils implements Serializable {
     private  int currPage;
     private List<?> list;
 
-    public PageUtils(List<?> list, int totalCount, int pageSize, int currPage) {
+    public PageBean(List<?> list, int totalCount, int pageSize, int currPage) {
         this.list = list;
         this.totalCount = totalCount;
         this.pageSize = pageSize;

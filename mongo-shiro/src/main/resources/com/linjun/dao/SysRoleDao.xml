@@ -8,7 +8,7 @@
 	</select>
 	
 	<select id="queryList" resultType="com.linjun.entity.SysRoleEntity">
-		select r.*, (select d.name from sys_dept d where d.dept_id = r.dept_id) deptName from sys_role r
+		select jsonResult.*, (select d.name from sys_dept d where d.dept_id = jsonResult.dept_id) deptName from sys_role jsonResult
 		<where>
 			<if test="roleName != null and roleName.trim() != ''">
 				and `role_name` like concat('%',#{roleName},'%')
@@ -19,10 +19,10 @@
 		</where>
 		<choose>
 			<when test="sidx != null and sidx.trim() != ''">
-				order by r.${sidx} ${order}
+				order by jsonResult.${sidx} ${order}
 			</when>
 			<otherwise>
-				order by r.role_id asc
+				order by jsonResult.role_id asc
 			</otherwise>
 		</choose>
 		<if test="offset != null and limit != null">

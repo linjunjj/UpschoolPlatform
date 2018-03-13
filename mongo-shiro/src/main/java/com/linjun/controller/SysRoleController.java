@@ -6,9 +6,9 @@ import com.linjun.service.SysRoleDepService;
 import com.linjun.service.SysRoleMenuService;
 import com.linjun.service.SysRoleService;
 import com.linjun.utils.Constant;
-import com.linjun.utils.PageUtils;
+import com.linjun.utils.JsonResult;
+import com.linjun.utils.PageBean;
 import com.linjun.utils.Query;
-import com.linjun.utils.R;
 import com.linjun.validator.ValidatorUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class SysRoleController extends AbstractController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:role:list")
-    public R list(@RequestParam Map<String, Object> params) {
+    public JsonResult list(@RequestParam Map<String, Object> params) {
         //如果不是超级管理员，则只查询自己创建的角色列表
         if (getUserId() != Constant.SUPER_ADMIN) {
             params.put("createUserId", getUserId());
@@ -49,9 +49,9 @@ public class SysRoleController extends AbstractController {
         List<SysRoleEntity> list = sysRoleService.queryList(query);
         int total = sysRoleService.queryTotal(query);
 
-        PageUtils pageUtil = new PageUtils(list, total, query.getLimit(), query.getPage());
+        PageBean pageUtil = new PageBean(list, total, query.getLimit(), query.getPage());
 
-        return R.ok().put("page", pageUtil);
+        return JsonResult.ok().put("page", pageUtil);
     }
 
     /**
@@ -59,7 +59,7 @@ public class SysRoleController extends AbstractController {
      */
     @RequestMapping("/select")
     @RequiresPermissions("sys:role:select")
-    public R select() {
+    public JsonResult select() {
         Map<String, Object> map = new HashMap<>();
 
         //如果不是超级管理员，则只查询自己所拥有的角色列表
@@ -68,7 +68,7 @@ public class SysRoleController extends AbstractController {
         }
         List<SysRoleEntity> list = sysRoleService.queryList(map);
 
-        return R.ok().put("list", list);
+        return JsonResult.ok().put("list", list);
     }
 
     /**
@@ -76,7 +76,7 @@ public class SysRoleController extends AbstractController {
      */
     @RequestMapping("/info/{roleId}")
     @RequiresPermissions("sys:role:info")
-    public R info(@PathVariable("roleId") Long roleId) {
+    public JsonResult info(@PathVariable("roleId") Long roleId) {
         SysRoleEntity role = sysRoleService.queryObject(roleId);
 
         //查询角色对应的菜单
@@ -87,7 +87,7 @@ public class SysRoleController extends AbstractController {
         List<Long> deptIdList = sysRoleDeptService.queryDeptIdList(roleId);
         role.setDeptIdList(deptIdList);
 
-        return R.ok().put("role", role);
+        return JsonResult.ok().put("role", role);
     }
 
     /**
@@ -96,13 +96,13 @@ public class SysRoleController extends AbstractController {
     @SysLog("保存角色")
     @RequestMapping("/save")
     @RequiresPermissions("sys:role:save")
-    public R save(@RequestBody SysRoleEntity role) {
+    public JsonResult save(@RequestBody SysRoleEntity role) {
         ValidatorUtils.validateEntity(role);
 
         role.setCreateUserId(getUserId());
         sysRoleService.save(role);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -111,13 +111,13 @@ public class SysRoleController extends AbstractController {
     @SysLog("修改角色")
     @RequestMapping("/update")
     @RequiresPermissions("sys:role:update")
-    public R update(@RequestBody SysRoleEntity role) {
+    public JsonResult update(@RequestBody SysRoleEntity role) {
         ValidatorUtils.validateEntity(role);
 
         role.setCreateUserId(getUserId());
         sysRoleService.update(role);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -126,9 +126,9 @@ public class SysRoleController extends AbstractController {
     @SysLog("删除角色")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:role:delete")
-    public R delete(@RequestBody Long[] roleIds) {
+    public JsonResult delete(@RequestBody Long[] roleIds) {
         sysRoleService.deleteBatch(roleIds);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 }
