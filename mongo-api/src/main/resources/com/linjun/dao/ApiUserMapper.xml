@@ -72,6 +72,9 @@
         #{token},
         #{expireTime},
         #{updateTime})
+         #{token},
+        #{expireTime},
+        #{updateTime})
     </insert>
 
     <update id="update" parameterType="com.linjun.entity.UserEntity">
