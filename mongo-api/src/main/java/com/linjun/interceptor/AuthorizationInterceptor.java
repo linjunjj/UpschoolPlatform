@@ -1,6 +1,8 @@
 package com.linjun.interceptor;
 
 import com.linjun.annotation.IgnoreAuth;
+import com.linjun.entity.TokenEntity;
+import com.linjun.service.TokenService;
 import com.linjun.utils.ApiRRException;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
