@@ -13,5 +13,12 @@
     <packaging>war</packaging>
     <name>mongo-api</name>
     <description>api接口服务</description>
+    <dependencies>
+        <dependency>
+            <groupId>mongoPlatform</groupId>
+            <artifactId>mongo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 
 </project>
