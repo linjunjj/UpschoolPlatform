@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiUserMapper">
+
+    <resultMap type="com.linjun.entity.UserEntity" id="userMap">
+        <result property="userId" column="id"/>
+        <result property="userName" column="user_name"/>
+        <result property="password" column="password"/>
+        <result property="birthday" column="birthday"/>
+        <result property="school" column="school"/>
+        <result property="major" column="major"/>
+        <result property="infoFull" column="infoFull"/>
+        <result property="register_time" column="register_time"/>
+        <result property="last_login_time" column="last_login_time"/>
+        <result property="last_login_ip" column="last_login_ip"/>
+        <result property="user_level_id" column="user_level_id"/>
+        <result property="nickname" column="nickname"/>
+        <result property="mobile" column="mobile"/>
+        <result property="register_ip" column="register_ip"/>
+        <result property="avatar" column="avatar"/>
+        <result property="weixin_openid" column="weixin_openid"/>
+        <result property="parent_id" column="parent_id"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="userMap">
+        select *
+        from
+          mongo_user
+        where id = #{id}
+    </select>
+
+    <select id="queryByOpenId" resultType="com.linjun.entity.UserEntity">
+        select
+        *
+        from  mongo_user
+        where 1=1
+        <if test="openId != null">
+            and `weixin_openid` = #{openId}
+        </if>
+    </select>
+    <select id="queryList" resultType="com.linjun.entity.UserEntity">
+        select
+        *
+        from mongo_user
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from mongo_user
+        WHERE 1=1
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into mongo_user(
+        `user_id`,
+        `token`,
+        `expire_time`,
+        `update_time`)
+        values(
+        #{userId},
+        #{token},
+        #{expireTime},
+        #{updateTime})
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.UserEntity">
+        update tb_token
+        <set>
+            <if test="token != null">`token` = #{token},</if>
+            <if test="expireTime != null">`expire_time` = #{expireTime},</if>
+            <if test="updateTime != null">`update_time` = #{updateTime}</if>
+        </set>
+        where user_id = #{userId}
+    </update>
+
+    <delete id="delete">
+        delete from tb_token where user_id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from tb_token where user_id in
+        <foreach item="userId" collection="array" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </delete>
+
+</mapper>
