@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiCodeMapper">
+    <resultMap type="com.linjun.entity.CodeEntity" id="codeMap">
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="email" column="email"/>
+        <result property="mobile" column="mobile"/>
+        <result property="expire_time" column="expire_time"/>
+        <result property="is_user" column="is_user"/>
+        <result property="code_type" column="code_type"/>
+
+    </resultMap>
+
+    <select id="queryObject" resultType="com.linjun.entity.CodeEntity">
+        select
+        id,
+        code,
+        email,
+        mobile,
+        expire_time,
+        is_user,
+        code_type
+        from mongo_code
+        where id = #{id}
+    </select>
+
+    <select id="queryByMail" resultType="com.linjun.entity.CodeEntity">
+        select
+        *
+        from mongo_code
+        where email = #{email}
+    </select>
+    <select id="queryByMobile" resultType="com.linjun.entity.CodeEntity">
+        select
+        *
+        from mongo_code
+        where mobile = #{mobile}
+    </select>
+
+    <select id="queryList" resultType="com.linjun.entity.CodeEntity">
+        select
+        *
+        from mongo_code
+        WHERE 1=1
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by user_id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from mongo_code
+        WHERE 1=1
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.CodeEntity">
+        insert into mongo_code(
+        `code`,
+        `email`,
+        `mobile`,
+        `expire_time`,
+        `is_user`,
+        `code_type`)
+        values(
+        #{code},
+        #{email},
+        #{mobile},
+        #{expire_time},
+        #{is_user},
+        #{code_type})
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.CodeEntity">
+        update mongo_code
+        <set>
+            <if test="code != null">`code` = #{code},</if>
+            <if test="email != null">`email` = #{email},</if>
+            <if test="mobile != null">`mobile` = #{mobile}</if>
+            <if test="expire_time != null">`expire_time` = #{expire_time}</if>
+            <if test="is_user != null">`is_user` = #{is_user}</if>
+            <if test="code_type != null">`code_type` = #{code_type}</if>
+
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from mongo_code where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from mongo_code where id in
+        <foreach item="userId" collection="array" open="(" separator="," close=")">
+            #{userId}
+        </foreach>
+    </delete>
+
+</mapper>
