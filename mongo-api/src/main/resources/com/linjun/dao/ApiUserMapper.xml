@@ -113,7 +113,6 @@
         #{parent_id}
         )
     </insert>
-
     <update id="update" parameterType="com.linjun.entity.UserEntity">
         update mongo_user
         <set>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiUserDynamicMapper">
+
+    <select id="queryObject" resultType="com.linjun.entity.UserDynamicEntity">
+        select * from user_dynamic where id = #{value}
+    </select>
+
+    <select id="queryList" resultType="com.linjun.entity.UserDynamicEntity">
+        select * from user_dynamic
+        <where>
+            <if test="key != null and key.trim() != ''">
+                and `username` like concat('%',#{key},'%') or `operation` like concat('%',#{key},'%')
+            </if>
+        </where>
+        order by id desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from user_dynamic
+        <where>
+            <if test="key != null and key.trim() != ''">
+                `username` like concat('%',#{key},'%') or `operation` like concat('%',#{key},'%')
+            </if>
+            <if test="operation != null and operation.trim() != ''">
+                and `operation` like concat('%',#{operation},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.UserWeixinEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into user_dynamic
+        (
+        `user_id`,
+        `openid`,
+        `nickname`,
+        `sex`,
+        `province`,
+        `city`,
+        `country`,
+        `headimgurl`,
+        `privilege`,
+        `unionid`
+        )
+        values
+        (
+        #{userId},
+        #{openid},
+        #{nickname},
+        #{sex},
+        #{province},
+        #{city},
+        #{country},
+        #{headimgurl},
+        #{privilege},
+        #{unionid}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.UserWeixinEntity">
+        update user_dynamic
+        <set>
+            <if test="userId != null">`user_id` = #{userId}, </if>
+            <if test="openid != null">`openid` = #{openid}, </if>
+            <if test="nickname != null">`nickname` = #{nickname}, </if>
+            <if test="sex != null">`sex` = #{sex}, </if>
+            <if test="province != null">`province` = #{province} </if>
+            <if test="city != null">`city` = #{city} </if>
+            <if test="country != null">`country` = #{country} </if>
+            <if test="headimgurl != null">`headimgurl` = #{headimgurl} </if>
+            <if test="privilege != null">`privilege` = #{privilege} </if>
+            <if test="unionid != null">`unionid` = #{unionid} </if>
+
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from user_dynamic where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from user_dynamic where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
