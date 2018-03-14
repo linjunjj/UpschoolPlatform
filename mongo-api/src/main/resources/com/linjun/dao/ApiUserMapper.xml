@@ -7,6 +7,7 @@
         <result property="userId" column="id"/>
         <result property="userName" column="user_name"/>
         <result property="password" column="password"/>
+        <result property="gender" column="gender"/>
         <result property="birthday" column="birthday"/>
         <result property="school" column="school"/>
         <result property="major" column="major"/>
@@ -39,6 +40,17 @@
             and `weixin_openid` = #{openId}
         </if>
     </select>
+    <select id="queryByMobile" resultType="com.linjun.entity.UserEntity">
+        select
+        *
+        from  mongo_user
+        where 1=1
+        <if test="mobile != null">
+            and `mobile` = #{mobile}
+        </if>
+    </select>
+
+
     <select id="queryList" resultType="com.linjun.entity.UserEntity">
         select
         *
@@ -58,44 +70,122 @@
 
     <select id="queryTotal" resultType="int">
         select count(*) from mongo_user
-        WHERE 1=1
+
     </select>
 
     <insert id="save" parameterType="com.linjun.entity.UserEntity" useGeneratedKeys="true" keyProperty="id">
         insert into mongo_user(
-        `user_id`,
-        `token`,
-        `expire_time`,
-        `update_time`)
+        `user_name`,
+        `password`,
+        `gender`,
+        `birthday`,
+        `school`,
+        `major`,
+        `infoFull`,
+        `register_time`,
+        `last_login_time`,
+         `last_login_ip`,
+         `user_level_id`,
+         `nickname`,
+         `mobile`,
+         `register_ip`,
+         `avatar`,
+         `weixin_openid`,
+         `parent_id`
+        )
         values(
-        #{userId},
-        #{token},
-        #{expireTime},
-        #{updateTime})
-         #{token},
-        #{expireTime},
-        #{updateTime})
+        #{userName},
+        #{password},
+        #{gender},
+        #{birthday})
+         #{school},
+        #{major},
+        #{infoFull},
+        #{register_time},
+        #{last_login_time},
+        #{last_login_ip},
+        #{user_level_id},
+        #{nickname},
+        #{mobile},
+        #{register_ip},
+        #{avatar},
+        #{weixin_openid},
+        #{parent_id}
+        )
     </insert>
 
     <update id="update" parameterType="com.linjun.entity.UserEntity">
-        update tb_token
+        update mongo_user
         <set>
-            <if test="token != null">`token` = #{token},</if>
-            <if test="expireTime != null">`expire_time` = #{expireTime},</if>
-            <if test="updateTime != null">`update_time` = #{updateTime}</if>
+            <if test="userName != null">`user_name` = #{userName},</if>
+            <if test="password != null">`password` = #{password},</if>
+            <if test="gender != null">`gender` = #{gender},</if>
+            <if test="birthday != null">`birthday` = #{birthday},</if>
+            <if test="school != null">`school` = #{school},</if>
+            <if test="major != null">`major` = #{major},</if>
+            <if test="infoFull != null">`infoFull` = #{infoFull},</if>
+            <if test="register_time != null">`register_time` = #{register_time},</if>
+            <if test="last_login_time != null">`last_login_time` = #{last_login_time},</if>
+            <if test="last_login_ip != null">`last_login_ip` = #{last_login_ip},</if>
+            <if test="user_level_id != null">`user_level_id` = #{user_level_id},</if>
+            <if test="nickname != null">`nickname` = #{nickname},</if>
+            <if test="mobile != null">`mobile` = #{mobile},</if>
+            <if test="register_ip != null">`register_ip` = #{register_ip},</if>
+            <if test="avatar != null">`avatar` = #{avatar},</if>
+            <if test="weixin_openid != null">`weixin_openid` = #{weixin_openid}</if>
+            <if test="parent_id != null">`parent_id` = #{parent_id}</if>
+
         </set>
-        where user_id = #{userId}
+        where id = #{userId}
     </update>
 
     <delete id="delete">
-        delete from tb_token where user_id = #{value}
+        delete from mongo_user where id = #{value}
     </delete>
 
-    <delete id="deleteBatch">
-        delete from tb_token where user_id in
-        <foreach item="userId" collection="array" open="(" separator="," close=")">
-            #{userId}
-        </foreach>
-    </delete>
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.SmsLogVo" id="smslogMap">
+        <result property="id" column="id"/>
+        <result property="user_id" column="user_id"/>
+        <result property="phone" column="phone"/>
+        <result property="log_date" column="log_date"/>
+        <result property="sms_code" column="sms_code"/>
+        <result property="send_status" column="send_status"/>
+        <result property="sms_text" column="sms_text"/>
+    </resultMap>
+
+    <select id="querySmsCodeByUserId" resultMap="smslogMap">
+        select
+        a.id,
+        a.user_id,
+        a.phone,
+        a.log_date,
+        a.sms_code,
+        a.send_status,
+        a.sms_text
+        from sms_log a
+        left join sms_log b on a.user_id = b.user_id and b.log_date > a.log_date
+        where a.user_id = #{user_id} and b.id is null
+    </select>
+
+    <insert id="saveSmsCodeLog" parameterType="com.platform.entity.SmsLogVo">
+        insert into sms_log(
+        `id`,
+        `user_id`,
+        `phone`,
+        `log_date`,
+        `sms_code`,
+        `send_status`,
+        `sms_text`)
+        values(
+        #{id},
+        #{user_id},
+        #{phone},
+        #{log_date},
+        #{sms_code},
+        #{send_status},
+        #{sms_text}
+        )
+    </insert>
 
 </mapper>
