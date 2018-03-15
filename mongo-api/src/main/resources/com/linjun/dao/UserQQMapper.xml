@@ -81,16 +81,16 @@
             <if test="openid != null">`openid` = #{openid}, </if>
             <if test="is_yellow_year_vip != null">`is_yellow_year_vip` = #{is_yellow_year_vip}, </if>
             <if test="ret != null">`ret` = #{ret}, </if>
-            <if test="figureurl_qq_1 != null">`figureurl_qq_1` = #{figureurl_qq_1} </if>
-            <if test="figureurl_qq_2 != null">`figureurl_qq_2` = #{figureurl_qq_2} </if>
-            <if test="nickname != null">`nickname` = #{nickname} </if>
-            <if test="yellow_vip_level != null">`yellow_vip_level` = #{yellow_vip_level} </if>
-            <if test="msg != null">`msg` = #{msg} </if>
-            <if test="figureurl_1 != null">`figureurl_1` = #{figureurl_1} </if>
-            <if test="vip != null">`vip` = #{vip} </if>
-            <if test="level != null">`level` = #{level} </if>
-            <if test="is_yellow_vip != null">`is_yellow_vip` = #{is_yellow_vip} </if>
-            <if test="gender != null">`gender` = #{gender} </if>
+            <if test="figureurl_qq_1 != null">`figureurl_qq_1` = #{figureurl_qq_1},</if>
+            <if test="figureurl_qq_2 != null">`figureurl_qq_2` = #{figureurl_qq_2},</if>
+            <if test="nickname != null">`nickname` = #{nickname},</if>
+            <if test="yellow_vip_level != null">`yellow_vip_level` = #{yellow_vip_level},</if>
+            <if test="msg != null">`msg` = #{msg},</if>
+            <if test="figureurl_1 != null">`figureurl_1` = #{figureurl_1},</if>
+            <if test="vip != null">`vip` = #{vip},</if>
+            <if test="level != null">`level` = #{level},</if>
+            <if test="is_yellow_vip != null">`is_yellow_vip` = #{is_yellow_vip},</if>
+            <if test="gender != null">`gender` = #{gender},</if>
             <if test="figureurl != null">`figureurl` = #{figureurl} </if>
         </set>
         where id = #{id}

@@ -70,12 +70,12 @@
             <if test="openid != null">`openid` = #{openid}, </if>
             <if test="nickname != null">`nickname` = #{nickname}, </if>
             <if test="sex != null">`sex` = #{sex}, </if>
-            <if test="province != null">`province` = #{province} </if>
-            <if test="city != null">`city` = #{city} </if>
-            <if test="country != null">`country` = #{country} </if>
-            <if test="headimgurl != null">`headimgurl` = #{headimgurl} </if>
-            <if test="privilege != null">`privilege` = #{privilege} </if>
-            <if test="unionid != null">`unionid` = #{unionid} </if>
+            <if test="province != null">`province` = #{province},</if>
+            <if test="city != null">`city` = #{city},</if>
+            <if test="country != null">`country` = #{country},</if>
+            <if test="headimgurl != null">`headimgurl` = #{headimgurl},</if>
+            <if test="privilege != null">`privilege` = #{privilege},</if>
+            <if test="unionid != null">`unionid` = #{unionid}</if>
 
         </set>
         where id = #{id}

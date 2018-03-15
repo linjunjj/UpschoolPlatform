@@ -59,9 +59,9 @@
         <set>
             <if test="userId != null">`user_id` = #{userId}, </if>
             <if test="identity_num != null">`identity_num` = #{identity_num}, </if>
-            <if test="identity_font != null">`identity_font` = #{identity_font}, </if>
-            <if test="identity_back != null">`identity_back` = #{identity_back}, </if>
-            <if test="status != null">`status` = #{status} </if>
+            <if test="identity_font != null">`identity_font` = #{identity_font},</if>
+            <if test="identity_back != null">`identity_back` = #{identity_back},</if>
+            <if test="status != null">`status` = #{status},</if>
             <if test="create_time != null">`create_time` = #{create_time} </if>
         </set>
         where id = #{id}

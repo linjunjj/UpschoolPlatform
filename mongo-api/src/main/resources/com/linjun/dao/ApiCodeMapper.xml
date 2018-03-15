@@ -84,9 +84,9 @@
         <set>
             <if test="code != null">`code` = #{code},</if>
             <if test="email != null">`email` = #{email},</if>
-            <if test="mobile != null">`mobile` = #{mobile}</if>
-            <if test="expire_time != null">`expire_time` = #{expire_time}</if>
-            <if test="is_user != null">`is_user` = #{is_user}</if>
+            <if test="mobile != null">`mobile` = #{mobile},</if>
+            <if test="expire_time != null">`expire_time` = #{expire_time},</if>
+            <if test="is_user != null">`is_user` = #{is_user},</if>
             <if test="code_type != null">`code_type` = #{code_type}</if>
 
         </set>
