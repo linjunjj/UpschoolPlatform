@@ -8,14 +8,13 @@ import java.util.Date;
  * @create 2018/3/15.
  * @desc
  **/
-public class UserIdentityEntity implements Serializable {
+public class UserStudentCardEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     private  Long id;
     private  Long userId;
-    private Long  identity_num;
-    private  String identity_font;
-    private  String identity_back;
-    private byte status;
+    private  String studentcard_font;
+    private  String studentcard_back;
+    private  byte status;
     private Date create_time;
 
     public static long getSerialVersionUID() {
@@ -38,28 +37,20 @@ public class UserIdentityEntity implements Serializable {
         this.userId = userId;
     }
 
-    public Long getIdentity_num() {
-        return identity_num;
+    public String getStudentcard_font() {
+        return studentcard_font;
     }
 
-    public void setIdentity_num(Long identity_num) {
-        this.identity_num = identity_num;
+    public void setStudentcard_font(String studentcard_font) {
+        this.studentcard_font = studentcard_font;
     }
 
-    public String getIdentity_font() {
-        return identity_font;
+    public String getStudentcard_back() {
+        return studentcard_back;
     }
 
-    public void setIdentity_font(String identity_font) {
-        this.identity_font = identity_font;
-    }
-
-    public String getIdentity_back() {
-        return identity_back;
-    }
-
-    public void setIdentity_back(String identity_back) {
-        this.identity_back = identity_back;
+    public void setStudentcard_back(String studentcard_back) {
+        this.studentcard_back = studentcard_back;
     }
 
     public byte getStatus() {

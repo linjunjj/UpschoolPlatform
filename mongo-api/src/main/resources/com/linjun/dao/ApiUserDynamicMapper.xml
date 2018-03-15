@@ -10,9 +10,11 @@
     <select id="queryList" resultType="com.linjun.entity.UserDynamicEntity">
         select * from user_dynamic
         <where>
-            <if test="key != null and key.trim() != ''">
-                and `username` like concat('%',#{key},'%') or `operation` like concat('%',#{key},'%')
-            </if>
+            <where>
+                <if test="user_id != null">
+                    and user_id = #{user_id}
+                </if>
+            </where>
         </where>
         order by id desc
         <if test="offset != null and limit != null">
