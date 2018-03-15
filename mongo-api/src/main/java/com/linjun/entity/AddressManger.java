@@ -19,6 +19,15 @@ public class AddressManger implements Serializable {
     private  String city_name;
     private  String country_name;
     private  String detail_info;
+    private  byte is_default;
+
+    public byte getIs_default() {
+        return is_default;
+    }
+
+    public void setIs_default(byte is_default) {
+        this.is_default = is_default;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

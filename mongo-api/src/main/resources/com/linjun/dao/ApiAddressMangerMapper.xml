@@ -6,24 +6,24 @@
     <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.linjun.entity.AddressManger" id="addressMap">
         <result property="id" column="id"/>
-        <result property="userId" column="user_id"/>
-        <result property="userName" column="user_name"/>
-        <result property="telNumber" column="tel_number"/>
-        <result property="postalCode" column="postal_Code"/>
-        <result property="nationalCode" column="national_Code"/>
-        <result property="provinceName" column="province_Name"/>
-        <result property="cityName" column="city_Name"/>
-        <result property="countyName" column="county_Name"/>
-        <result property="detailInfo" column="detail_Info"/>
+        <result property="userId" column="userId"/>
+        <result property="user_name" column="user_name"/>
+        <result property="tel_number" column="tel_number"/>
+        <result property="postal_code" column="postal_Code"/>
+        <result property="national_code" column="national_Code"/>
+        <result property="province_name" column="province_Name"/>
+        <result property="city_name" column="city_Name"/>
+        <result property="country_name" column="county_Name"/>
+        <result property="detail_info" column="detail_Info"/>
         <result property="is_default" column="is_default"/>
     </resultMap>
 
     <select id="queryObject" resultMap="addressMap">
-        select * from nideshop_address where id = #{value}
+        select * from address_manger where id = #{value}
     </select>
 
     <select id="queryList" resultMap="addressMap">
-        select * from nideshop_address
+        select * from address_manger
         <where>
             <if test="user_id != null">
                 and user_id = #{user_id}
@@ -43,11 +43,11 @@
     </select>
 
     <select id="queryTotal" resultType="int">
-        select count(*) from nideshop_address
+        select count(*) from address_manger
     </select>
 
-    <insert id="save" parameterType="com.platform.entity.AddressVo" useGeneratedKeys="true" keyProperty="id">
-        insert into nideshop_address(
+    <insert id="save" parameterType="com.linjun.entity.AddressManger" useGeneratedKeys="true" keyProperty="id">
+        insert into address_manger(
         `user_id`,
         `user_name`,
         `tel_number`,
@@ -71,8 +71,8 @@
         #{is_default})
     </insert>
 
-    <update id="update" parameterType="com.platform.entity.AddressVo">
-        update nideshop_address
+    <update id="update" parameterType="com.linjun.entity.AddressManger">
+        update address_manger
         <set>
             <if test="userId != null">`user_id` = #{userId}, </if>
             <if test="userName != null">`user_name` = #{userName}, </if>
@@ -89,11 +89,11 @@
     </update>
 
     <delete id="delete">
-        delete from nideshop_address where id = #{value}
+        delete from address_manger where id = #{value}
     </delete>
 
     <delete id="deleteBatch">
-        delete from nideshop_address where id in
+        delete from address_manger where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
