@@ -10,13 +10,18 @@
     <select id="queryList" resultType="com.linjun.entity.UserDynamicEntity">
         select * from user_dynamic
         <where>
-            <where>
-                <if test="user_id != null">
-                    and user_id = #{user_id}
-                </if>
-            </where>
+            <if test="user_id != null">
+                and user_id = #{user_id}
+            </if>
         </where>
-        order by id desc
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
         <if test="offset != null and limit != null">
             limit #{offset}, #{limit}
         </if>
@@ -24,59 +29,50 @@
 
     <select id="queryTotal" resultType="int">
         select count(*) from user_dynamic
-        <where>
-            <if test="key != null and key.trim() != ''">
-                `username` like concat('%',#{key},'%') or `operation` like concat('%',#{key},'%')
-            </if>
-            <if test="operation != null and operation.trim() != ''">
-                and `operation` like concat('%',#{operation},'%')
-            </if>
-        </where>
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.UserWeixinEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.UserDynamicEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_dynamic
         (
         `user_id`,
-        `openid`,
-        `nickname`,
-        `sex`,
+        `address`,
+        `context`,
+        `view`,
         `province`,
         `city`,
-        `country`,
-        `headimgurl`,
-        `privilege`,
-        `unionid`
+        `likesum`,
+        `is_anonymous`,
+        `is_transpont`,
+        `is_start`
         )
         values
         (
-        #{userId},
-        #{openid},
-        #{nickname},
-        #{sex},
+        #{user_id},
+        #{address},
+        #{context},
+        #{view},
         #{province},
         #{city},
-        #{country},
-        #{headimgurl},
-        #{privilege},
-        #{unionid}
+        #{likesum},
+        #{is_anonymous},
+        #{is_transpont},
+        #{is_start}
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.UserWeixinEntity">
+    <update id="update" parameterType="com.linjun.entity.UserDynamicEntity">
         update user_dynamic
         <set>
             <if test="userId != null">`user_id` = #{userId}, </if>
-            <if test="openid != null">`openid` = #{openid}, </if>
-            <if test="nickname != null">`nickname` = #{nickname}, </if>
-            <if test="sex != null">`sex` = #{sex}, </if>
+            <if test="address != null">`address` = #{address}, </if>
+            <if test="context != null">`context` = #{context}, </if>
+            <if test="view != null">`view` = #{view}, </if>
             <if test="province != null">`province` = #{province},</if>
             <if test="city != null">`city` = #{city},</if>
             <if test="country != null">`country` = #{country},</if>
-            <if test="headimgurl != null">`headimgurl` = #{headimgurl},</if>
-            <if test="privilege != null">`privilege` = #{privilege},</if>
-            <if test="unionid != null">`unionid` = #{unionid}</if>
-
+            <if test="is_anonymous != null">`is_anonymous` = #{is_anonymous},</if>
+            <if test="is_transpont != null">`is_transpont` = #{is_transpont},</if>
+            <if test="is_start != null">`is_start` = #{is_start}</if>
         </set>
         where id = #{id}
     </update>
