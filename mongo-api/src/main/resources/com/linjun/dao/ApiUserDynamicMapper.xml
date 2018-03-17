@@ -43,7 +43,8 @@
         `likesum`,
         `is_anonymous`,
         `is_transpont`,
-        `is_start`
+        `is_start`,
+         `create_time`
         )
         values
         (
@@ -56,7 +57,8 @@
         #{likesum},
         #{is_anonymous},
         #{is_transpont},
-        #{is_start}
+        #{is_start},
+        #{create_time}
         )
     </insert>
 
@@ -73,6 +75,7 @@
             <if test="is_anonymous != null">`is_anonymous` = #{is_anonymous},</if>
             <if test="is_transpont != null">`is_transpont` = #{is_transpont},</if>
             <if test="is_start != null">`is_start` = #{is_start}</if>
+            <if test="create_time != null">`create_time` = #{create_time}</if>
         </set>
         where id = #{id}
     </update>

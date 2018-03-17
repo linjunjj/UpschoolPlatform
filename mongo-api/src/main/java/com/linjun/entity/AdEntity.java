@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class AdEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     //主键
-    private Integer id;
+    private Long id;
     //广告位置Id
     private Integer ad_position_id;
     //形式
@@ -28,11 +28,11 @@ public class AdEntity implements Serializable {
     //状态
     private Integer enabled;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

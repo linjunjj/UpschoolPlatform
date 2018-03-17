@@ -1,6 +1,7 @@
 package com.linjun.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author 林俊
@@ -18,6 +19,15 @@ public class UserDynamicEntity implements Serializable {
      private  byte is_anonymous;
      private byte is_transpont;
      private  byte is_start;
+     private Date create_time;
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

@@ -11,7 +11,7 @@ public class AdPositionEntity implements Serializable{
     private static final long serialVersionUID = 1L;
 
     //主键
-    private Integer id;
+    private Long id;
     //位置名称
     private String name;
     //宽度
@@ -21,11 +21,11 @@ public class AdPositionEntity implements Serializable{
     //描述
     private String desc;
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
