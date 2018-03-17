@@ -53,7 +53,7 @@
     <insert id="save" parameterType="com.linjun.entity.DynamicImageEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_dynamic_image
         (
-        `userId`,
+        `user_id`,
         `dynamicid`,
         `is_default`,
         `create_time`,
