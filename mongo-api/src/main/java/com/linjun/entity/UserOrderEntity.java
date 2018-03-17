@@ -20,6 +20,8 @@ public class UserOrderEntity implements Serializable {
     private  Date cancel_time;
     private  Date send_time;
     private  Date comlete_time;
+    private byte shipping_status;
+    private  byte pay_status;
     private  String logistics;
     private  String logisticscode;
     private  byte is_pay;
@@ -32,6 +34,22 @@ public class UserOrderEntity implements Serializable {
     private  String address;
     private  String shipping_no;
     private  String consignee;
+
+    public byte getShipping_status() {
+        return shipping_status;
+    }
+
+    public void setShipping_status(byte shipping_status) {
+        this.shipping_status = shipping_status;
+    }
+
+    public byte getPay_status() {
+        return pay_status;
+    }
+
+    public void setPay_status(byte pay_status) {
+        this.pay_status = pay_status;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
