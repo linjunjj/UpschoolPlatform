@@ -34,6 +34,24 @@ public class UserOrderEntity implements Serializable {
     private  String address;
     private  String shipping_no;
     private  String consignee;
+    private  byte shipping_id;
+    private String shipping_code;
+
+    public String getShipping_code() {
+        return shipping_code;
+    }
+
+    public void setShipping_code(String shipping_code) {
+        this.shipping_code = shipping_code;
+    }
+
+    public byte getShipping_id() {
+        return shipping_id;
+    }
+
+    public void setShipping_id(byte shipping_id) {
+        this.shipping_id = shipping_id;
+    }
 
     public byte getShipping_status() {
         return shipping_status;

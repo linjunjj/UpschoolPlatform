@@ -22,27 +22,29 @@
         <result property="country" column="country"/>
         <result property="province" column="province"/>
         <result property="city" column="city"/>
+        <result property="shipping_id" column="shipping_id"/>
         <result property="district" column="district"/>
         <result property="address" column="address"/>
         <result property="shipping_no" column="shipping_no"/>
         <result property="consignee" column="consignee"/>
         <result property="shipping_status" column="shipping_status"/>
         <result property="pay_status" column="pay_status"/>
+        <result property="shipping_code" column="shipping_code"/>
 
     </resultMap>
 
     <select id="queryObject" resultMap="orderMap">
         select a.*,b.code as  shipping_code
-        from nideshop_order a
-        left join nideshop_shipping b on a.shipping_id = b.id
+        from user_order a
+        left join shipping b on a.shipping_id = b.id
         where a.id = #{value}
     </select>
 
     <select id="queryList" resultMap="orderMap">
-        select * from nideshop_order
+        select * from user_order
         <where>
             <if test="user_id != null">
-                and user_id = #{user_id}
+                and userId = #{userId}
             </if>
         </where>
         <choose>
@@ -59,127 +61,99 @@
     </select>
 
     <select id="queryTotal" resultType="int">
-        select count(*) from nideshop_order
+        select count(*) from user_order
     </select>
 
-    <insert id="save" parameterType="com.platform.entity.OrderVo" useGeneratedKeys="true" keyProperty="id">
-        insert into nideshop_order
+    <insert id="save" parameterType="com.linjun.entity.UserOrderEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into user_order
         (
-        `order_sn`,
-        `user_id`,
-        `order_status`,
-        `shipping_status`,
-        `pay_status`,
-        `consignee`,
+        `userId`,
+        `price`,
+        `create_time`,
+        `order_su`,
+        `pay_time`,
+        `cancel_time`,
+        `send_time`,
+        `comlete_time`,
+        `logistics`,
+        `logistics_code`,
+        `is_pay`,
+        `descripton`,
         `country`,
         `province`,
         `city`,
+        `shipping_id`,
         `district`,
         `address`,
-        `mobile`,
-        `postscript`,
-        `shipping_id`,
-        `shipping_name`,
-        `pay_id`,
-        `pay_name`,
-        `shipping_fee`,
-        `actual_price`,
-        `integral`,
-        `integral_money`,
-        `order_price`,
-        `goods_price`,
-        `add_time`,
-        `confirm_time`,
-        `pay_time`,
-        `freight_price`,
-        `coupon_id`,
-        `parent_id`,
-        `coupon_price`,
-        `callback_status`,
-        `full_cut_price`
+        `shipping_no`,
+        `consignee`,
+        `shipping_status`,
+        `pay_status`,
+        `shipping_code`
         )
         values
         (
-        #{order_sn},
-        #{user_id},
-        #{order_status},
-        #{shipping_status},
-        #{pay_status},
-        #{consignee},
+        #{userId},
+        #{price},
+        #{create_time},
+        #{order_su},
+        #{pay_time},
+        #{cancel_time},
+        #{send_time},
+        #{comlete_time},
+        #{logistics},
+        #{logistics_code},
+        #{is_pay},
+        #{descripton},
         #{country},
         #{province},
         #{city},
+        #{shipping_id},
         #{district},
         #{address},
-        #{mobile},
-        #{postscript},
-        #{shipping_id},
-        #{shipping_name},
-        #{pay_id},
-        #{pay_name},
-        #{shipping_fee},
-        #{actual_price},
-        #{integral},
-        #{integral_money},
-        #{order_price},
-        #{goods_price},
-        #{add_time},
-        #{confirm_time},
-        #{pay_time},
-        #{freight_price},
-        #{coupon_id},
-        #{parent_id},
-        #{coupon_price},
-        #{callback_status},
-        #{full_cut_price}
+        #{shipping_no},
+        #{consignee},
+        #{pay_status},
+        #{shipping_code}
         )
     </insert>
 
-    <update id="update" parameterType="com.platform.entity.OrderVo">
-        update nideshop_order
+    <update id="update" parameterType="com.linjun.entity.UserOrderEntity">
+        update user_order
         <set>
-            <if test="order_sn != null">`order_sn` = #{order_sn},</if>
-            <if test="user_id != null">`user_id` = #{user_id},</if>
-            <if test="order_status != null">`order_status` = #{order_status},</if>
-            <if test="shipping_status != null">`shipping_status` = #{shipping_status},</if>
-            <if test="pay_status != null">`pay_status` = #{pay_status},</if>
-            <if test="consignee != null">`consignee` = #{consignee},</if>
+            <if test="userId != null">`userId` = #{userId},</if>
+            <if test="price != null">`price` = #{price},</if>
+            <if test="create_time != null">`create_time` = #{create_time},</if>
+            <if test="order_su != null">`order_su` = #{order_su},</if>
+            <if test="cancel_time != null">`cancel_time` = #{cancel_time},</if>
+            <if test="send_time != null">`send_time` = #{send_time},</if>
+            <if test="comlete_time != null">`comlete_time` = #{comlete_time},</if>
+            <if test="logistics != null">`logistics` = #{logistics},</if>
+            <if test="logistics_code != null">`logistics_code` = #{logistics_code},</if>
+            <if test="is_pay != null">`is_pay` = #{is_pay},</if>
+            <if test="descripton != null">`descripton` = #{descripton},</if>
             <if test="country != null">`country` = #{country},</if>
             <if test="province != null">`province` = #{province},</if>
             <if test="city != null">`city` = #{city},</if>
+            <if test="shipping_id != null">`shipping_id` = #{shipping_id},</if>
             <if test="district != null">`district` = #{district},</if>
             <if test="address != null">`address` = #{address},</if>
-            <if test="mobile != null">`mobile` = #{mobile},</if>
-            <if test="postscript != null">`postscript` = #{postscript},</if>
-            <if test="shipping_id != null">`shipping_id` = #{shipping_id},</if>
-            <if test="shipping_name != null">`shipping_name` = #{shipping_name},</if>
-            <if test="pay_id != null">`pay_id` = #{pay_id},</if>
-            <if test="pay_name != null">`pay_name` = #{pay_name},</if>
-            <if test="shipping_fee != null">`shipping_fee` = #{shipping_fee},</if>
-            <if test="actual_price != null">`actual_price` = #{actual_price},</if>
-            <if test="integral != null">`integral` = #{integral},</if>
-            <if test="integral_money != null">`integral_money` = #{integral_money},</if>
-            <if test="order_price != null">`order_price` = #{order_price},</if>
-            <if test="goods_price != null">`goods_price` = #{goods_price},</if>
-            <if test="add_time != null">`add_time` = #{add_time},</if>
-            <if test="confirm_time != null">`confirm_time` = #{confirm_time},</if>
-            <if test="pay_time != null">`pay_time` = #{pay_time},</if>
-            <if test="freight_price != null">`freight_price` = #{freight_price},</if>
-            <if test="coupon_id != null">`coupon_id` = #{coupon_id},</if>
-            <if test="parent_id != null">`parent_id` = #{parent_id},</if>
-            <if test="coupon_price != null">`coupon_price` = #{coupon_price},</if>
-            <if test="callback_status != null">`callback_status` = #{callback_status}</if>
-            <if test="full_cut_price != null">`full_cut_price` = #{full_cut_price},</if>
+            <if test="shipping_no != null">`shipping_no` = #{shipping_no},</if>
+            <if test="consignee != null">`consignee` = #{consignee},</if>
+            <if test="shipping_status != null">`shipping_status` = #{shipping_status},</if>
+            <if test="pay_status != null">`pay_status` = #{pay_status},</if>
+            <if test="shipping_code != null">`shipping_code` = #{shipping_code}</if>
+
         </set>
         where id = #{id}
     </update>
 
     <delete id="delete">
-        delete from nideshop_order where id = #{value}
+        delete from user_order where id = #{value}
     </delete>
 
     <delete id="deleteBatch">
-        delete from nideshop_order where id in
+        delete from user_order where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
