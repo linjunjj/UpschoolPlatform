@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiDynamicImageMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.DynamicImageEntity" id="dynamicImageMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="dynamicid" column="dynamicid"/>
+        <result property="is_default" column="is_default"/>
+        <result property="create_time" column="create_time"/>
+        <result property="image_url" column="image_url"/>
+        <result property="sort_order" column="sort_order"/>
+        <result property="is_start" column="is_start"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="dynamicImageMap">
+        select * from user_dynamic_image where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="dynamicImageMap">
+        select
+        <if test="fields != null and fields != ''">
+            ${fields}
+        </if>
+        <if test="fields == null or fields == ''">
+            *
+        </if>
+        from user_dynamic_image
+        <where>
+            <if test="goods_id != null">
+                and dynamicid = #{dynamicid}
+            </if>
+        </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from user_dynamic_image
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.DynamicImageEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into user_dynamic_image
+        (
+        `userId`,
+        `dynamicid`,
+        `is_default`,
+        `create_time`,
+        `image_url`,
+        `sort_order`,
+        `is_start`
+        )
+        values
+        (
+        #{userId},
+        #{dynamicid},
+        #{is_default},
+        #{create_time},
+        #{image_url},
+        #{sort_order},
+        #{is_start}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.DynamicImageEntity">
+        update user_dynamic_image
+        <set>
+            <if test="userId != null">`user_id` = #{userId},</if>
+            <if test="dynamicid != null">`dynamicid` = #{dynamicid},</if>
+            <if test="is_default != null">`is_default` = #{is_default},</if>
+            <if test="create_time != null">`create_time` = #{create_time},</if>
+            <if test="image_url != null">`image_url` = #{image_url},</if>
+            <if test="sort_order != null">`sort_order` = #{sort_order},</if>
+            <if test="is_start != null">`is_start` = #{is_start}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from user_dynamic_image where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from user_dynamic_image where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
