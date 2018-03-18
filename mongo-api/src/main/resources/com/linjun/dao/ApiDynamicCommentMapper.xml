@@ -24,7 +24,7 @@
         select distinct * from user_dynamic_comment
         <where>
             <if test="order_id != null and order_id != ''">
-                and user_id = #{userId}
+                and dynamicid = #{dynamicid}
             </if>
         </where>
         <choose>

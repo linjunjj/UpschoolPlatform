@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiSignMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.SignEntity" id="signMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="awardSum" column="awardSum"/>
+        <result property="singinSum" column="singinSum"/>
+        <result property="monSiginSum" column="monSiginSum"/>
+        <result property="endsignTime" column="endsignTime"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="signMap">
+        select * from sign where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="signMap">
+        select * from sign
+        <if test="userId != null and userId != null">
+            and userId = #{userId}
+        </if>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from sign
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.SignEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into sign
+        (
+        `userId`,
+        `awardSum`,
+        `singinSum`,
+        `monSiginSum`,
+        `endsignTime`
+        )
+        values
+        (
+        #{userId},
+        #{awardSum},
+        #{singinSum},
+        #{monSiginSum},
+        #{endsignTime}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.SignEntity">
+        update sign
+        <set>
+            <if test="userId != null">`userId` = #{userId},</if>
+            <if test="awardSum != null">`awardSum` = #{awardSum},</if>
+            <if test="singinSum != null">`singinSum` = #{singinSum},</if>
+            <if test="monSiginSum != null">`monSiginSum` = #{monSiginSum},</if>
+            <if test="endsignTime != null">`endsignTime` = #{endsignTime},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from sign where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from sign where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
