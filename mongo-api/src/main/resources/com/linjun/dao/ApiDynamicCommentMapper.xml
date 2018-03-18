@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiDynamicCommentMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.DynamicCommentEntity" id="dynamicCommentMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="dynamicid" column="dynamicid"/>
+        <result property="context" column="context"/>
+        <result property="add_time" column="add_time"/>
+        <result property="is_userid" column="is_userid"/>
+        <result property="is_start" column="is_start"/>
+        <result property="status" column="status"/>
+        <result property="is_new" column="is_new"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="dynamicCommentMap">
+        select * from user_dynamic_comment where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="dynamicCommentMap">
+        select distinct * from user_dynamic_comment
+        <where>
+            <if test="order_id != null and order_id != ''">
+                and user_id = #{userId}
+            </if>
+        </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+       select count(*) from user_dynamic_comment
+    </select>
+
+
+
+    <insert id="save" parameterType="com.linjun.entity.DynamicCommentEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into user_dynamic_comment
+        (
+        `user_id`,
+        `dynamicid`,
+        `context`,
+        `add_time`,
+        `is_userid`,
+        `status`,
+        `is_new`
+        )
+        values
+        (
+        #{userId},
+        #{dynamicid},
+        #{context},
+        #{add_time},
+        #{is_userid},
+        #{status},
+        #{is_new}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.DynamicCommentEntity">
+        update user_dynamic_comment
+        <set>
+            <if test="userId != null">`user_id` = #{userId},</if>
+            <if test="dynamicid != null">`dynamicid` = #{dynamicid},</if>
+            <if test="context != null">`context` = #{context},</if>
+            <if test="add_time != null">`add_time` = #{add_time},</if>
+            <if test="is_userid != null">`is_userid` = #{is_userid},</if>
+            <if test="status != null">`status` = #{status},</if>
+            <if test="is_new != null">`is_new` = #{is_new}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from user_dynamic_comment where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from user_dynamic_comment where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
