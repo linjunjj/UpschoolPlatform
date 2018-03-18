@@ -65,7 +65,7 @@
             <if test="awardSum != null">`awardSum` = #{awardSum},</if>
             <if test="singinSum != null">`singinSum` = #{singinSum},</if>
             <if test="monSiginSum != null">`monSiginSum` = #{monSiginSum},</if>
-            <if test="endsignTime != null">`endsignTime` = #{endsignTime},</if>
+            <if test="endsignTime != null">`endsignTime` = #{endsignTime}</if>
         </set>
         where id = #{id}
     </update>

@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiSignDetailMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.SignDetailEntity" id="signMap">
+    <resultMap type="com.linjun.entity.SignDetailEntity" id="signDetailMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="signparise" column="signparise"/>
@@ -12,10 +12,10 @@
 
     </resultMap>
 
-    <select id="queryObject" resultMap="signMap">
+    <select id="queryObject" resultMap="signDetailMap">
         select * from signDetail where id = #{value}
     </select>
-    <select id="queryList" resultMap="signMap">
+    <select id="queryList" resultMap="signDetailMap">
         select * from signDetail
         <if test="userId != null and userId != null">
             and userId = #{userId}
