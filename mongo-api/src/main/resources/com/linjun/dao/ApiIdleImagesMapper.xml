@@ -48,7 +48,7 @@
         select count(*) from idle_images
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.DynamicImageEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.IdleImagesEntity" useGeneratedKeys="true" keyProperty="id">
         insert into idle_images
         (
         `userId`,
@@ -67,7 +67,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.RentImageEntity">
+    <update id="update" parameterType="com.linjun.entity.IdleImagesEntity">
         update idle_images
         <set>
             <if test="userId != null">`userId` = #{userId},</if>
