@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiIdleImagesMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.IdleImagesEntity" id="idleImageMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="idle_id" column="rent_id"/>
+        <result property="image_url" column="idle_id"/>
+        <result property="sort_order" column="sort_order"/>
+        <result property="is_start" column="is_start"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="idleImageMap">
+        select * from idle_images where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="idleImageMap">
+        select
+        <if test="fields != null and fields != ''">
+            ${fields}
+        </if>
+        <if test="fields == null or fields == ''">
+            *
+        </if>
+        from idle_images
+        <where>
+            <if test="goods_id != null">
+                and idle_id = #{idle_id}
+            </if>
+        </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from idle_images
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.DynamicImageEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into idle_images
+        (
+        `userId`,
+        `idle_id`,
+        `image_url`,
+        `sort_order`,
+        `is_start`
+        )
+        values
+        (
+        #{userId},
+        #{idle_id},
+        #{image_url},
+        #{sort_order},
+        #{is_start}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.RentImageEntity">
+        update idle_images
+        <set>
+            <if test="userId != null">`userId` = #{userId},</if>
+            <if test="idle_id != null">`idle_id` = #{idle_id},</if>
+            <if test="image_url != null">`image_url` = #{image_url},</if>
+            <if test="sort_order != null">`sort_order` = #{sort_order},</if>
+            <if test="is_start != null">`is_start` = #{is_start}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from idle_images where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from idle_images where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
