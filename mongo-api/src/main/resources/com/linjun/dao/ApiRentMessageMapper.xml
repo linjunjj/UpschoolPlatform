@@ -1,23 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.linjun.dao.ApiRentImageMapper">
+<mapper namespace="com.linjun.dao.ApiRentMessageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.RentImageEntity" id="rentImageMap">
+    <resultMap type="com.linjun.entity.RentMessageEntity" id="rentMessageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="rent_id" column="rent_id"/>
-        <result property="image_url" column="image_url"/>
-        <result property="sort_order" column="sort_order"/>
-        <result property="is_start" column="is_start"/>
+        <result property="messager_id" column="messager_id"/>
+        <result property="ismessager_id" column="ismessager_id"/>
+        <result property="context" column="context"/>
+        <result property="create_time" column="create_time"/>
+        <result property="is_new" column="is_new"/>
     </resultMap>
 
-    <select id="queryObject" resultMap="rentImageMap">
-        select * from rent_image where id = #{value}
+    <select id="queryObject" resultMap="rentMessageMap">
+        select * from rent_message where id = #{value}
     </select>
 
-    <select id="queryList" resultMap="rentImageMap">
+    <select id="queryList" resultMap="rentMessageMap">
         select
         <if test="fields != null and fields != ''">
             ${fields}
@@ -25,7 +27,7 @@
         <if test="fields == null or fields == ''">
             *
         </if>
-        from rent_image
+        from rent_message
         <where>
             <if test="goods_id != null">
                 and rent_id = #{rent_id}
@@ -45,46 +47,53 @@
     </select>
 
     <select id="queryTotal" resultType="int">
-        select count(*) from rent_image
+        select count(*) from rent_message
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.DynamicImageEntity" useGeneratedKeys="true" keyProperty="id">
-        insert into rent_image
+    <insert id="save" parameterType="com.linjun.entity.RentMessageEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into rent_message
         (
         `userId`,
         `rent_id`,
-        `image_url`,
-        `sort_order`,
-        `is_start`
+        `messager_id`,
+        `ismessager_id`,
+        `context`,
+        `create_time`,
+        `is_new`
         )
         values
         (
         #{userId},
         #{rent_id},
-        #{image_url},
-        #{sort_order},
-        #{is_start}
+        #{messager_id},
+        #{ismessager_id},
+        #{context},
+        #{create_time},
+        #{is_new}
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.RentImageEntity">
-        update rent_image
+    <update id="update" parameterType="com.linjun.entity.RentMessageEntity">
+        update rent_message
         <set>
             <if test="userId != null">`userId` = #{userId},</if>
             <if test="rent_id != null">`rent_id` = #{rent_id},</if>
-            <if test="image_url != null">`image_url` = #{image_url},</if>
-            <if test="sort_order != null">`sort_order` = #{sort_order},</if>
-            <if test="is_start != null">`is_start` = #{is_start}</if>
+            <if test="messager_id != null">`messager_id` = #{messager_id},</if>
+            <if test="ismessager_id != null">`ismessager_id` = #{ismessager_id},</if>
+            <if test="context != null">`context` = #{context},</if>
+            <if test="create_time != null">`create_time` = #{create_time},</if>
+            <if test="is_new != null">`is_new` = #{is_new}</if>
+
         </set>
         where id = #{id}
     </update>
 
     <delete id="delete">
-        delete from rent_image where id = #{value}
+        delete from rent_message where id = #{value}
     </delete>
 
     <delete id="deleteBatch">
-        delete from rent_image where id in
+        delete from rent_message where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
