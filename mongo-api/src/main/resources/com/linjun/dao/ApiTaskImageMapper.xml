@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.linjun.dao.ApiRentImageMapper">
+<mapper namespace="com.linjun.dao.ApiTaskImageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.RentImageEntity" id="rentImageMap">
+    <resultMap type="com.linjun.entity.TaskImageEntity" id="taskImageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="rent_id" column="rent_id"/>
@@ -13,11 +13,11 @@
         <result property="is_start" column="is_start"/>
     </resultMap>
 
-    <select id="queryObject" resultMap="rentImageMap">
-        select * from rent_image where id = #{value}
+    <select id="queryObject" resultMap="taskImageMap">
+        select * from task_image where id = #{value}
     </select>
 
-    <select id="queryList" resultMap="rentImageMap">
+    <select id="queryList" resultMap="taskImageMap">
         select
         <if test="fields != null and fields != ''">
             ${fields}
@@ -25,7 +25,7 @@
         <if test="fields == null or fields == ''">
             *
         </if>
-        from rent_image
+        from task_image
         <where>
             <if test="goods_id != null">
                 and rent_id = #{rent_id}
@@ -45,11 +45,11 @@
     </select>
 
     <select id="queryTotal" resultType="int">
-        select count(*) from rent_image
+        select count(*) from task_image
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.RentImageEntity" useGeneratedKeys="true" keyProperty="id">
-        insert into rent_image
+    <insert id="save" parameterType="com.linjun.entity.TaskImageEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into task_image
         (
         `userId`,
         `rent_id`,
@@ -67,8 +67,8 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.RentImageEntity">
-        update rent_image
+    <update id="update" parameterType="com.linjun.entity.TaskImageEntity">
+        update task_image
         <set>
             <if test="userId != null">`userId` = #{userId},</if>
             <if test="rent_id != null">`rent_id` = #{rent_id},</if>
@@ -80,11 +80,11 @@
     </update>
 
     <delete id="delete">
-        delete from rent_image where id = #{value}
+        delete from task_image where id = #{value}
     </delete>
 
     <delete id="deleteBatch">
-        delete from rent_image where id in
+        delete from task_image where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
