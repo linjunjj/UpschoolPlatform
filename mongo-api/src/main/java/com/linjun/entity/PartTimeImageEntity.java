@@ -7,11 +7,11 @@ import java.io.Serializable;
  * @create 2018/3/19.
  * @desc
  **/
-public class TaskImageEntity implements Serializable {
+public class PartTimeImageEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-    private  Long id;
+    private Long id;
     private  Long userId;
-    private  Long task_id;
+    private  Long parrtime_id;
     private  String image_url;
     private  Integer sort_order;
     private  byte is_start;
@@ -36,12 +36,12 @@ public class TaskImageEntity implements Serializable {
         this.userId = userId;
     }
 
-    public Long getTask_id() {
-        return task_id;
+    public Long getParrtime_id() {
+        return parrtime_id;
     }
 
-    public void setTask_id(Long task_id) {
-        this.task_id = task_id;
+    public void setParrtime_id(Long parrtime_id) {
+        this.parrtime_id = parrtime_id;
     }
 
     public String getImage_url() {

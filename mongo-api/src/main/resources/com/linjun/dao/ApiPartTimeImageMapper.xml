@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.linjun.dao.ApiTaskImageMapper">
+<mapper namespace="com.linjun.dao.ApiPartTimeImageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.TaskImageEntity" id="taskImageMap">
+    <resultMap type="com.linjun.entity.PartTimeImageEntity" id="partTimeImageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
-        <result property="task_id" column="task_id"/>
+        <result property="parrtime_id" column="parrtime_id"/>
         <result property="image_url" column="image_url"/>
         <result property="sort_order" column="sort_order"/>
         <result property="is_start" column="is_start"/>
     </resultMap>
 
-    <select id="queryObject" resultMap="taskImageMap">
-        select * from task_image where id = #{value}
+    <select id="queryObject" resultMap="partTimeImageMap">
+        select * from parttime_image where id = #{value}
     </select>
 
-    <select id="queryList" resultMap="taskImageMap">
+    <select id="queryList" resultMap="partTimeImageMap">
         select
         <if test="fields != null and fields != ''">
             ${fields}
@@ -25,10 +25,10 @@
         <if test="fields == null or fields == ''">
             *
         </if>
-        from task_image
+        from parttime_image
         <where>
             <if test="goods_id != null">
-                and task_id = #{task_id}
+                and parrtime_id = #{parrtime_id}
             </if>
         </where>
         <choose>
@@ -45,14 +45,14 @@
     </select>
 
     <select id="queryTotal" resultType="int">
-        select count(*) from task_image
+        select count(*) from parttime_image
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.TaskImageEntity" useGeneratedKeys="true" keyProperty="id">
-        insert into task_image
+    <insert id="save" parameterType="com.linjun.entity.PartTimeImageEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into parttime_image
         (
         `userId`,
-        `task_id`,
+        `parrtime_id`,
         `image_url`,
         `sort_order`,
         `is_start`
@@ -60,18 +60,18 @@
         values
         (
         #{userId},
-        #{task_id},
+        #{parrtime_id},
         #{image_url},
         #{sort_order},
         #{is_start}
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.TaskImageEntity">
-        update task_image
+    <update id="update" parameterType="com.linjun.entity.PartTimeImageEntity">
+        update parttime_image
         <set>
             <if test="userId != null">`userId` = #{userId},</if>
-            <if test="task_id != null">`task_id` = #{task_id},</if>
+            <if test="parrtime_id != null">`parrtime_id` = #{parrtime_id},</if>
             <if test="image_url != null">`image_url` = #{image_url},</if>
             <if test="sort_order != null">`sort_order` = #{sort_order},</if>
             <if test="is_start != null">`is_start` = #{is_start}</if>
@@ -80,11 +80,11 @@
     </update>
 
     <delete id="delete">
-        delete from task_image where id = #{value}
+        delete from parttime_image where id = #{value}
     </delete>
 
     <delete id="deleteBatch">
-        delete from task_image where id in
+        delete from parttime_image where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
