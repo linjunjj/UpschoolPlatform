@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiPartTimeApplyVolumMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.PartTimeApplyVolumEntity" id="partTimeApplyVolumMap">
+        <result property="id" column="id"/>
+        <result property="parttime_id" column="parttime_id"/>
+        <result property="apply_id" column="apply_id"/>
+        <result property="user_name" column="user_name"/>
+        <result property="apply_time" column="apply_time"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="partTimeApplyVolumMap">
+        select * from parttime_applyvolum where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="partTimeApplyVolumMap">
+        select
+        <if test="fields != null and fields != ''">
+            ${fields}
+        </if>
+        <if test="fields == null or fields == ''">
+            *
+        </if>
+        from parttime_applyvolum
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from parttime_applyvolum
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.PartTimeApplyVolumEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into parttime_applyvolum
+        (
+        `parttime_id`,
+        `apply_id`,
+        `user_name`,
+        `apply_time`
+        )
+        values
+        (
+        #{parttime_id},
+        #{apply_id},
+        #{user_name},
+        #{apply_time}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.PartTimeApplyVolumEntity">
+        update parttime_applyvolum
+        <set>
+            <if test="parttime_id != null">`parttime_id` = #{parttime_id},</if>
+            <if test="apply_id != null">`apply_id` = #{apply_id},</if>
+            <if test="user_name != null">`user_name` = #{user_name},</if>
+            <if test="apply_time != null">`apply_time` = #{apply_time}</if>
+
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from parttime_applyvolum where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from parttime_applyvolum where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
