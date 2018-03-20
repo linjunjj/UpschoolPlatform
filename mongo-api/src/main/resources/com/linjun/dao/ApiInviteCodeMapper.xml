@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.linjun.dao.ApiIdleRalateMapper">
+<mapper namespace="com.linjun.dao.ApiInviteCodeMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.IdleRalateEntity" id="idleRelateMap">
+    <resultMap type="com.linjun.entity.InviteCodeEntity" id="inviteCodeMap">
         <result property="id" column="id"/>
-        <result property="idle_id" column="idle_id"/>
-        <result property="idle_ralateid" column="idle_ralateid"/>
+        <result property="user_id" column="user_id"/>
+        <result property="is_multi" column="is_multi"/>
+        <result property="start_time" column="start_time"/>
+        <result property="edd_time" column="edd_time"/>
+
     </resultMap>
 
-    <select id="queryObject" resultMap="idleRelateMap">
-        select * from idle_ralate where id = #{value}
+    <select id="queryObject" resultMap="inviteCodeMap">
+        select * from invite_code where id = #{value}
     </select>
 
-    <select id="queryList" resultMap="idleRelateMap">
+    <select id="queryList" resultMap="inviteCodeMap">
         select
         <if test="fields != null and fields != ''">
             ${fields}
@@ -22,7 +25,7 @@
         <if test="fields == null or fields == ''">
             *
         </if>
-        from idle_ralate
+        from invite_code
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
                 order by ${sidx} ${order}
@@ -37,27 +40,33 @@
     </select>
 
     <select id="queryTotal" resultType="int">
-        select count(*) from idle_ralate
+        select count(*) from invite_code
     </select>
 
     <insert id="save" parameterType="com.linjun.entity.IdleRalateEntity" useGeneratedKeys="true" keyProperty="id">
-        insert into idle_ralate
+        insert into invite_code
         (
-        `idle_id`,
-        `idle_ralateid`
+        `user_id`,
+        `is_multi`,
+        `start_time`,
+        `edd_time`
         )
         values
         (
-        #{idle_id},
-        #{idle_ralateid}
+        #{user_id},
+        #{is_multi},
+        #{start_time},
+        #{edd_time}
         )
     </insert>
 
     <update id="update" parameterType="com.linjun.entity.IdleRalateEntity">
-        update idle_ralate
+        update invite_code
         <set>
-            <if test="idle_id != null">`idle_id` = #{idle_id},</if>
-            <if test="idle_ralateid != null">`idle_ralateid` = #{idle_ralateid}</if>
+            <if test="user_id != null">`user_id` = #{user_id},</if>
+            <if test="is_multi != null">`is_multi` = #{is_multi}</if>
+            <if test="start_time != null">`start_time` = #{start_time},</if>
+            <if test="edd_time != null">`edd_time` = #{edd_time}</if>
         </set>
         where id = #{id}
     </update>
@@ -67,7 +76,7 @@
     </delete>
 
     <delete id="deleteBatch">
-        delete from idle_ralate where id in
+        delete from invite_code where id in
         <foreach item="id" collection="array" open="(" separator="," close=")">
             #{id}
         </foreach>
