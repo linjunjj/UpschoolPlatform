@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiSkillImageMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.SkillImageEntity" id="skillImageMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="skill_id" column="skill_id"/>
+        <result property="image_url" column="image_url"/>
+        <result property="sort_order" column="sort_order"/>
+        <result property="is_start" column="is_start"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="skillImageMap">
+        select * from skill_images where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="skillImageMap">
+        select
+        <if test="fields != null and fields != ''">
+            ${fields}
+        </if>
+        <if test="fields == null or fields == ''">
+            *
+        </if>
+        from skill_images
+        <where>
+            <if test="goods_id != null">
+                and skill_id = #{skill_id}
+            </if>
+        </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from skill_images
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.SkillImageEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into skill_images
+        (
+        `userId`,
+        `skill_id`,
+        `image_url`,
+        `sort_order`,
+        `is_start`
+        )
+        values
+        (
+        #{userId},
+        #{skill_id},
+        #{image_url},
+        #{sort_order},
+        #{is_start}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.SkillImageEntity">
+        update skill_images
+        <set>
+            <if test="userId != null">`userId` = #{userId},</if>
+            <if test="skill_id != null">`skill_id` = #{skill_id},</if>
+            <if test="image_url != null">`image_url` = #{image_url},</if>
+            <if test="sort_order != null">`sort_order` = #{sort_order},</if>
+            <if test="is_start != null">`is_start` = #{is_start}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from skill_images where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from skill_images where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
