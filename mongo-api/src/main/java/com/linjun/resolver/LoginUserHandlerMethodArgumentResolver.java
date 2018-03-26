@@ -1,5 +1,6 @@
 package com.linjun.resolver;
 
+import com.linjun.annotation.LoginUser;
 import com.linjun.interceptor.AuthorizationInterceptor;
 import com.linjun.service.ApiUserService;
 import org.springframework.core.MethodParameter;
