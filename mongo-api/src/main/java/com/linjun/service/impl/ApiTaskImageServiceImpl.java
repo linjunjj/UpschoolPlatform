@@ -23,31 +23,31 @@ public class ApiTaskImageServiceImpl implements ApiTaskImageService {
 
     @Override
     public List<TaskImageEntity> queryList(Map<String, Object> map) {
-        return null;
+        return apiTaskImageMapper.queryList(map);
     }
 
     @Override
     public int queryTotal(Map<String, Object> map) {
-        return 0;
+        return apiTaskImageMapper.queryTotal(map);
     }
 
     @Override
     public void save(TaskImageEntity taskImageEntity) {
-
+ apiTaskImageMapper.save(taskImageEntity);
     }
 
     @Override
     public void update(TaskImageEntity taskImageEntity) {
-
+  apiTaskImageMapper.update(taskImageEntity);
     }
 
     @Override
     public void delete(Integer id) {
-
+  apiTaskImageMapper.delete(id);
     }
 
     @Override
     public void deleteBatch(Integer[] ids) {
-
+ apiTaskImageMapper.deleteBatch(ids);
     }
 }
