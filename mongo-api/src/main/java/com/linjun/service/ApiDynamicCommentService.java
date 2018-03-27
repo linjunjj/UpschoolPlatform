@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiDynamicCommentService {
-    DynamicCommentEntity queryObject(Integer id);
+    DynamicCommentEntity queryObject(Long id);
     List<DynamicCommentEntity> queryList(Map<String ,Object>map);
     int  queryTotal(Map<String,Object> map);
     void save(DynamicCommentEntity dynamicCommentEntity);
     void update(DynamicCommentEntity dynamicCommentEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

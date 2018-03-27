@@ -17,7 +17,7 @@ public class ApiChannelServiceImpl implements ApiChannelService {
     @Autowired
     private ApiChannelMapper apiChannelMapper;
     @Override
-    public ChannelEntity queryObject(Integer id) {
+    public ChannelEntity queryObject(Long id) {
         return apiChannelMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiChannelServiceImpl implements ApiChannelService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
     apiChannelMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
         apiChannelMapper.deleteBatch(ids);
     }
 }

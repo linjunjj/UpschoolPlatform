@@ -17,7 +17,7 @@ public class ApiPartTimeImageServiceImpl implements ApiPartTimeImageService {
     @Autowired
     private ApiPartTimeImageMapper apiPartTimeImageMapper;
     @Override
-    public PartTimeImageEntity queryObject(Integer id) {
+    public PartTimeImageEntity queryObject(Long id) {
         return apiPartTimeImageMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiPartTimeImageServiceImpl implements ApiPartTimeImageService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
   apiPartTimeImageMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
   apiPartTimeImageMapper.deleteBatch(ids);
     }
 }

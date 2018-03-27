@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiReportService {
-    ReportEntity queryObject(Integer id);
+    ReportEntity queryObject(Long id);
     List<ReportEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(ReportEntity reportEntity);
     void update(ReportEntity reportEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

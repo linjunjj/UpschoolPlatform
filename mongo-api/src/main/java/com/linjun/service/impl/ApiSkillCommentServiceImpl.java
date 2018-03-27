@@ -17,7 +17,7 @@ public class ApiSkillCommentServiceImpl implements ApiSkillCommentService  {
     @Autowired
     private ApiSkillCommentMapper apiSkillCommentMapper;
     @Override
-    public SkillCommentEntity queryObject(Integer id) {
+    public SkillCommentEntity queryObject(Long id) {
         return apiSkillCommentMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiSkillCommentServiceImpl implements ApiSkillCommentService  {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
    apiSkillCommentMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
   apiSkillCommentMapper.deleteBatch(ids);
     }
 }

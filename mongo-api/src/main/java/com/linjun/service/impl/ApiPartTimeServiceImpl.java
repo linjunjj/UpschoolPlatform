@@ -17,7 +17,7 @@ public class ApiPartTimeServiceImpl implements ApiPartTimeService {
     @Autowired
     private ApiPartTimeMapper apiPartTimeMapper;
     @Override
-    public PartTimeEntity queryObject(Integer id) {
+    public PartTimeEntity queryObject(Long id) {
         return apiPartTimeMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiPartTimeServiceImpl implements ApiPartTimeService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
     apiPartTimeMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
   apiPartTimeMapper.deleteBatch(ids);
     }
 }

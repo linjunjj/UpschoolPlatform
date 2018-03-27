@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiSkillService {
-    SkillEntity queryObject(Integer id);
+    SkillEntity queryObject(Long id);
     List<SkillEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(SkillEntity skillEntity);
     void update(SkillEntity skillEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

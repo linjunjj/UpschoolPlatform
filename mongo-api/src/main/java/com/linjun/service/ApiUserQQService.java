@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiUserQQService {
-    UserQQEntity queryObject(Integer id);
+    UserQQEntity queryObject(Long id);
     List<UserQQEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(UserQQEntity userQQEntity);
     void update(UserQQEntity userQQEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

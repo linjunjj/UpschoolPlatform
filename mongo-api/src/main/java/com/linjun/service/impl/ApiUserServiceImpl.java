@@ -17,7 +17,7 @@ public class ApiUserServiceImpl implements ApiUserService {
     @Autowired
     private ApiUserMapper apiUserMapper;
     @Override
-    public UserEntity queryObject(Integer id) {
+    public UserEntity queryObject(Long id) {
         return apiUserMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiUserMapper.update(userEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiUserMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiUserMapper.deleteBatch(ids);
     }
 }

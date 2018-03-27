@@ -17,7 +17,7 @@ public class ApiUserIdentityServiceImpl implements ApiUserIdentityService {
     @Autowired
     private ApiUserIdentityMapper apiUserIdentityMapper;
     @Override
-    public UserIdentityEntity queryObject(Integer id) {
+    public UserIdentityEntity queryObject(Long id) {
         return apiUserIdentityMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiUserIdentityMapper.update(userIdentityEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
  apiUserIdentityMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiUserIdentityMapper.deleteBatch(ids);
     }
 }

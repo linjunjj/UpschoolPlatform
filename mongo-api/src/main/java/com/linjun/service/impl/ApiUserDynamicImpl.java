@@ -17,7 +17,7 @@ public class ApiUserDynamicImpl implements ApiUserDynamicService {
     @Autowired
     private ApiUserDynamicMapper apiUserDynamicMapper;
     @Override
-    public UserDynamicEntity queryObject(Integer id) {
+    public UserDynamicEntity queryObject(Long id) {
         return apiUserDynamicMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiUserDynamicMapper.update(userDynamicEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
  apiUserDynamicMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiUserDynamicMapper.deleteBatch(ids);
     }
 }

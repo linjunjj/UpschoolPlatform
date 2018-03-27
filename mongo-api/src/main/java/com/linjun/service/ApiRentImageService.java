@@ -14,12 +14,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiRentImageService {
-    RentImageEntity queryObject(Integer id);
+    RentImageEntity queryObject(Long id);
     List<RentImageEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(RentImageEntity rentImageEntity);
     void update(RentImageEntity rentImageEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

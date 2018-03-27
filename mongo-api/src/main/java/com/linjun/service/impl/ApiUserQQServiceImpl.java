@@ -17,7 +17,7 @@ public class ApiUserQQServiceImpl implements ApiUserQQService {
     @Autowired
     private ApiUserQQMapper apiUserQQMapper;
     @Override
-    public UserQQEntity queryObject(Integer id) {
+    public UserQQEntity queryObject(Long id) {
         return apiUserQQMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiUserQQMapper.update(userQQEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiUserQQMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
   apiUserQQMapper.deleteBatch(ids);
     }
 }

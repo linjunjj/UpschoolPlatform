@@ -17,7 +17,7 @@ public class ApiTaskImageServiceImpl implements ApiTaskImageService {
     @Autowired
     private ApiTaskImageMapper apiTaskImageMapper;
     @Override
-    public TaskImageEntity queryObject(Integer id) {
+    public TaskImageEntity queryObject(Long id) {
         return apiTaskImageMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiTaskImageServiceImpl implements ApiTaskImageService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
   apiTaskImageMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
  apiTaskImageMapper.deleteBatch(ids);
     }
 }

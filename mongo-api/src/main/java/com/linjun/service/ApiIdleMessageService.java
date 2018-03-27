@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiIdleMessageService {
-    IdleMessageEntity queryObject(Integer id);
+    IdleMessageEntity queryObject(Long id);
     List<IdleMessageEntity>  queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void  save(IdleMessageEntity idleMessageEntity);
     void update(IdleMessageEntity idleMessageEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

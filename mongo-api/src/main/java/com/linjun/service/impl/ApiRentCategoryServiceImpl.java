@@ -17,7 +17,7 @@ public class ApiRentCategoryServiceImpl implements ApiRentCategoryService {
     @Autowired
     private ApiRentCategoryMapper apiRentCategoryMapper;
     @Override
-    public RentCategoryEntity queryObject(Integer id) {
+    public RentCategoryEntity queryObject(Long id) {
         return apiRentCategoryMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiRentCategoryServiceImpl implements ApiRentCategoryService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
        apiRentCategoryMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
          apiRentCategoryMapper.deleteBatch(ids);
     }
 }

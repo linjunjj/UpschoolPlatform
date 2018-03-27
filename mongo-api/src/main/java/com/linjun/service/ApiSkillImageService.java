@@ -14,11 +14,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiSkillImageService {
-    SkillImageEntity queryObject(Integer id);
+    SkillImageEntity queryObject(Long id);
     List<SkillImageEntity>  queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(SkillImageEntity skillImageEntity);
     void update(SkillImageEntity skillImageEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }

@@ -18,7 +18,7 @@ public class ApiTaskServiceImpl implements ApiTaskService {
     @Autowired
     private ApiTaskMapper apiTaskMapper;
     @Override
-    public TaskEntity queryObject(Integer id) {
+    public TaskEntity queryObject(Long id) {
         return apiTaskMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ apiTaskMapper.update(taskEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiTaskMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiTaskMapper.deleteBatch(ids);
     }
 }

@@ -17,7 +17,7 @@ public class ApiSkillImageServiceImpl implements ApiSkillImageService {
     @Autowired
     private ApiSkillImageMapper apiSkillImageMapper;
     @Override
-    public SkillImageEntity queryObject(Integer id) {
+    public SkillImageEntity queryObject(Long id) {
         return apiSkillImageMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiSkillImageServiceImpl implements ApiSkillImageService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiSkillImageMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiSkillImageMapper.deleteBatch(ids);
     }
 }

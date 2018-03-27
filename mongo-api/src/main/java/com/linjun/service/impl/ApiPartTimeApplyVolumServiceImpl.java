@@ -18,7 +18,7 @@ public class ApiPartTimeApplyVolumServiceImpl implements ApiPartTimeApplyVolumSe
     @Autowired
     private ApiPartTimeApplyVolumMapper apiPartTimeApplyVolumMapper;
     @Override
-    public PartTimeApplyVolumEntity queryObject(Integer id) {
+    public PartTimeApplyVolumEntity queryObject(Long id) {
         return apiPartTimeApplyVolumMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ public class ApiPartTimeApplyVolumServiceImpl implements ApiPartTimeApplyVolumSe
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
      apiPartTimeApplyVolumMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
      apiPartTimeApplyVolumMapper.deleteBatch(ids);
     }
 }

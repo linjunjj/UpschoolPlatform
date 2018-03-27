@@ -17,7 +17,7 @@ public class ApiIdleCategoryServiceImpl implements ApiIdleCategoryService {
     @Autowired
     private ApiIdleCategoryMapper apiIdleCategoryMapper;
     @Override
-    public IdleCategroyEntity queryObject(Integer id) {
+    public IdleCategroyEntity queryObject(Long id) {
         return apiIdleCategoryMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiIdleCategoryServiceImpl implements ApiIdleCategoryService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
       apiIdleCategoryMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
         apiIdleCategoryMapper.deleteBatch(ids);
     }
 }

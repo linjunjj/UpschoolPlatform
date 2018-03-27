@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiSuggestService {
-    SuggestEntity queryObject(Integer id);
+    SuggestEntity queryObject(Long id);
     List<SuggestEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(SuggestEntity suggestEntity);
     void update(SuggestEntity suggestEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

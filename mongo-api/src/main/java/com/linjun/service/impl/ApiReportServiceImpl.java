@@ -18,7 +18,7 @@ public class ApiReportServiceImpl implements ApiReportService
     @Autowired
     private ApiReportMapper apiReportMapper;
     @Override
-    public ReportEntity queryObject(Integer id) {
+    public ReportEntity queryObject(Long id) {
         return apiReportMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ public class ApiReportServiceImpl implements ApiReportService
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
     apiReportMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
       apiReportMapper.deleteBatch(ids);
     }
 }

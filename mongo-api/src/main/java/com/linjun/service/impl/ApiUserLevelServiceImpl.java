@@ -17,7 +17,7 @@ public class ApiUserLevelServiceImpl implements ApiUserLevelService {
     @Autowired
     private ApiUserLevelMapper apiUserLevelMapper;
     @Override
-    public UserLevelEntity queryObject(Integer id) {
+    public UserLevelEntity queryObject(Long id) {
         return apiUserLevelMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiUserLevelMapper.update(userLevelEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiUserLevelMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiUserLevelMapper.deleteBatch(ids);
     }
 }

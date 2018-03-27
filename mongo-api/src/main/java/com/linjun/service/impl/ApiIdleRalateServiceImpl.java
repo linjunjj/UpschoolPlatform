@@ -17,7 +17,7 @@ public class ApiIdleRalateServiceImpl implements ApiIdleRalateService{
     @Autowired
     private ApiIdleRalateMapper apiIdleRalateMapper;
     @Override
-    public IdleRalateEntity queryObject(Integer id) {
+    public IdleRalateEntity queryObject(Long id) {
         return apiIdleRalateMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiIdleRalateServiceImpl implements ApiIdleRalateService{
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
        apiIdleRalateMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
       apiIdleRalateMapper.deleteBatch(ids);
     }
 }

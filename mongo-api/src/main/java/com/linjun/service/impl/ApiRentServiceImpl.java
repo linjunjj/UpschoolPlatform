@@ -17,7 +17,7 @@ public class ApiRentServiceImpl implements ApiRentServcie {
     @Autowired
     private ApiRentMapper apiRentMapper;
     @Override
-    public RentEntity queryObject(Integer id) {
+    public RentEntity queryObject(Long id) {
         return apiRentMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiRentServiceImpl implements ApiRentServcie {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
          apiRentMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
     apiRentMapper.deleteBatch(ids);
     }
 }

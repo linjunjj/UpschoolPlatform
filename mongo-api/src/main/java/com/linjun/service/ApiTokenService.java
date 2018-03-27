@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiTokenService {
-    TokenEntity queryObject(Integer id);
+    TokenEntity queryObject(Long id);
     List<TokenEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(TokenEntity tokenEntity);
     void update(TokenEntity tokenEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

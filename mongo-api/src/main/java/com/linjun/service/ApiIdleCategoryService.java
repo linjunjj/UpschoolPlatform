@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiIdleCategoryService {
-    IdleCategroyEntity queryObject(Integer id);
+    IdleCategroyEntity queryObject(Long id);
     List<IdleCategroyEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(IdleCategroyEntity idleCategroyEntity);
     void update(IdleCategroyEntity idleCategroyEntity);
-    void  delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void  delete(Long id);
+    void deleteBatch(Long[] ids);
 }

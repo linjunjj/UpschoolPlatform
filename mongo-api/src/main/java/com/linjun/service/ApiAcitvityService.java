@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiAcitvityService {
-    ActivityEntity queryObject(Integer id);
+    ActivityEntity queryObject(Long id);
     List<ActivityEntity> queryList(Map<String,Object> map);
      int queryTotal(Map<String, Object> map);
      void save(ActivityEntity activityEntity);
      void update(ActivityEntity activityEntity);
-     void  delete(Integer id);
-     void deleteBatch(Integer[] ids);
+     void  delete(Long id);
+     void deleteBatch(Long[] ids);
 }

@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiAddressMangerService {
-    AddressManger queryObject(Integer id);
+    AddressManger queryObject(Long id);
     List<AddressManger> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);
     void save(AddressManger addressManger);
     void  update(AddressManger addressManger);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }
 

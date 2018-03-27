@@ -17,7 +17,7 @@ public class ApiTaskLabelServiceImpl implements ApiTaskLabelService {
     @Autowired
     private ApiTaskLabelMapper apiTaskLabelMapper;
     @Override
-    public TaskLabelEntity queryObject(Integer id) {
+    public TaskLabelEntity queryObject(Long id) {
         return apiTaskLabelMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiTaskLabelMapper.update(taskLabelEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiTaskLabelMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiTaskLabelMapper.deleteBatch(ids);
     }
 }

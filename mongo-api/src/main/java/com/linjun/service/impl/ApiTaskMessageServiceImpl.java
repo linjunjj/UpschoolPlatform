@@ -17,7 +17,7 @@ public class ApiTaskMessageServiceImpl implements ApiTaskMessageService {
     @Autowired
     private ApiTaskMessageMapper apiTaskMessageMapper;
     @Override
-    public TaskMessageEntity queryObject(Integer id) {
+    public TaskMessageEntity queryObject(Long id) {
         return apiTaskMessageMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiTaskMessageMapper.update(taskMessageEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiTaskMessageMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiTaskMessageMapper.deleteBatch(ids);
     }
 }

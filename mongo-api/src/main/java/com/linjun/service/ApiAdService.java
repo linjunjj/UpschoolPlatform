@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiAdService {
-    AdEntity queryObject(Integer id);
+    AdEntity queryObject(Long id);
     List<AdEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);
     void save(AdEntity adEntity);
      void update(AdEntity adEntity);
-     void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+     void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

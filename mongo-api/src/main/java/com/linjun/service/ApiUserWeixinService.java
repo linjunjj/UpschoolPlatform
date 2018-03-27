@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiUserWeixinService {
-    UserWeixinEntity queryObject(Integer id);
+    UserWeixinEntity queryObject(Long id);
     List<UserWeixinEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(UserWeixinEntity userWeixinEntity);
     void update(UserWeixinEntity userWeixinEntity);
-    void delete(Integer id);
-     void deleteBatch(Integer[] ids);
+    void delete(Long id);
+     void deleteBatch(Long[] ids);
 
 }

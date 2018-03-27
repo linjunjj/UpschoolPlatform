@@ -14,12 +14,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiPartTimeImageService {
-    PartTimeImageEntity queryObject(Integer id);
+    PartTimeImageEntity queryObject(Long id);
     List<PartTimeImageEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(PartTimeImageEntity partTimeImageEntity);
     void update(PartTimeImageEntity partTimeImageEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

@@ -17,7 +17,7 @@ public class ApiInviteCodeServiceImpl implements ApiInviteCodeService {
     @Autowired
     private ApiInviteCodeMapper apiInviteCodeMapper;
     @Override
-    public InviteCodeEntity queryObject(Integer id) {
+    public InviteCodeEntity queryObject(Long id) {
         return apiInviteCodeMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiInviteCodeServiceImpl implements ApiInviteCodeService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
       apiInviteCodeMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
          apiInviteCodeMapper.deleteBatch(ids);
     }
 }

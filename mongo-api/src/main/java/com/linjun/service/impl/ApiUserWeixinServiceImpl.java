@@ -18,7 +18,7 @@ public class ApiUserWeixinServiceImpl implements ApiUserWeixinService {
     @Autowired
     private ApiUserWeixinMapper apiUserWeixinMapper;
     @Override
-    public UserWeixinEntity queryObject(Integer id) {
+    public UserWeixinEntity queryObject(Long id) {
         return apiUserWeixinMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ apiUserWeixinMapper.update(userWeixinEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiUserWeixinMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiUserWeixinMapper.deleteBatch(ids);
     }
 }

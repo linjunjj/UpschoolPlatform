@@ -17,7 +17,7 @@ public class ApiTokenServiceImpl implements ApiTokenService {
     @Autowired
     private ApiTokenMapper apiTokenMapper;
     @Override
-    public TokenEntity queryObject(Integer id) {
+    public TokenEntity queryObject(Long id) {
         return apiTokenMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiTokenMapper.update(tokenEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiTokenMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiTokenMapper.deleteBatch(ids);
     }
 }

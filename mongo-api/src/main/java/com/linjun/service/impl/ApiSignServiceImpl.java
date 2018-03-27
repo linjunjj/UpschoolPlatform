@@ -17,7 +17,7 @@ public class ApiSignServiceImpl implements ApiSignService {
     @Autowired
     private ApiSignMapper apiSignMapper;
     @Override
-    public SignEntity queryObject(Integer id) {
+    public SignEntity queryObject(Long id) {
         return apiSignMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiSignMapper.update(signEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiSignMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiSignMapper.deleteBatch(ids);
     }
 }

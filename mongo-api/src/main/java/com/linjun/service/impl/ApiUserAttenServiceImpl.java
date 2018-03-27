@@ -17,7 +17,7 @@ public class ApiUserAttenServiceImpl implements ApiUserAttenService {
     @Autowired
     private ApiUserAttenMapper apiUserAttenMapper;
     @Override
-    public UserAttenEntity queryObject(Integer id) {
+    public UserAttenEntity queryObject(Long id) {
         return apiUserAttenMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiUserAttenServiceImpl implements ApiUserAttenService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiUserAttenMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
  apiUserAttenMapper.deleteBatch(ids);
     }
 }

@@ -17,7 +17,7 @@ public class ApiSkillServiceImpl implements ApiSkillService {
     @Autowired
     private ApiSkillMapper apiSkillMapper;
     @Override
-    public SkillEntity queryObject(Integer id) {
+    public SkillEntity queryObject(Long id) {
         return apiSkillMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiSkillServiceImpl implements ApiSkillService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
    apiSkillMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
     apiSkillMapper.deleteBatch(ids);
     }
 }

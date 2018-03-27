@@ -1,6 +1,7 @@
 package com.linjun.resolver;
 
 import com.linjun.annotation.LoginUser;
+import com.linjun.entity.UserEntity;
 import com.linjun.interceptor.AuthorizationInterceptor;
 import com.linjun.service.ApiUserService;
 import org.springframework.core.MethodParameter;
@@ -24,7 +25,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType().isAssignableFrom(UserVo.class) && parameter.hasParameterAnnotation(LoginUser.class);
+        return parameter.getParameterType().isAssignableFrom(UserEntity.class) && parameter.hasParameterAnnotation(LoginUser.class);
     }
 
     @Override
@@ -37,7 +38,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
         }
 
         //获取用户信息
-        UserVo user = userService.queryObject((Long) object);
+        UserEntity user = userService.queryObject((Integer) object);
 
         return user;
     }

@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiChannelService {
-    ChannelEntity queryObject(Integer id);
+    ChannelEntity queryObject(Long id);
     List<ChannelEntity>  queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(ChannelEntity channelEntity);
     void update(ChannelEntity channelEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }

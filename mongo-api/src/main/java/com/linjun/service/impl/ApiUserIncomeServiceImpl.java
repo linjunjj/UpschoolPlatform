@@ -17,7 +17,7 @@ public class ApiUserIncomeServiceImpl  implements ApiUserIncomeService{
     @Autowired
     private ApiUserIncomeMapper apiUserIncomeMapper;
     @Override
-    public UserIncomeEntity queryObject(Integer id) {
+    public UserIncomeEntity queryObject(Long id) {
         return apiUserIncomeMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiUserIncomeMapper.update(userIncomeEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiUserIncomeMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiUserIncomeMapper.deleteBatch(ids);
     }
 }

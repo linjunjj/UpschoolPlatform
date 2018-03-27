@@ -17,7 +17,7 @@ public class ApiActivityCategoryServiceImpl implements ApiActivityCategoryServic
     @Autowired
     private ApiActivityCategoryMapper apiActivityCategoryMapper;
     @Override
-    public ActivityCategoryEntity queryObject(Integer id) {
+    public ActivityCategoryEntity queryObject(Long id) {
         return apiActivityCategoryMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiActivityCategoryServiceImpl implements ApiActivityCategoryServic
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
   apiActivityCategoryMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
         apiActivityCategoryMapper.deleteBatch(ids);
     }
 }

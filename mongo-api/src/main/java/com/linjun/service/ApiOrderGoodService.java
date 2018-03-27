@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiOrderGoodService  {
-    OrderGoodEntity queryObject(Integer id);
+    OrderGoodEntity queryObject(Long id);
     List<OrderGoodEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String ,Object> map);
     void save(OrderGoodEntity orderGoodEntity);
     void update(OrderGoodEntity orderGoodEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

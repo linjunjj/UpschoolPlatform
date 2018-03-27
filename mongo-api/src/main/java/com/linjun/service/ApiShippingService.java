@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiShippingService {
-    ShippingEntity queryObject(Integer id);
+    ShippingEntity queryObject(Long id);
     List<ShippingEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(ShippingEntity shippingEntity);
     void  update(ShippingEntity shippingEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }

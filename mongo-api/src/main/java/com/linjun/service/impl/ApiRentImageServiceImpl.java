@@ -18,7 +18,7 @@ public class ApiRentImageServiceImpl implements ApiRentImageService {
     private ApiRentImageMapper apiRentImageMapper;
 
     @Override
-    public RentImageEntity queryObject(Integer id) {
+    public RentImageEntity queryObject(Long id) {
         return apiRentImageMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ public class ApiRentImageServiceImpl implements ApiRentImageService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
      apiRentImageMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
     apiRentImageMapper.deleteBatch(ids);
     }
 }

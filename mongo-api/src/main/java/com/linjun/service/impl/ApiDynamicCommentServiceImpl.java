@@ -18,7 +18,7 @@ public class ApiDynamicCommentServiceImpl implements ApiDynamicCommentService{
     private ApiDynamicCommentMapper apiDynamicCommentMapper;
 
     @Override
-    public DynamicCommentEntity queryObject(Integer id) {
+    public DynamicCommentEntity queryObject(Long id) {
         return apiDynamicCommentMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ public class ApiDynamicCommentServiceImpl implements ApiDynamicCommentService{
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
      apiDynamicCommentMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
            apiDynamicCommentMapper.deleteBatch(ids);
     }
 }

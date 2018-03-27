@@ -17,7 +17,7 @@ public class ApiAcitvityImageServiceImpl implements ApiAcitvityImageService {
 @Autowired
 private ApiActivityImageMapper apiActivityImageMapper;
     @Override
-    public ActivityImageEntity queryObject(Integer id) {
+    public ActivityImageEntity queryObject(Long id) {
         return apiActivityImageMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ private ApiActivityImageMapper apiActivityImageMapper;
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
             apiActivityImageMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
            apiActivityImageMapper.deleteBatch(ids);
     }
 }

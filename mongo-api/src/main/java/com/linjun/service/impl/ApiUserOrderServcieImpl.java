@@ -18,7 +18,7 @@ public class ApiUserOrderServcieImpl implements ApiUserOrderService {
     @Autowired
     private ApiUserOrderMapper apiUserOrderMapper;
     @Override
-    public UserOrderEntity queryObject(Integer id) {
+    public UserOrderEntity queryObject(Long id) {
         return apiUserOrderMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ public class ApiUserOrderServcieImpl implements ApiUserOrderService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
    apiUserOrderMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiUserOrderMapper.deleteBatch(ids);
     }
 }

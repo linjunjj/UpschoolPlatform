@@ -18,7 +18,7 @@ public class ApiActivityCommentServiceImpl implements ApiActivityCommentService 
     @Autowired
     private ApiActivityCommentMapper apiActivityCommentMapper;
     @Override
-    public ActivityCommentEntity queryObject(Integer id) {
+    public ActivityCommentEntity queryObject(Long id) {
         return apiActivityCommentMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ public class ApiActivityCommentServiceImpl implements ApiActivityCommentService 
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
           apiActivityCommentMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
         apiActivityCommentMapper.deleteBatch(ids);
     }
 }

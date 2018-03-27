@@ -14,11 +14,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiActivityCommentService {
-    ActivityCommentEntity queryObject(Integer id);
+    ActivityCommentEntity queryObject(Long id);
     List<ActivityCommentEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(ActivityCommentEntity activityCommentEntity);
     void update(ActivityCommentEntity activityCommentEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }

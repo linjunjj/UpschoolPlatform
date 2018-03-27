@@ -17,7 +17,7 @@ public class ApiAcitvityServiceImpl implements ApiAcitvityService{
     @Autowired
     private ApiActivityMapper apiActivityMapper;
     @Override
-    public ActivityEntity queryObject(Integer id) {
+    public ActivityEntity queryObject(Long id) {
         return apiActivityMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiAcitvityServiceImpl implements ApiAcitvityService{
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
      apiActivityMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
    apiActivityMapper.deleteBatch(ids);
     }
 }

@@ -18,7 +18,7 @@ public class ApiAdPositionServiceImpl implements ApiAdPositionService {
     private ApiAdPositionMapper apiAdPositionMapper;
 
     @Override
-    public AdPositionEntity queryObject(Integer id) {
+    public AdPositionEntity queryObject(Long id) {
         return apiAdPositionMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ public class ApiAdPositionServiceImpl implements ApiAdPositionService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
        apiAdPositionMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
          apiAdPositionMapper.deleteBatch(ids);
     }
 }

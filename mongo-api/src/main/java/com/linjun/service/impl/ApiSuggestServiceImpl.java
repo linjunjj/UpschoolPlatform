@@ -17,7 +17,7 @@ public class ApiSuggestServiceImpl implements ApiSuggestService {
     @Autowired
     private ApiSuggestMapper apiSuggestMapper;
     @Override
-    public SuggestEntity queryObject(Integer id) {
+    public SuggestEntity queryObject(Long id) {
         return apiSuggestMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiSuggestServiceImpl implements ApiSuggestService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
  apiSuggestMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
  apiSuggestMapper.deleteBatch(ids);
     }
 }

@@ -11,12 +11,12 @@ import java.util.Map;
  * @desc
  **/
 public interface ApiPartTimeApplyVolumService {
-    PartTimeApplyVolumEntity queryObject(Integer id);
+    PartTimeApplyVolumEntity queryObject(Long id);
     List<PartTimeApplyVolumEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(PartTimeApplyVolumEntity partTimeApplyVolumEntity);
     void update(PartTimeApplyVolumEntity partTimeApplyVolumEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

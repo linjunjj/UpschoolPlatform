@@ -17,7 +17,7 @@ public class ApiIdleMessagesServiceImpl implements ApiIdleMessageService {
     @Autowired
     private ApiIdleMessageMapper apiIdleMessageMapper;
     @Override
-    public IdleMessageEntity queryObject(Integer id) {
+    public IdleMessageEntity queryObject(Long id) {
         return apiIdleMessageMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiIdleMessagesServiceImpl implements ApiIdleMessageService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
     apiIdleMessageMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
      apiIdleMessageMapper.deleteBatch(ids);
     }
 }

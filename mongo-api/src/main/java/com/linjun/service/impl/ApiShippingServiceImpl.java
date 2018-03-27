@@ -18,7 +18,7 @@ public class ApiShippingServiceImpl implements ApiShippingService {
     @Autowired
     private ApiShoppingMapper apiShoppingMapper;
     @Override
-    public ShippingEntity queryObject(Integer id) {
+    public ShippingEntity queryObject(Long id) {
         return apiShoppingMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ public class ApiShippingServiceImpl implements ApiShippingService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
    apiShoppingMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
     apiShoppingMapper.deleteBatch(ids);
     }
 }

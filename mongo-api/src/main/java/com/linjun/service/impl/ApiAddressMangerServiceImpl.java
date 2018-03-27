@@ -18,7 +18,7 @@ public class ApiAddressMangerServiceImpl implements ApiAddressMangerService {
     private ApiAddressMangerMapper apiAddressMangerMapper;
 
     @Override
-    public AddressManger queryObject(Integer id) {
+    public AddressManger queryObject(Long id) {
 
 
         return apiAddressMangerMapper.queryObject(id);
@@ -45,12 +45,12 @@ public class ApiAddressMangerServiceImpl implements ApiAddressMangerService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
        apiAddressMangerMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
        apiAddressMangerMapper.deleteBatch(ids);
     }
 }

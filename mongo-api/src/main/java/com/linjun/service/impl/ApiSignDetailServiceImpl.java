@@ -17,7 +17,7 @@ public class ApiSignDetailServiceImpl implements ApiSignDetailService {
     @Autowired
     private ApiSignDetailMapper apiSignDetailMapper;
     @Override
-    public SignDetailEntity queryObject(Integer id) {
+    public SignDetailEntity queryObject(Long id) {
         return apiSignDetailMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiSignDetailServiceImpl implements ApiSignDetailService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
   apiSignDetailMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
   apiSignDetailMapper.deleteBatch(ids);
     }
 }

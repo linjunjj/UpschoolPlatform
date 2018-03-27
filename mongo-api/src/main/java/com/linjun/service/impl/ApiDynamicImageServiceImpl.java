@@ -19,7 +19,7 @@ public class ApiDynamicImageServiceImpl implements ApiDynamicImageService {
     private ApiDynamicImageMapper apiDynamicImageMapper;
 
     @Override
-    public DynamicImageEntity queryObject(Integer id) {
+    public DynamicImageEntity queryObject(Long id) {
         return apiDynamicImageMapper.queryObject(id);
     }
 
@@ -44,12 +44,12 @@ public class ApiDynamicImageServiceImpl implements ApiDynamicImageService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
        apiDynamicImageMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
       apiDynamicImageMapper.deleteBatch(ids);
     }
 }

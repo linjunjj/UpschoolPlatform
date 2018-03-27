@@ -17,7 +17,7 @@ public class ApiUserStudentCardServcieImpl implements ApiUserStudentCardService 
     @Autowired
     private ApiUserStudentCardMapper apiUserStudentCardMapper;
     @Override
-    public UserStudentCardEntity queryObject(Integer id) {
+    public UserStudentCardEntity queryObject(Long id) {
         return apiUserStudentCardMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiUserStudentCardMapper.update(userStudentCardEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
 apiUserStudentCardMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
 apiUserStudentCardMapper.deleteBatch(ids);
     }
 }

@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiRentServcie {
-    RentEntity queryObject(Integer id);
+    RentEntity queryObject(Long id);
     List<RentEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(RentEntity rentEntity);
     void update(RentEntity rentEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }

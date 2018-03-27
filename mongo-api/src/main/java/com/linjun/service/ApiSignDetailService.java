@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiSignDetailService {
-    SignDetailEntity queryObject(Integer id);
+    SignDetailEntity queryObject(Long id);
     List<SignDetailEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(SignDetailEntity signDetailEntity);
     void update(SignDetailEntity signDetailEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }

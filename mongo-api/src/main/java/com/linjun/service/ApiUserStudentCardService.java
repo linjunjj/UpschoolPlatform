@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiUserStudentCardService {
-    UserStudentCardEntity queryObject(Integer id);
+    UserStudentCardEntity queryObject(Long id);
     List<UserStudentCardEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(UserStudentCardEntity userStudentCardEntity);
     void update(UserStudentCardEntity userStudentCardEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

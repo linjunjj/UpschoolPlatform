@@ -17,7 +17,7 @@ public class ApiPartTimeCategoryServiceImpl implements ApiPartTimeCategoryServic
     @Autowired
     private ApiPartTimeCategoryMapper apiPartTimeCategoryMapper;
     @Override
-    public PartTimeCategoryEntity queryObject(Integer id) {
+    public PartTimeCategoryEntity queryObject(Long id) {
         return apiPartTimeCategoryMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ apiPartTimeCategoryMapper.update(partTimeCategoryEntity);
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
     apiPartTimeCategoryMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
       apiPartTimeCategoryMapper.deleteBatch(ids);
     }
 }

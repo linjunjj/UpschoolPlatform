@@ -17,7 +17,7 @@ public class ApiCodeServiceImpl implements ApiCodeService{
     @Autowired
     private ApiCodeMapper apiCodeMapper;
     @Override
-    public CodeEntity queryObject(Integer id) {
+    public CodeEntity queryObject(Long id) {
         return apiCodeMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiCodeServiceImpl implements ApiCodeService{
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
         apiCodeMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
        apiCodeMapper.deleteBatch(ids);
     }
 }

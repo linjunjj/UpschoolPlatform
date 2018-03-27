@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiDynamicImageService {
-    DynamicImageEntity queryObject(Integer id);
+    DynamicImageEntity queryObject(Long id);
     List<DynamicImageEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(DynamicImageEntity dynamicImageEntity);
     void update(DynamicImageEntity dynamicImageEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }

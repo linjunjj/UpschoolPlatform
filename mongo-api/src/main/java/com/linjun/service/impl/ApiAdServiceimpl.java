@@ -17,7 +17,7 @@ public class ApiAdServiceimpl implements ApiAdService {
     @Autowired
     private ApiAdMapper apiAdMapper;
     @Override
-    public AdEntity queryObject(Integer id) {
+    public AdEntity queryObject(Long id) {
         return apiAdMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiAdServiceimpl implements ApiAdService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
      apiAdMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
    apiAdMapper.deleteBatch(ids);
     }
 }

@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiUserDynamicService {
-    UserDynamicEntity queryObject(Integer id);
+    UserDynamicEntity queryObject(Long id);
     List<UserDynamicEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(UserDynamicEntity userDynamicEntity);
     void update(UserDynamicEntity userDynamicEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }

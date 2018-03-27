@@ -15,12 +15,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiSkillCommentService {
-    SkillCommentEntity queryObject(Integer id);
+    SkillCommentEntity queryObject(Long id);
     List<SkillCommentEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
   void save(SkillCommentEntity skillCommentEntity);
   void update(SkillCommentEntity skillCommentEntity);
-  void delete(Integer id);
-  void deleteBatch(Integer[] ids);
+  void delete(Long id);
+  void deleteBatch(Long[] ids);
 
 }

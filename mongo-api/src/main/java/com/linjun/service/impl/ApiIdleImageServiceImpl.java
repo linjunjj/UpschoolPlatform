@@ -17,7 +17,7 @@ public class ApiIdleImageServiceImpl implements ApiIdleImageService {
     @Autowired
     private ApiIdleImagesMapper apiIdleImagesMapper;
     @Override
-    public IdleImagesEntity queryObject(Integer id) {
+    public IdleImagesEntity queryObject(Long id) {
         return apiIdleImagesMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiIdleImageServiceImpl implements ApiIdleImageService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
  apiIdleImagesMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
        apiIdleImagesMapper.deleteBatch(ids);
     }
 }

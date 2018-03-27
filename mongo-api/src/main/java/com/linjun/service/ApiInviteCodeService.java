@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiInviteCodeService {
-    InviteCodeEntity queryObject(Integer id);
+    InviteCodeEntity queryObject(Long id);
     List<InviteCodeEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(InviteCodeEntity inviteCodeEntity);
     void update(InviteCodeEntity inviteCodeEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }

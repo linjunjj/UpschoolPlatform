@@ -18,7 +18,7 @@ public class ApiOrderGoodServiceImpl implements ApiOrderGoodService
     @Autowired
     private ApiOrderGoodMapper apiOrderGoodMapper;
     @Override
-    public OrderGoodEntity queryObject(Integer id) {
+    public OrderGoodEntity queryObject(Long id) {
         return apiOrderGoodMapper.queryObject(id);
     }
 
@@ -43,12 +43,12 @@ public class ApiOrderGoodServiceImpl implements ApiOrderGoodService
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
     apiOrderGoodMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
   apiOrderGoodMapper.deleteBatch(ids);
     }
 }

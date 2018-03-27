@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 @Service
 public interface ApiAdPositionService {
-    AdPositionEntity queryObject(Integer id);
+    AdPositionEntity queryObject(Long id);
     List<AdPositionEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(AdPositionEntity adPositionEntity);
     void update(AdPositionEntity adPositionEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 }

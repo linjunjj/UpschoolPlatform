@@ -17,7 +17,7 @@ public class ApiRentMessageServiceImpl implements ApiRentMessageService {
     @Autowired
     private ApiRentMessageMapper apiRentMessageMapper;
     @Override
-    public RentMessageEntity queryObject(Integer id) {
+    public RentMessageEntity queryObject(Long id) {
         return apiRentMessageMapper.queryObject(id);
     }
 
@@ -42,12 +42,12 @@ public class ApiRentMessageServiceImpl implements ApiRentMessageService {
     }
 
     @Override
-    public void delete(Integer id) {
+    public void delete(Long id) {
    apiRentMessageMapper.delete(id);
     }
 
     @Override
-    public void deleteBatch(Integer[] ids) {
+    public void deleteBatch(Long[] ids) {
    apiRentMessageMapper.deleteBatch(ids);
     }
 }

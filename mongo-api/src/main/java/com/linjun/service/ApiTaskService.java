@@ -13,12 +13,12 @@ import java.util.Map;
  **/
 @Service
 public interface ApiTaskService {
-    TaskEntity queryObject(Integer id);
+    TaskEntity queryObject(Long id);
     List<TaskEntity> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
     void save(TaskEntity taskEntity);
     void update(TaskEntity taskEntity);
-    void delete(Integer id);
-    void deleteBatch(Integer[] ids);
+    void delete(Long id);
+    void deleteBatch(Long[] ids);
 
 }
