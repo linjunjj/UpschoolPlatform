@@ -1,5 +1,7 @@
 package com.linjun.utils;
 
+
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,7 +14,7 @@ public class JsonResult extends HashMap<String,Object> {
     private static final long serialVersionUID = 1L;
 
     public JsonResult() {
-        put("code", 0);
+        put("code", 200);
     }
 
     public static JsonResult error() {
@@ -23,15 +25,16 @@ public class JsonResult extends HashMap<String,Object> {
         return error(500, msg);
     }
 
-    public static JsonResult error(int code, String msg) {
+    public static JsonResult error(int code, Object msg) {
         JsonResult jsonResult = new JsonResult();
         jsonResult.put("code", code);
         jsonResult.put("msg", msg);
         return jsonResult;
     }
 
-    public static JsonResult ok(String msg) {
+    public static JsonResult ok(Object msg) {
         JsonResult jsonResult = new JsonResult();
+        jsonResult.put("code",200);
         jsonResult.put("msg", msg);
         return jsonResult;
     }

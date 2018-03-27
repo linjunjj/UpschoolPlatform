@@ -26,7 +26,7 @@
         select * from address_manger
         <where>
             <if test="user_id != null">
-                and user_id = #{user_id}
+                and userId = #{user_id}
             </if>
         </where>
         <choose>
@@ -48,7 +48,7 @@
 
     <insert id="save" parameterType="com.linjun.entity.AddressManger" useGeneratedKeys="true" keyProperty="id">
         insert into address_manger(
-        `user_id`,
+        `userId`,
         `user_name`,
         `tel_number`,
         `postal_Code`,
@@ -74,7 +74,7 @@
     <update id="update" parameterType="com.linjun.entity.AddressManger">
         update address_manger
         <set>
-            <if test="userId != null">`user_id` = #{userId}, </if>
+            <if test="userId != null">`userId` = #{userId}, </if>
             <if test="userName != null">`user_name` = #{userName}, </if>
             <if test="telNumber != null">`tel_number` = #{telNumber}, </if>
             <if test="postalCode != null">`postal_Code` = #{postalCode}, </if>

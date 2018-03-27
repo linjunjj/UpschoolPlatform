@@ -10,9 +10,8 @@ import org.apache.ibatis.annotations.Param;
  * @desc
  **/
 public interface ApiUserMapper extends  BaseDao<UserEntity> {
-    UserEntity queryByMobile(@Param(("mobile")) String mobile);
+    UserEntity queryByMobile(@Param("mobile") String mobile);
     UserEntity queryByOpenId(@Param("openId") String openId);
     SmsLogVo querySmsCodeByUserId(@Param("user_id") Long user_id);
     int saveSmsCodeLog(SmsLogVo smsLogVo);
-
 }

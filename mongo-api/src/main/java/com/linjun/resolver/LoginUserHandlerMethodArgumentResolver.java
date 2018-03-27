@@ -38,7 +38,7 @@ public class LoginUserHandlerMethodArgumentResolver implements HandlerMethodArgu
         }
 
         //获取用户信息
-        UserEntity user = userService.queryObject((Integer) object);
+        UserEntity user = userService.queryObject((Long) object);
 
         return user;
     }

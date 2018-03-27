@@ -49,8 +49,6 @@
             and `mobile` = #{mobile}
         </if>
     </select>
-
-
     <select id="queryList" resultType="com.linjun.entity.UserEntity">
         select
         *
@@ -166,7 +164,7 @@
         where a.user_id = #{user_id} and b.id is null
     </select>
 
-    <insert id="saveSmsCodeLog" parameterType="com.platform.entity.SmsLogVo">
+    <insert id="saveSmsCodeLog" parameterType="com.linjun.entity.SmsLogVo">
         insert into sms_log(
         `id`,
         `user_id`,
