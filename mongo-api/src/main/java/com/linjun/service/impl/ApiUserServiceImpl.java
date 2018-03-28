@@ -6,11 +6,14 @@ import com.linjun.entity.SmsLogVo;
 import com.linjun.entity.UserEntity;
 import com.linjun.entity.UserLevelEntity;
 import com.linjun.service.ApiUserService;
+import com.linjun.utils.HttpContextUtils;
+import com.linjun.utils.IPUtils;
 import com.linjun.utils.RRException;
 import com.linjun.validator.Assert;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -49,8 +52,11 @@ apiUserMapper.save(userEntity);
     public void save(String mobile, String password) {
         UserEntity userEntity=new UserEntity();
         userEntity.setMobile(mobile);
+        userEntity.setAvatar("http://os3kbkwao.bkt.clouddn.com/timg.jpeg");
         userEntity.setPassword(DigestUtils.sha256Hex(password));
         userEntity.setRegister_time(new Date());
+        HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
+        userEntity.setRegister_ip(IPUtils.getIpAddr(request));
         apiUserMapper.save(userEntity);
     }
 
@@ -81,7 +87,12 @@ apiUserMapper.deleteBatch(ids);
         if (!userEntity.getPassword().equals(DigestUtils.sha1Hex(password))){
             throw new RRException("手机或者密码错误");
         }
-
+              HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
+          UserEntity userEntity1=new UserEntity();
+              userEntity1.setUserId(userEntity.getUserId());
+              userEntity1.setLast_login_time(new Date());
+              userEntity1.setLast_login_ip(IPUtils.getIpAddr(request));
+                apiUserMapper.update(userEntity1);
         return userEntity.getUserId();
     }
 

@@ -14,6 +14,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,12 +26,13 @@ import java.util.Map;
  * @create 2018/3/27.
  * @desc
  **/
-@Api(value = "用户接口")
+@Api(value = "用户个人信息接口")
 @RestController
 @RequestMapping("/api/user/")
 public class ApiUserController extends ApiBaseAction {
     @Autowired
     private ApiUserService userService;
+
 
     @ApiOperation(value = "获取用户的基本信息")
     @IgnoreAuth
@@ -92,6 +94,28 @@ public class ApiUserController extends ApiBaseAction {
         String userLevel = userService.getUserLevel(loginUser);
         return JsonResult.ok(userLevel);
     }
+
+    @ApiOperation(value = "更新个人信息")
+    @PutMapping(value = "updateinfo")
+    public  JsonResult updateinfo(@LoginUser UserEntity userEntity){
+        JSONObject jsonObject=this.getJsonRequest();
+        UserEntity userEntity1=new UserEntity();
+        if (jsonObject!=null){
+            userEntity1.setUserId(userEntity.getUserId());
+            userEntity1.setAvatar(jsonObject.getString("avatar"));
+            userEntity1.setBirthday(jsonObject.getDate("birthday"));
+            userEntity1.setGender(jsonObject.getString("gender"));
+            userEntity1.setMajor(jsonObject.getString("major"));
+            userEntity1.setNickname(jsonObject.getString("naickname"));
+            userEntity1.setSchool(jsonObject.getString("school"));
+            userEntity1.setMobile(jsonObject.getString("mobile"));
+          userService.update(userEntity1);
+        }
+
+       return JsonResult.ok();
+    }
+
+
 
 
 

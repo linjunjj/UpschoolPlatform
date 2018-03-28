@@ -37,9 +37,7 @@ public class ApiRegisterContrller {
         Assert.isBlank(password, "密码不能为空");
          UserEntity userEntity= userService.queryByMobile(mobile);
   if ( userEntity==null){
-
       userService.save(mobile, password);
-
       return JsonResult.ok();
   }else {
       return JsonResult.error(500,"用户已存在，请尝试找回密码");
