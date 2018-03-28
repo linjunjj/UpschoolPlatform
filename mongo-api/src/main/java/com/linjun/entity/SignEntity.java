@@ -1,6 +1,7 @@
 package com.linjun.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author 林俊
@@ -14,7 +15,7 @@ public class SignEntity implements Serializable {
     private Long awardSum;
     private  Long singinSum;
     private  Long monSiginSum;
-    private  Long endsignTime;
+    private Date endsignTime;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -60,11 +61,11 @@ public class SignEntity implements Serializable {
         this.monSiginSum = monSiginSum;
     }
 
-    public Long getEndsignTime() {
+    public Date getEndsignTime() {
         return endsignTime;
     }
 
-    public void setEndsignTime(Long endsignTime) {
+    public void setEndsignTime(Date endsignTime) {
         this.endsignTime = endsignTime;
     }
 }
