@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ggggss:war">
+    <output-path>$PROJECT_DIR$/ggggss/target</output-path>
+    <root id="archive" name="ggggss-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ggggss:war exploded" />
+    </root>
+  </artifact>
+</component>

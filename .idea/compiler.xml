@@ -18,9 +18,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ggggss" target="1.8" />
       <module name="mongo-admin" target="1.8" />
       <module name="mongo-api" target="1.8" />
       <module name="mongo-business" target="1.8" />
+      <module name="mongo-business (1)" target="1.8" />
       <module name="mongo-common" target="1.8" />
       <module name="mongo-framework" target="1.8" />
       <module name="mongo-fromwork" target="1.8" />

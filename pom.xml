@@ -14,8 +14,10 @@
         <module>mongo-shiro</module>
         <module>mongo-common</module>
         <module>mongo-schedule</module>
-        <module>mongo-business</module>
         <module>mongo-framework</module>
+        <module>mongo-business</module>
+        <module>ggggss</module>
+
     </modules>
     <properties>
         <java-version>1.8</java-version>

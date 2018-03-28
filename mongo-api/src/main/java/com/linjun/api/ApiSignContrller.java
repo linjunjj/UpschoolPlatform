@@ -42,6 +42,7 @@ public class ApiSignContrller extends ApiBaseAction {
         int result=apiSignService.queryTotal(param);
         String temp=sysConfigService.getValue("signrate",null);
         String signvalue=sysConfigService.getValue("signvalue",null);
+        Map<String, Object> resultObj = new HashMap();
         if (result==1&&result>0){
             List<SignEntity> signEntities=apiSignService.queryList(param);
             long awardSum= signEntities.get(0).getAwardSum();
@@ -111,7 +112,14 @@ public class ApiSignContrller extends ApiBaseAction {
             signDetailEntity.setUserId(this.getUserId());
             apiSignDetailService.update(signDetailEntity);
         }
-       return
+           List<SignEntity> signEntities=apiSignService.queryList(param);
+           List<SignDetailEntity> signDetailEntities=apiSignDetailService.queryList(param);
+        resultObj.put("id",signEntities.get(0).getId());
+        resultObj.put("awardSum",signEntities.get(0).getAwardSum());
+        resultObj.put("endsignTime",signEntities.get(0).getEndsignTime());
+        resultObj.put("signDetail",signDetailEntities);
+
+       return JsonResult.ok(resultObj);
     }
 
 }
