@@ -6,7 +6,7 @@
     <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.linjun.entity.DynamicImageEntity" id="dynamicImageMap">
         <result property="id" column="id"/>
-        <result property="userId" column="user_id"/>
+        <result property="userId" column="userId"/>
         <result property="dynamicid" column="dynamicid"/>
         <result property="is_default" column="is_default"/>
         <result property="create_time" column="create_time"/>
@@ -53,7 +53,7 @@
     <insert id="save" parameterType="com.linjun.entity.DynamicImageEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_dynamic_image
         (
-        `user_id`,
+        `userId`,
         `dynamicid`,
         `is_default`,
         `create_time`,
@@ -76,7 +76,7 @@
     <update id="update" parameterType="com.linjun.entity.DynamicImageEntity">
         update user_dynamic_image
         <set>
-            <if test="userId != null">`user_id` = #{userId},</if>
+            <if test="userId != null">`userId` = #{userId},</if>
             <if test="dynamicid != null">`dynamicid` = #{dynamicid},</if>
             <if test="is_default != null">`is_default` = #{is_default},</if>
             <if test="create_time != null">`create_time` = #{create_time},</if>

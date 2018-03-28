@@ -22,7 +22,7 @@
         select * from user_income
         <where>
             <if test="user_id != null">
-                and user_id = #{user_id}
+                and userId = #{userId}
             </if>
         </where>
         <choose>
@@ -44,7 +44,7 @@
 
     <insert id="save" parameterType="com.linjun.entity.UserIncomeEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_income(
-        `user_id`,
+        `userId`,
         `incomesum`,
         `incoem_detail`,
         `status`,
@@ -62,7 +62,7 @@
     <update id="update" parameterType="com.linjun.entity.UserIncomeEntity">
         update user_income
         <set>
-            <if test="userId != null">`user_id` = #{userId}, </if>
+            <if test="userId != null">`userId` = #{userId}, </if>
             <if test="userName != null">`incomesum` = #{incomesum}, </if>
             <if test="telNumber != null">`incoem_detail` = #{incoem_detail}, </if>
             <if test="postalCode != null">`status` = #{status}, </if>

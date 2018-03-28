@@ -11,7 +11,7 @@ import java.util.Date;
 public class InviteCodeEntity implements Serializable {
     private static final long serialVersionUID = 1L;
   private  Long id;
-  private  Long user_id;
+  private  Long userId;
   private  byte is_multi;
   private Date start_time;
   private  Date edd_time;
@@ -28,12 +28,12 @@ public class InviteCodeEntity implements Serializable {
         this.id = id;
     }
 
-    public Long getUser_id() {
-        return user_id;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     public byte getIs_multi() {

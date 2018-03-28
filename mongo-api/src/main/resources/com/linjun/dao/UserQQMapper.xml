@@ -38,7 +38,7 @@
     <insert id="save" parameterType="com.linjun.entity.UserQQEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_qq
         (
-        `user_id`,
+        `userId`,
         `openid`,
         `is_yellow_year_vip`,
         `ret`,
@@ -77,7 +77,7 @@
     <update id="update" parameterType="com.linjun.entity.UserQQEntity">
         update user_qq
         <set>
-            <if test="userId != null">`user_id` = #{userId}, </if>
+            <if test="userId != null">`userId` = #{userId}, </if>
             <if test="openid != null">`openid` = #{openid}, </if>
             <if test="is_yellow_year_vip != null">`is_yellow_year_vip` = #{is_yellow_year_vip}, </if>
             <if test="ret != null">`ret` = #{ret}, </if>

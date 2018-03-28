@@ -6,7 +6,7 @@
     <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.linjun.entity.DynamicCommentEntity" id="dynamicCommentMap">
         <result property="id" column="id"/>
-        <result property="userId" column="user_id"/>
+        <result property="userId" column="userId"/>
         <result property="dynamicid" column="dynamicid"/>
         <result property="context" column="context"/>
         <result property="add_time" column="add_time"/>
@@ -49,7 +49,7 @@
     <insert id="save" parameterType="com.linjun.entity.DynamicCommentEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_dynamic_comment
         (
-        `user_id`,
+        `userId`,
         `dynamicid`,
         `context`,
         `add_time`,
@@ -72,7 +72,7 @@
     <update id="update" parameterType="com.linjun.entity.DynamicCommentEntity">
         update user_dynamic_comment
         <set>
-            <if test="userId != null">`user_id` = #{userId},</if>
+            <if test="userId != null">`userId` = #{userId},</if>
             <if test="dynamicid != null">`dynamicid` = #{dynamicid},</if>
             <if test="context != null">`context` = #{context},</if>
             <if test="add_time != null">`add_time` = #{add_time},</if>

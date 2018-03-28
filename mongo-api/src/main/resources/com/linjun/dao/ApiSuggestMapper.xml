@@ -6,7 +6,7 @@
     <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.linjun.entity.SuggestEntity" id="suggestMap">
         <result property="id" column="id"/>
-        <result property="user_id" column="user_id"/>
+        <result property="userId" column="userId"/>
         <result property="user_name" column="user_name"/>
         <result property="suggest_title" column="suggest_title"/>
         <result property="context" column="context"/>
@@ -38,7 +38,7 @@
 
     <insert id="save" parameterType="com.linjun.entity.SuggestEntity" useGeneratedKeys="true" keyProperty="msgId">
         insert into suggest(
-        `user_id`,
+        `userId`,
         `user_name`,
         `suggest_title`,
         `context`,
@@ -55,7 +55,7 @@
     <update id="update" parameterType="com.linjun.entity.SuggestEntity">
         update suggest
         <set>
-            <if test="user_id != null">`user_id` = #{user_id}, </if>
+            <if test="userId != null">`userId` = #{userId}, </if>
             <if test="user_name != null">`user_name` = #{user_name}, </if>
             <if test="suggest_title != null">`suggest_title` = #{suggest_title}, </if>
             <if test="context != null">`context` = #{context}, </if>

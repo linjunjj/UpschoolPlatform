@@ -36,7 +36,7 @@
     <insert id="save" parameterType="com.linjun.entity.UserStudentCardEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_studentcard
         (
-        `user_id`,
+        `userId`,
         `studentcard_font`,
         `studentcard_back`,
         `status`,
@@ -55,7 +55,7 @@
     <update id="update" parameterType="com.linjun.entity.UserStudentCardEntity">
         update user_studentcard
         <set>
-            <if test="userId != null">`user_id` = #{userId}, </if>
+            <if test="userId != null">`userId` = #{userId}, </if>
             <if test="studentcard_font != null">`studentcard_font` = #{studentcard_font}, </if>
             <if test="studentcard_back != null">`studentcard_back` = #{studentcard_back}, </if>
             <if test="status != null">`status` = #{status},</if>

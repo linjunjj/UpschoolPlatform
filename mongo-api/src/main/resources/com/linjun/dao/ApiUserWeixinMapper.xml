@@ -38,7 +38,7 @@
     <insert id="save" parameterType="com.linjun.entity.UserWeixinEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_weixin
         (
-        `user_id`,
+        `userId`,
         `openid`,
         `nickname`,
         `sex`,
@@ -67,7 +67,7 @@
     <update id="update" parameterType="com.linjun.entity.UserWeixinEntity">
         update user_weixin
         <set>
-            <if test="userId != null">`user_id` = #{userId}, </if>
+            <if test="userId != null">`userId` = #{userId}, </if>
             <if test="openid != null">`openid` = #{openid}, </if>
             <if test="nickname != null">`nickname` = #{nickname}, </if>
             <if test="sex != null">`sex` = #{sex}, </if>

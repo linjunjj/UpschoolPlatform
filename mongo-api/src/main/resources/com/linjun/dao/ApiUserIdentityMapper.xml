@@ -12,7 +12,7 @@
         <where>
             <where>
                 <if test="user_id != null">
-                    and user_id = #{user_id}
+                    and userId = #{userId}
                 </if>
             </where>
         </where>
@@ -27,7 +27,7 @@
         <where>
             <where>
                 <if test="user_id != null">
-                    and user_id = #{user_id}
+                    and userId = #{userId}
                 </if>
             </where>
         </where>
@@ -36,7 +36,7 @@
     <insert id="save" parameterType="com.linjun.entity.UserIdentityEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_identity
         (
-        `user_id`,
+        `userId`,
         `identity_num`,
         `identity_font`,
         `identity_back`,
@@ -57,7 +57,7 @@
     <update id="update" parameterType="com.linjun.entity.UserIdentityEntity">
         update user_identity
         <set>
-            <if test="userId != null">`user_id` = #{userId}, </if>
+            <if test="userId != null">`userId` = #{userId}, </if>
             <if test="identity_num != null">`identity_num` = #{identity_num}, </if>
             <if test="identity_font != null">`identity_font` = #{identity_font},</if>
             <if test="identity_back != null">`identity_back` = #{identity_back},</if>

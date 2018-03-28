@@ -11,7 +11,7 @@
         select * from user_dynamic
         <where>
             <if test="user_id != null">
-                and user_id = #{user_id}
+                and userId = #{userId}
             </if>
         </where>
         <choose>
@@ -34,7 +34,7 @@
     <insert id="save" parameterType="com.linjun.entity.UserDynamicEntity" useGeneratedKeys="true" keyProperty="id">
         insert into user_dynamic
         (
-        `user_id`,
+        `userId`,
         `address`,
         `context`,
         `view`,
@@ -48,7 +48,7 @@
         )
         values
         (
-        #{user_id},
+        #{userId},
         #{address},
         #{context},
         #{view},
@@ -65,7 +65,7 @@
     <update id="update" parameterType="com.linjun.entity.UserDynamicEntity">
         update user_dynamic
         <set>
-            <if test="userId != null">`user_id` = #{userId}, </if>
+            <if test="userId != null">`userId` = #{userId}, </if>
             <if test="address != null">`address` = #{address}, </if>
             <if test="context != null">`context` = #{context}, </if>
             <if test="view != null">`view` = #{view}, </if>
