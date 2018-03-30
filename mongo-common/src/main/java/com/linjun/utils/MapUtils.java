@@ -14,11 +14,12 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * 获取map中值的工具类,自动进行类型转换
+ *
+ * @author DT_panda
+ */
 public class MapUtils {
+
     public static String getString(String key, Map<String, Object> map) {
         if (map == null || key == null)
             throw new IllegalArgumentException();
@@ -296,3 +297,4 @@ public class MapUtils {
         return xmlStr.toString();
     }
 }
+

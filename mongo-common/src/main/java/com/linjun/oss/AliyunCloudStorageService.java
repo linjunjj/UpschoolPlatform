@@ -8,42 +8,47 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 
 /**
- * @author 林俊
- * @create 2018/3/10.
- * @desc
- **/
-public class AliyunCloudStorageService extends  CloudStorageService {
+ * 阿里云存储
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2017-03-26 16:22
+ */
+public class AliyunCloudStorageService extends CloudStorageService {
     private OSSClient client;
 
     public AliyunCloudStorageService(CloudStorageConfig config) {
-        this.cloudStorageConfig=config;
+        this.config = config;
+
+        //初始化
         init();
     }
 
     private void init() {
-        client=new OSSClient(cloudStorageConfig.getAliyunEndPoint(),cloudStorageConfig.getAliyunAccessKeyId(),cloudStorageConfig.getAliyunAccessKeySecret());
+        client = new OSSClient(config.getAliyunEndPoint(), config.getAliyunAccessKeyId(),
+                config.getAliyunAccessKeySecret());
     }
 
     @Override
     public String upload(MultipartFile file) throws Exception {
-        String fileName=file.getOriginalFilename();
-        String prefix=fileName.substring(fileName.lastIndexOf(".")+1);
-        return upload(file.getBytes(),getPath(cloudStorageConfig.getAliyunPrefix()+"."+prefix));
+        String fileName = file.getOriginalFilename();
+        String prefix = fileName.substring(fileName.lastIndexOf(".") + 1);
+        return upload(file.getBytes(), getPath(config.getAliyunPrefix()) + "." + prefix);
     }
 
     @Override
     public String upload(byte[] data, String path) {
-        return upload(new ByteArrayInputStream(data),path);
+        return upload(new ByteArrayInputStream(data), path);
     }
 
     @Override
     public String upload(InputStream inputStream, String path) {
         try {
-            client.putObject(cloudStorageConfig.getAliyunBucketName(), path, inputStream);
+            client.putObject(config.getAliyunBucketName(), path, inputStream);
         } catch (Exception e) {
             throw new RRException("上传文件失败，请检查配置信息", e);
         }
 
-        return cloudStorageConfig.getAliyunDomain() + "/" + path;
+        return config.getAliyunDomain() + "/" + path;
     }
 }

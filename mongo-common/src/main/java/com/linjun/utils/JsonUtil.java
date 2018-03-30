@@ -11,11 +11,13 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
-public class JsonUtil {
+ * JSON对象工具类
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2017年11月16日 下午10:43:36
+ */
+public final class JsonUtil {
     private JsonUtil() {
     }
 
@@ -168,4 +170,6 @@ public class JsonUtil {
         }
         return sb.toString();
     }
+
+
 }

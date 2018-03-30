@@ -7,12 +7,9 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mongo-admin" />
-        <module name="mongo-api" />
-        <module name="mongo-business" />
         <module name="mongo-common" />
         <module name="mongo-framework" />
         <module name="mongo-fromwork" />
-        <module name="mongo-schedule" />
         <module name="mongo-shiro" />
         <module name="mongoshiro" />
       </profile>

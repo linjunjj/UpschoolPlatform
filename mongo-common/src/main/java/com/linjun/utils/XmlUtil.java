@@ -10,11 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * xml相关的工具类
+ *
+ * @author yang.y
+ */
+@SuppressWarnings("unchecked")
 public class XmlUtil {
+
     /**
      * xml字符串转换成bean对象
      *

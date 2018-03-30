@@ -11,23 +11,36 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
-import static org.springframework.beans.BeanUtils.getPropertyDescriptor;
-import static org.springframework.beans.BeanUtils.getPropertyDescriptors;
-
-
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
-public class BeanUtils {
-    private  static  String[] IGNORE_PROPERTIES = {"createUser", "createTime"};
-    public  static  void copyProperties(Object source, Object target, String[] ignoreList) throws BeansException{
-        Assert.notNull(source,"Soure must not be null");
-        Assert.notNull(source,"Target must not be null");
-        List<String> ignorePropertyList=new ArrayList<>();
+ * 名称：BeanUtils <br>
+ * 描述：<br>
+ *
+ * @author 李鹏军
+ * @version 1.0
+ * @since 1.0.0
+ */
+public class BeanUtils extends org.springframework.beans.BeanUtils {
+    /**
+     * 默认忽略字段<br>
+     */
+    private static String[] IGNORE_PROPERTIES = {"createUser", "createTime"};
+
+    /**
+     * 重写copyProperties，NULL值,可以拷贝
+     * 增加默认忽略字段 modify by zhangguoqing at 2017年4月8日16:13:55
+     *
+     * @param source 拷贝元实体
+     * @param target 拷贝目标实体
+     * @throws BeansException 抛出异常
+     */
+    public static void copyProperties(Object source, Object target, String[] ignoreList)
+            throws BeansException {
+        Assert.notNull(source, "Source must not be null");
+        Assert.notNull(target, "Target must not be null");
+        List<String> ignorePropertyList = new ArrayList<String>();
         ignorePropertyList.addAll(Arrays.asList(IGNORE_PROPERTIES));
-        if (ignoreList!=null&&ignoreList.length!=0){
+        // 传入的忽略数组非空扩展忽略数组
+        if (ignoreList != null && ignoreList.length != 0) {
             ignorePropertyList.addAll(Arrays.asList(ignoreList));
         }
         Class<?> actualEditable = target.getClass();
@@ -64,7 +77,8 @@ public class BeanUtils {
                 }
             }
         }
-}
+    }
+
     /**
      * 重写copyProperties，忽略NULL值
      *
@@ -174,6 +188,4 @@ public class BeanUtils {
             throw new RRException("数据转换异常！");
         }
     }
-
-
 }

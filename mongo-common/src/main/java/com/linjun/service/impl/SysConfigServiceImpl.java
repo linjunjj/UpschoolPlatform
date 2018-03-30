@@ -1,7 +1,6 @@
 package com.linjun.service.impl;
 
 import com.alibaba.fastjson.JSON;
-
 import com.linjun.dao.SysConfigDao;
 import com.linjun.entity.SysConfigEntity;
 import com.linjun.service.SysConfigService;

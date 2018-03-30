@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * 异常处理器
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年10月27日 下午10:16:19
+ */
 @RestControllerAdvice(value = {"com.platform"})
 public class RRExceptionHandler {
     private Logger logger = LoggerFactory.getLogger(getClass());
@@ -22,30 +24,30 @@ public class RRExceptionHandler {
      * 自定义异常
      */
     @ExceptionHandler(RRException.class)
-    public JsonResult handleRRException(RRException e) {
-        JsonResult jsonResult = new JsonResult();
-        jsonResult.put("code", e.getCode());
-        jsonResult.put("msg", e.getMessage());
+    public R handleRRException(RRException e) {
+        R r = new R();
+        r.put("code", e.getCode());
+        r.put("msg", e.getMessage());
 
-        return jsonResult;
+        return r;
     }
 
     @ExceptionHandler(DuplicateKeyException.class)
-    public JsonResult handleDuplicateKeyException(DuplicateKeyException e) {
+    public R handleDuplicateKeyException(DuplicateKeyException e) {
         logger.error(e.getMessage(), e);
-        return JsonResult.error("数据库中已存在该记录");
+        return R.error("数据库中已存在该记录");
     }
 
     @ExceptionHandler(AuthorizationException.class)
-    public JsonResult handleAuthorizationException(AuthorizationException e) {
+    public R handleAuthorizationException(AuthorizationException e) {
         logger.error(e.getMessage(), e);
-        return JsonResult.error("没有权限，请联系管理员授权");
+        return R.error("没有权限，请联系管理员授权");
     }
 
     @ExceptionHandler(Exception.class)
-    public JsonResult handleException(Exception e) {
+    public R handleException(Exception e) {
         logger.error(e.getMessage(), e);
-        return JsonResult.error();
+        return R.error();
     }
 
 

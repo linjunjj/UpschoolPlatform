@@ -1,10 +1,12 @@
 package com.linjun.utils;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc 常量
- **/
+ * 常量
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年11月15日 下午1:23:52
+ */
 public class Constant {
     /**
      * 超级管理员ID
@@ -95,12 +97,11 @@ public class Constant {
         /**
          * 腾讯云
          */
-        QCLOUD(3),
-//        百度云
-        BAIDU(4);
+        QCLOUD(3);
+
         private int value;
 
-         CloudService(int value) {
+        private CloudService(int value) {
             this.value = value;
         }
 

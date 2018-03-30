@@ -1,6 +1,5 @@
 package com.linjun.service.impl;
 
-
 import com.linjun.dao.SysLogDao;
 import com.linjun.entity.SysLogEntity;
 import com.linjun.service.SysLogService;

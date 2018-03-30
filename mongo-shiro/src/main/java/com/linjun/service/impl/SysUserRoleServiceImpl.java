@@ -9,11 +9,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * @author 林俊
- * @create 2018/3/11.
- * @desc
- **/
+ * 用户与角色对应关系
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年9月18日 上午9:45:48
+ */
 @Service("sysUserRoleService")
 public class SysUserRoleServiceImpl implements SysUserRoleService {
     @Autowired

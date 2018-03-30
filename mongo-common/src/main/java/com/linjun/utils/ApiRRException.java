@@ -1,14 +1,17 @@
 package com.linjun.utils;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
-public class ApiRRException extends  RuntimeException {
-    private  static  final  long   serialVersionUID=1L;
-    private  String errmsg;
-    private  int errno=500;
+ * 自定义异常
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年10月27日 下午10:11:27
+ */
+public class ApiRRException extends RuntimeException {
+    private static final long serialVersionUID = 1L;
+
+    private String errmsg;
+    private int errno = 500;
 
     public ApiRRException(String errmsg) {
         super(errmsg);
@@ -47,5 +50,4 @@ public class ApiRRException extends  RuntimeException {
     public void setErrno(int errno) {
         this.errno = errno;
     }
-
 }

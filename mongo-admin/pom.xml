@@ -11,7 +11,7 @@
 
     <artifactId>mongo-admin</artifactId>
     <packaging>war</packaging>
-    <name>mongo-admin</name>
+    <name>platform-admin</name>
     <description>管理后台</description>
     <dependencies>
         <dependency>
@@ -24,22 +24,7 @@
             <artifactId>mongo-shiro</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>mongoPlatform</groupId>
-            <artifactId>mongo-schedule</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>mongoPlatform</groupId>
-            <artifactId>mongo-api</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>mongoPlatform</groupId>
-            <artifactId>mongo-business</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <type>war</type>
-        </dependency>
+
         <!--验证码生成工具-->
         <dependency>
             <groupId>com.github.axet</groupId>
@@ -109,7 +94,4 @@
             </plugin>
         </plugins>
     </build>
-
-
-
 </project>

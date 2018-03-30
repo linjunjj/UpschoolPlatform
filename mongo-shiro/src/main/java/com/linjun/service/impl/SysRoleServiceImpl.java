@@ -4,7 +4,8 @@ import com.linjun.dao.SysRoleDao;
 import com.linjun.entity.SysRoleEntity;
 import com.linjun.entity.UserWindowDto;
 import com.linjun.page.Page;
-import com.linjun.service.SysRoleDepService;
+import com.linjun.page.PageHelper;
+import com.linjun.service.SysRoleDeptService;
 import com.linjun.service.SysRoleMenuService;
 import com.linjun.service.SysRoleService;
 import com.linjun.service.SysUserService;
@@ -12,16 +13,20 @@ import com.linjun.utils.Constant;
 import com.linjun.utils.RRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * @author 林俊
- * @create 2018/3/11.
- * @desc
- **/
+ * 角色
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年9月18日 上午9:45:12
+ */
 @Service("sysRoleService")
 public class SysRoleServiceImpl implements SysRoleService {
     @Autowired
@@ -31,7 +36,8 @@ public class SysRoleServiceImpl implements SysRoleService {
     @Autowired
     private SysUserService sysUserService;
     @Autowired
-    private SysRoleDepService sysRoleDeptService;
+    private SysRoleDeptService sysRoleDeptService;
+
     @Override
     public SysRoleEntity queryObject(Long roleId) {
         return sysRoleDao.queryObject(roleId);
@@ -48,6 +54,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
+    @Transactional
     public void save(SysRoleEntity role) {
         role.setCreateTime(new Date());
         sysRoleDao.save(role);
@@ -63,6 +70,7 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
+    @Transactional
     public void update(SysRoleEntity role) {
         sysRoleDao.update(role);
 
@@ -76,8 +84,9 @@ public class SysRoleServiceImpl implements SysRoleService {
     }
 
     @Override
-    public void deleteBatch(Long[] releIds) {
-sysRoleDao.deleteBatch(releIds);
+    @Transactional
+    public void deleteBatch(Long[] roleIds) {
+        sysRoleDao.deleteBatch(roleIds);
     }
 
     @Override
@@ -85,10 +94,9 @@ sysRoleDao.deleteBatch(releIds);
         return sysRoleDao.queryRoleIdList(createUserId);
     }
 
-    @Override
-    public Page<UserWindowDto> queryPageByDto(UserWindowDto userWindowDto, int pageNmu) {
-        return null;
-    }
+    /**
+     * 检查权限是否越权
+     */
     private void checkPrems(SysRoleEntity role) {
         //如果不是超级管理员，则需要判断角色的权限是否超过自己的权限
         if (role.getCreateUserId() == Constant.SUPER_ADMIN) {
@@ -104,4 +112,10 @@ sysRoleDao.deleteBatch(releIds);
         }
     }
 
+    @Override
+    public Page<UserWindowDto> queryPageByDto(UserWindowDto userWindowDto, int pageNum) {
+        PageHelper.startPage(pageNum, Constant.pageSize);
+        sysRoleDao.queryPageByDto(userWindowDto);
+        return PageHelper.endPage();
+    }
 }

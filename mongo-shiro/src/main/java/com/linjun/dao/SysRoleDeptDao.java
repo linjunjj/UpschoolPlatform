@@ -1,6 +1,5 @@
 package com.linjun.dao;
 
-
 import com.linjun.entity.SysRoleDeptEntity;
 import org.apache.ibatis.annotations.Mapper;
 

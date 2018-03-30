@@ -1,7 +1,5 @@
 package com.linjun.service;
 
-
-
 import com.linjun.entity.SysMacroEntity;
 
 import java.util.List;

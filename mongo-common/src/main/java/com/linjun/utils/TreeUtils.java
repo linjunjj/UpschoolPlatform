@@ -9,11 +9,22 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * 名称：TreeUtils <br>
+ * 描述：<br>
+ *
+ * @author 李鹏军
+ * @version 1.0
+ * @since 1.0.0
+ */
 public class TreeUtils {
+    /**
+     * 包装成树形结构 (全部属性)
+     * 必须要有id parentId children
+     *
+     * @param tree
+     * @return
+     * @throws Exception
+     */
     public static List factorTree(List tree) {
         try {
             if (tree != null) {

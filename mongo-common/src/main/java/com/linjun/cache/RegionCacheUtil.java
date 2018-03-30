@@ -9,71 +9,93 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+/**
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2017-11-04 11:19:31
+ */
 public class RegionCacheUtil implements InitializingBean {
-    public  static List<SysRegionEntity>  sysRegionEntityList;
-    @Override
-    public void afterPropertiesSet() throws Exception {
-       init();
-    }
 
-    public  static  void  init(){
+    public static List<SysRegionEntity> sysRegionEntityList;
+
+    public static void init() {
         SysRegionDao regionDao = SpringContextUtils.getBean(SysRegionDao.class);
         if (null != regionDao) {
             sysRegionEntityList = regionDao.queryList(new HashMap<String, Object>());
         }
     }
 
-//    获取所有国家
-    public  static  List getAllCountry(){
-        List<SysRegionEntity> resultobj=new ArrayList<>();
-        if (null!=sysRegionEntityList){
-            for (SysRegionEntity areao: sysRegionEntityList) {
-                if (areao.getType()==0){
-                    resultobj.add(areao);
+    /**
+     * 获取所有国家
+     *
+     * @return
+     */
+    public static List getAllCountry() {
+        List<SysRegionEntity> resultObj = new ArrayList();
+        if (null != sysRegionEntityList) {
+            for (SysRegionEntity areaVo : sysRegionEntityList) {
+                if (areaVo.getType().equals(0)) {
+                    resultObj.add(areaVo);
                 }
             }
         }
-        return  resultobj;
+        return resultObj;
     }
-//获取所有的省；
-    public  static  List getAllPrivince(){
-        List<SysRegionEntity> resultobj=new ArrayList<>();
-        if (sysRegionEntityList!=null){
-            for (SysRegionEntity area:
-                sysRegionEntityList ) {
-                if (area.getType()==1)
-                    resultobj.add(area);
+
+    /**
+     * 获取全部省份
+     *
+     * @return
+     */
+    public static List getAllProvice() {
+        List<SysRegionEntity> resultObj = new ArrayList();
+        if (null != sysRegionEntityList) {
+            for (SysRegionEntity areaVo : sysRegionEntityList) {
+                if (areaVo.getType().equals(1)) {
+                    resultObj.add(areaVo);
+                }
             }
         }
-        return  resultobj;
+        return resultObj;
     }
-//获取所有的城市
-    public  static  List getAllCity(){
-        List<SysRegionEntity> resultobj=new ArrayList<>();
-        if (sysRegionEntityList!=null){
-            for (SysRegionEntity area:
-                 sysRegionEntityList) {
-                if (area.getType()==2)
-                    resultobj.add(area);
+
+    /**
+     * 获取所有城市
+     *
+     * @return
+     */
+    public static List<SysRegionEntity> getAllCity() {
+        List<SysRegionEntity> resultObj = new ArrayList();
+        if (null != sysRegionEntityList) {
+            for (SysRegionEntity areaVo : sysRegionEntityList) {
+                if (areaVo.getType().equals(2)) {
+                    resultObj.add(areaVo);
+                }
             }
         }
-        return  resultobj;
+        return resultObj;
     }
-//  根据国家获取所有的省份
-    public  static  List getAllProviceByParentId(Integer areaId){
-        List<SysRegionEntity> resultobj=new ArrayList<>();
-        if (areaId==null){
-            return  resultobj;
+
+    /**
+     * 根据国家获取全部省份
+     *
+     * @return
+     */
+    public static List getAllProviceByParentId(Integer areaId) {
+        List<SysRegionEntity> resultObj = new ArrayList();
+        if (null == areaId) {
+            return resultObj;
         }
-        if (sysRegionEntityList!=null){
-            for (SysRegionEntity area:
-                    sysRegionEntityList) {
-                if (area.getParentId()!=null&& area.getType().equals(1) && areaId.equals(area.getParentId()))
-                    resultobj.add(area);
+        if (null != sysRegionEntityList) {
+            for (SysRegionEntity areaVo : sysRegionEntityList) {
+                if (null != areaVo.getParentId() && areaVo.getType().equals(1) && areaId.equals(areaVo.getParentId())) {
+                    resultObj.add(areaVo);
+                }
             }
         }
-        return  resultobj;
+        return resultObj;
     }
+
     /**
      * 获取地市
      *
@@ -289,5 +311,9 @@ public class RegionCacheUtil implements InitializingBean {
         return resultObj;
     }
 
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        init();
+    }
 
 }

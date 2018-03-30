@@ -1,18 +1,25 @@
 package com.linjun.xss;
 
-
 import com.linjun.utils.RRException;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * SQL过滤
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2017-04-01 16:16
+ */
 public class SQLFilter {
-    public  static  String sqlInject(String str){
-        if (StringUtils.isBlank(str)){
-           return  null;
+
+    /**
+     * SQL注入过滤
+     *
+     * @param str 待验证的字符串
+     */
+    public static String sqlInject(String str) {
+        if (StringUtils.isBlank(str)) {
+            return null;
         }
         //去掉'|"|;|\字符
         str = StringUtils.replace(str, "'", "");

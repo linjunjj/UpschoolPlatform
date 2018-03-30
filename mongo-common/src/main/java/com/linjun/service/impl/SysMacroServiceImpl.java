@@ -1,6 +1,5 @@
 package com.linjun.service.impl;
 
-
 import com.linjun.dao.SysMacroDao;
 import com.linjun.entity.SysMacroEntity;
 import com.linjun.service.SysMacroService;

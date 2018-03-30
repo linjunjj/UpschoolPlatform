@@ -1,7 +1,6 @@
 package com.linjun.oss;
 
 import com.linjun.utils.RRException;
-import com.qiniu.common.QiniuException;
 import com.qiniu.common.Zone;
 import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
@@ -14,57 +13,57 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author 林俊
- * @create 2018/3/10.
- * @desc
- **/
-public class QiniuCloudStorageService extends  CloudStorageService {
+ * 七牛云存储
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2017-03-25 15:41
+ */
+public class QiniuCloudStorageService extends CloudStorageService {
     private UploadManager uploadManager;
-    private  String token;
+    private String token;
 
     public QiniuCloudStorageService(CloudStorageConfig config) {
-        this.cloudStorageConfig=config;
+        this.config = config;
+
+        //初始化
         init();
     }
-    private  void init(){
-        uploadManager=new UploadManager(new Configuration(Zone.autoZone()));
-        token= Auth.create(cloudStorageConfig.getQiniuAccessKey(),cloudStorageConfig.getQcloudSecretKey()).uploadToken(cloudStorageConfig.getQiniuBucketName());
-    }
 
+    private void init() {
+        uploadManager = new UploadManager(new Configuration(Zone.autoZone()));
+        token = Auth.create(config.getQiniuAccessKey(), config.getQiniuSecretKey()).
+                uploadToken(config.getQiniuBucketName());
+    }
 
     @Override
     public String upload(MultipartFile file) throws Exception {
-        String fileName=file.getOriginalFilename();
-        String prefix=fileName.substring(fileName.lastIndexOf(".")+1);
-        return upload(file.getBytes(),getPath(cloudStorageConfig.getAliyunPrefix()+"."+prefix));
+        String fileName = file.getOriginalFilename();
+        String prefix = fileName.substring(fileName.lastIndexOf(".") + 1);
+        return upload(file.getBytes(), getPath(config.getAliyunPrefix()) + "." + prefix);
     }
 
     @Override
     public String upload(byte[] data, String path) {
-        Response res= null;
         try {
-            res = uploadManager.put(data,path,token);
-            if (!res.isOK()){
-                throw new RuntimeException("七牛云上传出错"+res.toString());
-
+            Response res = uploadManager.put(data, path, token);
+            if (!res.isOK()) {
+                throw new RuntimeException("上传七牛出错：" + res.toString());
             }
-
-        } catch (QiniuException e) {
-            e.printStackTrace();
-            throw new RRException("上传文件失败，请检查七牛云的配置",e);
+        } catch (Exception e) {
+            throw new RRException("上传文件失败，请核对七牛配置信息", e);
         }
-        return  cloudStorageConfig.getQiniuDomain()+"/"+path;
+
+        return config.getQiniuDomain() + "/" + path;
     }
 
     @Override
-    public String upload(InputStream inputStream, String path)  {
+    public String upload(InputStream inputStream, String path) {
         try {
-            byte[] data=IOUtils.toByteArray(inputStream);
-            return this.upload(data,path);
+            byte[] data = IOUtils.toByteArray(inputStream);
+            return this.upload(data, path);
         } catch (IOException e) {
-            e.printStackTrace();
-            throw new RRException("上传文件失败",e);
+            throw new RRException("上传文件失败", e);
         }
-
     }
 }

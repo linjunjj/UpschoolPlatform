@@ -3,7 +3,7 @@ package com.linjun.controller;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.linjun.annotation.SysLog;
-import com.linjun.utils.JsonResult;
+import com.linjun.utils.R;
 import com.linjun.utils.ShiroUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.crypto.hash.Sha256Hash;
@@ -22,10 +22,12 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
- * @author 林俊
- * @create 2018/3/11.
- * @desc
- **/
+ * 登录相关
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年11月10日 下午1:15:31
+ */
 @Controller
 public class SysLoginController {
     @Autowired
@@ -53,13 +55,13 @@ public class SysLoginController {
     @SysLog("登录")
     @ResponseBody
     @RequestMapping(value = "/sys/login", method = RequestMethod.POST)
-    public JsonResult login(String username, String password, String captcha) throws IOException {
+    public R login(String username, String password, String captcha) throws IOException {
         String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
         if(null == kaptcha){
-            return JsonResult.error("验证码已失效");
+            return R.error("验证码已失效");
         }
         if (!captcha.equalsIgnoreCase(kaptcha)) {
-            return JsonResult.error("验证码不正确");
+            return R.error("验证码不正确");
         }
 
         try {
@@ -69,16 +71,16 @@ public class SysLoginController {
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
             subject.login(token);
         } catch (UnknownAccountException e) {
-            return JsonResult.error(e.getMessage());
+            return R.error(e.getMessage());
         } catch (IncorrectCredentialsException e) {
-            return JsonResult.error(e.getMessage());
+            return R.error(e.getMessage());
         } catch (LockedAccountException e) {
-            return JsonResult.error(e.getMessage());
+            return R.error(e.getMessage());
         } catch (AuthenticationException e) {
-            return JsonResult.error("账户验证失败");
+            return R.error("账户验证失败");
         }
 
-        return JsonResult.ok();
+        return R.ok();
     }
 
     /**
@@ -91,4 +93,3 @@ public class SysLoginController {
     }
 
 }
-

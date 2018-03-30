@@ -1,27 +1,31 @@
 package com.linjun.utils;
 
-
 import com.linjun.entity.SysUserEntity;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 
-
 /**
- * @author 林俊
- * @create 2018/3/10.
- * @desc
- **/
+ * Shiro工具类
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年11月12日 上午9:49:19
+ */
 public class ShiroUtils {
-    public  static Session getSession(){
+
+    public static Session getSession() {
         return SecurityUtils.getSubject().getSession();
     }
-    public  static Subject getSubject(){
-        return  SecurityUtils.getSubject();
+
+    public static Subject getSubject() {
+        return SecurityUtils.getSubject();
     }
-    public  static SysUserEntity getUserEntity(){
+
+    public static SysUserEntity getUserEntity() {
         return (SysUserEntity) SecurityUtils.getSubject().getPrincipal();
     }
+
     public static Long getUserId() {
         return getUserEntity().getUserId();
     }
@@ -52,4 +56,5 @@ public class ShiroUtils {
         }
         return kaptcha;
     }
+
 }

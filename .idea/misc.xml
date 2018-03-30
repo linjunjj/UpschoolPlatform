@@ -23,7 +23,10 @@
       <set>
         <option value="$PROJECT_DIR$/ereee/pom.xml" />
         <option value="$PROJECT_DIR$/ggggss/pom.xml" />
+        <option value="$PROJECT_DIR$/mongo-api/pom.xml" />
+        <option value="$PROJECT_DIR$/mongo-business/pom.xml" />
         <option value="$PROJECT_DIR$/mongo-businssssss/pom.xml" />
+        <option value="$PROJECT_DIR$/mongo-schedule/pom.xml" />
       </set>
     </option>
   </component>

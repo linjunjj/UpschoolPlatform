@@ -1,7 +1,5 @@
 package com.linjun.service;
 
-
-
 import com.linjun.entity.SysLogEntity;
 
 import java.util.List;

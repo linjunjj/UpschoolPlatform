@@ -1,7 +1,5 @@
 package com.linjun.dao;
 
-
-
 import com.linjun.entity.SysUserEntity;
 import com.linjun.entity.UserWindowDto;
 

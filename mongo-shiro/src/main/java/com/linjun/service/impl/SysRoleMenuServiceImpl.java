@@ -4,21 +4,27 @@ import com.linjun.dao.SysRoleMenuDao;
 import com.linjun.service.SysRoleMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * @author 林俊
- * @create 2018/3/11.
- * @desc
- **/
+ * 角色与菜单对应关系
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年9月18日 上午9:44:35
+ */
 @Service("sysRoleMenuService")
 public class SysRoleMenuServiceImpl implements SysRoleMenuService {
     @Autowired
     private SysRoleMenuDao sysRoleMenuDao;
+
     @Override
+    @Transactional
     public void saveOrUpdate(Long roleId, List<Long> menuIdList) {
         if (menuIdList.size() == 0) {
             return;
@@ -37,4 +43,5 @@ public class SysRoleMenuServiceImpl implements SysRoleMenuService {
     public List<Long> queryMenuIdList(Long roleId) {
         return sysRoleMenuDao.queryMenuIdList(roleId);
     }
+
 }

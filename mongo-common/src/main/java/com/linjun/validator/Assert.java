@@ -4,11 +4,14 @@ import com.linjun.utils.RRException;
 import org.apache.commons.lang.StringUtils;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * 数据校验
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2017-03-23 15:50
+ */
 public abstract class Assert {
+
     public static void isBlank(String str, String message) {
         if (StringUtils.isBlank(str)) {
             throw new RRException(message);

@@ -7,11 +7,14 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * 功能:		web.cr6868.com HTTP接口 发送短信
+ * 说明:		http://web.cr6868.com/asmx/smsservice.aspx?name=登录名&pwd=接口密码&mobile=手机号码&content=内容&sign=签名&stime=发送时间&type=pt&extno=自定义扩展码
+ *
+ * @author lipengjun
+ * @date 2017年11月18日 下午13:13:23
+ */
 public class SmsUtil {
+
     /**
      * 创锐平台发送短信
      *

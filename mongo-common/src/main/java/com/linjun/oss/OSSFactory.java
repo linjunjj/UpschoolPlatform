@@ -6,17 +6,23 @@ import com.linjun.utils.Constant;
 import com.linjun.utils.SpringContextUtils;
 
 /**
- * @author 林俊
- * @create 2018/3/10.
- * @desc
- **/
+ * 文件上传Factory
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2017-03-26 10:18
+ */
 public final class OSSFactory {
-    private  static SysConfigService sysConfigService;
+    private static SysConfigService sysConfigService;
+
     static {
-        OSSFactory.sysConfigService= (SysConfigService) SpringContextUtils.getBean("sysConfigService");
+        OSSFactory.sysConfigService = (SysConfigService) SpringContextUtils.getBean("sysConfigService");
     }
-    public  static  CloudStorageService build(){
-        CloudStorageConfig config=sysConfigService.getConfigObject(ConfigConstant.CLOUD_STORAGE_CONFIG_KEY,CloudStorageConfig.class);
+
+    public static CloudStorageService build() {
+        //获取云存储配置信息
+        CloudStorageConfig config = sysConfigService.getConfigObject(ConfigConstant.CLOUD_STORAGE_CONFIG_KEY, CloudStorageConfig.class);
+
         if (config.getType() == Constant.CloudService.QINIU.getValue()) {
             return new QiniuCloudStorageService(config);
         } else if (config.getType() == Constant.CloudService.ALIYUN.getValue()) {
@@ -24,6 +30,8 @@ public final class OSSFactory {
         } else if (config.getType() == Constant.CloudService.QCLOUD.getValue()) {
             return new QcloudCloudStorageService(config);
         }
+
         return null;
     }
+
 }

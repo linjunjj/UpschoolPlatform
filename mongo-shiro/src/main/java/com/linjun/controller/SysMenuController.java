@@ -4,6 +4,7 @@ import com.linjun.annotation.SysLog;
 import com.linjun.entity.SysMenuEntity;
 import com.linjun.service.SysMenuService;
 import com.linjun.utils.*;
+import com.linjun.utils.Constant.MenuType;
 import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author 林俊
- * @create 2018/3/11.
- * @desc
- **/
+ * 系统菜单
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年10月27日 下午9:58:15
+ */
 @RestController
 @RequestMapping("/sys/menu")
 public class SysMenuController extends AbstractController {
@@ -29,26 +32,26 @@ public class SysMenuController extends AbstractController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:menu:list")
-    public JsonResult list(@RequestParam Map<String, Object> params) {
+    public R list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
         List<SysMenuEntity> menuList = sysMenuService.queryList(query);
         int total = sysMenuService.queryTotal(query);
 
-        PageBean pageUtil = new PageBean(menuList, total, query.getLimit(), query.getPage());
+        PageUtils pageUtil = new PageUtils(menuList, total, query.getLimit(), query.getPage());
 
-        return JsonResult.ok().put("page", pageUtil);
+        return R.ok().put("page", pageUtil);
     }
 
     /**
      * 所有菜单列表
      */
     @RequestMapping("/queryAll")
-    public JsonResult queryAll(@RequestParam Map<String, Object> params) {
+    public R queryAll(@RequestParam Map<String, Object> params) {
         //查询列表数据
         List<SysMenuEntity> menuList = sysMenuService.queryList(params);
 
-        return JsonResult.ok().put("list", menuList);
+        return R.ok().put("list", menuList);
     }
 
     /**
@@ -56,7 +59,7 @@ public class SysMenuController extends AbstractController {
      */
     @RequestMapping("/select")
     @RequiresPermissions("sys:menu:select")
-    public JsonResult select() {
+    public R select() {
         //查询列表数据
         List<SysMenuEntity> menuList = sysMenuService.queryNotButtonList();
 
@@ -68,7 +71,7 @@ public class SysMenuController extends AbstractController {
         root.setOpen(true);
         menuList.add(root);
 
-        return JsonResult.ok().put("menuList", menuList);
+        return R.ok().put("menuList", menuList);
     }
 
     /**
@@ -76,7 +79,7 @@ public class SysMenuController extends AbstractController {
      */
     @RequestMapping("/perms")
     @RequiresPermissions("sys:menu:perms")
-    public JsonResult perms() {
+    public R perms() {
         //查询列表数据
         List<SysMenuEntity> menuList = null;
 
@@ -87,7 +90,7 @@ public class SysMenuController extends AbstractController {
             menuList = sysMenuService.queryUserList(getUserId());
         }
 
-        return JsonResult.ok().put("menuList", menuList);
+        return R.ok().put("menuList", menuList);
     }
 
     /**
@@ -95,9 +98,9 @@ public class SysMenuController extends AbstractController {
      */
     @RequestMapping("/info/{menuId}")
     @RequiresPermissions("sys:menu:info")
-    public JsonResult info(@PathVariable("menuId") Long menuId) {
+    public R info(@PathVariable("menuId") Long menuId) {
         SysMenuEntity menu = sysMenuService.queryObject(menuId);
-        return JsonResult.ok().put("menu", menu);
+        return R.ok().put("menu", menu);
     }
 
     /**
@@ -106,13 +109,13 @@ public class SysMenuController extends AbstractController {
     @SysLog("保存菜单")
     @RequestMapping("/save")
     @RequiresPermissions("sys:menu:save")
-    public JsonResult save(@RequestBody SysMenuEntity menu) {
+    public R save(@RequestBody SysMenuEntity menu) {
         //数据校验
         verifyForm(menu);
 
         sysMenuService.save(menu);
 
-        return JsonResult.ok();
+        return R.ok();
     }
 
     /**
@@ -121,13 +124,13 @@ public class SysMenuController extends AbstractController {
     @SysLog("修改菜单")
     @RequestMapping("/update")
     @RequiresPermissions("sys:menu:update")
-    public JsonResult update(@RequestBody SysMenuEntity menu) {
+    public R update(@RequestBody SysMenuEntity menu) {
         //数据校验
         verifyForm(menu);
 
         sysMenuService.update(menu);
 
-        return JsonResult.ok();
+        return R.ok();
     }
 
     /**
@@ -136,25 +139,25 @@ public class SysMenuController extends AbstractController {
     @SysLog("删除菜单")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:menu:delete")
-    public JsonResult delete(@RequestBody Long[] menuIds) {
+    public R delete(@RequestBody Long[] menuIds) {
         for (Long menuId : menuIds) {
             if (menuId.longValue() <= 30) {
-                return JsonResult.error("系统菜单，不能删除");
+                return R.error("系统菜单，不能删除");
             }
         }
         sysMenuService.deleteBatch(menuIds);
 
-        return JsonResult.ok();
+        return R.ok();
     }
 
     /**
      * 用户菜单列表
      */
     @RequestMapping("/user")
-    public JsonResult user() {
+    public R user() {
         List<SysMenuEntity> menuList = sysMenuService.getUserMenuList(getUserId());
 
-        return JsonResult.ok().put("menuList", menuList);
+        return R.ok().put("menuList", menuList);
     }
 
     /**
@@ -170,35 +173,34 @@ public class SysMenuController extends AbstractController {
         }
 
         //菜单
-        if (menu.getType() == Constant.MenuType.MENU.getValue()) {
+        if (menu.getType() == MenuType.MENU.getValue()) {
             if (StringUtils.isBlank(menu.getUrl())) {
                 throw new RRException("菜单URL不能为空");
             }
         }
 
         //上级菜单类型
-        int parentType = Constant.MenuType.CATALOG.getValue();
+        int parentType = MenuType.CATALOG.getValue();
         if (menu.getParentId() != 0) {
             SysMenuEntity parentMenu = sysMenuService.queryObject(menu.getParentId());
             parentType = parentMenu.getType();
         }
 
         //目录、菜单
-        if (menu.getType() == Constant.MenuType.CATALOG.getValue() ||
-                menu.getType() == Constant.MenuType.MENU.getValue()) {
-            if (parentType != Constant.MenuType.CATALOG.getValue()) {
+        if (menu.getType() == MenuType.CATALOG.getValue() ||
+                menu.getType() == MenuType.MENU.getValue()) {
+            if (parentType != MenuType.CATALOG.getValue()) {
                 throw new RRException("上级菜单只能为目录类型");
             }
             return;
         }
 
         //按钮
-        if (menu.getType() == Constant.MenuType.BUTTON.getValue()) {
-            if (parentType != Constant.MenuType.MENU.getValue()) {
+        if (menu.getType() == MenuType.BUTTON.getValue()) {
+            if (parentType != MenuType.MENU.getValue()) {
                 throw new RRException("上级菜单只能为菜单类型");
             }
             return;
         }
     }
 }
-

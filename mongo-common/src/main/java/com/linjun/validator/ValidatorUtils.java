@@ -8,10 +8,14 @@ import javax.validation.Validator;
 import java.util.Set;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * hibernate-validator校验工具类
+ * <p>
+ * 参考文档：http://docs.jboss.org/hibernate/validator/5.4/reference/en-US/html_single/
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2017-03-15 10:50
+ */
 public class ValidatorUtils {
     private static Validator validator;
 

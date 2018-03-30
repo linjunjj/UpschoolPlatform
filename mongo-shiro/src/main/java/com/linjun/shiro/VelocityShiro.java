@@ -4,14 +4,23 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
 /**
- * @author 林俊
- * @create 2018/3/11.
- * @desc
- **/
+ * Shiro权限标签(Velocity版)
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年12月3日 下午11:32:47
+ */
 public class VelocityShiro {
-    public  boolean hasPermission(String permission){
-        Subject subject= SecurityUtils.getSubject();
-        return  subject!=null&&subject.isPermitted(permission);
+
+    /**
+     * 是否拥有该权限
+     *
+     * @param permission 权限标识
+     * @return true：是     false：否
+     */
+    public boolean hasPermission(String permission) {
+        Subject subject = SecurityUtils.getSubject();
+        return subject != null && subject.isPermitted(permission);
     }
 
 }

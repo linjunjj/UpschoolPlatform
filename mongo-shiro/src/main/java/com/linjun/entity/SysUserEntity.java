@@ -1,6 +1,5 @@
 package com.linjun.entity;
 
-
 import com.linjun.validator.group.AddGroup;
 import com.linjun.validator.group.UpdateGroup;
 import org.hibernate.validator.constraints.Email;

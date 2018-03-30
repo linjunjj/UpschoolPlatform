@@ -14,40 +14,50 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * @author 林俊
- * @create 2018/3/10.
- * @desc
- **/
-public class QcloudCloudStorageService extends  CloudStorageService {
+ * 腾讯云存储
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2017-03-26 20:51
+ */
+public class QcloudCloudStorageService extends CloudStorageService {
     private COSClient client;
 
     public QcloudCloudStorageService(CloudStorageConfig config) {
-        this.cloudStorageConfig=config;
+        this.config = config;
+
+        //初始化
         init();
     }
 
     private void init() {
-        Credentials credentials=new Credentials(cloudStorageConfig.getQcloudAppId(),cloudStorageConfig.getQcloudSecretId(),cloudStorageConfig.getQcloudSecretKey());
-        ClientConfig clientConfig=new ClientConfig();
-        clientConfig.setRegion(cloudStorageConfig.getQcloudRegion());
+        Credentials credentials = new Credentials(config.getQcloudAppId(), config.getQcloudSecretId(),
+                config.getQcloudSecretKey());
+
+        //初始化客户端配置
+        ClientConfig clientConfig = new ClientConfig();
+        //设置bucket所在的区域，华南：gz 华北：tj 华东：sh
+        clientConfig.setRegion(config.getQcloudRegion());
+
         client = new COSClient(clientConfig, credentials);
     }
 
     @Override
     public String upload(MultipartFile file) throws Exception {
-        String fileName=file.getOriginalFilename();
-        String prefix=fileName.substring(fileName.lastIndexOf("."+1));
-        return upload(file.getBytes(),getPath(cloudStorageConfig.getAliyunPrefix()+"."+prefix));
+        String fileName = file.getOriginalFilename();
+        String prefix = fileName.substring(fileName.lastIndexOf(".") + 1);
+        return upload(file.getBytes(), getPath(config.getAliyunPrefix()) + "." + prefix);
     }
 
     @Override
     public String upload(byte[] data, String path) {
+        //腾讯云必需要以"/"开头
         if (!path.startsWith("/")) {
             path = "/" + path;
         }
 
         //上传到腾讯云
-        UploadFileRequest request = new UploadFileRequest(cloudStorageConfig.getQcloudBucketName(), path, data);
+        UploadFileRequest request = new UploadFileRequest(config.getQcloudBucketName(), path, data);
         String response = client.uploadFile(request);
 
         JSONObject jsonObject = JSON.parseObject(response);
@@ -55,17 +65,16 @@ public class QcloudCloudStorageService extends  CloudStorageService {
             throw new RRException("文件上传失败，" + jsonObject.getString("message"));
         }
 
-        return cloudStorageConfig.getQcloudDomain() + path;
+        return config.getQcloudDomain() + path;
     }
 
     @Override
     public String upload(InputStream inputStream, String path) {
         try {
-            byte[] data= IOUtils.toByteArray(inputStream);
-            return  this.upload(data,path);
+            byte[] data = IOUtils.toByteArray(inputStream);
+            return this.upload(data, path);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new RRException("上传文件失败", e);
         }
-        return null;
     }
 }

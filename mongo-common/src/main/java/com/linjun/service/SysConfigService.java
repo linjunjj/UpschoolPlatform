@@ -1,7 +1,5 @@
 package com.linjun.service;
 
-
-
 import com.linjun.entity.SysConfigEntity;
 
 import java.util.List;

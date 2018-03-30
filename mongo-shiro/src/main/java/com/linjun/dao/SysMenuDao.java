@@ -1,7 +1,5 @@
 package com.linjun.dao;
 
-
-
 import com.linjun.entity.SysMenuEntity;
 
 import java.util.List;

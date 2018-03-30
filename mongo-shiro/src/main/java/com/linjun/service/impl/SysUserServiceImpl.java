@@ -22,11 +22,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * @author 林俊
- * @create 2018/3/11.
- * @desc
- **/
+ * 系统用户
+ *
+ * @author 李鹏军
+ * @email 939961241@qq.com
+ * @date 2016年12月18日 上午9:46:09
+ */
 @Service("sysUserService")
 public class SysUserServiceImpl implements SysUserService {
 

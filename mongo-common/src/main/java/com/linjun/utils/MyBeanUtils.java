@@ -15,10 +15,13 @@ import java.math.BigInteger;
 import java.util.*;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * bean 对象工具类
+ * 描述：<br>
+ *
+ * @author 李鹏军
+ * @version 1.0
+ * @since 1.0.0
+ */
 public class MyBeanUtils extends PropertyUtilsBean {
 
     /**
@@ -304,7 +307,7 @@ public class MyBeanUtils extends PropertyUtilsBean {
                 String className = clazz.getName();
                 // 临时对策（如果不处理默认的类型转换时会出错）
                 if (className.equalsIgnoreCase("java.util.Date")) {
-                    value = new java.util.Date(
+                    value = new Date(
                             ((java.sql.Timestamp) value).getTime());// wait to do：貌似有时区问题, 待进一步确认
                 }
                 // if (className.equalsIgnoreCase("java.sql.Timestamp")) {

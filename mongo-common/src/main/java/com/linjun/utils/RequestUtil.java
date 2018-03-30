@@ -1,10 +1,7 @@
 package com.linjun.utils;
 
-
-
-
-import org.json.JSONObject;
 import com.linjun.Global;
+import org.json.JSONObject;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -20,32 +17,59 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 /**
- * @author 林俊
- * @create 2018/3/9.
- * @desc
- **/
+ * HTTP请求处理工具类
+ * HTTP请求处理工具类
+ *
+ * @author system
+ * @version 1.0
+ */
 public class RequestUtil {
-    private  static  final Logger logger=Logger.getLogger(RequestUtil.class.getName());
-    public  static Map<String,Object> getParameters(HttpServletRequest request,boolean printLog){
-        Enumeration<String> enume=request.getParameterNames();
-        Map<String,Object> map=new HashMap<>();
-        while (enume.hasMoreElements()){
-            String key=enume.nextElement();
-            String value=request.getParameter(key);
-            map.put(key,value);
-            if (printLog){
-                logger.info(key+"==>"+value);
+
+    private static final Logger LOGGER = Logger.getLogger(RequestUtil.class.getName());
+
+    /**
+     * 将request查询参数封装至Map
+     *
+     * @param request  请求
+     * @param printLog 是否打印日志
+     * @return 参数Map
+     */
+    public static Map<String, Object> getParameters(HttpServletRequest request,
+                                                    boolean printLog) {
+        Enumeration<String> enume = request.getParameterNames();
+        Map<String, Object> map = new HashMap<String, Object>();
+        while (enume.hasMoreElements()) {
+            String key = enume.nextElement();
+            String value = request.getParameter(key);
+            map.put(key, value);
+            if (printLog) {
+                LOGGER.info(key + "==>" + value);
             }
         }
         if (map.get(Global.SORT_ORDER) != null) {
             map.put(Global.SORT_ORDER, "asc");
         }
-        return  map;
+        return map;
     }
-    public  static Map<String,Object> getParameters(HttpServletRequest request){
-        return  getParameters(request,false);
+
+    /**
+     * 将request查询参数封装至Map
+     *
+     * @param request 请求
+     * @return 参数Map
+     */
+    public static Map<String, Object> getParameters(HttpServletRequest request) {
+
+        return getParameters(request, false);
     }
-    public  static  String   getClientIp(HttpServletRequest request){
+
+    /**
+     * 获取请求方IP
+     *
+     * @param request 请求
+     * @return 客户端Ip
+     */
+    public static String getClientIp(HttpServletRequest request) {
         String xff = request.getHeader("x-forwarded-for");
         if (xff == null) {
             return request.getRemoteAddr();
@@ -53,8 +77,14 @@ public class RequestUtil {
         return xff;
     }
 
-
-    public  static  String getIpAddrByRequest(HttpServletRequest request){
+    /**
+     * 主要功能:获取请求方IP
+     * 注意事项:无
+     *
+     * @param request 请求
+     * @return String IP
+     */
+    public static String getIpAddrByRequest(HttpServletRequest request) {
         String ip = request.getHeader("x-forwarded-for");
         if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) {
             ip = request.getHeader("Proxy-Client-IP");
@@ -67,52 +97,74 @@ public class RequestUtil {
         }
         return ip;
     }
-    public  static  String getRequestUrl(HttpServletRequest request){
-        return request.getRequestURI().toString();
-    }
-    public  static  HttpServletRequest getCurrentRequest(){
-        return ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+
+    /**
+     * 获取完整的请求URL
+     *
+     * @param request 请求
+     * @return URL
+     */
+    public static String getRequestUrl(HttpServletRequest request) {
+        return request.getRequestURL().toString();
     }
 
-    public  static  Map<String,Object> getBody(HttpServletRequest request){
-        String body=null;
-        StringBuilder stringBuilder=new StringBuilder();
-        BufferedReader bufferedReader=null;
+    /**
+     * 主要功能:获取request
+     * 注意事项:无
+     *
+     * @return HttpServletRequest
+     */
+    public static HttpServletRequest getCurrentRequest() {
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+    }
 
+    /**
+     * 主要功能:获取前端请求并转换map
+     * 注意事项:无
+     *
+     * @param request 请求
+     * @return 参数map
+     */
+    @SuppressWarnings("unchecked")
+    public static Map<String, Object> getBody(HttpServletRequest request) {
+        // 获取前台参数
+        String body = null;
+        StringBuilder stringBuilder = new StringBuilder();
+        BufferedReader bufferedReader = null;
         try {
-            InputStream   inputStream = request.getInputStream();
-            if (inputStream!=null){
-            bufferedReader=new BufferedReader(new InputStreamReader(inputStream));
-            char[] charBuffer=new char[128];
-            int bytesRead=-1;
-            while((bytesRead=bufferedReader.read(charBuffer))>0){
-                stringBuilder.append(charBuffer,0,bytesRead);
-            }
-            }else {
+            InputStream inputStream = request.getInputStream();
+            if (inputStream != null) {
+                bufferedReader = new BufferedReader(new InputStreamReader(
+                        inputStream));
+                char[] charBuffer = new char[128];
+                int bytesRead = -1;
+                while ((bytesRead = bufferedReader.read(charBuffer)) > 0) {
+                    stringBuilder.append(charBuffer, 0, bytesRead);
+                }
+            } else {
                 stringBuilder.append("");
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }finally {
-            if (bufferedReader!=null){
+        } catch (IOException ex) {
+        } finally {
+            if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                } catch (IOException ex) {
                 }
             }
         }
-       body=stringBuilder.toString();
-        JSONObject jsonObject=new JSONObject(body);
-        Map<String,Object> parames=new HashMap<>();
-        Iterator<String> keys=jsonObject.keys();
+        body = stringBuilder.toString();
+        // 转换成json对象
+        JSONObject json = new JSONObject(body);
+        // 转化成map合适
+        Map<String, Object> paramers = new HashMap<String, Object>();
+        Iterator<String> keys = json.keys();
         String key;
-        while(keys.hasNext()){
-            key=keys.next();
-            parames.put(key,jsonObject.get(key));
+        while (keys.hasNext()) {
+            key = keys.next();
+            paramers.put(key, json.get(key));
         }
-        return  parames;
+        return paramers;
     }
-
 
 }

@@ -1,6 +1,5 @@
 package com.linjun.service.impl;
 
-
 import com.linjun.dao.SysDeptDao;
 import com.linjun.entity.SysDeptEntity;
 import com.linjun.entity.UserWindowDto;

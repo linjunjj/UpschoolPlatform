@@ -186,7 +186,7 @@ public class Excel2Html {
                     // 处理自定义日期格式：m月d日(通过判断单元格的格式id解决，id的值是58)
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     double value = cell.getNumericCellValue();
-                    Date date = org.apache.poi.ss.usermodel.DateUtil
+                    Date date = DateUtil
                             .getJavaDate(value);
                     result = sdf.format(date);
                 } else if (cell.getCellStyle().getDataFormat() == 10) {

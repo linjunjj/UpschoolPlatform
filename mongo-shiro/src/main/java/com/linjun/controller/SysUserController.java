@@ -19,10 +19,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author 林俊
- * @create 2018/3/11.
- * @desc
- **/
+ * 系统用户
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年10月31日 上午10:40:10
+ */
 @RestController
 @RequestMapping("/sys/user")
 public class SysUserController extends AbstractController {
@@ -36,7 +38,7 @@ public class SysUserController extends AbstractController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:user:list")
-    public JsonResult list(@RequestParam Map<String, Object> params) {
+    public R list(@RequestParam Map<String, Object> params) {
         //只有超级管理员，才能查看所有管理员列表
         if (getUserId() != Constant.SUPER_ADMIN) {
             params.put("createUserId", getUserId());
@@ -47,17 +49,17 @@ public class SysUserController extends AbstractController {
         List<SysUserEntity> userList = sysUserService.queryList(query);
         int total = sysUserService.queryTotal(query);
 
-        PageBean pageUtil = new PageBean(userList, total, query.getLimit(), query.getPage());
+        PageUtils pageUtil = new PageUtils(userList, total, query.getLimit(), query.getPage());
 
-        return JsonResult.ok().put("page", pageUtil);
+        return R.ok().put("page", pageUtil);
     }
 
     /**
      * 获取登录的用户信息
      */
     @RequestMapping("/info")
-    public JsonResult info() {
-        return JsonResult.ok().put("user", getUser());
+    public R info() {
+        return R.ok().put("user", getUser());
     }
 
     /**
@@ -65,7 +67,7 @@ public class SysUserController extends AbstractController {
      */
     @SysLog("修改密码")
     @RequestMapping("/password")
-    public JsonResult password(String password, String newPassword) {
+    public R password(String password, String newPassword) {
         Assert.isBlank(newPassword, "新密码不为能空");
 
         //sha256加密
@@ -76,13 +78,13 @@ public class SysUserController extends AbstractController {
         //更新密码
         int count = sysUserService.updatePassword(getUserId(), password, newPassword);
         if (count == 0) {
-            return JsonResult.error("原密码不正确");
+            return R.error("原密码不正确");
         }
 
         //退出
         ShiroUtils.logout();
 
-        return JsonResult.ok();
+        return R.ok();
     }
 
     /**
@@ -90,14 +92,14 @@ public class SysUserController extends AbstractController {
      */
     @RequestMapping("/info/{userId}")
     @RequiresPermissions("sys:user:info")
-    public JsonResult info(@PathVariable("userId") Long userId) {
+    public R info(@PathVariable("userId") Long userId) {
         SysUserEntity user = sysUserService.queryObject(userId);
 
         //获取用户所属的角色列表
         List<Long> roleIdList = sysUserRoleService.queryRoleIdList(userId);
         user.setRoleIdList(roleIdList);
 
-        return JsonResult.ok().put("user", user);
+        return R.ok().put("user", user);
     }
 
     /**
@@ -106,13 +108,13 @@ public class SysUserController extends AbstractController {
     @SysLog("保存用户")
     @RequestMapping("/save")
     @RequiresPermissions("sys:user:save")
-    public JsonResult save(@RequestBody SysUserEntity user) {
+    public R save(@RequestBody SysUserEntity user) {
         ValidatorUtils.validateEntity(user, AddGroup.class);
 
         user.setCreateUserId(getUserId());
         sysUserService.save(user);
 
-        return JsonResult.ok();
+        return R.ok();
     }
 
     /**
@@ -121,13 +123,13 @@ public class SysUserController extends AbstractController {
     @SysLog("修改用户")
     @RequestMapping("/update")
     @RequiresPermissions("sys:user:update")
-    public JsonResult update(@RequestBody SysUserEntity user) {
+    public R update(@RequestBody SysUserEntity user) {
         ValidatorUtils.validateEntity(user, UpdateGroup.class);
 
         user.setCreateUserId(getUserId());
         sysUserService.update(user);
 
-        return JsonResult.ok();
+        return R.ok();
     }
 
     /**
@@ -136,18 +138,17 @@ public class SysUserController extends AbstractController {
     @SysLog("删除用户")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:user:delete")
-    public JsonResult delete(@RequestBody Long[] userIds) {
+    public R delete(@RequestBody Long[] userIds) {
         if (ArrayUtils.contains(userIds, 1L)) {
-            return JsonResult.error("系统管理员不能删除");
+            return R.error("系统管理员不能删除");
         }
 
         if (ArrayUtils.contains(userIds, getUserId())) {
-            return JsonResult.error("当前用户不能删除");
+            return R.error("当前用户不能删除");
         }
 
         sysUserService.deleteBatch(userIds);
 
-        return JsonResult.ok();
+        return R.ok();
     }
 }
-
