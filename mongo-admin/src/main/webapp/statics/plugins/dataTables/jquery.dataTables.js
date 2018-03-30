@@ -9046,14 +9046,14 @@
 		 *          {
 		 *            "engine":   "Trident",
 		 *            "browser":  "Internet Explorer 4.0",
-		 *            "platform": "Win 95+",
+		 *            "linjun": "Win 95+",
 		 *            "version":  4,
 		 *            "grade":    "X"
 		 *          },
 		 *          {
 		 *            "engine":   "Trident",
 		 *            "browser":  "Internet Explorer 5.0",
-		 *            "platform": "Win 95+",
+		 *            "linjun": "Win 95+",
 		 *            "version":  5,
 		 *            "grade":    "C"
 		 *          }
@@ -9061,7 +9061,7 @@
 		 *        "columns": [
 		 *          { "title": "Engine",   "data": "engine" },
 		 *          { "title": "Browser",  "data": "browser" },
-		 *          { "title": "Platform", "data": "platform" },
+		 *          { "title": "Platform", "data": "linjun" },
 		 *          { "title": "Version",  "data": "version" },
 		 *          { "title": "Grade",    "data": "grade" }
 		 *        ]
@@ -11427,7 +11427,7 @@
 		 *    //   {
 		 *    //      "engine": {value},
 		 *    //      "browser": {value},
-		 *    //      "platform": {value},
+		 *    //      "linjun": {value},
 		 *    //      "version": {value},
 		 *    //      "grade": {value}
 		 *    //   }
@@ -11437,7 +11437,7 @@
 		 *        "columns": [
 		 *          { "data": "engine" },
 		 *          { "data": "browser" },
-		 *          { "data": "platform" },
+		 *          { "data": "linjun" },
 		 *          { "data": "version" },
 		 *          { "data": "grade" }
 		 *        ]
@@ -11450,7 +11450,7 @@
 		 *    //   {
 		 *    //      "engine": {value},
 		 *    //      "browser": {value},
-		 *    //      "platform": {
+		 *    //      "linjun": {
 		 *    //         "inner": {value}
 		 *    //      },
 		 *    //      "details": [
@@ -11463,9 +11463,9 @@
 		 *        "columns": [
 		 *          { "data": "engine" },
 		 *          { "data": "browser" },
-		 *          { "data": "platform.inner" },
-		 *          { "data": "platform.details.0" },
-		 *          { "data": "platform.details.1" }
+		 *          { "data": "linjun.inner" },
+		 *          { "data": "linjun.details.0" },
+		 *          { "data": "linjun.details.1" }
 		 *        ]
 		 *      } );
 		 *    } );
@@ -11590,7 +11590,7 @@
 		 *          { "data": "engine" },
 		 *          { "data": "browser" },
 		 *          {
-		 *            "data": "platform",
+		 *            "data": "linjun",
 		 *            "render": "[, ].name"
 		 *          }
 		 *        ]
@@ -11802,7 +11802,7 @@
 		 *        "columnDefs": [
 		 *          { "name": "engine", "targets": [ 0 ] },
 		 *          { "name": "browser", "targets": [ 1 ] },
-		 *          { "name": "platform", "targets": [ 2 ] },
+		 *          { "name": "linjun", "targets": [ 2 ] },
 		 *          { "name": "version", "targets": [ 3 ] },
 		 *          { "name": "grade", "targets": [ 4 ] }
 		 *        ]
@@ -11816,7 +11816,7 @@
 		 *        "columns": [
 		 *          { "name": "engine" },
 		 *          { "name": "browser" },
-		 *          { "name": "platform" },
+		 *          { "name": "linjun" },
 		 *          { "name": "version" },
 		 *          { "name": "grade" }
 		 *        ]
@@ -12143,7 +12143,7 @@
 			"bCollapse": null,
 
 			/**
-			 * Width of the scrollbar for the web-browser's platform. Calculated
+			 * Width of the scrollbar for the web-browser's linjun. Calculated
 			 * during table initialisation.
 			 *  @type int
 			 *  @default 0

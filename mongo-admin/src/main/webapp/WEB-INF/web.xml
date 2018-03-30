@@ -66,7 +66,7 @@
 
     <filter>
         <filter-name>xssFilter</filter-name>
-        <filter-class>com.platform.xss.XssFilter</filter-class>
+        <filter-class>com.linjun.xss.XssFilter</filter-class>
         <init-param>
             <!--凡是提交包含html内容的请求都要写在这里，若有多个以逗号隔开-->
             <param-name>excludedPages</param-name>

@@ -10,15 +10,18 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mongo-schedule</artifactId>
-    <packaging>war</packaging>
-    <name>mongo-schedule</name>
+    <packaging>jar</packaging>
     <description>定时任务模块</description>
     <properties>
         <quartz-version>2.3.0</quartz-version>
     </properties>
 
     <dependencies>
-
+        <dependency>
+            <groupId>mongoPlatform</groupId>
+            <artifactId>mongo-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
@@ -29,11 +32,8 @@
                     <groupId>c3p0</groupId>
                 </exclusion>
             </exclusions>
-        </dependency><dependency>
-        <groupId>mongoPlatform</groupId>
-        <artifactId>mongo-common</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </dependency>
+        </dependency>
+
 
     </dependencies>
 </project>

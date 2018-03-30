@@ -1,19 +1,37 @@
 package com.linjun.service;
 
-import com.linjun.entity.ScheduleJobEntity;
 import com.linjun.entity.ScheduleJobLogEntity;
 
 import java.util.List;
 import java.util.Map;
 
 /**
- * @author 林俊
- * @create 2018/3/10.
- * @desc
- **/
+ * 定时任务日志
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年12月1日 下午10:34:48
+ */
 public interface ScheduleJobLogService {
-    ScheduleJobLogEntity queryObject(Long jonId);
-    List<ScheduleJobLogEntity> queryList(Map<String,Object> mao);
-    int queryTotal(Map<String,Object> map);
+
+    /**
+     * 根据ID，查询定时任务日志
+     */
+    ScheduleJobLogEntity queryObject(Long jobId);
+
+    /**
+     * 查询定时任务日志列表
+     */
+    List<ScheduleJobLogEntity> queryList(Map<String, Object> map);
+
+    /**
+     * 查询总数
+     */
+    int queryTotal(Map<String, Object> map);
+
+    /**
+     * 保存定时任务日志
+     */
     void save(ScheduleJobLogEntity log);
+
 }

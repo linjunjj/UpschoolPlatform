@@ -16,7 +16,7 @@ public class MysqlTest {
     /**
      * 数据库url
      */
-    private static final String URL = "jdbc:mysql://localhost:3306/platform";
+    private static final String URL = "jdbc:mysql://localhost:3306/linjun";
     /**
      * 用户名
      */

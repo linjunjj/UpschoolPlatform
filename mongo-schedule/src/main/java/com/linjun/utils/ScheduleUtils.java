@@ -1,15 +1,19 @@
 package com.linjun.utils;
 
 import com.linjun.entity.ScheduleJobEntity;
+import com.linjun.utils.Constant.ScheduleStatus;
 import org.quartz.*;
 
 /**
- * @author 林俊
- * @create 2018/3/10.
- * @desc
- **/
+ * 定时任务工具类
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年11月30日 下午12:44:59
+ */
 public class ScheduleUtils {
     private final static String JOB_NAME = "TASK_";
+
     /**
      * 获取触发器key
      */
@@ -56,7 +60,7 @@ public class ScheduleUtils {
             scheduler.scheduleJob(jobDetail, trigger);
 
             //暂停任务
-            if (scheduleJob.getStatus() == Constant.ScheduleStatus.PAUSE.getValue()) {
+            if (scheduleJob.getStatus() == ScheduleStatus.PAUSE.getValue()) {
                 pauseJob(scheduler, scheduleJob.getJobId());
             }
         } catch (SchedulerException e) {
@@ -86,7 +90,7 @@ public class ScheduleUtils {
             scheduler.rescheduleJob(triggerKey, trigger);
 
             //暂停任务
-            if (scheduleJob.getStatus() == Constant.ScheduleStatus.PAUSE.getValue()) {
+            if (scheduleJob.getStatus() == ScheduleStatus.PAUSE.getValue()) {
                 pauseJob(scheduler, scheduleJob.getJobId());
             }
 
@@ -142,7 +146,4 @@ public class ScheduleUtils {
             throw new RRException("删除定时任务失败", e);
         }
     }
-
-
-
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 
-@RestControllerAdvice(value = {"com.platform"})
+@RestControllerAdvice(value = {"com.linjun"})
 public class RRExceptionHandler {
     private Logger logger = LoggerFactory.getLogger(getClass());
 

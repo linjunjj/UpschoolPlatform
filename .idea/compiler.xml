@@ -10,6 +10,7 @@
         <module name="mongo-common" />
         <module name="mongo-framework" />
         <module name="mongo-fromwork" />
+        <module name="mongo-schedule" />
         <module name="mongo-shiro" />
         <module name="mongoshiro" />
       </profile>

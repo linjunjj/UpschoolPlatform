@@ -6,23 +6,25 @@ import org.springframework.util.ReflectionUtils;
 import java.lang.reflect.Method;
 
 /**
- * @author 林俊
- * @create 2018/3/10.
- * @desc
- **/
-public class ScheduleRunnable implements  Runnable {
-    private Object torget;
+ * 执行定时任务
+ *
+ * @author lipengjun
+ * @email 939961241@qq.com
+ * @date 2016年11月30日 下午12:49:33
+ */
+public class ScheduleRunnable implements Runnable {
+    private Object target;
     private Method method;
-    private  String params;
+    private String params;
 
-    public ScheduleRunnable(Object torget, String methodname, String params) throws NoSuchMethodException {
-        this.torget = torget;
-
+    public ScheduleRunnable(String beanName, String methodName, String params) throws NoSuchMethodException, SecurityException {
+        this.target = SpringContextUtils.getBean(beanName);
         this.params = params;
-        if (StringUtils.isNotBlank(params)){
-            this.method=torget.getClass().getDeclaredMethod(methodname, String.class);
-        }else {
-            this.method=torget.getClass().getDeclaredMethod(methodname);
+
+        if (StringUtils.isNotBlank(params)) {
+            this.method = target.getClass().getDeclaredMethod(methodName, String.class);
+        } else {
+            this.method = target.getClass().getDeclaredMethod(methodName);
         }
     }
 
@@ -31,14 +33,13 @@ public class ScheduleRunnable implements  Runnable {
         try {
             ReflectionUtils.makeAccessible(method);
             if (StringUtils.isNotBlank(params)) {
-                method.invoke(torget, params);
+                method.invoke(target, params);
             } else {
-                method.invoke(torget);
+                method.invoke(target);
             }
         } catch (Exception e) {
             throw new RRException("执行定时任务失败", e);
         }
     }
+
 }
-
-

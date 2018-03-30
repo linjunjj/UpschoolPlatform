@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/mongo-admin/mongo-admin.iml" filepath="$PROJECT_DIR$/mongo-admin/mongo-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo-common/mongo-common.iml" filepath="$PROJECT_DIR$/mongo-common/mongo-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo-framework/mongo-framework.iml" filepath="$PROJECT_DIR$/mongo-framework/mongo-framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo-schedule/mongo-schedule.iml" filepath="$PROJECT_DIR$/mongo-schedule/mongo-schedule.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo-shiro/mongo-shiro.iml" filepath="$PROJECT_DIR$/mongo-shiro/mongo-shiro.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongoPlatform.iml" filepath="$PROJECT_DIR$/mongoPlatform.iml" />
     </modules>
