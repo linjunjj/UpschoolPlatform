@@ -4,14 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 
-/**
- * 通用字典表实体
- * 表名 sys_macro
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2017-08-22 11:48:16
- */
+
 public class SysMacroEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 

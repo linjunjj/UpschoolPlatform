@@ -3,14 +3,7 @@ package com.linjun.entity;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * 名称：Tree <br>
- * 描述：<br>
- *
- * @author 李鹏军
- * @version 1.0
- * @since 1.0.0
- */
+
 public class Tree<T> implements Serializable {
     private static final long serialVersionUID = 1L;
     /**********iview tree属性**************/

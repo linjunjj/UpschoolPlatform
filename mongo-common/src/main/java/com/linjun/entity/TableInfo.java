@@ -1,12 +1,6 @@
 package com.linjun.entity;
 
-/**
- * 动态表信息
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2017年11月16日 下午10:43:36
- */
+
 public class TableInfo {
     public static final String TAB_FIELDS = "fields";
     public static final String TAB_PKNAME = "pkName";

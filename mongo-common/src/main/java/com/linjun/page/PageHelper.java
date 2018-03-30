@@ -15,13 +15,7 @@ import java.sql.*;
 import java.util.List;
 import java.util.Properties;
 
-/**
- * Mybatis - 通用分页拦截器
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2017年11月16日 下午10:43:36
- */
+
 @Intercepts({@Signature(type = StatementHandler.class, method = "prepare", args = {Connection.class, Integer.class}),
         @Signature(type = ResultSetHandler.class, method = "handleResultSets", args = {Statement.class})})
 public class PageHelper implements Interceptor {

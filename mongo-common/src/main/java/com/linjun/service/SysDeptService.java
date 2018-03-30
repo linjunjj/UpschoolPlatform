@@ -7,13 +7,6 @@ import com.linjun.page.Page;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 部门管理
- *
- * @author liepngjun
- * @email 939961241@qq.com
- * @date 2017-09-17 23:58:47
- */
 public interface SysDeptService {
 
     SysDeptEntity queryObject(Long deptId);

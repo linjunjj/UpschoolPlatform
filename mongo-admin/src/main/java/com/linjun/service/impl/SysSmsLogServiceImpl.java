@@ -13,12 +13,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Service实现类
- *
- * @author lipengjun
- * @date 2017-12-16 23:38:05
- */
 @Service("smsLogService")
 public class SysSmsLogServiceImpl implements SysSmsLogService {
     @Autowired

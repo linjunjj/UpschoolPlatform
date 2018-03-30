@@ -12,13 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 通用字典表Controller
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2017-08-22 11:48:16
- */
+
 @RestController
 @RequestMapping("sys/macro")
 public class SysMacroController {

@@ -8,11 +8,7 @@ import org.springframework.beans.factory.InitializingBean;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * 作者: @author Harmon <br>
- * 时间: 2017-08-16 10:14<br>
- * 描述: CacheUtil <br>
- */
+
 public class CacheUtil implements InitializingBean {
 
 

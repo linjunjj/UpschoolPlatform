@@ -3,13 +3,7 @@ package com.linjun.entity;
 
 import org.hibernate.validator.constraints.NotBlank;
 
-/**
- * 系统配置信息
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2016年12月4日 下午6:43:36
- */
+
 public class SysConfigEntity {
     private Long id;
     @NotBlank(message = "参数名不能为空")

@@ -9,11 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2017-11-04 11:19:31
- */
 public class RegionCacheUtil implements InitializingBean {
 
     public static List<SysRegionEntity> sysRegionEntityList;

@@ -3,14 +3,7 @@ package com.linjun.utils;
 import java.io.UnsupportedEncodingException;
 import java.util.ResourceBundle;
 
-/**
- * 名称：ResourceUtil <br>
- * 描述：参数工具类<br>
- *
- * @author 李鹏军
- * @version 1.0
- * @since 1.0.0
- */
+
 public class ResourceUtil {
     private static ResourceUtil RESOURCE_UTIL = null;
 

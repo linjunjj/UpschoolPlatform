@@ -1,12 +1,6 @@
 package com.linjun.entity;
 
-/**
- * 审批范围dto
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2017年11月16日 下午10:43:36
- */
+
 
 public class UserWindowDto {
     /**

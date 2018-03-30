@@ -13,13 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * 腾讯云存储
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2017-03-26 20:51
- */
+
 public class QcloudCloudStorageService extends CloudStorageService {
     private COSClient client;
 

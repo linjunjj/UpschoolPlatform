@@ -5,13 +5,7 @@ import com.linjun.xss.SQLFilter;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * 查询参数
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2017-03-14 23:15
- */
+
 public class Query extends LinkedHashMap<String, Object> {
     private static final long serialVersionUID = 1L;
     //当前页码

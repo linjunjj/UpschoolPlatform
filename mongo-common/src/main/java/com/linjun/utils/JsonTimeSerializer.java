@@ -10,13 +10,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-/**
- * @ClassName JsonTimeSerializer
- * @Description Long时间格式化化为标准时间
- * @author zhuliyun
- * @Date 2016年10月10日 下午5:26:24
- * @version 1.0.0
- */
 public class JsonTimeSerializer extends JsonSerializer<Long> {
 	   private SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	   @Override  

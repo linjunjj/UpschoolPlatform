@@ -14,13 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
-/**
- * 系统配置信息
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2016年12月4日 下午6:55:53
- */
+
 @RestController
 @RequestMapping("/sys/config")
 public class SysConfigController extends AbstractController {

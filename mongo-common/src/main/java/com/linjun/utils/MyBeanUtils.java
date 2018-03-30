@@ -14,14 +14,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.*;
 
-/**
- * bean 对象工具类
- * 描述：<br>
- *
- * @author 李鹏军
- * @version 1.0
- * @since 1.0.0
- */
+
 public class MyBeanUtils extends PropertyUtilsBean {
 
     /**

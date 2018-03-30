@@ -5,12 +5,7 @@ import com.linjun.entity.SysSmsLogEntity;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Service接口
- *
- * @author lipengjun
- * @date 2017-12-16 23:38:05
- */
+
 public interface SysSmsLogService {
 
     /**

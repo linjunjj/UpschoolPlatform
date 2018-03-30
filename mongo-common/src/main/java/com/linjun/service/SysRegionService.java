@@ -6,13 +6,6 @@ import com.linjun.entity.SysRegionEntity;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Service接口
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2017-11-04 11:19:31
- */
 public interface SysRegionService {
 
     /**
