@@ -3,41 +3,32 @@
 <head>
     <title>欢迎页</title>
     #parse("sys/header.html")
+    <script src="https://gw.alipayobjects.com/os/antv/assets/g2/3.0.5-beta.5/g2.min.js"></script>
+    <style>::-webkit-scrollbar{display:none;}html,body{overflow:hidden;height:100%;}</style>
 </head>
 <body>
-<div class="wrapper wrapper-content  animated fadeInRight">
-    <div class="ibox ">
-        <div class="ibox-title">
-            <h1>项目介绍</h1>
-        </div>
-        <div class="ibox-content">
-            <div class="signin-info">
-                <ul class="m-b">
-                    <li><i class="fa fa-arrow-circle-o-right m-jsonResult-xs"></i> 一个轻量级的Java快速开发平台，能快速开发项目</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-jsonResult-xs"></i> 使用目前主流的JavaEE开发框架Spring+SpringMVC+Mybatis+Shiro，简单易学，学习成本低</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-jsonResult-xs"></i> 友好的代码结构及注释，便于阅读及二次开发</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-jsonResult-xs"></i> 完善的XSS防范及脚本过滤，彻底杜绝XSS攻击</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-jsonResult-xs"></i> 日志分级输出，便于分析日志</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-jsonResult-xs"></i> 前端使用Vue+iView，上手容易</li>
-                    <li><i class="fa fa-arrow-circle-o-right m-jsonResult-xs"></i> <a href="https://gitee.com/fuyang_lipengjun/platform" target="_blank">Git：https://gitee.com/fuyang_lipengjun/platform</a></li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-    <div class="ibox ">
-        <div class="ibox-title">
-            <h1>官方QQ群</h1>
-        </div>
-        <div class="ibox-content">
-            <div class="signin-info">
-                <ul>
-                    <li><i class="fa fa-qq m-jsonResult-xs"></i> 66502035(大平台系统开发)</li>
-                </ul>
-            </div>
-
-        </div>
-    </div>
-</div>
+<div id="c1"></div>
+<script>
+    const data = [
+        { genre: 'Sports', sold: 275 },
+        { genre: 'Strategy', sold: 115 },
+        { genre: 'Action', sold: 120 },
+        { genre: 'Shooter', sold: 350 },
+        { genre: 'Other', sold: 150 }
+    ]; // G2 对数据源格式的要求，仅仅是 JSON 数组，数组的每个元素是一个标准 JSON 对象。
+    // Step 1: 创建 Chart 对象
+    const chart = new G2.Chart({
+        container: 'c1', // 指定图表容器 ID
+        width : 600, // 指定图表宽度
+        height : 300 // 指定图表高度
+    });
+    // Step 2: 载入数据源
+    chart.source(data);
+    // Step 3：创建图形语法，绘制柱状图，由 genre 和 sold 两个属性决定图形位置，genre 映射至 x 轴，sold 映射至 y 轴
+    chart.interval().position('genre*sold').color('genre')
+    // Step 4: 渲染图表
+    chart.render();
+</script>
 </body>
+
 </html>

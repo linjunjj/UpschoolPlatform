@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>综合管理平台</title>
+    <title>管理平台</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="shortcut icon" href="statics/img/favicon.ico" type="image/x-icon">
@@ -32,9 +32,9 @@
                 <li class="nav-header">
                     <div class="dropdown profile-element"
                          style="text-align: center;font-size: 18px;font-weight: 600;color: white;">
-                        综合管理平台
+                        管理平台
                     </div>
-                    <div class="logo-element">大平台
+                    <div class="logo-element">
                     </div>
                 </li>
                 <menu-item :item="item" v-for="item in menuList"></menu-item>
@@ -57,9 +57,7 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
 
-                    <li class="dropdown">
-                        <a href="javascript:;" @click="love"><i class="fa fa-rmb"></i> &nbsp;捐赠</a>
-                    </li>
+
                     <li class="dropdown">
                         <a href="javascript:;" @click="toggleFullScreen"><i class="fa fa-arrows-alt"></i> &nbsp;全屏</a>
                     </li>
@@ -322,7 +320,6 @@
     });
     //注册菜单组件
     Vue.component('menuItem', menuItem);
-
     var vm = new Vue({
         el: '#mainApp',
         data: {
@@ -333,13 +330,13 @@
         },
         methods: {
             getMenuList: function (event) {
-                $.getJSON("sys/menu/user?_" + $.now(), function (jsonResult) {
-                    vm.menuList = jsonResult.menuList;
+                $.getJSON("sys/menu/user?_" + $.now(), function (r) {
+                    vm.menuList = r.menuList;
                 });
             },
             getUser: function () {
-                $.getJSON("sys/user/info?_" + $.now(), function (jsonResult) {
-                    vm.user = jsonResult.user;
+                $.getJSON("sys/user/info?_" + $.now(), function (r) {
+                    vm.user = r.user;
                 });
             },
             updatePassword: function () {
@@ -398,13 +395,7 @@
                 });
             },
             love: function () {
-                openWindow({
-                    type: 2,
-                    title: '支持开源',
-                    area: ['806px', '467px'],
-                    closeBtn: 2,
-                    content: ['statics/img/love.jpg', 'no']
-                });
+
             }
         },
         created: function () {
