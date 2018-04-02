@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiSuggestMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.SuggestEntity" id="suggestMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="user_name" column="user_name"/>
+        <result property="suggest_title" column="suggest_title"/>
+        <result property="context" column="context"/>
+        <result property="create_time" column="create_time"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="suggestMap">
+        select * from suggest where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="suggestMap">
+        select * from suggest
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from suggest
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.SuggestEntity" useGeneratedKeys="true" keyProperty="msgId">
+        insert into suggest(
+        `userId`,
+        `user_name`,
+        `suggest_title`,
+        `context`,
+        `create_time` )
+        values(
+        #{user_id},
+        #{user_name},
+        #{suggest_title},
+        #{context},
+        #{create_time}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.SuggestEntity">
+        update suggest
+        <set>
+            <if test="userId != null">`userId` = #{userId}, </if>
+            <if test="user_name != null">`user_name` = #{user_name}, </if>
+            <if test="suggest_title != null">`suggest_title` = #{suggest_title}, </if>
+            <if test="context != null">`context` = #{context}, </if>
+            <if test="create_time != null">`create_time` = #{create_time}</if>
+        </set>
+        where msg_id = #{msgId}
+    </update>
+
+    <delete id="delete">
+        delete from suggest where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from suggest where id in
+        <foreach item="msgId" collection="array" open="(" separator="," close=")">
+            #{Id}
+        </foreach>
+    </delete>
+
+</mapper>

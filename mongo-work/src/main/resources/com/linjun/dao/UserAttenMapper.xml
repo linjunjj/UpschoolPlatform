@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiUserAttenMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.UserAttenEntity" id="userAttenMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="isUserId" column="isUserId"/>
+        <result property="createTime" column="createTime"/>
+        <result property="isMutual" column="isMutual"/>
+        <result property="isNew" column="isNew"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="userAttenMap">
+        select * from userAtten where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="userAttenMap">
+        select
+        <if test="fields != null and fields != ''">
+            ${fields}
+        </if>
+        <if test="fields == null or fields == ''">
+            *
+        </if>
+        from userAtten
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from userAtten
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.UserAttenEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into userAtten
+        (
+        `userId`,
+        `isUserId`,
+        `createTime`,
+        `isMutual`,
+        `isNew`
+        )
+        values
+        (
+        #{userId},
+        #{isUserId},
+        #{createTime},
+        #{isMutual},
+        #{isNew}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.UserAttenEntity">
+        update userAtten
+        <set>
+            <if test="userId != null">`userId` = #{userId},</if>
+            <if test="isUserId != null">`isUserId` = #{isUserId},</if>
+            <if test="createTime != null">`createTime` = #{createTime},</if>
+            <if test="isMutual != null">`isMutual` = #{isMutual},</if>
+            <if test="isNew != null">`isNew` = #{isNew}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from userAtten where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from userAtten where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

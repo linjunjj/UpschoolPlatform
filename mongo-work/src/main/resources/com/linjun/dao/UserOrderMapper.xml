@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiUserOrderMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.UserOrderEntity" id="orderMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="price" column="price"/>
+        <result property="create_time" column="create_time"/>
+        <result property="order_su" column="order_su"/>
+        <result property="pay_time" column="pay_time"/>
+        <result property="cancel_time" column="cancel_time"/>
+        <result property="send_time" column="send_time"/>
+        <result property="comlete_time" column="comlete_time"/>
+        <result property="logistics" column="logistics"/>
+        <result property="logisticscode" column="logistics_code"/>
+        <result property="is_pay" column="is_pay"/>
+        <result property="type" column="type"/>
+        <result property="descripton" column="descripton"/>
+        <result property="country" column="country"/>
+        <result property="province" column="province"/>
+        <result property="city" column="city"/>
+        <result property="shipping_id" column="shipping_id"/>
+        <result property="district" column="district"/>
+        <result property="address" column="address"/>
+        <result property="shipping_no" column="shipping_no"/>
+        <result property="consignee" column="consignee"/>
+        <result property="shipping_status" column="shipping_status"/>
+        <result property="pay_status" column="pay_status"/>
+        <result property="shipping_code" column="shipping_code"/>
+
+    </resultMap>
+
+    <select id="queryObject" resultMap="orderMap">
+        select a.*,b.code as  shipping_code
+        from user_order a
+        left join shipping b on a.shipping_id = b.id
+        where a.id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="orderMap">
+        select * from user_order
+        <where>
+            <if test="user_id != null">
+                and userId = #{userId}
+            </if>
+        </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from user_order
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.UserOrderEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into user_order
+        (
+        `userId`,
+        `price`,
+        `create_time`,
+        `order_su`,
+        `pay_time`,
+        `cancel_time`,
+        `send_time`,
+        `comlete_time`,
+        `logistics`,
+        `logistics_code`,
+        `is_pay`,
+        `descripton`,
+        `country`,
+        `province`,
+        `city`,
+        `shipping_id`,
+        `district`,
+        `address`,
+        `shipping_no`,
+        `consignee`,
+        `shipping_status`,
+        `pay_status`,
+        `shipping_code`
+        )
+        values
+        (
+        #{userId},
+        #{price},
+        #{create_time},
+        #{order_su},
+        #{pay_time},
+        #{cancel_time},
+        #{send_time},
+        #{comlete_time},
+        #{logistics},
+        #{logistics_code},
+        #{is_pay},
+        #{descripton},
+        #{country},
+        #{province},
+        #{city},
+        #{shipping_id},
+        #{district},
+        #{address},
+        #{shipping_no},
+        #{consignee},
+        #{pay_status},
+        #{shipping_code}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.UserOrderEntity">
+        update user_order
+        <set>
+            <if test="userId != null">`userId` = #{userId},</if>
+            <if test="price != null">`price` = #{price},</if>
+            <if test="create_time != null">`create_time` = #{create_time},</if>
+            <if test="order_su != null">`order_su` = #{order_su},</if>
+            <if test="cancel_time != null">`cancel_time` = #{cancel_time},</if>
+            <if test="send_time != null">`send_time` = #{send_time},</if>
+            <if test="comlete_time != null">`comlete_time` = #{comlete_time},</if>
+            <if test="logistics != null">`logistics` = #{logistics},</if>
+            <if test="logistics_code != null">`logistics_code` = #{logistics_code},</if>
+            <if test="is_pay != null">`is_pay` = #{is_pay},</if>
+            <if test="descripton != null">`descripton` = #{descripton},</if>
+            <if test="country != null">`country` = #{country},</if>
+            <if test="province != null">`province` = #{province},</if>
+            <if test="city != null">`city` = #{city},</if>
+            <if test="shipping_id != null">`shipping_id` = #{shipping_id},</if>
+            <if test="district != null">`district` = #{district},</if>
+            <if test="address != null">`address` = #{address},</if>
+            <if test="shipping_no != null">`shipping_no` = #{shipping_no},</if>
+            <if test="consignee != null">`consignee` = #{consignee},</if>
+            <if test="shipping_status != null">`shipping_status` = #{shipping_status},</if>
+            <if test="pay_status != null">`pay_status` = #{pay_status},</if>
+            <if test="shipping_code != null">`shipping_code` = #{shipping_code}</if>
+
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from user_order where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from user_order where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

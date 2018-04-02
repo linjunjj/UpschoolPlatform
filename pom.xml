@@ -14,8 +14,7 @@
         <module>mongo-common</module>
         <module>mongo-schedule</module>
         <module>mongo-framework</module>
-        <module>mongo-business</module>
-
+        <module>mongo-work</module>
     </modules>
     <packaging>pom</packaging>
     <description>platform</description>

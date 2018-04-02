@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiUserIncomeMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.UserIncomeEntity" id="userIncomeMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="incomesum" column="incomesum"/>
+        <result property="incoem_detail" column="incoem_detail"/>
+        <result property="status" column="status"/>
+        <result property="descripton" column="descripton"/>
+        <result property="add_time" column="add_time"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="userIncomeMap">
+        select * from user_income where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="userIncomeMap">
+        select * from user_income
+        <where>
+            <if test="user_id != null">
+                and userId = #{userId}
+            </if>
+        </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from user_income
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.UserIncomeEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into user_income(
+        `userId`,
+        `incomesum`,
+        `incoem_detail`,
+        `status`,
+        `descripton`,
+        `add_time`
+        values(
+        #{userId},
+        #{incomesum},
+        #{incoem_detail},
+        #{status},
+        #{descripton},
+        #{add_time})
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.UserIncomeEntity">
+        update user_income
+        <set>
+            <if test="userId != null">`userId` = #{userId}, </if>
+            <if test="userName != null">`incomesum` = #{incomesum}, </if>
+            <if test="telNumber != null">`incoem_detail` = #{incoem_detail}, </if>
+            <if test="postalCode != null">`status` = #{status}, </if>
+            <if test="nationalCode != null">`descripton` = #{descripton}, </if>
+            <if test="provinceName != null">`add_time` = #{add_time} </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from user_income where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from user_income where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

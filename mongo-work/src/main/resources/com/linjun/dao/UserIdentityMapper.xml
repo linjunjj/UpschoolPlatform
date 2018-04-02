@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiUserIdentityMapper">
+
+    <select id="queryObject" resultType="com.linjun.entity.UserIdentityEntity">
+        select * from user_identity where id = #{value}
+    </select>
+
+    <select id="queryList" resultType="com.linjun.entity.UserIdentityEntity">
+        select * from user_identity
+        <where>
+            <where>
+                <if test="user_id != null">
+                    and userId = #{userId}
+                </if>
+            </where>
+        </where>
+        order by id desc
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from user_identity
+        <where>
+            <where>
+                <if test="user_id != null">
+                    and userId = #{userId}
+                </if>
+            </where>
+        </where>
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.UserIdentityEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into user_identity
+        (
+        `userId`,
+        `identity_num`,
+        `identity_font`,
+        `identity_back`,
+        `status`,
+        `create_time`
+        )
+        values
+        (
+        #{userId},
+        #{identity_num},
+        #{identity_font},
+        #{identity_back},
+        #{status},
+        #{create_time}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.UserIdentityEntity">
+        update user_identity
+        <set>
+            <if test="userId != null">`userId` = #{userId}, </if>
+            <if test="identity_num != null">`identity_num` = #{identity_num}, </if>
+            <if test="identity_font != null">`identity_font` = #{identity_font},</if>
+            <if test="identity_back != null">`identity_back` = #{identity_back},</if>
+            <if test="status != null">`status` = #{status},</if>
+            <if test="create_time != null">`create_time` = #{create_time} </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from user_identity where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from user_identity where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

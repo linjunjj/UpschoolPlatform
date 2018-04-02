@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="mongo-admin" />
+        <module name="mongo-api" />
         <module name="mongo-common" />
         <module name="mongo-framework" />
         <module name="mongo-fromwork" />
         <module name="mongo-schedule" />
         <module name="mongo-shiro" />
+        <module name="mongo-work" />
         <module name="mongoshiro" />
       </profile>
     </annotationProcessing>
@@ -26,6 +28,7 @@
       <module name="mongo-fromwork" target="1.8" />
       <module name="mongo-schedule" target="1.8" />
       <module name="mongo-shiro" target="1.8" />
+      <module name="mongo-work" target="1.8" />
       <module name="mongoPlatform" target="1.8" />
       <module name="mongoshiro" target="1.8" />
     </bytecodeTargetLevel>

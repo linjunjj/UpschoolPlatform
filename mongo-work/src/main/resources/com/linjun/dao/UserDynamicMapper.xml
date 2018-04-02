@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiUserDynamicMapper">
+
+    <select id="queryObject" resultType="com.linjun.entity.UserDynamicEntity">
+        select * from user_dynamic where id = #{value}
+    </select>
+
+    <select id="queryList" resultType="com.linjun.entity.UserDynamicEntity">
+        select * from user_dynamic
+        <where>
+            <if test="user_id != null">
+                and userId = #{userId}
+            </if>
+        </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from user_dynamic
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.UserDynamicEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into user_dynamic
+        (
+        `userId`,
+        `address`,
+        `context`,
+        `view`,
+        `province`,
+        `city`,
+        `likesum`,
+        `is_anonymous`,
+        `is_transpont`,
+        `is_start`,
+         `create_time`
+        )
+        values
+        (
+        #{userId},
+        #{address},
+        #{context},
+        #{view},
+        #{province},
+        #{city},
+        #{likesum},
+        #{is_anonymous},
+        #{is_transpont},
+        #{is_start},
+        #{create_time}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.UserDynamicEntity">
+        update user_dynamic
+        <set>
+            <if test="userId != null">`userId` = #{userId}, </if>
+            <if test="address != null">`address` = #{address}, </if>
+            <if test="context != null">`context` = #{context}, </if>
+            <if test="view != null">`view` = #{view}, </if>
+            <if test="province != null">`province` = #{province},</if>
+            <if test="city != null">`city` = #{city},</if>
+            <if test="country != null">`country` = #{country},</if>
+            <if test="is_anonymous != null">`is_anonymous` = #{is_anonymous},</if>
+            <if test="is_transpont != null">`is_transpont` = #{is_transpont},</if>
+            <if test="is_start != null">`is_start` = #{is_start}</if>
+            <if test="create_time != null">`create_time` = #{create_time}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from user_dynamic where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from user_dynamic where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

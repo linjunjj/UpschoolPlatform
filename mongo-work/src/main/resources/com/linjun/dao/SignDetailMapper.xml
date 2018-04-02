@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiSignDetailMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.SignDetailEntity" id="signDetailMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="signparise" column="signparise"/>
+        <result property="createTime" column="createTime"/>
+
+    </resultMap>
+
+    <select id="queryObject" resultMap="signDetailMap">
+        select * from signDetail where id = #{value}
+    </select>
+    <select id="queryList" resultMap="signDetailMap">
+        select * from signDetail
+        <if test="userId != null and userId != null">
+            and userId = #{userId}
+        </if>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from signDetail
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.SignDetailEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into signDetail
+        (
+        `userId`,
+        `signparise`,
+        `createTime`
+        )
+        values
+        (
+        #{userId},
+        #{signparise},
+        #{createTime}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.SignDetailEntity">
+        update signDetail
+        <set>
+            <if test="userId != null">`userId` = #{userId},</if>
+            <if test="signparise != null">`signparise` = #{signparise},</if>
+            <if test="createTime != null">`createTime` = #{createTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from signDetail where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from signDetail where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>

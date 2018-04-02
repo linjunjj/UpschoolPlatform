@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.ApiSkillEvaluateMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.SkillEvaluateEntity" id="skillEvaluateMap">
+        <result property="id" column="id"/>
+        <result property="userId" column="userId"/>
+        <result property="skill_id" column="skill_id"/>
+        <result property="messager_id" column="messager_id"/>
+        <result property="ismessager_id" column="ismessager_id"/>
+        <result property="context" column="context"/>
+        <result property="create_time" column="create_time"/>
+        <result property="is_new" column="is_new"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="skillEvaluateMap">
+        select * from skill_evaluate where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="skillEvaluateMap">
+        select
+        <if test="fields != null and fields != ''">
+            ${fields}
+        </if>
+        <if test="fields == null or fields == ''">
+            *
+        </if>
+        from skill_evaluate
+        <where>
+            <if test="goods_id != null">
+                and skill_id = #{skill_id}
+            </if>
+        </where>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from skill_evaluate
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.SkillEvaluateEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into skill_evaluate
+        (
+        `userId`,
+        `skill_comment`,
+        `messager_id`,
+        `ismessager_id`,
+        `context`,
+        `create_time`,
+        `is_new`
+        )
+        values
+        (
+        #{userId},
+        #{skill_comment},
+        #{messager_id},
+        #{ismessager_id},
+        #{context},
+        #{create_time},
+        #{is_new}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.SkillEvaluateEntity">
+        update skill_evaluate
+        <set>
+            <if test="userId != null">`userId` = #{userId},</if>
+            <if test="skill_id != null">`skill_id` = #{skill_id},</if>
+            <if test="messager_id != null">`messager_id` = #{messager_id},</if>
+            <if test="ismessager_id != null">`ismessager_id` = #{ismessager_id},</if>
+            <if test="context != null">`context` = #{context},</if>
+            <if test="create_time != null">`create_time` = #{create_time},</if>
+            <if test="is_new != null">`is_new` = #{is_new}</if>
+
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from skill_evaluate where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from skill_evaluate where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
