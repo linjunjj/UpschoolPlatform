@@ -7,5 +7,5 @@ import com.linjun.entity.UserIdentityEntity;
  * @create 2018/3/15.
  * @desc
  **/
-public interface ApiUserIdentityMapper extends  BaseDao<UserIdentityEntity>{
+public interface UserIdentityMapper extends  BaseDao<UserIdentityEntity>{
 }

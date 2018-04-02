@@ -7,5 +7,5 @@ import com.linjun.entity.TaskImageEntity;
  * @create 2018/3/19.
  * @desc
  **/
-public interface ApiTaskImageMapper extends  BaseDao<TaskImageEntity> {
+public interface TaskImageMapper extends  BaseDao<TaskImageEntity> {
 }

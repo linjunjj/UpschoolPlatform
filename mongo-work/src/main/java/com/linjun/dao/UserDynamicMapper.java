@@ -7,5 +7,5 @@ import com.linjun.entity.UserDynamicEntity;
  * @create 2018/3/14.
  * @desc
  **/
-public interface ApiUserDynamicMapper extends  BaseDao<UserDynamicEntity>{
+public interface UserDynamicMapper extends  BaseDao<UserDynamicEntity>{
 }

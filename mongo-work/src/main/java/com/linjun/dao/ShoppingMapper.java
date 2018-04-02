@@ -7,5 +7,5 @@ import com.linjun.entity.ShippingEntity;
  * @create 2018/3/19.
  * @desc
  **/
-public interface ApiShoppingMapper extends  BaseDao<ShippingEntity> {
+public interface ShoppingMapper extends  BaseDao<ShippingEntity> {
 }

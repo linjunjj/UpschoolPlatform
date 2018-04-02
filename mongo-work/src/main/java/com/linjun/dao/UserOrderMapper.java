@@ -7,5 +7,5 @@ import com.linjun.entity.UserOrderEntity;
  * @create 2018/3/16.
  * @desc
  **/
-public interface ApiUserOrderMapper extends  BaseDao<UserOrderEntity>{
+public interface UserOrderMapper extends  BaseDao<UserOrderEntity>{
 }

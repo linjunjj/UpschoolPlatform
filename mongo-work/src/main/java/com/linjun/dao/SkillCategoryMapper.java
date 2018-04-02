@@ -7,5 +7,5 @@ import com.linjun.entity.SkillCategoryEntity;
  * @create 2018/3/20.
  * @desc
  **/
-public interface ApiSkillCategoryMapper extends  BaseDao<SkillCategoryEntity> {
+public interface SkillCategoryMapper extends  BaseDao<SkillCategoryEntity> {
 }

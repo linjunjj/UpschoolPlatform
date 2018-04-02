@@ -7,5 +7,5 @@ import com.linjun.entity.SkillImageEntity;
  * @create 2018/3/20.
  * @desc
  **/
-public interface ApiSkillImageMapper extends  BaseDao<SkillImageEntity> {
+public interface SkillImageMapper extends  BaseDao<SkillImageEntity> {
 }

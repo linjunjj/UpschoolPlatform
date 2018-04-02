@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.linjun.dao.ApiUserIdentityMapper">
+<mapper namespace="com.linjun.dao.UserIdentityMapper">
 
     <select id="queryObject" resultType="com.linjun.entity.UserIdentityEntity">
         select * from user_identity where id = #{value}

@@ -7,5 +7,5 @@ import com.linjun.entity.UserLevelEntity;
  * @create 2018/3/15.
  * @desc
  **/
-public interface ApiUserLevelMapper extends  BaseDao<UserLevelEntity> {
+public interface UserLevelMapper extends  BaseDao<UserLevelEntity> {
 }

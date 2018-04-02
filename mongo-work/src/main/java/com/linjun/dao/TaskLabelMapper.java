@@ -7,5 +7,5 @@ import com.linjun.entity.TaskLabelEntity;
  * @create 2018/3/19.
  * @desc
  **/
-public interface ApiTaskLabelMapper extends  BaseDao<TaskLabelEntity> {
+public interface TaskLabelMapper extends  BaseDao<TaskLabelEntity> {
 }

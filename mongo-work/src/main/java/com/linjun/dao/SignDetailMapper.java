@@ -7,5 +7,5 @@ import com.linjun.entity.SignDetailEntity;
  * @create 2018/3/18.
  * @desc
  **/
-public interface ApiSignDetailMapper extends  BaseDao<SignDetailEntity> {
+public interface SignDetailMapper extends  BaseDao<SignDetailEntity> {
 }

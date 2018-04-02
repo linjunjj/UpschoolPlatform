@@ -7,5 +7,5 @@ import com.linjun.entity.UserIncomeEntity;
  * @create 2018/3/15.
  * @desc
  **/
-public interface ApiUserIncomeMapper extends BaseDao<UserIncomeEntity> {
+public interface UserIncomeMapper extends BaseDao<UserIncomeEntity> {
 }

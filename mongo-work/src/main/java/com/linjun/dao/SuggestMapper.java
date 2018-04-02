@@ -7,5 +7,5 @@ import com.linjun.entity.SuggestEntity;
  * @create 2018/3/20.
  * @desc
  **/
-public interface ApiSuggestMapper  extends  BaseDao<SuggestEntity>{
+public interface SuggestMapper extends  BaseDao<SuggestEntity>{
 }

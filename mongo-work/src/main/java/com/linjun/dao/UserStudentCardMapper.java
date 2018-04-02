@@ -7,5 +7,5 @@ import com.linjun.entity.UserStudentCardEntity;
  * @create 2018/3/15.
  * @desc
  **/
-public interface ApiUserStudentCardMapper extends  BaseDao<UserStudentCardEntity> {
+public interface UserStudentCardMapper extends  BaseDao<UserStudentCardEntity> {
 }

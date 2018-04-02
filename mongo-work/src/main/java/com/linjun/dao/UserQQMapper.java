@@ -7,5 +7,5 @@ import com.linjun.entity.UserQQEntity;
  * @create 2018/3/14.
  * @desc
  **/
-public interface ApiUserQQMapper extends BaseDao<UserQQEntity> {
+public interface UserQQMapper extends BaseDao<UserQQEntity> {
 }

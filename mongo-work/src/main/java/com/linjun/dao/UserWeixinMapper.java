@@ -7,5 +7,5 @@ import com.linjun.entity.UserWeixinEntity;
  * @create 2018/3/14.
  * @desc
  **/
-public interface ApiUserWeixinMapper extends  BaseDao<UserWeixinEntity> {
+public interface UserWeixinMapper extends  BaseDao<UserWeixinEntity> {
 }

@@ -7,5 +7,5 @@ import com.linjun.entity.UserAttenEntity;
  * @create 2018/3/15.
  * @desc
  **/
-public interface ApiUserAttenMapper extends  BaseDao<UserAttenEntity> {
+public interface UserAttenMapper extends  BaseDao<UserAttenEntity> {
 }
