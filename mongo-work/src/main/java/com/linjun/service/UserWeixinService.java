@@ -12,7 +12,7 @@ import java.util.Map;
  * @desc
  **/
 @Service
-public interface ApiUserWeixinService {
+public interface UserWeixinService {
     UserWeixinEntity queryObject(Long id);
     List<UserWeixinEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);

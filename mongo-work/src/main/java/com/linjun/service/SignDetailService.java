@@ -12,7 +12,7 @@ import java.util.Map;
  * @desc
  **/
 @Service
-public interface ApiSignDetailService {
+public interface SignDetailService {
     SignDetailEntity queryObject(Long id);
     List<SignDetailEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);

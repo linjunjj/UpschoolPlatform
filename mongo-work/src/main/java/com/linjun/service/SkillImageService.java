@@ -1,10 +1,11 @@
 package com.linjun.service;
 
-import com.linjun.entity.UserOrderEntity;
+import com.linjun.entity.SkillImageEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+
 
 /**
  * @author 林俊
@@ -12,13 +13,12 @@ import java.util.Map;
  * @desc
  **/
 @Service
-public interface ApiUserOrderService {
-    UserOrderEntity  queryObject(Long id);
-    List<UserOrderEntity> queryList(Map<String, Object> map);
+public interface SkillImageService {
+    SkillImageEntity queryObject(Long id);
+    List<SkillImageEntity>  queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);
-    void save(UserOrderEntity userOrderEntity);
-    void update(UserOrderEntity userOrderEntity);
+    void save(SkillImageEntity skillImageEntity);
+    void update(SkillImageEntity skillImageEntity);
     void delete(Long id);
     void deleteBatch(Long[] ids);
-
 }

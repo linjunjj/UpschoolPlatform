@@ -12,7 +12,7 @@ import java.util.Map;
  * @desc
  **/
 @Service
-public interface ApiUserQQService {
+public interface UserQQService {
     UserQQEntity queryObject(Long id);
     List<UserQQEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);

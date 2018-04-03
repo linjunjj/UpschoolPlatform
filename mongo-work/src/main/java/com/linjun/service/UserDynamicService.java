@@ -12,7 +12,7 @@ import java.util.Map;
  * @desc
  **/
 @Service
-public interface ApiUserDynamicService {
+public interface UserDynamicService {
     UserDynamicEntity queryObject(Long id);
     List<UserDynamicEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);

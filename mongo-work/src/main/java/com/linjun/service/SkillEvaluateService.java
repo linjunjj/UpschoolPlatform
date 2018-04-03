@@ -12,7 +12,7 @@ import java.util.Map;
  * @desc
  **/
 @Service
-public interface ApiSkillEvaluateService {
+public interface SkillEvaluateService {
     SkillEvaluateEntity queryObject(Long id);
     List<SkillEvaluateEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);

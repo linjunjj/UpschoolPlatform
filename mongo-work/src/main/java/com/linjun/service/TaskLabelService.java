@@ -12,7 +12,7 @@ import java.util.Map;
  * @desc
  **/
 @Service
-public interface ApiTaskLabelService {
+public interface TaskLabelService {
     TaskLabelEntity queryObject(Long id);
     List<TaskLabelEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);

@@ -13,7 +13,7 @@ import java.util.Map;
  * @desc
  **/
 @Service
-public interface ApiUserService {
+public interface UserService {
     UserEntity queryObject(Long id);
     List<UserEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);

@@ -1,6 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.UserLevelEntity;
+import com.linjun.entity.UserIncomeEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,12 +12,12 @@ import java.util.Map;
  * @desc
  **/
 @Service
-public interface ApiUserLevelService {
-    UserLevelEntity queryObject(Long id);
-    List<UserLevelEntity> queryList(Map<String, Object> map);
+public interface UserIncomeService {
+    UserIncomeEntity queryObject(Long id);
+    List<UserIncomeEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);
-    void save(UserLevelEntity userLevelEntity);
-    void update(UserLevelEntity userLevelEntity);
+    void save(UserIncomeEntity userIncomeEntity);
+    void update(UserIncomeEntity userIncomeEntity);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

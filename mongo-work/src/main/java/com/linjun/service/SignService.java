@@ -1,6 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.TaskEntity;
+import com.linjun.entity.SignEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -8,16 +8,16 @@ import java.util.Map;
 
 /**
  * @author 林俊
- * @create 2018/3/26.
+ * @create 2018/3/25.
  * @desc
  **/
 @Service
-public interface ApiTaskService {
-    TaskEntity queryObject(Long id);
-    List<TaskEntity> queryList(Map<String, Object> map);
+public interface SignService {
+    SignEntity queryObject(Long id);
+    List<SignEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);
-    void save(TaskEntity taskEntity);
-    void update(TaskEntity taskEntity);
+    void save(SignEntity signEntity);
+    void update(SignEntity signEntity);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 
