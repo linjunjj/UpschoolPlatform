@@ -1,7 +1,9 @@
 package com.linjun.service.impl;
 
+import com.linjun.dao.RentMessageMapper;
 import com.linjun.entity.RentMessageEntity;
 import com.linjun.service.RentMessageService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Map;
@@ -12,39 +14,40 @@ import java.util.Map;
  * @desc
  **/
 public class RentMessageServiceImpl implements RentMessageService {
-
+   @Autowired
+   private RentMessageMapper rentMessageMapper;
     @Override
     public RentMessageEntity queryObject(Long id) {
-        return null;
+        return rentMessageMapper.queryObject(id);
     }
 
     @Override
     public List<RentMessageEntity> queryList(Map<String, Object> map) {
-        return null;
+        return rentMessageMapper.queryList(map);
     }
 
     @Override
     public int queryTotal(Map<String, Object> map) {
-        return 0;
+        return rentMessageMapper.queryTotal(map);
     }
 
     @Override
     public void save(RentMessageEntity rentMessageEntity) {
-
+   rentMessageMapper.save(rentMessageEntity);
     }
 
     @Override
     public void update(RentMessageEntity rentMessageEntity) {
-
+   rentMessageMapper.update(rentMessageEntity);
     }
 
     @Override
     public void delete(Long id) {
-
+    rentMessageMapper.delete(id);
     }
 
     @Override
     public void deleteBatch(Long[] ids) {
-
+   rentMessageMapper.deleteBatch(ids);
     }
 }
