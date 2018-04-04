@@ -2,9 +2,9 @@ package com.linjun.controller;
 
 import com.linjun.entity.SysMacroEntity;
 import com.linjun.service.SysMacroService;
+import com.linjun.utils.JsonResult;
 import com.linjun.utils.PageUtils;
 import com.linjun.utils.Query;
-import com.linjun.utils.R;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +24,7 @@ public class SysMacroController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:macro:list")
-    public R list(@RequestParam Map<String, Object> params) {
+    public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
 
@@ -33,7 +33,7 @@ public class SysMacroController {
 
         PageUtils pageUtil = new PageUtils(sysMacroList, total, query.getLimit(), query.getPage());
 
-        return R.ok().put("page", pageUtil);
+        return JsonResult.ok().put("page", pageUtil);
     }
 
     /**
@@ -41,10 +41,10 @@ public class SysMacroController {
      */
     @RequestMapping("/info/{macroId}")
     @RequiresPermissions("sys:macro:info")
-    public R info(@PathVariable("macroId") Long macroId) {
+    public JsonResult info(@PathVariable("macroId") Long macroId) {
         SysMacroEntity sysMacro = sysMacroService.queryObject(macroId);
 
-        return R.ok().put("macro", sysMacro);
+        return JsonResult.ok().put("macro", sysMacro);
     }
 
     /**
@@ -52,10 +52,10 @@ public class SysMacroController {
      */
     @RequestMapping("/save")
     @RequiresPermissions("sys:macro:save")
-    public R save(@RequestBody SysMacroEntity sysMacro) {
+    public JsonResult save(@RequestBody SysMacroEntity sysMacro) {
         sysMacroService.save(sysMacro);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -63,10 +63,10 @@ public class SysMacroController {
      */
     @RequestMapping("/update")
     @RequiresPermissions("sys:macro:update")
-    public R update(@RequestBody SysMacroEntity sysMacro) {
+    public JsonResult update(@RequestBody SysMacroEntity sysMacro) {
         sysMacroService.update(sysMacro);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -74,21 +74,21 @@ public class SysMacroController {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("sys:macro:delete")
-    public R delete(@RequestBody Long[] macroIds) {
+    public JsonResult delete(@RequestBody Long[] macroIds) {
         sysMacroService.deleteBatch(macroIds);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
      * 查看所有列表
      */
     @RequestMapping("/queryAll")
-    public R queryAll(@RequestParam Map<String, Object> params) {
+    public JsonResult queryAll(@RequestParam Map<String, Object> params) {
 
         List<SysMacroEntity> list = sysMacroService.queryList(params);
 
-        return R.ok().put("list", list);
+        return JsonResult.ok().put("list", list);
     }
 
     /**
@@ -98,10 +98,10 @@ public class SysMacroController {
      * @return
      */
     @RequestMapping("/queryMacrosByValue")
-    public R queryMacrosByValue(@RequestParam String value) {
+    public JsonResult queryMacrosByValue(@RequestParam String value) {
 
         List<SysMacroEntity> list = sysMacroService.queryMacrosByValue(value);
 
-        return R.ok().put("list", list);
+        return JsonResult.ok().put("list", list);
     }
 }

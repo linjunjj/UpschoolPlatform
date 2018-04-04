@@ -32,7 +32,7 @@ public class SysMenuController extends AbstractController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:menu:list")
-    public R list(@RequestParam Map<String, Object> params) {
+    public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
         List<SysMenuEntity> menuList = sysMenuService.queryList(query);
@@ -40,18 +40,18 @@ public class SysMenuController extends AbstractController {
 
         PageUtils pageUtil = new PageUtils(menuList, total, query.getLimit(), query.getPage());
 
-        return R.ok().put("page", pageUtil);
+        return JsonResult.ok().put("page", pageUtil);
     }
 
     /**
      * 所有菜单列表
      */
     @RequestMapping("/queryAll")
-    public R queryAll(@RequestParam Map<String, Object> params) {
+    public JsonResult queryAll(@RequestParam Map<String, Object> params) {
         //查询列表数据
         List<SysMenuEntity> menuList = sysMenuService.queryList(params);
 
-        return R.ok().put("list", menuList);
+        return JsonResult.ok().put("list", menuList);
     }
 
     /**
@@ -59,7 +59,7 @@ public class SysMenuController extends AbstractController {
      */
     @RequestMapping("/select")
     @RequiresPermissions("sys:menu:select")
-    public R select() {
+    public JsonResult select() {
         //查询列表数据
         List<SysMenuEntity> menuList = sysMenuService.queryNotButtonList();
 
@@ -71,7 +71,7 @@ public class SysMenuController extends AbstractController {
         root.setOpen(true);
         menuList.add(root);
 
-        return R.ok().put("menuList", menuList);
+        return JsonResult.ok().put("menuList", menuList);
     }
 
     /**
@@ -79,7 +79,7 @@ public class SysMenuController extends AbstractController {
      */
     @RequestMapping("/perms")
     @RequiresPermissions("sys:menu:perms")
-    public R perms() {
+    public JsonResult perms() {
         //查询列表数据
         List<SysMenuEntity> menuList = null;
 
@@ -90,7 +90,7 @@ public class SysMenuController extends AbstractController {
             menuList = sysMenuService.queryUserList(getUserId());
         }
 
-        return R.ok().put("menuList", menuList);
+        return JsonResult.ok().put("menuList", menuList);
     }
 
     /**
@@ -98,9 +98,9 @@ public class SysMenuController extends AbstractController {
      */
     @RequestMapping("/info/{menuId}")
     @RequiresPermissions("sys:menu:info")
-    public R info(@PathVariable("menuId") Long menuId) {
+    public JsonResult info(@PathVariable("menuId") Long menuId) {
         SysMenuEntity menu = sysMenuService.queryObject(menuId);
-        return R.ok().put("menu", menu);
+        return JsonResult.ok().put("menu", menu);
     }
 
     /**
@@ -109,13 +109,13 @@ public class SysMenuController extends AbstractController {
     @SysLog("保存菜单")
     @RequestMapping("/save")
     @RequiresPermissions("sys:menu:save")
-    public R save(@RequestBody SysMenuEntity menu) {
+    public JsonResult save(@RequestBody SysMenuEntity menu) {
         //数据校验
         verifyForm(menu);
 
         sysMenuService.save(menu);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -124,13 +124,13 @@ public class SysMenuController extends AbstractController {
     @SysLog("修改菜单")
     @RequestMapping("/update")
     @RequiresPermissions("sys:menu:update")
-    public R update(@RequestBody SysMenuEntity menu) {
+    public JsonResult update(@RequestBody SysMenuEntity menu) {
         //数据校验
         verifyForm(menu);
 
         sysMenuService.update(menu);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -139,25 +139,25 @@ public class SysMenuController extends AbstractController {
     @SysLog("删除菜单")
     @RequestMapping("/delete")
     @RequiresPermissions("sys:menu:delete")
-    public R delete(@RequestBody Long[] menuIds) {
+    public JsonResult delete(@RequestBody Long[] menuIds) {
         for (Long menuId : menuIds) {
             if (menuId.longValue() <= 30) {
-                return R.error("系统菜单，不能删除");
+                return JsonResult.error("系统菜单，不能删除");
             }
         }
         sysMenuService.deleteBatch(menuIds);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
      * 用户菜单列表
      */
     @RequestMapping("/user")
-    public R user() {
+    public JsonResult user() {
         List<SysMenuEntity> menuList = sysMenuService.getUserMenuList(getUserId());
 
-        return R.ok().put("menuList", menuList);
+        return JsonResult.ok().put("menuList", menuList);
     }
 
     /**

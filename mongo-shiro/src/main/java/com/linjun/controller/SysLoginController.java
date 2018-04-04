@@ -3,7 +3,7 @@ package com.linjun.controller;
 import com.google.code.kaptcha.Constants;
 import com.google.code.kaptcha.Producer;
 import com.linjun.annotation.SysLog;
-import com.linjun.utils.R;
+import com.linjun.utils.JsonResult;
 import com.linjun.utils.ShiroUtils;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.crypto.hash.Sha256Hash;
@@ -55,13 +55,13 @@ public class SysLoginController {
     @SysLog("登录")
     @ResponseBody
     @RequestMapping(value = "/sys/login", method = RequestMethod.POST)
-    public R login(String username, String password, String captcha) throws IOException {
+    public JsonResult login(String username, String password, String captcha) throws IOException {
         String kaptcha = ShiroUtils.getKaptcha(Constants.KAPTCHA_SESSION_KEY);
         if(null == kaptcha){
-            return R.error("验证码已失效");
+            return JsonResult.error("验证码已失效");
         }
         if (!captcha.equalsIgnoreCase(kaptcha)) {
-            return R.error("验证码不正确");
+            return JsonResult.error("验证码不正确");
         }
 
         try {
@@ -71,16 +71,16 @@ public class SysLoginController {
             UsernamePasswordToken token = new UsernamePasswordToken(username, password);
             subject.login(token);
         } catch (UnknownAccountException e) {
-            return R.error(e.getMessage());
+            return JsonResult.error(e.getMessage());
         } catch (IncorrectCredentialsException e) {
-            return R.error(e.getMessage());
+            return JsonResult.error(e.getMessage());
         } catch (LockedAccountException e) {
-            return R.error(e.getMessage());
+            return JsonResult.error(e.getMessage());
         } catch (AuthenticationException e) {
-            return R.error("账户验证失败");
+            return JsonResult.error("账户验证失败");
         }
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**

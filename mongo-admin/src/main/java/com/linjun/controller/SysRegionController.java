@@ -3,9 +3,9 @@ package com.linjun.controller;
 import com.linjun.cache.RegionCacheUtil;
 import com.linjun.entity.SysRegionEntity;
 import com.linjun.service.SysRegionService;
+import com.linjun.utils.JsonResult;
 import com.linjun.utils.PageUtils;
 import com.linjun.utils.Query;
-import com.linjun.utils.R;
 import com.linjun.utils.TreeUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class SysRegionController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:region:list")
-    public R list(@RequestParam Map<String, Object> params) {
+    public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
 
@@ -35,7 +35,7 @@ public class SysRegionController {
 
         PageUtils pageUtil = new PageUtils(regionList, total, query.getLimit(), query.getPage());
 
-        return R.ok().put("page", pageUtil);
+        return JsonResult.ok().put("page", pageUtil);
     }
 
 
@@ -44,10 +44,10 @@ public class SysRegionController {
      */
     @RequestMapping("/info/{id}")
     @RequiresPermissions("sys:region:info")
-    public R info(@PathVariable("id") Integer id) {
+    public JsonResult info(@PathVariable("id") Integer id) {
         SysRegionEntity region = sysRegionService.queryObject(id);
 
-        return R.ok().put("region", region);
+        return JsonResult.ok().put("region", region);
     }
 
     /**
@@ -55,10 +55,10 @@ public class SysRegionController {
      */
     @RequestMapping("/save")
     @RequiresPermissions("sys:region:save")
-    public R save(@RequestBody SysRegionEntity region) {
+    public JsonResult save(@RequestBody SysRegionEntity region) {
         sysRegionService.save(region);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -66,10 +66,10 @@ public class SysRegionController {
      */
     @RequestMapping("/update")
     @RequiresPermissions("sys:region:update")
-    public R update(@RequestBody SysRegionEntity region) {
+    public JsonResult update(@RequestBody SysRegionEntity region) {
         sysRegionService.update(region);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -77,10 +77,10 @@ public class SysRegionController {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("sys:region:delete")
-    public R delete(@RequestBody Integer[] ids) {
+    public JsonResult delete(@RequestBody Integer[] ids) {
         sysRegionService.deleteBatch(ids);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -89,9 +89,9 @@ public class SysRegionController {
      * @return
      */
     @RequestMapping("/getAllCountry")
-    public R getAllCountry() {
+    public JsonResult getAllCountry() {
         List<SysRegionEntity> list = RegionCacheUtil.getAllCountry();
-        return R.ok().put("list", list);
+        return JsonResult.ok().put("list", list);
     }
 
     /**
@@ -100,9 +100,9 @@ public class SysRegionController {
      * @return
      */
     @RequestMapping("/getAllProvice")
-    public R getAllProvice(@RequestParam(required = false) Integer areaId) {
+    public JsonResult getAllProvice(@RequestParam(required = false) Integer areaId) {
         List<SysRegionEntity> list = RegionCacheUtil.getAllProviceByParentId(areaId);
-        return R.ok().put("list", list);
+        return JsonResult.ok().put("list", list);
     }
 
     /**
@@ -111,9 +111,9 @@ public class SysRegionController {
      * @return
      */
     @RequestMapping("/getAllCity")
-    public R getAllCity(@RequestParam(required = false) Integer areaId) {
+    public JsonResult getAllCity(@RequestParam(required = false) Integer areaId) {
         List<SysRegionEntity> list = RegionCacheUtil.getChildrenCity(areaId);
-        return R.ok().put("list", list);
+        return JsonResult.ok().put("list", list);
     }
 
 
@@ -123,16 +123,16 @@ public class SysRegionController {
      * @return
      */
     @RequestMapping("/getChildrenDistrict")
-    public R getChildrenDistrict(@RequestParam(required = false) Integer areaId) {
+    public JsonResult getChildrenDistrict(@RequestParam(required = false) Integer areaId) {
         List<SysRegionEntity> list = RegionCacheUtil.getChildrenDistrict(areaId);
-        return R.ok().put("list", list);
+        return JsonResult.ok().put("list", list);
     }
 
     /**
      * 查看信息(全部加载页面渲染太慢！)
      */
     @RequestMapping("/getAreaTree")
-    public R getAreaTree() {
+    public JsonResult getAreaTree() {
         List<SysRegionEntity> list = RegionCacheUtil.sysRegionEntityList;
         for (SysRegionEntity sysRegionEntity : list) {
             sysRegionEntity.setValue(sysRegionEntity.getId() + "");
@@ -140,11 +140,11 @@ public class SysRegionController {
         }
         List<SysRegionEntity> node = TreeUtils.factorTree(list);
 
-        return R.ok().put("node", node);
+        return JsonResult.ok().put("node", node);
     }
 
     @RequestMapping("/getAreaByType")
-    public R getAreaByType(@RequestParam(required = false) Integer type) {
+    public JsonResult getAreaByType(@RequestParam(required = false) Integer type) {
 
         List<SysRegionEntity> list = new ArrayList<>();
         if (type.equals(0)) {
@@ -156,6 +156,6 @@ public class SysRegionController {
         } else if (type.equals(3)) {
             list = RegionCacheUtil.getAllCity();
         }
-        return R.ok().put("list", list);
+        return JsonResult.ok().put("list", list);
     }
 }

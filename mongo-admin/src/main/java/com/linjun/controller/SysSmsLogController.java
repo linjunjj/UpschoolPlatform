@@ -6,9 +6,9 @@ import com.linjun.entity.SysSmsLogEntity;
 import com.linjun.service.SysConfigService;
 import com.linjun.service.SysSmsLogService;
 import com.linjun.utils.ConfigConstant;
+import com.linjun.utils.JsonResult;
 import com.linjun.utils.PageUtils;
 import com.linjun.utils.Query;
-import com.linjun.utils.R;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +33,7 @@ public class SysSmsLogController {
     @RequestMapping("/list")
     @RequiresPermissions("sys:smslog:list")
     @ResponseBody
-    public R list(@RequestParam Map<String, Object> params) {
+    public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
 
@@ -42,7 +42,7 @@ public class SysSmsLogController {
 
         PageUtils pageUtil = new PageUtils(smsLogList, total, query.getLimit(), query.getPage());
 
-        return R.ok().put("page", pageUtil);
+        return JsonResult.ok().put("page", pageUtil);
     }
 
     /**
@@ -51,10 +51,10 @@ public class SysSmsLogController {
     @RequestMapping("/info/{id}")
     @RequiresPermissions("sys:smslog:info")
     @ResponseBody
-    public R info(@PathVariable("id") String id) {
+    public JsonResult info(@PathVariable("id") String id) {
         SysSmsLogEntity smsLog = smsLogService.queryObject(id);
 
-        return R.ok().put("smsLog", smsLog);
+        return JsonResult.ok().put("smsLog", smsLog);
     }
 
     /**
@@ -63,10 +63,10 @@ public class SysSmsLogController {
     @RequestMapping("/save")
     @RequiresPermissions("sys:smslog:save")
     @ResponseBody
-    public R save(@RequestBody SysSmsLogEntity smsLog) {
+    public JsonResult save(@RequestBody SysSmsLogEntity smsLog) {
         smsLogService.save(smsLog);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -75,10 +75,10 @@ public class SysSmsLogController {
     @RequestMapping("/update")
     @RequiresPermissions("sys:smslog:update")
     @ResponseBody
-    public R update(@RequestBody SysSmsLogEntity smsLog) {
+    public JsonResult update(@RequestBody SysSmsLogEntity smsLog) {
         smsLogService.update(smsLog);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -87,10 +87,10 @@ public class SysSmsLogController {
     @RequestMapping("/delete")
     @RequiresPermissions("sys:smslog:delete")
     @ResponseBody
-    public R delete(@RequestBody String[] ids) {
+    public JsonResult delete(@RequestBody String[] ids) {
         smsLogService.deleteBatch(ids);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -98,30 +98,30 @@ public class SysSmsLogController {
      */
     @RequestMapping("/queryAll")
     @ResponseBody
-    public R queryAll(@RequestParam Map<String, Object> params) {
+    public JsonResult queryAll(@RequestParam Map<String, Object> params) {
 
         List<SysSmsLogEntity> list = smsLogService.queryList(params);
 
-        return R.ok().put("list", list);
+        return JsonResult.ok().put("list", list);
     }
 
     /**
      * 短信配置信息
      */
     @RequestMapping("/config")
-    public R config() {
+    public JsonResult config() {
         SmsConfig config = sysConfigService.getConfigObject(KEY, SmsConfig.class);
 
-        return R.ok().put("config", config);
+        return JsonResult.ok().put("config", config);
     }
 
     /**
      * 保存短信配置信息
      */
     @RequestMapping("/saveConfig")
-    public R saveConfig(@RequestBody SmsConfig config) {
+    public JsonResult saveConfig(@RequestBody SmsConfig config) {
         sysConfigService.updateValueByKey(KEY, JSON.toJSONString(config));
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**
@@ -129,8 +129,8 @@ public class SysSmsLogController {
      */
     @RequestMapping("/sendSms")
     @ResponseBody
-    public R sendSms(@RequestBody SysSmsLogEntity smsLog) {
+    public JsonResult sendSms(@RequestBody SysSmsLogEntity smsLog) {
         SysSmsLogEntity sysSmsLogEntity = smsLogService.sendSms(smsLog);
-        return R.ok().put("result", sysSmsLogEntity);
+        return JsonResult.ok().put("result", sysSmsLogEntity);
     }
 }

@@ -17,30 +17,30 @@ public class RRExceptionHandler {
      * 自定义异常
      */
     @ExceptionHandler(RRException.class)
-    public R handleRRException(RRException e) {
-        R r = new R();
-        r.put("code", e.getCode());
-        r.put("msg", e.getMessage());
+    public JsonResult handleRRException(RRException e) {
+        JsonResult jsonResult = new JsonResult();
+        jsonResult.put("code", e.getCode());
+        jsonResult.put("msg", e.getMessage());
 
-        return r;
+        return jsonResult;
     }
 
     @ExceptionHandler(DuplicateKeyException.class)
-    public R handleDuplicateKeyException(DuplicateKeyException e) {
+    public JsonResult handleDuplicateKeyException(DuplicateKeyException e) {
         logger.error(e.getMessage(), e);
-        return R.error("数据库中已存在该记录");
+        return JsonResult.error("数据库中已存在该记录");
     }
 
     @ExceptionHandler(AuthorizationException.class)
-    public R handleAuthorizationException(AuthorizationException e) {
+    public JsonResult handleAuthorizationException(AuthorizationException e) {
         logger.error(e.getMessage(), e);
-        return R.error("没有权限，请联系管理员授权");
+        return JsonResult.error("没有权限，请联系管理员授权");
     }
 
     @ExceptionHandler(Exception.class)
-    public R handleException(Exception e) {
+    public JsonResult handleException(Exception e) {
         logger.error(e.getMessage(), e);
-        return R.error();
+        return JsonResult.error();
     }
 
 

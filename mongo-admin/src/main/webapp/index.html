@@ -330,13 +330,13 @@
         },
         methods: {
             getMenuList: function (event) {
-                $.getJSON("sys/menu/user?_" + $.now(), function (r) {
-                    vm.menuList = r.menuList;
+                $.getJSON("sys/menu/user?_" + $.now(), function (jsonResult) {
+                    vm.menuList = jsonResult.menuList;
                 });
             },
             getUser: function () {
-                $.getJSON("sys/user/info?_" + $.now(), function (r) {
-                    vm.user = r.user;
+                $.getJSON("sys/user/info?_" + $.now(), function (jsonResult) {
+                    vm.user = jsonResult.user;
                 });
             },
             updatePassword: function () {

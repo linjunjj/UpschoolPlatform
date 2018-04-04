@@ -41,7 +41,7 @@ public class SysOssController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("sys:oss:all")
-    public R list(@RequestParam Map<String, Object> params) {
+    public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
         List<SysOssEntity> sysOssList = sysOssService.queryList(query);
@@ -49,7 +49,7 @@ public class SysOssController {
 
         PageUtils pageUtil = new PageUtils(sysOssList, total, query.getLimit(), query.getPage());
 
-        return R.ok().put("page", pageUtil);
+        return JsonResult.ok().put("page", pageUtil);
     }
 
 
@@ -58,10 +58,10 @@ public class SysOssController {
      */
     @RequestMapping("/config")
     @RequiresPermissions("sys:oss:all")
-    public R config() {
+    public JsonResult config() {
         CloudStorageConfig config = sysConfigService.getConfigObject(KEY, CloudStorageConfig.class);
 
-        return R.ok().put("config", config);
+        return JsonResult.ok().put("config", config);
     }
 
 
@@ -70,7 +70,7 @@ public class SysOssController {
      */
     @RequestMapping("/saveConfig")
     @RequiresPermissions("sys:oss:all")
-    public R saveConfig(@RequestBody CloudStorageConfig config) {
+    public JsonResult saveConfig(@RequestBody CloudStorageConfig config) {
         //校验类型
         ValidatorUtils.validateEntity(config);
 
@@ -88,7 +88,7 @@ public class SysOssController {
 
         sysConfigService.updateValueByKey(KEY, JSON.toJSONString(config));
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
 
@@ -97,7 +97,7 @@ public class SysOssController {
      */
     @RequestMapping("/upload")
     @RequiresPermissions("sys:oss:all")
-    public R upload(@RequestParam("file") MultipartFile file) throws Exception {
+    public JsonResult upload(@RequestParam("file") MultipartFile file) throws Exception {
         if (file.isEmpty()) {
             throw new RRException("上传文件不能为空");
         }
@@ -110,10 +110,10 @@ public class SysOssController {
         ossEntity.setCreateDate(new Date());
         sysOssService.save(ossEntity);
 
-        R r = new R();
-        r.put("url", url);
-        r.put("link", url);
-        return r;
+        JsonResult jsonResult = new JsonResult();
+        jsonResult.put("url", url);
+        jsonResult.put("link", url);
+        return jsonResult;
     }
 
 
@@ -122,10 +122,10 @@ public class SysOssController {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("sys:oss:all")
-    public R delete(@RequestBody Long[] ids) {
+    public JsonResult delete(@RequestBody Long[] ids) {
         sysOssService.deleteBatch(ids);
 
-        return R.ok();
+        return JsonResult.ok();
     }
 
     /**

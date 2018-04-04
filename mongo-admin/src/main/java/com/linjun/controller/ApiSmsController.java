@@ -26,7 +26,7 @@ public class ApiSmsController {
      */
 //    @IgnoreAuth
     @RequestMapping("/sendSms")
-    public R sendSms(HttpServletRequest request, @RequestParam Map<String, String> params) {
+    public JsonResult sendSms(HttpServletRequest request, @RequestParam Map<String, String> params) {
         SysSmsLogEntity smsLog = new SysSmsLogEntity();
         String validIP = RequestUtil.getIpAddrByRequest(request);
         if (ResourceUtil.getConfigByName("sms.validIp").indexOf(validIP) < 0) {
@@ -39,6 +39,6 @@ public class ApiSmsController {
             smsLog.setStime(DateUtils.convertStringToDate(stime));
         }
         SysSmsLogEntity sysSmsLogEntity = smsLogService.sendSms(smsLog);
-        return R.ok().put("result", sysSmsLogEntity);
+        return JsonResult.ok().put("result", sysSmsLogEntity);
     }
 }
