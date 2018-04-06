@@ -1,154 +1,195 @@
-$(function () {
-    $("#jqGrid").jqGrid({
-        url: '../mongouser/list',
-        datatype: "json",
-        colModel: [
-			{label: 'id', name: 'id', index: 'id', key: true, hidden: true},
-			{label: '用户名', name: 'userName', index: 'user_name', width: 80},
-			{label: '密码', name: 'password', index: 'password', width: 500},
-			{label: '性别', name: 'gender', index: 'gender', width: 80},
-			{label: '生日', name: 'birthday', index: 'birthday', width: 80},
-			{label: '学校', name: 'school', index: 'school', width: 80},
-			{label: '专业', name: 'major', index: 'major', width: 80},
-			{label: '资料完整度', name: 'infofull', index: 'infoFull', width: 80},
-			{label: '注册时间', name: 'registerTime', index: 'register_time', width: 80},
-			{label: '最后登入时间', name: 'lastLoginTime', index: 'last_login_time', width: 80},
-			{label: '最后登入ip地址', name: 'lastLoginIp', index: 'last_login_ip', width: 80},
-			{label: '用户等级id', name: 'userLevelId', index: 'user_level_id', width: 80},
-			{label: '用户昵称', name: 'nickname', index: 'nickname', width: 80},
-			{label: '用户手机', name: 'mobile', index: 'mobile', width: 80},
-			{label: '注册ip地址', name: 'registerIp', index: 'register_ip', width: 80},
-			{label: '用户头像', name: 'avatar', index: 'avatar', width: 80},
-			{label: '微信唯一标志', name: 'weixinOpenid', index: 'weixin_openid', width: 80},
-			{label: '父级id', name: 'parentId', index: 'parent_id', width: 80}],
-		viewrecords: true,
-        height: 385,
-        rowNum: 10,
-        rowList: [10, 30, 50],
-        rownumbers: true,
-        rownumWidth: 25,
-        autowidth: true,
-        multiselect: true,
-        pager: "#jqGridPager",
-        jsonReader: {
-            root: "page.list",
-            page: "page.currPage",
-            total: "page.totalPage",
-            records: "page.totalCount"
-        },
-        prmNames: {
-            page: "page",
-            rows: "limit",
-            order: "order"
-        },
-        gridComplete: function () {
-            $("#jqGrid").closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});
-        }
-    });
-});
-
-let vm = new Vue({
-	el: '#rrapp',
-	data: {
+var vm = new Vue({
+    el: '#rrapp',
+    data: {
         showList: true,
         title: null,
-		mongoUser: {},
-		ruleValidate: {
-			name: [
-				{required: true, message: '名称不能为空', trigger: 'blur'}
-			]
-		},
-		q: {
-		    name: ''
-		},
+        user: [],
+        tableHeight: 0,
+        rules: {
+            username: [
+                {required: true, message: '名称不能为空', trigger: 'blur'}
+            ]
+        },
+        q: {
+            username: ''
+        },
+        userLevels: [],
+        listQuery: {
+            page: 1,
+            limit: 20,
+            title: undefined,
+            status: undefined
+        },
+        total: 0,
 
-        message: 'Hello Vue.js!'
-	},
-	methods: {
-		query: function () {
-			vm.reload();
-		},
-		add: function () {
-			vm.showList = false;
-			vm.title = "新增";
-			vm.mongoUser = {};
-		},
-		update: function (event) {
-            let id = getSelectedRow();
-			if (id == null) {
-				return;
-			}
-			vm.showList = false;
+    },
+
+    created() {
+        this.tableHeight = document.documentElement.clientHeight - (50 + 20 + 50 + 70);
+        $(window).resize(() => {
+            this.tableHeight = document.documentElement.clientHeight - (50 + 20 + 50 + 70);
+        });
+        this.getList();
+    },
+    beforeRouteEnter (to, from, next) {
+        next(vm => {
+            // 通过 `vm` 访问组件实例
+            if (keepAliveList.indexOf(from.path) !== -1) {
+                vm.listQuery.page = 1;
+                vm.listQuery.limit = 20;
+                vm.listQuery.title = undefined;
+                vm.listQuery.status = undefined;
+                vm.getList();
+            }
+        });
+    },
+    methods: {
+
+        handleSizeChange: function(val) {
+            this.listQuery.limit = val;
+            this.getList();
+        },
+        handleCurrentChange(val) {
+            this.listQuery.page = val;
+            this.getList();
+        },
+        handleSelection(selection, row) {
+
+            console.log(selection);
+            var  temp=[];
+            for (var i=0; i<selection.length;i++){
+                temp.push(selection[i].id);
+
+            }
+            this.selectOrders=temp;
+
+
+        },
+        handleSelectionAll(selection) {
+            this.selectOrders = selection;
+            console.log(selection);
+        },
+        getList: function(){
+            var params = {};
+            params.page=this.listQuery.page;
+            params.limit=this.listQuery.limit;
+            params.sidx="id";
+            params.order="desc";
+            $.get("../user/list", params,  function(response){
+                vm.user=response.page.list;
+                vm.total=response.page.currPage;
+            })
+
+        },
+
+        query: function () {
+            vm.reload();
+        },
+
+        add: function () {
+            vm.showList = false;
+            vm.title = "新增";
+            vm.user = {gender: '1'};
+            vm.userLevels = [];
+
+            this.getUserLevels();
+        },
+        update: function (event) {
+            var id = this.selectOrders;
+            if (id == null) {
+                return;
+            }
+            vm.showList = false;
             vm.title = "修改";
 
             vm.getInfo(id)
-		},
-        reverseMessage: function () {
-            this.message = this.message.split('').reverse().join('')
+            this.getUserLevels();
         },
-		saveOrUpdate: function (event) {
-            let url = vm.mongoUser.id == null ? "../mongouser/save" : "../mongouser/update";
-			$.ajax({
-				type: "POST",
-			    url: url,
-			    contentType: "application/json",
-			    data: JSON.stringify(vm.mongoUser),
+        saveOrUpdate: function (event) {
+            var url = vm.user.id == null ? "../user/save" : "../user/update";
+            $.ajax({
+                type: "POST",
+                url: url,
+                contentType: "application/json",
+                data: JSON.stringify(vm.user),
                 success: function (r) {
                     if (r.code === 0) {
                         alert('操作成功', function (index) {
-                            vm.reload();
+                           this.getList();
                         });
                     } else {
                         alert(r.msg);
                     }
                 }
-			});
-		},
-		del: function (event) {
-            let ids = getSelectedRows();
-			if (ids == null){
-				return;
-			}
-
-			confirm('确定要删除选中的记录？', function () {
-				$.ajax({
-					type: "POST",
-				    url: "../mongouser/delete",
-				    contentType: "application/json",
-				    data: JSON.stringify(ids),
-				    success: function (r) {
-						if (r.code == 0) {
-							alert('操作成功', function (index) {
-								$("#jqGrid").trigger("reloadGrid");
-							});
-						} else {
-							alert(r.msg);
-						}
-					}
-				});
-			});
-		},
-		getInfo: function(id){
-			$.get("../mongouser/info/"+id, function (r) {
-                vm.mongoUser = r.mongoUser;
             });
-		},
-		reload: function (event) {
-			vm.showList = true;
-            let page = $("#jqGrid").jqGrid('getGridParam', 'page');
-			$("#jqGrid").jqGrid('setGridParam', {
-                postData: {'name': vm.q.name},
-                page: page
-            }).trigger("reloadGrid");
+        },
+        del: function (event) {
+            var ids = getSelectedRows();
+            if (ids == null) {
+                return;
+            }
+
+            confirm('确定要删除选中的记录？', function () {
+                $.ajax({
+                    type: "POST",
+                    url: "../user/delete",
+                    contentType: "application/json",
+                    data: JSON.stringify(ids),
+                    success: function (r) {
+                        if (r.code == 0) {
+                            alert('操作成功', function (index) {
+                               this.getList();
+                            });
+                        } else {
+                            alert(r.msg);
+                        }
+                    }
+                });
+            });
+        },
+        exportUser: function () {
+            exportFile('#rrapp', '../user/export', {'username': vm.q.username});
+        },
+
+        shopCart: function () {
+            var id = getSelectedRow();
+            if (id == null) {
+                return;
+            }
+            openWindow({
+                title: '购物车',
+                type: 2,
+                content: '../shop/cart.html?userId=' + id
+            })
+        },
+        getInfo: function (id) {
+            $.get("../user/info/" + id, function (r) {
+                vm.user = r.user;
+            });
+        },
+
+        getUserLevels: function () {
+            $.get("../userlevel/queryAll", function (r) {
+                vm.userLevels = r.list;
+            });
+        },
+        reload: function (event) {
+            vm.showList = true;
             vm.handleReset('formValidate');
-		},
+        },
         handleSubmit: function (name) {
-            handleSubmitValidate(this, name, function () {
-                vm.saveOrUpdate()
+            this.$refs[name].validate((valid) => {
+                if (valid) {
+                    alert('submit!');
+
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
             });
         },
         handleReset: function (name) {
-            handleResetForm(this, name);
+            this.$refs[name].resetFields();
         }
-	}
+    }
 });

@@ -12,6 +12,9 @@
     <file type="web" url="file://$PROJECT_DIR$/mongo-schedule" />
     <file type="web" url="file://$PROJECT_DIR$/mongo-shiro" />
   </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
