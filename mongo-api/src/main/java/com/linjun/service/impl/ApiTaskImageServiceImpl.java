@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+@Service("apiTaskImageService")
 public class ApiTaskImageServiceImpl implements ApiTaskImageService {
     @Autowired
     private ApiTaskImageMapper apiTaskImageMapper;

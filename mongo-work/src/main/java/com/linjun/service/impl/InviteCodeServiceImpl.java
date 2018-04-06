@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("inviteCodeService")
 public class InviteCodeServiceImpl implements InviteCodeService {
     @Autowired
     private InviteCodeMapper inviteCodeMapper;

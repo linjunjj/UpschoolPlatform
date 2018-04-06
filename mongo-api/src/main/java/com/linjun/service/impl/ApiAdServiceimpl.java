@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
-@Service
+@Service("apiAdService")
 public class ApiAdServiceimpl implements ApiAdService {
     @Autowired
     private ApiAdMapper apiAdMapper;

@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+@Service("apiSkillEvaluateService")
 public class ApiSkillEvaluateServiceImpl implements ApiSkillEvaluateService {
     @Autowired
     private ApiSkillEvaluateMapper apiSkillEvaluateMapper;

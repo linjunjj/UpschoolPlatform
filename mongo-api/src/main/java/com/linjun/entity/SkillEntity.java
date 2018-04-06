@@ -1,9 +1,9 @@
 package com.linjun.entity;
 
-import org.joda.time.DateTime;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * @author 林俊
@@ -22,7 +22,7 @@ public class SkillEntity implements Serializable {
      private  Long like_quality;
      private  byte status;
      private Long category_id;
-     private DateTime create_time;
+     private Date create_time;
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
@@ -108,11 +108,11 @@ public class SkillEntity implements Serializable {
         this.category_id = category_id;
     }
 
-    public DateTime getCreate_time() {
+    public Date getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(DateTime create_time) {
+    public void setCreate_time(Date create_time) {
         this.create_time = create_time;
     }
 }

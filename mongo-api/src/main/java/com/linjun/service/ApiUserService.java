@@ -1,7 +1,7 @@
 package com.linjun.service;
 
 import com.linjun.entity.SmsLogVo;
-import com.linjun.entity.UserEntity;
+import com.linjun.entity.UserVo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,17 +14,17 @@ import java.util.Map;
  **/
 
 public interface ApiUserService {
-    UserEntity queryObject(Long id);
-    List<UserEntity> queryList(Map<String,Object> map);
+    UserVo queryObject(Long id);
+    List<UserVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(UserEntity userEntity);
+    void save(UserVo UserVo);
   void  save(String mobile, String password);
-    void update(UserEntity userEntity);
+    void update(UserVo UserVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
-    UserEntity queryByMobile(String mobile);
+    UserVo queryByMobile(String mobile);
     Long login(String mobile, String password);
     SmsLogVo querySmsCodeByUserId(Long user_id);
     int saveSmsCodeLog(SmsLogVo smsLogVo);
-    String getUserLevel(UserEntity loginUser);
+    String getUserLevel(UserVo loginUser);
 }

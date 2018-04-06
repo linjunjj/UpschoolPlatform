@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+@Service("apiRentImageService")
 public class ApiRentImageServiceImpl implements ApiRentImageService {
     @Autowired
     private ApiRentImageMapper apiRentImageMapper;

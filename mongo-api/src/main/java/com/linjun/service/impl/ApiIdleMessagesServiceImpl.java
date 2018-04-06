@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/24.
  * @desc
  **/
-@Service
+@Service("apiIdleMessagesService")
 public class ApiIdleMessagesServiceImpl implements ApiIdleMessageService {
     @Autowired
     private ApiIdleMessageMapper apiIdleMessageMapper;

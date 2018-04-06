@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("userOrderService")
 public class UserOrderServiceImpl implements UserOrderService {
     @Autowired
     private UserOrderMapper userOrderMapper;

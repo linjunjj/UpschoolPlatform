@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("userQQService")
 public class UserQQServiceImpl implements UserQQService {
     @Autowired
     private UserQQMapper userQQMapper;

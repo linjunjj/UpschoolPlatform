@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("partTimeApplyVolumService")
 public class PartTimeApplyVolumServiceImpl implements PartTimeApplyVolumService {
     @Autowired
     private PartTimeApplyVolumMapper partTimeApplyVolumMapper;

@@ -24,7 +24,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService {
 
     @Autowired

@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("userDynamicService")
 public class UserDynamicServiceImpl implements UserDynamicService {
     @Autowired
     private UserDynamicMapper userDynamicMapper;

@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("adService")
 public class AdServiceImpl implements AdService {
     @Autowired
     private AdMapper adMapper;

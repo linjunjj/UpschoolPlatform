@@ -15,7 +15,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+@Service("apiShippingService")
 public class ApiShippingServiceImpl implements ApiShippingService {
 
     @Autowired

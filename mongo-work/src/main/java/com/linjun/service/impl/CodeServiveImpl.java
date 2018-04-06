@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("codeService")
 public class CodeServiveImpl implements CodeService {
     @Autowired
     private CodeMapper codeMapper;

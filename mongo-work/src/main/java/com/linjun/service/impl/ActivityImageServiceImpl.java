@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("activityImageService")
 public class ActivityImageServiceImpl implements AcitvityImageService {
     @Autowired
     private ActivityImageMapper activityImageMapper;

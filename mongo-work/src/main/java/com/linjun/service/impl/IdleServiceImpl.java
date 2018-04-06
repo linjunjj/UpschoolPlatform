@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("idleService")
 public class IdleServiceImpl implements IdleService {
     @Autowired
     private IdleMapper idleMapper;

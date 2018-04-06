@@ -46,8 +46,8 @@
           <element id="library" level="project" name="Maven: com.mchange:c3p0:0.9.5.2" />
           <element id="library" level="project" name="Maven: com.mchange:mchange-commons-java:0.2.11" />
           <element id="library" level="project" name="Maven: com.zaxxer:HikariCP-java6:2.3.13" />
-          <element id="archive" name="mongo-work-1.0-SNAPSHOT.jar">
-            <element id="module-output" name="mongo-work" />
+          <element id="archive" name="mongo-api-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="mongo-api" />
           </element>
           <element id="library" level="project" name="Maven: com.github.axet:kaptcha:0.0.9" />
           <element id="library" level="project" name="Maven: com.jhlabs:filters:2.0.235" />

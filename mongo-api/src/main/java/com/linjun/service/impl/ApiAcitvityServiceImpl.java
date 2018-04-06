@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
-@Service
+@Service("apiAcitvityService")
 public class ApiAcitvityServiceImpl implements ApiAcitvityService{
     @Autowired
     private ApiActivityMapper apiActivityMapper;

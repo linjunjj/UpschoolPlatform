@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("reportService")
 public class ReportServiceImpl implements ReportService {
     @Autowired
     private ReportMapper reportMapper;

@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("channelService")
 public class ChannelServiceImpl implements ChannelService {
     @Autowired
     private ChannelMapper channelMapper;

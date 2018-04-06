@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+@Service("apiUserStudentCardService")
 public class ApiUserStudentCardServcieImpl implements ApiUserStudentCardService {
     @Autowired
     private ApiUserStudentCardMapper apiUserStudentCardMapper;

@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("activityCategoryService")
 public class ActivityCategoryServiceImpl implements ActivityCategoryService {
     @Autowired
     private ActivityCategoryMapper activityCategoryMapper;

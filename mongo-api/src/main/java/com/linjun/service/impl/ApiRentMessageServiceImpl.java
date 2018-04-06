@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+@Service("apiRentMessagesService")
 public class ApiRentMessageServiceImpl implements ApiRentMessageService {
     @Autowired
     private ApiRentMessageMapper apiRentMessageMapper;

@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("idleImageService")
 public class IdleImageServiceImpl implements IdleImageService {
     @Autowired
     private IdleImagesMapper idleImagesMapper;

@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("suggestService")
 public class SuggestServiceImpl implements SuggestService {
     @Autowired
     private SuggestMapper suggestMapper;

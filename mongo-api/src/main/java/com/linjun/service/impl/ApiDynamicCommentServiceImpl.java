@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
-@Service
+@Service("apiDynamicCommentService")
 public class ApiDynamicCommentServiceImpl implements ApiDynamicCommentService{
     @Autowired
     private ApiDynamicCommentMapper apiDynamicCommentMapper;

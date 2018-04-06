@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
-@Service
+@Service("apiCodeService")
 public class ApiCodeServiceImpl implements ApiCodeService{
     @Autowired
     private ApiCodeMapper apiCodeMapper;

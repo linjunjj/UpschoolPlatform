@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+@Service("apiUserIdentityService")
 public class ApiUserIdentityServiceImpl implements ApiUserIdentityService {
     @Autowired
     private ApiUserIdentityMapper apiUserIdentityMapper;

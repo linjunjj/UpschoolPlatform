@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("partTimeCategoryService")
 public class PartTimeCategoryServiceImpl implements PartTimeCategoryService {
     @Autowired
     private PartTimeCategoryMapper partTimeCategoryMapper;

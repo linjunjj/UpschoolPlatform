@@ -5,7 +5,7 @@ import com.linjun.annotation.LoginUser;
 import com.linjun.dao.ApiAddressMangerMapper;
 import com.linjun.entity.AddressManger;
 import com.linjun.entity.ShippingEntity;
-import com.linjun.entity.UserEntity;
+import com.linjun.entity.UserVo;
 import com.linjun.service.ApiShippingService;
 import com.linjun.util.ApiBaseAction;
 import com.linjun.util.ApiPageUtils;
@@ -36,21 +36,21 @@ public class ApiAddressController extends ApiBaseAction {
 
      @ApiOperation(value = "获取用户收货地址")
     @GetMapping(value = "list")
-    public JsonResult list(@LoginUser UserEntity userEntity){
+    public JsonResult list(@LoginUser UserVo UserVo){
          Map map=new HashMap();
-         map.put("userId",userEntity.getUserId());
+         map.put("userId",UserVo.getUserId());
          List<AddressManger> list=addressService.queryList(map);
          return JsonResult.ok(list);
      }
    @ApiOperation(value = "获取收货地址详情")
     @GetMapping(value = "detail")
-    public JsonResult detail(@LoginUser UserEntity userEntity){
-      AddressManger addressManger=addressService.queryObject(userEntity.getUserId());
+    public JsonResult detail(@LoginUser UserVo UserVo){
+      AddressManger addressManger=addressService.queryObject(UserVo.getUserId());
       return  JsonResult.ok(addressManger);
    }
   @ApiOperation(value = "添加或者更新地址")
     @PostMapping(value = "saveOrUpdate")
-    public  JsonResult saveOrUpdate(@LoginUser UserEntity userEntity){
+    public  JsonResult saveOrUpdate(@LoginUser UserVo UserVo){
       JSONObject jsonObject=this.getJsonRequest();
       AddressManger addressManger=new AddressManger();
       if (jsonObject!=null){

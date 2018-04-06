@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+@Service("apiTokenService")
 public class ApiTokenServiceImpl implements ApiTokenService {
     @Autowired
     private ApiTokenMapper apiTokenMapper;

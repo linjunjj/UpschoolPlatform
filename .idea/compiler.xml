@@ -13,7 +13,6 @@
         <module name="mongo-fromwork" />
         <module name="mongo-schedule" />
         <module name="mongo-shiro" />
-        <module name="mongo-work" />
         <module name="mongoshiro" />
       </profile>
     </annotationProcessing>
@@ -31,6 +30,7 @@
       <module name="mongo-work" target="1.8" />
       <module name="mongoPlatform" target="1.8" />
       <module name="mongoshiro" target="1.8" />
+      <module name="platform-api" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

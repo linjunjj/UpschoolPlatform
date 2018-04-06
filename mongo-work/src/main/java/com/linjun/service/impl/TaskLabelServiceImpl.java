@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("taskLabelService")
 public class TaskLabelServiceImpl implements TaskLabelService {
     @Autowired
     private TaskLabelMapper taskLabelMapper;

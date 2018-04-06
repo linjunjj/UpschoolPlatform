@@ -15,7 +15,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("taskService")
 public class TaskServiceImpl implements TaskService {
     @Autowired
     private TaskMapper taskMapper;

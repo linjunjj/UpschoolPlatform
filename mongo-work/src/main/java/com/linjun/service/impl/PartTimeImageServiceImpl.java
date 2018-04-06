@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
-@Service
+@Service("partTimeImageService")
 public class PartTimeImageServiceImpl implements PartTimeImageService {
     @Autowired
     private PartTimeImageMapper partTimeImageMapper;

@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("skillCategoryService")
 public class SkillCategoryServiceImpl implements SkillCategoryService {
     @Autowired
     private SkillCategoryMapper skillCategoryMapper;

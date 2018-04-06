@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
-@Service
+@Service("apiAddressMangerService")
 public class ApiAddressMangerServiceImpl implements ApiAddressMangerService {
     @Autowired
     private ApiAddressMangerMapper apiAddressMangerMapper;

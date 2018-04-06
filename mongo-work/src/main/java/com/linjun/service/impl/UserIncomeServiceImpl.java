@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("userIncomeService")
 public class UserIncomeServiceImpl implements UserIncomeService {
     @Autowired
     private UserIncomeMapper userIncomeMapper;

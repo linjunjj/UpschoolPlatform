@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+@Service("apiSignDetailService")
 public class ApiSignDetailServiceImpl implements ApiSignDetailService {
     @Autowired
     private ApiSignDetailMapper apiSignDetailMapper;

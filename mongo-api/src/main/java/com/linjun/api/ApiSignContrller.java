@@ -3,7 +3,7 @@ package com.linjun.api;
 import com.linjun.annotation.LoginUser;
 import com.linjun.entity.SignDetailEntity;
 import com.linjun.entity.SignEntity;
-import com.linjun.entity.UserEntity;
+import com.linjun.entity.UserVo;
 import com.linjun.service.ApiSignDetailService;
 import com.linjun.service.ApiSignService;
 import com.linjun.service.SysConfigService;
@@ -25,7 +25,7 @@ import java.util.*;
  **/
 @Api(value = "签到接口")
 @RestController
-@RequestMapping(value = "/api/sign/")
+@RequestMapping("/api/sign/")
 public class ApiSignContrller extends ApiBaseAction {
     @Autowired
     private ApiSignService apiSignService;
@@ -36,7 +36,7 @@ public class ApiSignContrller extends ApiBaseAction {
 
     @ApiOperation(value = "签到")
     @PostMapping(value = "sign")
-    public JsonResult sign(@LoginUser UserEntity userEntity){
+    public JsonResult sign(@LoginUser UserVo UserVo){
         Map param = new HashMap();
          param.put("userId",this.getUserId());
         int result=apiSignService.queryTotal(param);

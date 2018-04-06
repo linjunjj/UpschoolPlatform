@@ -8,7 +8,7 @@ import java.util.Date;
  * @create 2018/3/13.
  * @desc
  **/
-public class UserEntity implements Serializable {
+public class UserVo implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long userId;

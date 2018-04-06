@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("userWeixinService")
 public class UserWeixinServiceImpl implements UserWeixinService {
     @Autowired
     private UserWeixinMapper userWeixinMapper;

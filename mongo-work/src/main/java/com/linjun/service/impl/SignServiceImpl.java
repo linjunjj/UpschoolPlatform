@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("signService")
 public class SignServiceImpl implements SignService {
     @Autowired
    private SignMapper signMapper;

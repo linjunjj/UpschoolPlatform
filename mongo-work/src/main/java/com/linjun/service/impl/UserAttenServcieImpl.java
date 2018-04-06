@@ -14,7 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
-@Service
+@Service("userAttenService")
 public class UserAttenServcieImpl implements UserAttenService {
     @Autowired
     private UserAttenMapper userAttenMapper;

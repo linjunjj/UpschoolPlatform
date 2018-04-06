@@ -1,7 +1,7 @@
 package com.linjun.dao;
 
 import com.linjun.entity.SmsLogVo;
-import com.linjun.entity.UserEntity;
+import com.linjun.entity.UserVo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -9,9 +9,9 @@ import org.apache.ibatis.annotations.Param;
  * @create 2018/3/14.
  * @desc
  **/
-public interface ApiUserMapper extends  BaseDao<UserEntity> {
-    UserEntity queryByMobile(@Param("mobile") String mobile);
-    UserEntity queryByOpenId(@Param("openId") String openId);
+public interface ApiUserMapper extends  BaseDao<UserVo> {
+    UserVo queryByMobile(@Param("mobile") String mobile);
+    UserVo queryByOpenId(@Param("openId") String openId);
     SmsLogVo querySmsCodeByUserId(@Param("user_id") Long user_id);
     int saveSmsCodeLog(SmsLogVo smsLogVo);
 }

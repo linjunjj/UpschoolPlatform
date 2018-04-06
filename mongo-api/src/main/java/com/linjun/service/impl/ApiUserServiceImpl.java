@@ -3,7 +3,7 @@ package com.linjun.service.impl;
 import com.linjun.dao.ApiUserLevelMapper;
 import com.linjun.dao.ApiUserMapper;
 import com.linjun.entity.SmsLogVo;
-import com.linjun.entity.UserEntity;
+import com.linjun.entity.UserVo;
 import com.linjun.entity.UserLevelEntity;
 import com.linjun.service.ApiUserService;
 import com.linjun.utils.HttpContextUtils;
@@ -24,19 +24,19 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+@Service("apiUserService")
 public class ApiUserServiceImpl implements ApiUserService {
     @Autowired
     private ApiUserMapper apiUserMapper;
     @Autowired
     private ApiUserLevelMapper apiUserLevelMapper;
     @Override
-    public UserEntity queryObject(Long id) {
+    public UserVo queryObject(Long id) {
         return apiUserMapper.queryObject(id);
     }
 
     @Override
-    public List<UserEntity> queryList(Map<String, Object> map) {
+    public List<UserVo> queryList(Map<String, Object> map) {
         return apiUserMapper.queryList(map);
     }
 
@@ -46,25 +46,25 @@ public class ApiUserServiceImpl implements ApiUserService {
     }
 
     @Override
-    public void save(UserEntity userEntity) {
-apiUserMapper.save(userEntity);
+    public void save(UserVo UserVo) {
+apiUserMapper.save(UserVo);
     }
 
     @Override
     public void save(String mobile, String password) {
-        UserEntity userEntity=new UserEntity();
-        userEntity.setMobile(mobile);
-        userEntity.setAvatar("http://os3kbkwao.bkt.clouddn.com/timg.jpeg");
-        userEntity.setPassword(DigestUtils.sha256Hex(password));
-        userEntity.setRegister_time(new Date());
+        UserVo UserVo=new UserVo();
+        UserVo.setMobile(mobile);
+        UserVo.setAvatar("http://os3kbkwao.bkt.clouddn.com/timg.jpeg");
+        UserVo.setPassword(DigestUtils.sha256Hex(password));
+        UserVo.setRegister_time(new Date());
         HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
-        userEntity.setRegister_ip(IPUtils.getIpAddr(request));
-        apiUserMapper.save(userEntity);
+        UserVo.setRegister_ip(IPUtils.getIpAddr(request));
+        apiUserMapper.save(UserVo);
     }
 
     @Override
-    public void update(UserEntity userEntity) {
-apiUserMapper.update(userEntity);
+    public void update(UserVo UserVo) {
+apiUserMapper.update(UserVo);
     }
 
     @Override
@@ -78,24 +78,24 @@ apiUserMapper.deleteBatch(ids);
     }
 
     @Override
-    public UserEntity queryByMobile(String mobile) {
+    public UserVo queryByMobile(String mobile) {
         return apiUserMapper.queryByMobile(mobile);
     }
 
     @Override
     public Long login(String mobile, String password) {
-        UserEntity userEntity=queryByMobile(mobile);
-        Assert.isNull(userEntity,"手机号码或密码为空");
-        if (!userEntity.getPassword().equals(DigestUtils.sha1Hex(password))){
+        UserVo UserVo=queryByMobile(mobile);
+        Assert.isNull(UserVo,"手机号码或密码为空");
+        if (!UserVo.getPassword().equals(DigestUtils.sha1Hex(password))){
             throw new RRException("手机或者密码错误");
         }
               HttpServletRequest request = HttpContextUtils.getHttpServletRequest();
-          UserEntity userEntity1=new UserEntity();
-              userEntity1.setUserId(userEntity.getUserId());
-              userEntity1.setLast_login_time(new Date());
-              userEntity1.setLast_login_ip(IPUtils.getIpAddr(request));
-                apiUserMapper.update(userEntity1);
-        return userEntity.getUserId();
+          UserVo UserVo1=new UserVo();
+              UserVo1.setUserId(UserVo.getUserId());
+              UserVo1.setLast_login_time(new Date());
+              UserVo1.setLast_login_ip(IPUtils.getIpAddr(request));
+                apiUserMapper.update(UserVo1);
+        return UserVo.getUserId();
     }
 
     @Override
@@ -109,7 +109,7 @@ apiUserMapper.deleteBatch(ids);
     }
 
     @Override
-    public String getUserLevel(UserEntity loginUser) {
+    public String getUserLevel(UserVo loginUser) {
         String result="测试用户";
         UserLevelEntity userLevelEntity=apiUserLevelMapper.queryObject(loginUser.getUser_level_id());
         if (userLevelEntity!=null){
