@@ -4,6 +4,7 @@ import com.linjun.dao.ApiInviteCodeMapper;
 import com.linjun.entity.InviteCodeEntity;
 import com.linjun.service.ApiInviteCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/24.
  * @desc
  **/
+@Service
 public class ApiInviteCodeServiceImpl implements ApiInviteCodeService {
     @Autowired
     private ApiInviteCodeMapper apiInviteCodeMapper;

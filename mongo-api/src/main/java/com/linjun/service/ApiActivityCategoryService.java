@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
-@Service
+
 public interface ApiActivityCategoryService {
     ActivityCategoryEntity queryObject(Long id);
     List<ActivityCategoryEntity> queryList(Map<String,Object> map);

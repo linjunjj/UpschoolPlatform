@@ -4,6 +4,7 @@ import com.linjun.dao.ApiUserStudentCardMapper;
 import com.linjun.entity.UserStudentCardEntity;
 import com.linjun.service.ApiUserStudentCardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
+@Service
 public class ApiUserStudentCardServcieImpl implements ApiUserStudentCardService {
     @Autowired
     private ApiUserStudentCardMapper apiUserStudentCardMapper;

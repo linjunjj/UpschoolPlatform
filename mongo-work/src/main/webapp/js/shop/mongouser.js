@@ -89,8 +89,8 @@ var vm = new Vue({
         add: function () {
             vm.showList = false;
             vm.title = "新增";
-            vm.user = {gender: '1'};
-            vm.userLevels = [];
+            vm.user = {};
+
 
             this.getUserLevels();
         },
@@ -151,28 +151,14 @@ var vm = new Vue({
             exportFile('#rrapp', '../user/export', {'username': vm.q.username});
         },
 
-        shopCart: function () {
-            var id = getSelectedRow();
-            if (id == null) {
-                return;
-            }
-            openWindow({
-                title: '购物车',
-                type: 2,
-                content: '../shop/cart.html?userId=' + id
-            })
-        },
+
         getInfo: function (id) {
             $.get("../user/info/" + id, function (r) {
                 vm.user = r.user;
             });
         },
 
-        getUserLevels: function () {
-            $.get("../userlevel/queryAll", function (r) {
-                vm.userLevels = r.list;
-            });
-        },
+
         reload: function (event) {
             vm.showList = true;
             vm.handleReset('formValidate');

@@ -4,6 +4,7 @@ import com.linjun.dao.ApiAdMapper;
 import com.linjun.entity.AdEntity;
 import com.linjun.service.ApiAdService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
+@Service
 public class ApiAdServiceimpl implements ApiAdService {
     @Autowired
     private ApiAdMapper apiAdMapper;

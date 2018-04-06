@@ -4,6 +4,7 @@ import com.linjun.dao.ApiTaskImageMapper;
 import com.linjun.entity.TaskImageEntity;
 import com.linjun.service.ApiTaskImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
+@Service
 public class ApiTaskImageServiceImpl implements ApiTaskImageService {
     @Autowired
     private ApiTaskImageMapper apiTaskImageMapper;

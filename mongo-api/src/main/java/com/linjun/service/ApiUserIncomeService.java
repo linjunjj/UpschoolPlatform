@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+
 public interface ApiUserIncomeService {
     UserIncomeEntity queryObject(Long id);
     List<UserIncomeEntity> queryList(Map<String,Object> map);

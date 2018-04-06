@@ -4,6 +4,7 @@ import com.linjun.dao.ApiSkillCommentMapper;
 import com.linjun.entity.SkillCommentEntity;
 import com.linjun.service.ApiSkillCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
+@Service
 public class ApiSkillCommentServiceImpl implements ApiSkillCommentService  {
     @Autowired
     private ApiSkillCommentMapper apiSkillCommentMapper;

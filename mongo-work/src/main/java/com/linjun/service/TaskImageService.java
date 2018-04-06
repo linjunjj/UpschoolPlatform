@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+
 public interface TaskImageService {
     TaskImageEntity queryObject(Long id);
     List<TaskImageEntity> queryList(Map<String, Object> map);

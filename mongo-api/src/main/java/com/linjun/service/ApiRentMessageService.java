@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+
 public interface ApiRentMessageService {
     RentMessageEntity queryObject(Long id);
     List<RentMessageEntity> queryList(Map<String,Object> map);

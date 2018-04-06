@@ -4,6 +4,7 @@ import com.linjun.dao.RentCategoryMapper;
 import com.linjun.entity.RentCategoryEntity;
 import com.linjun.service.RentCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
+@Service
 public class RentCategoryServiceImpl implements RentCategoryService {
     @Autowired
     private RentCategoryMapper rentCategoryMapper;

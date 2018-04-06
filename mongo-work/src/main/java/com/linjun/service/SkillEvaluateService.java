@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+
 public interface SkillEvaluateService {
     SkillEvaluateEntity queryObject(Long id);
     List<SkillEvaluateEntity> queryList(Map<String, Object> map);

@@ -4,6 +4,7 @@ import com.linjun.dao.AdPositionMapper;
 import com.linjun.entity.AdPositionEntity;
 import com.linjun.service.AdPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
+@Service
 public class AdPositionServiceImpl implements AdPositionService {
     @Autowired
     private AdPositionMapper adPositionMapper;

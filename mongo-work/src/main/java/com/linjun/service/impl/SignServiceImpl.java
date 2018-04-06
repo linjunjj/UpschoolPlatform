@@ -4,6 +4,7 @@ import com.linjun.dao.SignMapper;
 import com.linjun.entity.SignEntity;
 import com.linjun.service.SignService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
+@Service
 public class SignServiceImpl implements SignService {
     @Autowired
    private SignMapper signMapper;

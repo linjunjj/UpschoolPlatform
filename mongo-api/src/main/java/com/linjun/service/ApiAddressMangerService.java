@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
-@Service
+
 public interface ApiAddressMangerService {
     AddressManger queryObject(Long id);
     List<AddressManger> queryList(Map<String, Object> map);

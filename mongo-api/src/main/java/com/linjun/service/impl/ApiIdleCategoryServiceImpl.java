@@ -4,6 +4,7 @@ import com.linjun.dao.ApiIdleCategoryMapper;
 import com.linjun.entity.IdleCategroyEntity;
 import com.linjun.service.ApiIdleCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/24.
  * @desc
  **/
+@Service
 public class ApiIdleCategoryServiceImpl implements ApiIdleCategoryService {
     @Autowired
     private ApiIdleCategoryMapper apiIdleCategoryMapper;

@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+
 public interface SkillCategoryService {
     SkillCategoryEntity queryObject(Long id);
     List<SkillCategoryEntity> queryList(Map<String, Object> map);

@@ -5,6 +5,7 @@ import com.linjun.dao.ApiTaskMessageMapper;
 import com.linjun.entity.TaskEntity;
 import com.linjun.service.ApiTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
+@Service
 public class ApiTaskServiceImpl implements ApiTaskService {
     @Autowired
     private ApiTaskMapper apiTaskMapper;

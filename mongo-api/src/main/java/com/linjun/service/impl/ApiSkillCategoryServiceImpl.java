@@ -4,6 +4,7 @@ import com.linjun.dao.ApiSkillCategoryMapper;
 import com.linjun.entity.SkillCategoryEntity;
 import com.linjun.service.ApiSkillCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
+@Service
 public class ApiSkillCategoryServiceImpl implements ApiSkillCategoryService {
     @Autowired
     private ApiSkillCategoryMapper apiSkillCategoryMapper;

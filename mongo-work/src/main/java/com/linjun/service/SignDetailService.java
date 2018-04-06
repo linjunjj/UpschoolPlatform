@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+
 public interface SignDetailService {
     SignDetailEntity queryObject(Long id);
     List<SignDetailEntity> queryList(Map<String, Object> map);

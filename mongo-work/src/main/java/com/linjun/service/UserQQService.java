@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+
 public interface UserQQService {
     UserQQEntity queryObject(Long id);
     List<UserQQEntity> queryList(Map<String, Object> map);

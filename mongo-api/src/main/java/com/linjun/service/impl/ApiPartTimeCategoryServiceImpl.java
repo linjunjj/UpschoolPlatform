@@ -4,6 +4,7 @@ import com.linjun.dao.ApiPartTimeCategoryMapper;
 import com.linjun.entity.PartTimeCategoryEntity;
 import com.linjun.service.ApiPartTimeCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/24.
  * @desc
  **/
+@Service
 public class ApiPartTimeCategoryServiceImpl implements ApiPartTimeCategoryService {
     @Autowired
     private ApiPartTimeCategoryMapper apiPartTimeCategoryMapper;

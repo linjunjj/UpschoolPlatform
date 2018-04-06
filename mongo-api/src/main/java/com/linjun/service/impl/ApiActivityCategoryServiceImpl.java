@@ -4,6 +4,7 @@ import com.linjun.dao.ApiActivityCategoryMapper;
 import com.linjun.entity.ActivityCategoryEntity;
 import com.linjun.service.ApiActivityCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
+@Service
 public class ApiActivityCategoryServiceImpl implements ApiActivityCategoryService {
     @Autowired
     private ApiActivityCategoryMapper apiActivityCategoryMapper;

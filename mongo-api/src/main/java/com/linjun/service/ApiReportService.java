@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+
 public interface ApiReportService {
     ReportEntity queryObject(Long id);
     List<ReportEntity> queryList(Map<String,Object> map);

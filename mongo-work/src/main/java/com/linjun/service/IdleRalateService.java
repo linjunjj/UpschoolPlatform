@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/24.
  * @desc
  **/
-@Service
+
 public interface IdleRalateService {
     IdleRalateEntity queryObject(Long id);
     List<IdleRalateEntity> queryList(Map<String, Object> map);

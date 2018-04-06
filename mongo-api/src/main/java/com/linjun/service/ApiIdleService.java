@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/24.
  * @desc
  **/
-@Service
+
 public interface ApiIdleService  {
     IdleEntity queryObject(Long id);
     List<IdleEntity>  queryList(Map<String,Object>map);

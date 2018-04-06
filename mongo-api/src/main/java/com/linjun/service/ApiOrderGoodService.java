@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/24.
  * @desc
  **/
-@Service
+
 public interface ApiOrderGoodService  {
     OrderGoodEntity queryObject(Long id);
     List<OrderGoodEntity> queryList(Map<String,Object> map);

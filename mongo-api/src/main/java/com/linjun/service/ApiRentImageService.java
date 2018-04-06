@@ -12,7 +12,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+
 public interface ApiRentImageService {
     RentImageEntity queryObject(Long id);
     List<RentImageEntity> queryList(Map<String,Object> map);

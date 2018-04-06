@@ -14,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/24.
  * @desc
  **/
+@Service
 public class ApiDynamicImageServiceImpl implements ApiDynamicImageService {
     @Autowired
     private ApiDynamicImageMapper apiDynamicImageMapper;

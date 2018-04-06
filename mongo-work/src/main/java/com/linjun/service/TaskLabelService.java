@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+
 public interface TaskLabelService {
     TaskLabelEntity queryObject(Long id);
     List<TaskLabelEntity> queryList(Map<String, Object> map);

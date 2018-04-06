@@ -12,7 +12,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+
 public interface UserService {
     UserEntity queryObject(Long id);
     List<UserEntity> queryList(Map<String, Object> map);

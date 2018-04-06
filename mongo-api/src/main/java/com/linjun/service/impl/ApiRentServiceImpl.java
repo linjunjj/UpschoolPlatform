@@ -4,6 +4,7 @@ import com.linjun.dao.ApiRentMapper;
 import com.linjun.entity.RentEntity;
 import com.linjun.service.ApiRentServcie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
+@Service
 public class ApiRentServiceImpl implements ApiRentServcie {
     @Autowired
     private ApiRentMapper apiRentMapper;

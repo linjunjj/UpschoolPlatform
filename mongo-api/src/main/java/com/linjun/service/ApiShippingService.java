@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+
 public interface ApiShippingService {
     ShippingEntity queryObject(Long id);
     List<ShippingEntity> queryList(Map<String,Object> map);

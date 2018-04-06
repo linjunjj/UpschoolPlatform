@@ -4,6 +4,7 @@ import com.linjun.dao.AddressMangerMapper;
 import com.linjun.entity.AddressManger;
 import com.linjun.service.AddressMangerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
+@Service
 public class AddressMangerServiceImpl implements AddressMangerService {
     @Autowired
     private AddressMangerMapper addressMangerMapper;

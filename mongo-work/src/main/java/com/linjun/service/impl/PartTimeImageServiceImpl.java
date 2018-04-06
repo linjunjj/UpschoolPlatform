@@ -4,6 +4,7 @@ import com.linjun.dao.PartTimeImageMapper;
 import com.linjun.entity.PartTimeImageEntity;
 import com.linjun.service.PartTimeImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
+@Service
 public class PartTimeImageServiceImpl implements PartTimeImageService {
     @Autowired
     private PartTimeImageMapper partTimeImageMapper;

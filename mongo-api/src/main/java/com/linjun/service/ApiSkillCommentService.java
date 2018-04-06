@@ -1,9 +1,7 @@
 package com.linjun.service;
 
-import com.fasterxml.jackson.core.json.async.NonBlockingJsonParser;
 import com.linjun.entity.SkillCommentEntity;
-import org.springframework.stereotype.Service;
-import sun.jvm.hotspot.debugger.MachineDescriptionPPC;
+
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
-@Service
+
 public interface ApiSkillCommentService {
     SkillCommentEntity queryObject(Long id);
     List<SkillCommentEntity> queryList(Map<String,Object> map);

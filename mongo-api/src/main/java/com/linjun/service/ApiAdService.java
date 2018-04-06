@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
-@Service
+
 public interface ApiAdService {
     AdEntity queryObject(Long id);
     List<AdEntity> queryList(Map<String, Object> map);

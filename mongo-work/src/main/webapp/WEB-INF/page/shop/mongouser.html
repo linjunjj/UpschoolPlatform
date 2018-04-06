@@ -150,18 +150,14 @@
                 <el-input v-model="user.school" placeholder="电话"/>
             </el-form-item>
             <el-form-item label="专业" prop="major">
-                <el-input v-model="user.major" placeholder="电话"/>
+                <el-input v-model="user.major" placeholder="专业"/>
             </el-form-item>
-            <el-form-item label="资料完整度" prop="infofull">
-            <i-input v-model="user.infofull" placeholder="电话"/>
-           </el-form-item>
             <el-form-item label="QQ" prop="qq">
                 <el-input v-model="user.qq" placeholder="QQ"/>
             </el-form-item>
             <el-form-item label="邀请人" prop="parentUser">
                 <el-input v-model="user.parentUser" placeholder="邀请人"/>
             </el-form-item>
-
             <el-form-item>
                 <el-button type="primary" @click="handleSubmit('ruleForm')">提交</el-button>
                 <el-button type="warning" @click="reload" style="margin-left: 8px"/>

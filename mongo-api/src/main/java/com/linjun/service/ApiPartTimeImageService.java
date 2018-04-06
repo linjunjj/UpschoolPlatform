@@ -1,8 +1,6 @@
 package com.linjun.service;
 
-import com.apple.laf.AquaTreeUI;
 import com.linjun.entity.PartTimeImageEntity;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -12,7 +10,7 @@ import java.util.Map;
  * @create 2018/3/24.
  * @desc
  **/
-@Service
+
 public interface ApiPartTimeImageService {
     PartTimeImageEntity queryObject(Long id);
     List<PartTimeImageEntity> queryList(Map<String,Object> map);

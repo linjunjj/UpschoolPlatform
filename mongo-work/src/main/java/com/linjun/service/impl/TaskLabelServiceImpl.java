@@ -4,6 +4,7 @@ import com.linjun.dao.TaskLabelMapper;
 import com.linjun.entity.TaskLabelEntity;
 import com.linjun.service.TaskLabelService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
+@Service
 public class TaskLabelServiceImpl implements TaskLabelService {
     @Autowired
     private TaskLabelMapper taskLabelMapper;

@@ -4,6 +4,7 @@ import com.linjun.dao.UserIdentityMapper;
 import com.linjun.entity.UserIdentityEntity;
 import com.linjun.service.UserIdentityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/4/4.
  * @desc
  **/
+@Service
 public class UserIdentityServiceImpl implements UserIdentityService {
     @Autowired
     private UserIdentityMapper userIdentityMapper;

@@ -4,6 +4,7 @@ import com.linjun.dao.ApiReportMapper;
 import com.linjun.entity.ReportEntity;
 import com.linjun.service.ApiReportService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/25.
  * @desc
  **/
+@Service
 public class ApiReportServiceImpl implements ApiReportService
 {
     @Autowired

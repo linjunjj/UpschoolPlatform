@@ -4,6 +4,7 @@ import com.linjun.dao.IdleImagesMapper;
 import com.linjun.entity.IdleImagesEntity;
 import com.linjun.service.IdleImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
+@Service
 public class IdleImageServiceImpl implements IdleImageService {
     @Autowired
     private IdleImagesMapper idleImagesMapper;

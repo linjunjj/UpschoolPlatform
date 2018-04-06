@@ -11,7 +11,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
-@Service
+
 public interface ApiTaskMessageService {
     TaskMessageEntity queryObject(Long id);
     List<TaskMessageEntity> queryList(Map<String,Object> map);

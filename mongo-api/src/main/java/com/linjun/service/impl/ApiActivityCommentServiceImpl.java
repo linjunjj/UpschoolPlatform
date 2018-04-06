@@ -5,6 +5,7 @@ import com.linjun.dao.ApiActivityCommentMapper;
 import com.linjun.entity.ActivityCommentEntity;
 import com.linjun.service.ApiActivityCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import java.util.Map;
  * @create 2018/3/23.
  * @desc
  **/
+@Service
 public class ApiActivityCommentServiceImpl implements ApiActivityCommentService {
     @Autowired
     private ApiActivityCommentMapper apiActivityCommentMapper;

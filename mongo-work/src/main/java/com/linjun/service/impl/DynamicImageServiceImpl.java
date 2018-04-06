@@ -4,6 +4,7 @@ import com.linjun.dao.DynamicImageMapper;
 import com.linjun.entity.DynamicImageEntity;
 import com.linjun.service.DynamicImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/4/3.
  * @desc
  **/
+@Service
 public class DynamicImageServiceImpl implements DynamicImageService {
     @Autowired
     private DynamicImageMapper dynamicImageMapper;

@@ -4,6 +4,7 @@ import com.linjun.dao.ApiSkillImageMapper;
 import com.linjun.entity.SkillImageEntity;
 import com.linjun.service.ApiSkillImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @create 2018/3/26.
  * @desc
  **/
+@Service
 public class ApiSkillImageServiceImpl implements ApiSkillImageService {
     @Autowired
     private ApiSkillImageMapper apiSkillImageMapper;
