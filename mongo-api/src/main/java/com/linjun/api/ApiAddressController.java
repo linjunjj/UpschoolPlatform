@@ -6,6 +6,7 @@ import com.linjun.dao.ApiAddressMangerMapper;
 import com.linjun.entity.AddressManger;
 import com.linjun.entity.ShippingEntity;
 import com.linjun.entity.UserVo;
+import com.linjun.service.ApiAddressMangerService;
 import com.linjun.service.ApiShippingService;
 import com.linjun.util.ApiBaseAction;
 import com.linjun.util.ApiPageUtils;
@@ -30,7 +31,7 @@ import java.util.Map;
 @RequestMapping(value = "/api/address/")
 public class ApiAddressController extends ApiBaseAction {
     @Autowired
-    private ApiAddressMangerMapper addressService;
+    private ApiAddressMangerService addressService;
     @Autowired
     private ApiShippingService apiShippingService;
 

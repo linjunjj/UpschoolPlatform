@@ -11,6 +11,7 @@
     <file type="web" url="file://$PROJECT_DIR$/mongo-framework" />
     <file type="web" url="file://$PROJECT_DIR$/mongo-schedule" />
     <file type="web" url="file://$PROJECT_DIR$/mongo-shiro" />
+    <file type="web" url="file://$PROJECT_DIR$/mongo-work" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
