@@ -15,7 +15,6 @@
         <module>mongo-schedule</module>
         <module>mongo-framework</module>
         <module>mongo-work</module>
-        <module>platform-api</module>
     </modules>
     <packaging>pom</packaging>
     <description>platform</description>

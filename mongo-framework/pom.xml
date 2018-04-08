@@ -38,11 +38,11 @@
           <artifactId>mongo-schedule</artifactId>
           <version>1.0-SNAPSHOT</version>
       </dependency>
-      <!--<dependency>-->
-          <!--<groupId>mongoPlatform</groupId>-->
-          <!--<artifactId>mongo-work</artifactId>-->
-          <!--<version>1.0-SNAPSHOT</version>-->
-      <!--</dependency>-->
+      <dependency>
+          <groupId>mongoPlatform</groupId>
+          <artifactId>mongo-work</artifactId>
+          <version>1.0-SNAPSHOT</version>
+      </dependency>
       <dependency>
           <groupId>mongoPlatform</groupId>
           <artifactId>mongo-shiro</artifactId>

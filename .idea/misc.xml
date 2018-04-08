@@ -22,6 +22,7 @@
         <option value="$PROJECT_DIR$/mongo-framework/pom.xml" />
         <option value="$PROJECT_DIR$/mongo-schedule/pom.xml" />
         <option value="$PROJECT_DIR$/mongo-api/pom.xml" />
+        <option value="$PROJECT_DIR$/mongo-work/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
@@ -30,7 +31,6 @@
         <option value="$PROJECT_DIR$/ggggss/pom.xml" />
         <option value="$PROJECT_DIR$/mongo-business/pom.xml" />
         <option value="$PROJECT_DIR$/mongo-businssssss/pom.xml" />
-        <option value="$PROJECT_DIR$/mongo-work/pom.xml" />
         <option value="$PROJECT_DIR$/platform-api/pom.xml" />
       </set>
     </option>

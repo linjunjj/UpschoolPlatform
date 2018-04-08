@@ -13,6 +13,7 @@
         <module name="mongo-fromwork" />
         <module name="mongo-schedule" />
         <module name="mongo-shiro" />
+        <module name="mongo-work" />
         <module name="mongoshiro" />
       </profile>
     </annotationProcessing>
