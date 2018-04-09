@@ -22,7 +22,7 @@
                 @select-all="handleSelectionAll"
                 :data="user"
                 style="width: 100%"
-                height="250"
+                :height="tableHeight"
                 border stripe fit
                 highlight-current-row style="width: 100%">
             <el-table-column align="center"
@@ -100,17 +100,16 @@
                 <template scope="scope">
                     {{scope.row.birthday | parseTime}}
                 </template>
-
             </el-table-column>
             <el-table-column align="center" width="180px" label="注册时间" sortable>
                 <template scope="scope">
                     {{scope.row.registerTime | parseTime}}
                 </template>
-                <el-table-column
-                        prop="lastLoginIp"
-                        label="登入IP地址"
-                        width="300">
-                </el-table-column>
+            </el-table-column>
+            <el-table-column
+                    prop="lastLoginIp"
+                    label="登入IP地址"
+                    width="300">
             </el-table-column>
             <el-table-column align="center" width="180px" label="最后一次登入时间" sortable>
                 <template scope="scope">
