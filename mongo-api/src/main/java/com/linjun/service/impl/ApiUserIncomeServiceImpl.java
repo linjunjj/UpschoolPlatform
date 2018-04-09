@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiUserIncomeMapper;
-import com.linjun.entity.UserIncomeEntity;
+import com.linjun.entity.UserIncomeVo;
 import com.linjun.service.ApiUserIncomeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiUserIncomeServiceImpl  implements ApiUserIncomeService{
     @Autowired
     private ApiUserIncomeMapper apiUserIncomeMapper;
     @Override
-    public UserIncomeEntity queryObject(Long id) {
+    public UserIncomeVo queryObject(Long id) {
         return apiUserIncomeMapper.queryObject(id);
     }
 
     @Override
-    public List<UserIncomeEntity> queryList(Map<String, Object> map) {
+    public List<UserIncomeVo> queryList(Map<String, Object> map) {
         return apiUserIncomeMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiUserIncomeServiceImpl  implements ApiUserIncomeService{
     }
 
     @Override
-    public void save(UserIncomeEntity userIncomeEntity) {
-apiUserIncomeMapper.save(userIncomeEntity);
+    public void save(UserIncomeVo userIncomeVo) {
+apiUserIncomeMapper.save(userIncomeVo);
     }
 
     @Override
-    public void update(UserIncomeEntity userIncomeEntity) {
-apiUserIncomeMapper.update(userIncomeEntity);
+    public void update(UserIncomeVo userIncomeVo) {
+apiUserIncomeMapper.update(userIncomeVo);
     }
 
     @Override

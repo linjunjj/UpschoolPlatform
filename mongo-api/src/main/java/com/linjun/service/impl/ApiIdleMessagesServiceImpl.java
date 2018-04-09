@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiIdleMessageMapper;
-import com.linjun.entity.IdleMessageEntity;
+import com.linjun.entity.IdleMessageVo;
 import com.linjun.service.ApiIdleMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiIdleMessagesServiceImpl implements ApiIdleMessageService {
     @Autowired
     private ApiIdleMessageMapper apiIdleMessageMapper;
     @Override
-    public IdleMessageEntity queryObject(Long id) {
+    public IdleMessageVo queryObject(Long id) {
         return apiIdleMessageMapper.queryObject(id);
     }
 
     @Override
-    public List<IdleMessageEntity> queryList(Map<String, Object> map) {
+    public List<IdleMessageVo> queryList(Map<String, Object> map) {
         return apiIdleMessageMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiIdleMessagesServiceImpl implements ApiIdleMessageService {
     }
 
     @Override
-    public void save(IdleMessageEntity idleMessageEntity) {
-        apiIdleMessageMapper.save(idleMessageEntity);
+    public void save(IdleMessageVo idleMessageVo) {
+        apiIdleMessageMapper.save(idleMessageVo);
     }
 
     @Override
-    public void update(IdleMessageEntity idleMessageEntity) {
-     apiIdleMessageMapper.update(idleMessageEntity);
+    public void update(IdleMessageVo idleMessageVo) {
+     apiIdleMessageMapper.update(idleMessageVo);
     }
 
     @Override

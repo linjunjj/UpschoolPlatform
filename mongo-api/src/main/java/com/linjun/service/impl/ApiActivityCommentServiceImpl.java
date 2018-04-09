@@ -1,8 +1,7 @@
 package com.linjun.service.impl;
 
-import com.linjun.dao.ApiActivityCategoryMapper;
 import com.linjun.dao.ApiActivityCommentMapper;
-import com.linjun.entity.ActivityCommentEntity;
+import com.linjun.entity.ActivityCommentVo;
 import com.linjun.service.ApiActivityCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +19,12 @@ public class ApiActivityCommentServiceImpl implements ApiActivityCommentService 
     @Autowired
     private ApiActivityCommentMapper apiActivityCommentMapper;
     @Override
-    public ActivityCommentEntity queryObject(Long id) {
+    public ActivityCommentVo queryObject(Long id) {
         return apiActivityCommentMapper.queryObject(id);
     }
 
     @Override
-    public List<ActivityCommentEntity> queryList(Map<String, Object> map) {
+    public List<ActivityCommentVo> queryList(Map<String, Object> map) {
         return apiActivityCommentMapper.queryList(map);
     }
 
@@ -35,13 +34,13 @@ public class ApiActivityCommentServiceImpl implements ApiActivityCommentService 
     }
 
     @Override
-    public void save(ActivityCommentEntity activityCommentEntity) {
-         apiActivityCommentMapper.save(activityCommentEntity);
+    public void save(ActivityCommentVo activityCommentVo) {
+         apiActivityCommentMapper.save(activityCommentVo);
     }
 
     @Override
-    public void update(ActivityCommentEntity activityCommentEntity) {
-           apiActivityCommentMapper.update(activityCommentEntity);
+    public void update(ActivityCommentVo activityCommentVo) {
+           apiActivityCommentMapper.update(activityCommentVo);
     }
 
     @Override

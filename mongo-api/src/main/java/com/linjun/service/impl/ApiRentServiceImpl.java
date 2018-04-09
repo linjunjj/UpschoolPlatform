@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiRentMapper;
-import com.linjun.entity.RentEntity;
+import com.linjun.entity.RentVo;
 import com.linjun.service.ApiRentServcie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiRentServiceImpl implements ApiRentServcie {
     @Autowired
     private ApiRentMapper apiRentMapper;
     @Override
-    public RentEntity queryObject(Long id) {
+    public RentVo queryObject(Long id) {
         return apiRentMapper.queryObject(id);
     }
 
     @Override
-    public List<RentEntity> queryList(Map<String, Object> map) {
+    public List<RentVo> queryList(Map<String, Object> map) {
         return apiRentMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiRentServiceImpl implements ApiRentServcie {
     }
 
     @Override
-    public void save(RentEntity rentEntity) {
-       apiRentMapper.save(rentEntity);
+    public void save(RentVo rentVo) {
+       apiRentMapper.save(rentVo);
     }
 
     @Override
-    public void update(RentEntity rentEntity) {
-    apiRentMapper.update(rentEntity);
+    public void update(RentVo rentVo) {
+    apiRentMapper.update(rentVo);
     }
 
     @Override

@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiIdleMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.IdleEntity" id="idleMap">
+    <resultMap type="com.linjun.entity.IdleVo" id="idleMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="title" column="title"/>
@@ -46,7 +46,7 @@
         select count(*) from idle
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.IdleEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.IdleVo" useGeneratedKeys="true" keyProperty="id">
         insert into idle
         (
         `userId`,
@@ -79,7 +79,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.IdleEntity">
+    <update id="update" parameterType="com.linjun.entity.IdleVo">
         update idle
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

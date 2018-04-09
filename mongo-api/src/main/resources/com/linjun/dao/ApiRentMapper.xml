@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiRentMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.RentEntity" id="rentMap">
+    <resultMap type="com.linjun.entity.RentVo" id="rentMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="title" column="title"/>
@@ -46,7 +46,7 @@
         select count(*) from rent
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.RentEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.RentVo" useGeneratedKeys="true" keyProperty="id">
         insert into rent
         (
         `userId`,
@@ -79,7 +79,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.RentEntity">
+    <update id="update" parameterType="com.linjun.entity.RentVo">
         update rent
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

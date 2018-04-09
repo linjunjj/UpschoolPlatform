@@ -1,8 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.SkillEvaluateEntity;
-import com.sun.corba.se.spi.presentation.rmi.IDLNameTranslator;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.SkillEvaluateVo;
 
 import java.util.List;
 import java.util.Map;
@@ -14,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiSkillEvaluateService {
-    SkillEvaluateEntity queryObject(Long id);
-    List<SkillEvaluateEntity> queryList(Map<String,Object> map);
+    SkillEvaluateVo queryObject(Long id);
+    List<SkillEvaluateVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(SkillEvaluateEntity skillEvaluateEntity);
-    void update(SkillEvaluateEntity skillEvaluateEntity);
+    void save(SkillEvaluateVo skillEvaluateVo);
+    void update(SkillEvaluateVo skillEvaluateVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

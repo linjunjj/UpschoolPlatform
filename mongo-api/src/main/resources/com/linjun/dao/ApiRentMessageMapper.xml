@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiRentMessageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.RentMessageEntity" id="rentMessageMap">
+    <resultMap type="com.linjun.entity.RentMessageVo" id="rentMessageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="rent_id" column="rent_id"/>
@@ -50,7 +50,7 @@
         select count(*) from rent_message
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.RentMessageEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.RentMessageVo" useGeneratedKeys="true" keyProperty="id">
         insert into rent_message
         (
         `userId`,
@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.RentMessageEntity">
+    <update id="update" parameterType="com.linjun.entity.RentMessageVo">
         update rent_message
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

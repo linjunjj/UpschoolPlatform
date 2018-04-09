@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiTaskMessageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.TaskMessageEntity" id="taskMessageMap">
+    <resultMap type="com.linjun.entity.TaskMessageVo" id="taskMessageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="task_id" column="task_id"/>
@@ -50,7 +50,7 @@
         select count(*) from task_message
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.TaskMessageEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.TaskMessageVo" useGeneratedKeys="true" keyProperty="id">
         insert into task_message
         (
         `userId`,
@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.TaskMessageEntity">
+    <update id="update" parameterType="com.linjun.entity.TaskMessageVo">
         update task_message
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

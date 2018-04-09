@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiOrderGoodMapper;
-import com.linjun.entity.OrderGoodEntity;
+import com.linjun.entity.OrderGoodVo;
 import com.linjun.service.ApiOrderGoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class ApiOrderGoodServiceImpl implements ApiOrderGoodService
     @Autowired
     private ApiOrderGoodMapper apiOrderGoodMapper;
     @Override
-    public OrderGoodEntity queryObject(Long id) {
+    public OrderGoodVo queryObject(Long id) {
         return apiOrderGoodMapper.queryObject(id);
     }
 
     @Override
-    public List<OrderGoodEntity> queryList(Map<String, Object> map) {
+    public List<OrderGoodVo> queryList(Map<String, Object> map) {
         return apiOrderGoodMapper.queryList(map);
     }
 
@@ -35,13 +35,13 @@ public class ApiOrderGoodServiceImpl implements ApiOrderGoodService
     }
 
     @Override
-    public void save(OrderGoodEntity orderGoodEntity) {
-        apiOrderGoodMapper.save(orderGoodEntity);
+    public void save(OrderGoodVo orderGoodVo) {
+        apiOrderGoodMapper.save(orderGoodVo);
     }
 
     @Override
-    public void update(OrderGoodEntity orderGoodEntity) {
-        apiOrderGoodMapper.update(orderGoodEntity);
+    public void update(OrderGoodVo orderGoodVo) {
+        apiOrderGoodMapper.update(orderGoodVo);
     }
 
     @Override

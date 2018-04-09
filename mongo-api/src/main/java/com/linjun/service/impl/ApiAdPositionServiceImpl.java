@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiAdPositionMapper;
-import com.linjun.entity.AdPositionEntity;
+import com.linjun.entity.AdPositionVo;
 import com.linjun.service.ApiAdPositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class ApiAdPositionServiceImpl implements ApiAdPositionService {
     private ApiAdPositionMapper apiAdPositionMapper;
 
     @Override
-    public AdPositionEntity queryObject(Long id) {
+    public AdPositionVo queryObject(Long id) {
         return apiAdPositionMapper.queryObject(id);
     }
 
     @Override
-    public List<AdPositionEntity> queryList(Map<String, Object> map) {
+    public List<AdPositionVo> queryList(Map<String, Object> map) {
         return apiAdPositionMapper.queryList(map);
     }
 
@@ -35,13 +35,13 @@ public class ApiAdPositionServiceImpl implements ApiAdPositionService {
     }
 
     @Override
-    public void save(AdPositionEntity adPositionEntity) {
-         apiAdPositionMapper.save(adPositionEntity);
+    public void save(AdPositionVo adPositionVo) {
+         apiAdPositionMapper.save(adPositionVo);
     }
 
     @Override
-    public void update(AdPositionEntity adPositionEntity) {
-           apiAdPositionMapper.update(adPositionEntity);
+    public void update(AdPositionVo adPositionVo) {
+           apiAdPositionMapper.update(adPositionVo);
     }
 
     @Override

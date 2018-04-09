@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiActivityCommentMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.ActivityCommentEntity" id="activityCommentMap">
+    <resultMap type="com.linjun.entity.ActivityCommentVo" id="activityCommentMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="commint_id" column="commint_id"/>
@@ -50,7 +50,7 @@
         select count(*) from activity_commint
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.ActivityCommentEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.ActivityCommentVo" useGeneratedKeys="true" keyProperty="id">
         insert into activity_commint
         (
         `userId`,
@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.ActivityCommentEntity">
+    <update id="update" parameterType="com.linjun.entity.ActivityCommentVo">
         update activity_commint
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

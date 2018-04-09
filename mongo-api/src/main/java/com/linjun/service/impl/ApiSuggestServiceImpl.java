@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiSuggestMapper;
-import com.linjun.entity.SuggestEntity;
+import com.linjun.entity.SuggestVo;
 import com.linjun.service.ApiSuggestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiSuggestServiceImpl implements ApiSuggestService {
     @Autowired
     private ApiSuggestMapper apiSuggestMapper;
     @Override
-    public SuggestEntity queryObject(Long id) {
+    public SuggestVo queryObject(Long id) {
         return apiSuggestMapper.queryObject(id);
     }
 
     @Override
-    public List<SuggestEntity> queryList(Map<String, Object> map) {
+    public List<SuggestVo> queryList(Map<String, Object> map) {
         return apiSuggestMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiSuggestServiceImpl implements ApiSuggestService {
     }
 
     @Override
-    public void save(SuggestEntity suggestEntity) {
-  apiSuggestMapper.save(suggestEntity);
+    public void save(SuggestVo suggestVo) {
+  apiSuggestMapper.save(suggestVo);
     }
 
     @Override
-    public void update(SuggestEntity suggestEntity) {
-  apiSuggestMapper.update(suggestEntity);
+    public void update(SuggestVo suggestVo) {
+  apiSuggestMapper.update(suggestVo);
     }
 
     @Override

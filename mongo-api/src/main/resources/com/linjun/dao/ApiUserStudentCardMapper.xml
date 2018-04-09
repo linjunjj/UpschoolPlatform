@@ -3,11 +3,11 @@
 
 <mapper namespace="com.linjun.dao.ApiUserStudentCardMapper">
 
-    <select id="queryObject" resultType="com.linjun.entity.UserStudentCardEntity">
+    <select id="queryObject" resultType="com.linjun.entity.UserStudentCardVo">
         select * from user_studentcard where id = #{value}
     </select>
 
-    <select id="queryList" resultType="com.linjun.entity.UserStudentCardEntity">
+    <select id="queryList" resultType="com.linjun.entity.UserStudentCardVo">
         select * from user_studentcard
         <where>
             <where>
@@ -33,7 +33,7 @@
         </where>
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.UserStudentCardEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.UserStudentCardVo" useGeneratedKeys="true" keyProperty="id">
         insert into user_studentcard
         (
         `userId`,
@@ -52,7 +52,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.UserStudentCardEntity">
+    <update id="update" parameterType="com.linjun.entity.UserStudentCardVo">
         update user_studentcard
         <set>
             <if test="userId != null">`userId` = #{userId}, </if>

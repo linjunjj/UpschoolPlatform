@@ -1,11 +1,11 @@
 package com.linjun.dao;
 
-import com.linjun.entity.IdleEntity;
+import com.linjun.entity.IdleVo;
 
 /**
  * @author 林俊
  * @create 2018/3/18.
  * @desc
  **/
-public interface ApiIdleMapper extends  BaseDao<IdleEntity>{
+public interface ApiIdleMapper extends  BaseDao<IdleVo>{
 }

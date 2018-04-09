@@ -1,6 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.SearchHistoryEntity;
+import com.linjun.entity.SearchHistoryVo;
 
 import java.util.List;
 import java.util.Map;
@@ -11,11 +11,11 @@ import java.util.Map;
  * @desc
  **/
 public interface ApiSearchHistoryService {
-    SearchHistoryEntity queryObject(Integer id);
-    List<SearchHistoryEntity> queryList(Map<String,Object> map);
+    SearchHistoryVo queryObject(Integer id);
+    List<SearchHistoryVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(SearchHistoryEntity reportEntity);
-    void update(SearchHistoryEntity reportEntity);
+    void save(SearchHistoryVo reportEntity);
+    void update(SearchHistoryVo reportEntity);
     void delete(Integer id);
     void deleteBatch(Integer[] ids);
 }

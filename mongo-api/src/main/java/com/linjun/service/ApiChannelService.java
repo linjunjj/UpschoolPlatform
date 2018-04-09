@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.ChannelEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.ChannelVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiChannelService {
-    ChannelEntity queryObject(Long id);
-    List<ChannelEntity>  queryList(Map<String,Object> map);
+    ChannelVo queryObject(Long id);
+    List<ChannelVo>  queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(ChannelEntity channelEntity);
-    void update(ChannelEntity channelEntity);
+    void save(ChannelVo channelVo);
+    void update(ChannelVo channelVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 }

@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiUserIncomeMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.UserIncomeEntity" id="userIncomeMap">
+    <resultMap type="com.linjun.entity.UserIncomeVo" id="userIncomeMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="incomesum" column="incomesum"/>
@@ -42,7 +42,7 @@
         select count(*) from user_income
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.UserIncomeEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.UserIncomeVo" useGeneratedKeys="true" keyProperty="id">
         insert into user_income(
         `userId`,
         `incomesum`,
@@ -59,7 +59,7 @@
         #{add_time})
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.UserIncomeEntity">
+    <update id="update" parameterType="com.linjun.entity.UserIncomeVo">
         update user_income
         <set>
             <if test="userId != null">`userId` = #{userId}, </if>

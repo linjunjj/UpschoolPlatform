@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.UserStudentCardEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.UserStudentCardVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiUserStudentCardService {
-    UserStudentCardEntity queryObject(Long id);
-    List<UserStudentCardEntity> queryList(Map<String,Object> map);
+    UserStudentCardVo queryObject(Long id);
+    List<UserStudentCardVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(UserStudentCardEntity userStudentCardEntity);
-    void update(UserStudentCardEntity userStudentCardEntity);
+    void save(UserStudentCardVo userStudentCardVo);
+    void update(UserStudentCardVo userStudentCardVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

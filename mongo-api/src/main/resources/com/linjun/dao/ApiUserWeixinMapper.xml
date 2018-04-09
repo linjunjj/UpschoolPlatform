@@ -3,11 +3,11 @@
 
 <mapper namespace="com.linjun.dao.ApiUserWeixinMapper">
 
-    <select id="queryObject" resultType="com.linjun.entity.UserWeixinEntity">
+    <select id="queryObject" resultType="com.linjun.entity.UserWeixinVo">
         select * from user_weixin where id = #{value}
     </select>
 
-    <select id="queryList" resultType="com.linjun.entity.UserWeixinEntity">
+    <select id="queryList" resultType="com.linjun.entity.UserWeixinVo">
         select * from user_weixin
         <where>
             <if test="key != null and key.trim() != ''">
@@ -35,7 +35,7 @@
         </where>
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.UserWeixinEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.UserWeixinVo" useGeneratedKeys="true" keyProperty="id">
         insert into user_weixin
         (
         `userId`,
@@ -64,7 +64,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.UserWeixinEntity">
+    <update id="update" parameterType="com.linjun.entity.UserWeixinVo">
         update user_weixin
         <set>
             <if test="userId != null">`userId` = #{userId}, </if>

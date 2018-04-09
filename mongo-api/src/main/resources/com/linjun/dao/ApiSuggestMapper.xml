@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiSuggestMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.SuggestEntity" id="suggestMap">
+    <resultMap type="com.linjun.entity.SuggestVo" id="suggestMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="user_name" column="user_name"/>
@@ -36,7 +36,7 @@
         select count(*) from suggest
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.SuggestEntity" useGeneratedKeys="true" keyProperty="msgId">
+    <insert id="save" parameterType="com.linjun.entity.SuggestVo" useGeneratedKeys="true" keyProperty="msgId">
         insert into suggest(
         `userId`,
         `user_name`,
@@ -52,7 +52,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.SuggestEntity">
+    <update id="update" parameterType="com.linjun.entity.SuggestVo">
         update suggest
         <set>
             <if test="userId != null">`userId` = #{userId}, </if>

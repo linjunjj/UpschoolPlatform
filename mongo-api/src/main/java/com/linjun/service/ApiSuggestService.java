@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.SuggestEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.SuggestVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiSuggestService {
-    SuggestEntity queryObject(Long id);
-    List<SuggestEntity> queryList(Map<String,Object> map);
+    SuggestVo queryObject(Long id);
+    List<SuggestVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(SuggestEntity suggestEntity);
-    void update(SuggestEntity suggestEntity);
+    void save(SuggestVo suggestVo);
+    void update(SuggestVo suggestVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

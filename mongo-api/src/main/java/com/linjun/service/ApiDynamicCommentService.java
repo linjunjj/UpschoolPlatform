@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.DynamicCommentEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.DynamicCommentVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiDynamicCommentService {
-    DynamicCommentEntity queryObject(Long id);
-    List<DynamicCommentEntity> queryList(Map<String ,Object>map);
+    DynamicCommentVo queryObject(Long id);
+    List<DynamicCommentVo> queryList(Map<String ,Object>map);
     int  queryTotal(Map<String,Object> map);
-    void save(DynamicCommentEntity dynamicCommentEntity);
-    void update(DynamicCommentEntity dynamicCommentEntity);
+    void save(DynamicCommentVo dynamicCommentVo);
+    void update(DynamicCommentVo dynamicCommentVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

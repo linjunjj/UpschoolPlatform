@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiUserStudentCardMapper;
-import com.linjun.entity.UserStudentCardEntity;
+import com.linjun.entity.UserStudentCardVo;
 import com.linjun.service.ApiUserStudentCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiUserStudentCardServcieImpl implements ApiUserStudentCardService 
     @Autowired
     private ApiUserStudentCardMapper apiUserStudentCardMapper;
     @Override
-    public UserStudentCardEntity queryObject(Long id) {
+    public UserStudentCardVo queryObject(Long id) {
         return apiUserStudentCardMapper.queryObject(id);
     }
 
     @Override
-    public List<UserStudentCardEntity> queryList(Map<String, Object> map) {
+    public List<UserStudentCardVo> queryList(Map<String, Object> map) {
         return apiUserStudentCardMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiUserStudentCardServcieImpl implements ApiUserStudentCardService 
     }
 
     @Override
-    public void save(UserStudentCardEntity userStudentCardEntity) {
- apiUserStudentCardMapper.save(userStudentCardEntity);
+    public void save(UserStudentCardVo userStudentCardVo) {
+ apiUserStudentCardMapper.save(userStudentCardVo);
     }
 
     @Override
-    public void update(UserStudentCardEntity userStudentCardEntity) {
-apiUserStudentCardMapper.update(userStudentCardEntity);
+    public void update(UserStudentCardVo userStudentCardVo) {
+apiUserStudentCardMapper.update(userStudentCardVo);
     }
 
     @Override

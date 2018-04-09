@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiSkillMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.SkillEntity" id="skillMap">
+    <resultMap type="com.linjun.entity.SkillVo" id="skillMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="title" column="title"/>
@@ -44,7 +44,7 @@
         select count(*) from skill
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.RentEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.SkillVo" useGeneratedKeys="true" keyProperty="id">
         insert into skill
         (
         `userId`,
@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.RentEntity">
+    <update id="update" parameterType="com.linjun.entity.SkillVo">
         update skill
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

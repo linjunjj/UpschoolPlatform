@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiSkillCommentMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.SkillCommentEntity" id="skillCommentMap">
+    <resultMap type="com.linjun.entity.SkillCommentVo" id="skillCommentMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="skill_id" column="skill_id"/>
@@ -50,7 +50,7 @@
         select count(*) from skill_comment
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.SkillCommentEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.SkillCommentVo" useGeneratedKeys="true" keyProperty="id">
         insert into skill_comment
         (
         `userId`,
@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.SkillCommentEntity">
+    <update id="update" parameterType="com.linjun.entity.SkillCommentVo">
         update skill_comment
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

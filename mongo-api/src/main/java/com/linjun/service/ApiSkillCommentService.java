@@ -1,6 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.SkillCommentEntity;
+import com.linjun.entity.SkillCommentVo;
 
 
 import java.util.List;
@@ -13,11 +13,11 @@ import java.util.Map;
  **/
 
 public interface ApiSkillCommentService {
-    SkillCommentEntity queryObject(Long id);
-    List<SkillCommentEntity> queryList(Map<String,Object> map);
+    SkillCommentVo queryObject(Long id);
+    List<SkillCommentVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-  void save(SkillCommentEntity skillCommentEntity);
-  void update(SkillCommentEntity skillCommentEntity);
+  void save(SkillCommentVo skillCommentVo);
+  void update(SkillCommentVo skillCommentVo);
   void delete(Long id);
   void deleteBatch(Long[] ids);
 

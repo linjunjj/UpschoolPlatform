@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiUserIdentityMapper;
-import com.linjun.entity.UserIdentityEntity;
+import com.linjun.entity.UserIdentityVo;
 import com.linjun.service.ApiUserIdentityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiUserIdentityServiceImpl implements ApiUserIdentityService {
     @Autowired
     private ApiUserIdentityMapper apiUserIdentityMapper;
     @Override
-    public UserIdentityEntity queryObject(Long id) {
+    public UserIdentityVo queryObject(Long id) {
         return apiUserIdentityMapper.queryObject(id);
     }
 
     @Override
-    public List<UserIdentityEntity> queryList(Map<String, Object> map) {
+    public List<UserIdentityVo> queryList(Map<String, Object> map) {
         return apiUserIdentityMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiUserIdentityServiceImpl implements ApiUserIdentityService {
     }
 
     @Override
-    public void save(UserIdentityEntity userIdentityEntity) {
-   apiUserIdentityMapper.save(userIdentityEntity);
+    public void save(UserIdentityVo userIdentityVo) {
+   apiUserIdentityMapper.save(userIdentityVo);
     }
 
     @Override
-    public void update(UserIdentityEntity userIdentityEntity) {
-apiUserIdentityMapper.update(userIdentityEntity);
+    public void update(UserIdentityVo userIdentityVo) {
+apiUserIdentityMapper.update(userIdentityVo);
     }
 
     @Override

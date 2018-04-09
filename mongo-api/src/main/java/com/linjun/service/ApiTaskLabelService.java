@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.TaskLabelEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.TaskLabelVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiTaskLabelService {
-    TaskLabelEntity queryObject(Long id);
-    List<TaskLabelEntity> queryList(Map<String,Object> map);
+    TaskLabelVo queryObject(Long id);
+    List<TaskLabelVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(TaskLabelEntity taskLabelEntity);
-    void update(TaskLabelEntity taskLabelEntity);
+    void save(TaskLabelVo taskLabelVo);
+    void update(TaskLabelVo taskLabelVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

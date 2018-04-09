@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiDynamicImageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.DynamicImageEntity" id="dynamicImageMap">
+    <resultMap type="com.linjun.entity.DynamicImageVo" id="dynamicImageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="dynamicid" column="dynamicid"/>
@@ -50,7 +50,7 @@
         select count(*) from user_dynamic_image
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.DynamicImageEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.DynamicImageVo" useGeneratedKeys="true" keyProperty="id">
         insert into user_dynamic_image
         (
         `userId`,
@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.DynamicImageEntity">
+    <update id="update" parameterType="com.linjun.entity.DynamicImageVo">
         update user_dynamic_image
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

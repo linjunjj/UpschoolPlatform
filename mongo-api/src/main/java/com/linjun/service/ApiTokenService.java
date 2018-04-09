@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.TokenEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.TokenVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiTokenService {
-    TokenEntity queryObject(Long id);
-    List<TokenEntity> queryList(Map<String,Object> map);
+    TokenVo queryObject(Long id);
+    List<TokenVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(TokenEntity tokenEntity);
-    void update(TokenEntity tokenEntity);
+    void save(TokenVo tokenVo);
+    void update(TokenVo tokenVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

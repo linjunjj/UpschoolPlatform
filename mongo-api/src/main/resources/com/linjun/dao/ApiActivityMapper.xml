@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiActivityMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.ActivityEntity" id="activityMap">
+    <resultMap type="com.linjun.entity.ActivityVo" id="activityMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="title" column="title"/>
@@ -45,7 +45,7 @@
         select count(*) from activity
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.ActivityEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.ActivityVo" useGeneratedKeys="true" keyProperty="id">
         insert into activity
         (
         `userId`,
@@ -74,7 +74,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.ActivityEntity">
+    <update id="update" parameterType="com.linjun.entity.ActivityVo">
         update activity
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

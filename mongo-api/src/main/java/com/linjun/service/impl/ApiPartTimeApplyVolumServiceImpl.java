@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiPartTimeApplyVolumMapper;
-import com.linjun.entity.PartTimeApplyVolumEntity;
+import com.linjun.entity.PartTimeApplyVolumVo;
 import com.linjun.service.ApiPartTimeApplyVolumService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiPartTimeApplyVolumServiceImpl implements ApiPartTimeApplyVolumSe
     @Autowired
     private ApiPartTimeApplyVolumMapper apiPartTimeApplyVolumMapper;
     @Override
-    public PartTimeApplyVolumEntity queryObject(Long id) {
+    public PartTimeApplyVolumVo queryObject(Long id) {
         return apiPartTimeApplyVolumMapper.queryObject(id);
     }
 
     @Override
-    public List<PartTimeApplyVolumEntity> queryList(Map<String, Object> map) {
+    public List<PartTimeApplyVolumVo> queryList(Map<String, Object> map) {
         return apiPartTimeApplyVolumMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiPartTimeApplyVolumServiceImpl implements ApiPartTimeApplyVolumSe
     }
 
     @Override
-    public void save(PartTimeApplyVolumEntity partTimeApplyVolumEntity) {
-       apiPartTimeApplyVolumMapper.save(partTimeApplyVolumEntity);
+    public void save(PartTimeApplyVolumVo partTimeApplyVolumVo) {
+       apiPartTimeApplyVolumMapper.save(partTimeApplyVolumVo);
     }
 
     @Override
-    public void update(PartTimeApplyVolumEntity partTimeApplyVolumEntity) {
-      apiPartTimeApplyVolumMapper.update(partTimeApplyVolumEntity);
+    public void update(PartTimeApplyVolumVo partTimeApplyVolumVo) {
+      apiPartTimeApplyVolumMapper.update(partTimeApplyVolumVo);
     }
 
     @Override

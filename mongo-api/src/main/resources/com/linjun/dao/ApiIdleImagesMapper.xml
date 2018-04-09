@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiIdleImagesMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.IdleImagesEntity" id="idleImageMap">
+    <resultMap type="com.linjun.entity.IdleImagesVo" id="idleImageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="idle_id" column="rent_id"/>
@@ -48,7 +48,7 @@
         select count(*) from idle_images
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.IdleImagesEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.IdleImagesVo" useGeneratedKeys="true" keyProperty="id">
         insert into idle_images
         (
         `userId`,
@@ -67,7 +67,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.IdleImagesEntity">
+    <update id="update" parameterType="com.linjun.entity.IdleImagesVo">
         update idle_images
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiIdleRalateMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.IdleRalateEntity" id="idleRelateMap">
+    <resultMap type="com.linjun.entity.IdleRalateVo" id="idleRelateMap">
         <result property="id" column="id"/>
         <result property="idle_id" column="idle_id"/>
         <result property="idle_ralateid" column="idle_ralateid"/>
@@ -40,7 +40,7 @@
         select count(*) from idle_ralate
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.IdleRalateEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.IdleRalateVo" useGeneratedKeys="true" keyProperty="id">
         insert into idle_ralate
         (
         `idle_id`,
@@ -53,7 +53,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.IdleRalateEntity">
+    <update id="update" parameterType="com.linjun.entity.IdleRalateVo">
         update idle_ralate
         <set>
             <if test="idle_id != null">`idle_id` = #{idle_id},</if>

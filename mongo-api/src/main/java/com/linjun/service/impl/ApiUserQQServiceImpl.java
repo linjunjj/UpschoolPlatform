@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiUserQQMapper;
-import com.linjun.entity.UserQQEntity;
+import com.linjun.entity.UserQQVo;
 import com.linjun.service.ApiUserQQService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiUserQQServiceImpl implements ApiUserQQService {
     @Autowired
     private ApiUserQQMapper apiUserQQMapper;
     @Override
-    public UserQQEntity queryObject(Long id) {
+    public UserQQVo queryObject(Long id) {
         return apiUserQQMapper.queryObject(id);
     }
 
     @Override
-    public List<UserQQEntity> queryList(Map<String, Object> map) {
+    public List<UserQQVo> queryList(Map<String, Object> map) {
         return apiUserQQMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiUserQQServiceImpl implements ApiUserQQService {
     }
 
     @Override
-    public void save(UserQQEntity userQQEntity) {
-  apiUserQQMapper.save(userQQEntity);
+    public void save(UserQQVo userQQVo) {
+  apiUserQQMapper.save(userQQVo);
     }
 
     @Override
-    public void update(UserQQEntity userQQEntity) {
-apiUserQQMapper.update(userQQEntity);
+    public void update(UserQQVo userQQVo) {
+apiUserQQMapper.update(userQQVo);
     }
 
     @Override

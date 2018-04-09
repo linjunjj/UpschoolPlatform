@@ -4,7 +4,7 @@ import com.linjun.dao.ApiUserLevelMapper;
 import com.linjun.dao.ApiUserMapper;
 import com.linjun.entity.SmsLogVo;
 import com.linjun.entity.UserVo;
-import com.linjun.entity.UserLevelEntity;
+import com.linjun.entity.UserLevelVo;
 import com.linjun.service.ApiUserService;
 import com.linjun.utils.HttpContextUtils;
 import com.linjun.utils.IPUtils;
@@ -111,9 +111,9 @@ apiUserMapper.deleteBatch(ids);
     @Override
     public String getUserLevel(UserVo loginUser) {
         String result="测试用户";
-        UserLevelEntity userLevelEntity=apiUserLevelMapper.queryObject(loginUser.getUser_level_id());
-        if (userLevelEntity!=null){
-            result=userLevelEntity.getName();
+        UserLevelVo userLevelVo =apiUserLevelMapper.queryObject(loginUser.getUser_level_id());
+        if (userLevelVo !=null){
+            result= userLevelVo.getName();
         }
 
         return result;

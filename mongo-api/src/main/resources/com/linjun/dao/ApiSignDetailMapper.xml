@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiSignDetailMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.SignDetailEntity" id="signDetailMap">
+    <resultMap type="com.linjun.entity.SignDetailVo" id="signDetailMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="signparise" column="signparise"/>
@@ -37,7 +37,7 @@
         select count(*) from signDetail
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.SignDetailEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.SignDetailVo" useGeneratedKeys="true" keyProperty="id">
         insert into signDetail
         (
         `userId`,
@@ -52,7 +52,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.SignDetailEntity">
+    <update id="update" parameterType="com.linjun.entity.SignDetailVo">
         update signDetail
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

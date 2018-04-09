@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiTaskImageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.TaskImageEntity" id="taskImageMap">
+    <resultMap type="com.linjun.entity.TaskImageVo" id="taskImageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="task_id" column="task_id"/>
@@ -48,7 +48,7 @@
         select count(*) from task_image
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.TaskImageEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.TaskImageVo" useGeneratedKeys="true" keyProperty="id">
         insert into task_image
         (
         `userId`,
@@ -67,7 +67,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.TaskImageEntity">
+    <update id="update" parameterType="com.linjun.entity.TaskImageVo">
         update task_image
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

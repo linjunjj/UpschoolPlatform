@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiSkillMapper;
-import com.linjun.entity.SkillEntity;
+import com.linjun.entity.SkillVo;
 import com.linjun.service.ApiSkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiSkillServiceImpl implements ApiSkillService {
     @Autowired
     private ApiSkillMapper apiSkillMapper;
     @Override
-    public SkillEntity queryObject(Long id) {
+    public SkillVo queryObject(Long id) {
         return apiSkillMapper.queryObject(id);
     }
 
     @Override
-    public List<SkillEntity> queryList(Map<String, Object> map) {
+    public List<SkillVo> queryList(Map<String, Object> map) {
         return apiSkillMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiSkillServiceImpl implements ApiSkillService {
     }
 
     @Override
-    public void save(SkillEntity skillEntity) {
-  apiSkillMapper.save(skillEntity);
+    public void save(SkillVo skillVo) {
+  apiSkillMapper.save(skillVo);
     }
 
     @Override
-    public void update(SkillEntity skillEntity) {
-   apiSkillMapper.update(skillEntity);
+    public void update(SkillVo skillVo) {
+   apiSkillMapper.update(skillVo);
     }
 
     @Override

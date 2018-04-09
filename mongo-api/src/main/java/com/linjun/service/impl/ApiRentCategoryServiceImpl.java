@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiRentCategoryMapper;
-import com.linjun.entity.RentCategoryEntity;
+import com.linjun.entity.RentCategoryVo;
 import com.linjun.service.ApiRentCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiRentCategoryServiceImpl implements ApiRentCategoryService {
     @Autowired
     private ApiRentCategoryMapper apiRentCategoryMapper;
     @Override
-    public RentCategoryEntity queryObject(Long id) {
+    public RentCategoryVo queryObject(Long id) {
         return apiRentCategoryMapper.queryObject(id);
     }
 
     @Override
-    public List<RentCategoryEntity> queryList(Map<String, Object> map) {
+    public List<RentCategoryVo> queryList(Map<String, Object> map) {
         return apiRentCategoryMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiRentCategoryServiceImpl implements ApiRentCategoryService {
     }
 
     @Override
-    public void save(RentCategoryEntity rentCategoryEntity) {
-    apiRentCategoryMapper.save(rentCategoryEntity);
+    public void save(RentCategoryVo rentCategoryVo) {
+    apiRentCategoryMapper.save(rentCategoryVo);
     }
 
     @Override
-    public void update(RentCategoryEntity rentCategoryEntity) {
- apiRentCategoryMapper.update(rentCategoryEntity);
+    public void update(RentCategoryVo rentCategoryVo) {
+ apiRentCategoryMapper.update(rentCategoryVo);
     }
 
     @Override

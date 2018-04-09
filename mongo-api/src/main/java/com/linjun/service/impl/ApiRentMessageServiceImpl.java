@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiRentMessageMapper;
-import com.linjun.entity.RentMessageEntity;
+import com.linjun.entity.RentMessageVo;
 import com.linjun.service.ApiRentMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiRentMessageServiceImpl implements ApiRentMessageService {
     @Autowired
     private ApiRentMessageMapper apiRentMessageMapper;
     @Override
-    public RentMessageEntity queryObject(Long id) {
+    public RentMessageVo queryObject(Long id) {
         return apiRentMessageMapper.queryObject(id);
     }
 
     @Override
-    public List<RentMessageEntity> queryList(Map<String, Object> map) {
+    public List<RentMessageVo> queryList(Map<String, Object> map) {
         return apiRentMessageMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiRentMessageServiceImpl implements ApiRentMessageService {
     }
 
     @Override
-    public void save(RentMessageEntity rentMessageEntity) {
-  apiRentMessageMapper.save(rentMessageEntity);
+    public void save(RentMessageVo rentMessageVo) {
+  apiRentMessageMapper.save(rentMessageVo);
     }
 
     @Override
-    public void update(RentMessageEntity rentMessageEntity) {
-  apiRentMessageMapper.update(rentMessageEntity);
+    public void update(RentMessageVo rentMessageVo) {
+  apiRentMessageMapper.update(rentMessageVo);
     }
 
     @Override

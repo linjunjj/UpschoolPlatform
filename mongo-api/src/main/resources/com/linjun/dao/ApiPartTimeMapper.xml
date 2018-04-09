@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiPartTimeMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.PartTimeEntity" id="partTimeMap">
+    <resultMap type="com.linjun.entity.PartTimeVo" id="partTimeMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="title" column="title"/>
@@ -45,7 +45,7 @@
         select count(*) from parttime
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.PartTimeEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.PartTimeVo" useGeneratedKeys="true" keyProperty="id">
         insert into parttime
         (
         `userId`,
@@ -76,7 +76,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.PartTimeEntity">
+    <update id="update" parameterType="com.linjun.entity.PartTimeVo">
         update parttime
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

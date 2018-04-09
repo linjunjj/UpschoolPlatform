@@ -3,11 +3,11 @@
 
 <mapper namespace="com.linjun.dao.ApiUserQQMapper">
 
-    <select id="queryObject" resultType="com.linjun.entity.UserQQEntity">
+    <select id="queryObject" resultType="com.linjun.entity.UserQQVo">
         select * from user_qq where id = #{value}
     </select>
 
-    <select id="queryList" resultType="com.linjun.entity.UserQQEntity">
+    <select id="queryList" resultType="com.linjun.entity.UserQQVo">
         select * from user_qq
         <where>
             <if test="key != null and key.trim() != ''">
@@ -35,7 +35,7 @@
         </where>
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.UserQQEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.UserQQVo" useGeneratedKeys="true" keyProperty="id">
         insert into user_qq
         (
         `userId`,
@@ -74,7 +74,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.UserQQEntity">
+    <update id="update" parameterType="com.linjun.entity.UserQQVo">
         update user_qq
         <set>
             <if test="userId != null">`userId` = #{userId}, </if>

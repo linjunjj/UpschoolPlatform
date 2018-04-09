@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiOrderGoodMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.OrderGoodEntity" id="orderGoodsMap">
+    <resultMap type="com.linjun.entity.OrderGoodVo" id="orderGoodsMap">
         <result property="id" column="id"/>
         <result property="order_id" column="order_id"/>
         <result property="goods_id" column="goods_id"/>
@@ -50,7 +50,7 @@
         select count(*) from order_goods
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.OrderGoodEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.OrderGoodVo" useGeneratedKeys="true" keyProperty="id">
         insert into order_goods
         (
         `order_id`,
@@ -85,7 +85,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.OrderGoodEntity">
+    <update id="update" parameterType="com.linjun.entity.OrderGoodVo">
         update order_goods
         <set>
             <if test="order_id != null">`order_id` = #{order_id},</if>

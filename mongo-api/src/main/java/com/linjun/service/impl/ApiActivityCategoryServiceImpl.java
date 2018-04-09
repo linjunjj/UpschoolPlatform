@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiActivityCategoryMapper;
-import com.linjun.entity.ActivityCategoryEntity;
+import com.linjun.entity.ActivityCategoryVo;
 import com.linjun.service.ApiActivityCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiActivityCategoryServiceImpl implements ApiActivityCategoryServic
     @Autowired
     private ApiActivityCategoryMapper apiActivityCategoryMapper;
     @Override
-    public ActivityCategoryEntity queryObject(Long id) {
+    public ActivityCategoryVo queryObject(Long id) {
         return apiActivityCategoryMapper.queryObject(id);
     }
 
     @Override
-    public List<ActivityCategoryEntity> queryList(Map<String, Object> map) {
+    public List<ActivityCategoryVo> queryList(Map<String, Object> map) {
         return apiActivityCategoryMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiActivityCategoryServiceImpl implements ApiActivityCategoryServic
     }
 
     @Override
-    public void save(ActivityCategoryEntity activityCategoryEntity) {
-            apiActivityCategoryMapper.save(activityCategoryEntity);
+    public void save(ActivityCategoryVo activityCategoryVo) {
+            apiActivityCategoryMapper.save(activityCategoryVo);
     }
 
     @Override
-    public void update(ActivityCategoryEntity activityCategoryEntity) {
-   apiActivityCategoryMapper.update(activityCategoryEntity);
+    public void update(ActivityCategoryVo activityCategoryVo) {
+   apiActivityCategoryMapper.update(activityCategoryVo);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.SkillImageEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.SkillImageVo;
 
 import java.util.List;
 import java.util.Map;
@@ -14,11 +13,11 @@ import java.util.Map;
  **/
 
 public interface ApiSkillImageService {
-    SkillImageEntity queryObject(Long id);
-    List<SkillImageEntity>  queryList(Map<String,Object> map);
+    SkillImageVo queryObject(Long id);
+    List<SkillImageVo>  queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(SkillImageEntity skillImageEntity);
-    void update(SkillImageEntity skillImageEntity);
+    void save(SkillImageVo skillImageVo);
+    void update(SkillImageVo skillImageVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 }

@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiActivityImageMapper;
-import com.linjun.entity.ActivityImageEntity;
+import com.linjun.entity.ActivityImageVo;
 import com.linjun.service.ApiAcitvityImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiAcitvityImageServiceImpl implements ApiAcitvityImageService {
 @Autowired
 private ApiActivityImageMapper apiActivityImageMapper;
     @Override
-    public ActivityImageEntity queryObject(Long id) {
+    public ActivityImageVo queryObject(Long id) {
         return apiActivityImageMapper.queryObject(id);
     }
 
     @Override
-    public List<ActivityImageEntity> queryList(Map<String, Object> map) {
+    public List<ActivityImageVo> queryList(Map<String, Object> map) {
         return apiActivityImageMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ private ApiActivityImageMapper apiActivityImageMapper;
     }
 
     @Override
-    public void save(ActivityImageEntity activityImageEntity) {
-        apiActivityImageMapper.save(activityImageEntity);
+    public void save(ActivityImageVo activityImageVo) {
+        apiActivityImageMapper.save(activityImageVo);
     }
 
     @Override
-    public void update(ActivityImageEntity activityImageEntity) {
-          apiActivityImageMapper.update(activityImageEntity);
+    public void update(ActivityImageVo activityImageVo) {
+          apiActivityImageMapper.update(activityImageVo);
     }
 
     @Override

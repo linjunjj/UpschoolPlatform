@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiTaskLabelMapper;
-import com.linjun.entity.TaskLabelEntity;
+import com.linjun.entity.TaskLabelVo;
 import com.linjun.service.ApiTaskLabelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiTaskLabelServiceImpl implements ApiTaskLabelService {
     @Autowired
     private ApiTaskLabelMapper apiTaskLabelMapper;
     @Override
-    public TaskLabelEntity queryObject(Long id) {
+    public TaskLabelVo queryObject(Long id) {
         return apiTaskLabelMapper.queryObject(id);
     }
 
     @Override
-    public List<TaskLabelEntity> queryList(Map<String, Object> map) {
+    public List<TaskLabelVo> queryList(Map<String, Object> map) {
         return apiTaskLabelMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiTaskLabelServiceImpl implements ApiTaskLabelService {
     }
 
     @Override
-    public void save(TaskLabelEntity taskLabelEntity) {
-apiTaskLabelMapper.save(taskLabelEntity);
+    public void save(TaskLabelVo taskLabelVo) {
+apiTaskLabelMapper.save(taskLabelVo);
     }
 
     @Override
-    public void update(TaskLabelEntity taskLabelEntity) {
-apiTaskLabelMapper.update(taskLabelEntity);
+    public void update(TaskLabelVo taskLabelVo) {
+apiTaskLabelMapper.update(taskLabelVo);
     }
 
     @Override

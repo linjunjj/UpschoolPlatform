@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiTokenMapper;
-import com.linjun.entity.TokenEntity;
+import com.linjun.entity.TokenVo;
 import com.linjun.service.ApiTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiTokenServiceImpl implements ApiTokenService {
     @Autowired
     private ApiTokenMapper apiTokenMapper;
     @Override
-    public TokenEntity queryObject(Long id) {
+    public TokenVo queryObject(Long id) {
         return apiTokenMapper.queryObject(id);
     }
 
     @Override
-    public List<TokenEntity> queryList(Map<String, Object> map) {
+    public List<TokenVo> queryList(Map<String, Object> map) {
         return apiTokenMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiTokenServiceImpl implements ApiTokenService {
     }
 
     @Override
-    public void save(TokenEntity tokenEntity) {
-apiTokenMapper.save(tokenEntity);
+    public void save(TokenVo tokenVo) {
+apiTokenMapper.save(tokenVo);
     }
 
     @Override
-    public void update(TokenEntity tokenEntity) {
-apiTokenMapper.update(tokenEntity);
+    public void update(TokenVo tokenVo) {
+apiTokenMapper.update(tokenVo);
     }
 
     @Override

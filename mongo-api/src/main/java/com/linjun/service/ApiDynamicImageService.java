@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.DynamicImageEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.DynamicImageVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiDynamicImageService {
-    DynamicImageEntity queryObject(Long id);
-    List<DynamicImageEntity> queryList(Map<String,Object> map);
+    DynamicImageVo queryObject(Long id);
+    List<DynamicImageVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(DynamicImageEntity dynamicImageEntity);
-    void update(DynamicImageEntity dynamicImageEntity);
+    void save(DynamicImageVo dynamicImageVo);
+    void update(DynamicImageVo dynamicImageVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 }

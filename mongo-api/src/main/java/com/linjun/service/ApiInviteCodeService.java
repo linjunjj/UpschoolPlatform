@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.InviteCodeEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.InviteCodeVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiInviteCodeService {
-    InviteCodeEntity queryObject(Long id);
-    List<InviteCodeEntity> queryList(Map<String,Object> map);
+    InviteCodeVo queryObject(Long id);
+    List<InviteCodeVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(InviteCodeEntity inviteCodeEntity);
-    void update(InviteCodeEntity inviteCodeEntity);
+    void save(InviteCodeVo inviteCodeVo);
+    void update(InviteCodeVo inviteCodeVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 }

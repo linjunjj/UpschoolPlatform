@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiIdleCategoryMapper;
-import com.linjun.entity.IdleCategroyEntity;
+import com.linjun.entity.IdleCategroyVo;
 import com.linjun.service.ApiIdleCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiIdleCategoryServiceImpl implements ApiIdleCategoryService {
     @Autowired
     private ApiIdleCategoryMapper apiIdleCategoryMapper;
     @Override
-    public IdleCategroyEntity queryObject(Long id) {
+    public IdleCategroyVo queryObject(Long id) {
         return apiIdleCategoryMapper.queryObject(id);
     }
 
     @Override
-    public List<IdleCategroyEntity> queryList(Map<String, Object> map) {
+    public List<IdleCategroyVo> queryList(Map<String, Object> map) {
         return apiIdleCategoryMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiIdleCategoryServiceImpl implements ApiIdleCategoryService {
     }
 
     @Override
-    public void save(IdleCategroyEntity idleCategroyEntity) {
-          apiIdleCategoryMapper.save(idleCategroyEntity);
+    public void save(IdleCategroyVo idleCategroyVo) {
+          apiIdleCategoryMapper.save(idleCategroyVo);
     }
 
     @Override
-    public void update(IdleCategroyEntity idleCategroyEntity) {
-         apiIdleCategoryMapper.update(idleCategroyEntity);
+    public void update(IdleCategroyVo idleCategroyVo) {
+         apiIdleCategoryMapper.update(idleCategroyVo);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.ActivityEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.ActivityVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiAcitvityService {
-    ActivityEntity queryObject(Long id);
-    List<ActivityEntity> queryList(Map<String,Object> map);
+    ActivityVo queryObject(Long id);
+    List<ActivityVo> queryList(Map<String,Object> map);
      int queryTotal(Map<String, Object> map);
-     void save(ActivityEntity activityEntity);
-     void update(ActivityEntity activityEntity);
+     void save(ActivityVo activityVo);
+     void update(ActivityVo activityVo);
      void  delete(Long id);
      void deleteBatch(Long[] ids);
 }

@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiUserDynamicMapper;
-import com.linjun.entity.UserDynamicEntity;
+import com.linjun.entity.UserDynamicVo;
 import com.linjun.service.ApiUserDynamicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiUserDynamicImpl implements ApiUserDynamicService {
     @Autowired
     private ApiUserDynamicMapper apiUserDynamicMapper;
     @Override
-    public UserDynamicEntity queryObject(Long id) {
+    public UserDynamicVo queryObject(Long id) {
         return apiUserDynamicMapper.queryObject(id);
     }
 
     @Override
-    public List<UserDynamicEntity> queryList(Map<String, Object> map) {
+    public List<UserDynamicVo> queryList(Map<String, Object> map) {
         return apiUserDynamicMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiUserDynamicImpl implements ApiUserDynamicService {
     }
 
     @Override
-    public void save(UserDynamicEntity userDynamicEntity) {
-apiUserDynamicMapper.save(userDynamicEntity);
+    public void save(UserDynamicVo userDynamicVo) {
+apiUserDynamicMapper.save(userDynamicVo);
     }
 
     @Override
-    public void update(UserDynamicEntity userDynamicEntity) {
-apiUserDynamicMapper.update(userDynamicEntity);
+    public void update(UserDynamicVo userDynamicVo) {
+apiUserDynamicMapper.update(userDynamicVo);
     }
 
     @Override

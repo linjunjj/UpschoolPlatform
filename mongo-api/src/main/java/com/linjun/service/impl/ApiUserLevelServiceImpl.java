@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiUserLevelMapper;
-import com.linjun.entity.UserLevelEntity;
+import com.linjun.entity.UserLevelVo;
 import com.linjun.service.ApiUserLevelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiUserLevelServiceImpl implements ApiUserLevelService {
     @Autowired
     private ApiUserLevelMapper apiUserLevelMapper;
     @Override
-    public UserLevelEntity queryObject(Long id) {
+    public UserLevelVo queryObject(Long id) {
         return apiUserLevelMapper.queryObject(id);
     }
 
     @Override
-    public List<UserLevelEntity> queryList(Map<String, Object> map) {
+    public List<UserLevelVo> queryList(Map<String, Object> map) {
         return apiUserLevelMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiUserLevelServiceImpl implements ApiUserLevelService {
     }
 
     @Override
-    public void save(UserLevelEntity userLevelEntity) {
- apiUserLevelMapper.save(userLevelEntity);
+    public void save(UserLevelVo userLevelVo) {
+ apiUserLevelMapper.save(userLevelVo);
     }
 
     @Override
-    public void update(UserLevelEntity userLevelEntity) {
-apiUserLevelMapper.update(userLevelEntity);
+    public void update(UserLevelVo userLevelVo) {
+apiUserLevelMapper.update(userLevelVo);
     }
 
     @Override

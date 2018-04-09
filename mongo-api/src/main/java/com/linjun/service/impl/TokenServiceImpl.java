@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiTokenMapper;
-import com.linjun.entity.TokenEntity;
+import com.linjun.entity.TokenVo;
 import com.linjun.service.TokenService;
 import com.linjun.utils.CharUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,19 +23,19 @@ public class TokenServiceImpl implements TokenService {
 
     private final static int EXPIRE = 3600 * 12;
 
-    public TokenEntity queryByUserId(Long userId) {
+    public TokenVo queryByUserId(Long userId) {
         return tokenDao.queryByUserId(userId);
     }
 
-    public TokenEntity queryByToken(String token) {
+    public TokenVo queryByToken(String token) {
         return tokenDao.queryByToken(token);
     }
 
-    public void save(TokenEntity token) {
+    public void save(TokenVo token) {
         tokenDao.save(token);
     }
 
-    public void update(TokenEntity token) {
+    public void update(TokenVo token) {
         tokenDao.update(token);
     }
 
@@ -49,23 +49,23 @@ public class TokenServiceImpl implements TokenService {
         Date expireTime = new Date(now.getTime() + EXPIRE * 1000);
 
         //判断是否生成过token
-        TokenEntity tokenEntity = queryByUserId(userId);
-        if (tokenEntity == null) {
-            tokenEntity = new TokenEntity();
-            tokenEntity.setUserId(userId);
-            tokenEntity.setToken(token);
-            tokenEntity.setUpdateTime(now);
-            tokenEntity.setExpireTime(expireTime);
+        TokenVo tokenVo = queryByUserId(userId);
+        if (tokenVo == null) {
+            tokenVo = new TokenVo();
+            tokenVo.setUserId(userId);
+            tokenVo.setToken(token);
+            tokenVo.setUpdateTime(now);
+            tokenVo.setExpireTime(expireTime);
 
             //保存token
-            save(tokenEntity);
+            save(tokenVo);
         } else {
-            tokenEntity.setToken(token);
-            tokenEntity.setUpdateTime(now);
-            tokenEntity.setExpireTime(expireTime);
+            tokenVo.setToken(token);
+            tokenVo.setUpdateTime(now);
+            tokenVo.setExpireTime(expireTime);
 
             //更新token
-            update(tokenEntity);
+            update(tokenVo);
         }
 
         Map<String, Object> map = new HashMap<>();

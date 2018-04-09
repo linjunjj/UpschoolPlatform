@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.ReportEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.ReportVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiReportService {
-    ReportEntity queryObject(Long id);
-    List<ReportEntity> queryList(Map<String,Object> map);
+    ReportVo queryObject(Long id);
+    List<ReportVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(ReportEntity reportEntity);
-    void update(ReportEntity reportEntity);
+    void save(ReportVo reportVo);
+    void update(ReportVo reportVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

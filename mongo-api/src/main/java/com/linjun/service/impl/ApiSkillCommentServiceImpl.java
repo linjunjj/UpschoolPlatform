@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiSkillCommentMapper;
-import com.linjun.entity.SkillCommentEntity;
+import com.linjun.entity.SkillCommentVo;
 import com.linjun.service.ApiSkillCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiSkillCommentServiceImpl implements ApiSkillCommentService  {
     @Autowired
     private ApiSkillCommentMapper apiSkillCommentMapper;
     @Override
-    public SkillCommentEntity queryObject(Long id) {
+    public SkillCommentVo queryObject(Long id) {
         return apiSkillCommentMapper.queryObject(id);
     }
 
     @Override
-    public List<SkillCommentEntity> queryList(Map<String, Object> map) {
+    public List<SkillCommentVo> queryList(Map<String, Object> map) {
         return apiSkillCommentMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiSkillCommentServiceImpl implements ApiSkillCommentService  {
     }
 
     @Override
-    public void save(SkillCommentEntity skillCommentEntity) {
-      apiSkillCommentMapper.save(skillCommentEntity);
+    public void save(SkillCommentVo skillCommentVo) {
+      apiSkillCommentMapper.save(skillCommentVo);
     }
 
     @Override
-    public void update(SkillCommentEntity skillCommentEntity) {
-    apiSkillCommentMapper.update(skillCommentEntity);
+    public void update(SkillCommentVo skillCommentVo) {
+    apiSkillCommentMapper.update(skillCommentVo);
     }
 
     @Override

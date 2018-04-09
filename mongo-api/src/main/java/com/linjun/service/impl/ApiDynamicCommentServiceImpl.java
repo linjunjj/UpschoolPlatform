@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiDynamicCommentMapper;
-import com.linjun.entity.DynamicCommentEntity;
+import com.linjun.entity.DynamicCommentVo;
 import com.linjun.service.ApiDynamicCommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class ApiDynamicCommentServiceImpl implements ApiDynamicCommentService{
     private ApiDynamicCommentMapper apiDynamicCommentMapper;
 
     @Override
-    public DynamicCommentEntity queryObject(Long id) {
+    public DynamicCommentVo queryObject(Long id) {
         return apiDynamicCommentMapper.queryObject(id);
     }
 
     @Override
-    public List<DynamicCommentEntity> queryList(Map<String, Object> map) {
+    public List<DynamicCommentVo> queryList(Map<String, Object> map) {
         return apiDynamicCommentMapper.queryList(map);
     }
 
@@ -35,13 +35,13 @@ public class ApiDynamicCommentServiceImpl implements ApiDynamicCommentService{
     }
 
     @Override
-    public void save(DynamicCommentEntity dynamicCommentEntity) {
-       apiDynamicCommentMapper.save(dynamicCommentEntity);
+    public void save(DynamicCommentVo dynamicCommentVo) {
+       apiDynamicCommentMapper.save(dynamicCommentVo);
     }
 
     @Override
-    public void update(DynamicCommentEntity dynamicCommentEntity) {
-      apiDynamicCommentMapper.update(dynamicCommentEntity);
+    public void update(DynamicCommentVo dynamicCommentVo) {
+      apiDynamicCommentMapper.update(dynamicCommentVo);
     }
 
     @Override

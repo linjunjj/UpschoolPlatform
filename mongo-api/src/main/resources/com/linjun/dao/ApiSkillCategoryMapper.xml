@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiSkillCategoryMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.SkillCategoryEntity" id="skillCategoryMap">
+    <resultMap type="com.linjun.entity.SkillCategoryVo" id="skillCategoryMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="keywords" column="keywords"/>
@@ -45,7 +45,7 @@
         select count(*) from skill_category
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.SkillCategoryEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.SkillCategoryVo" useGeneratedKeys="true" keyProperty="id">
         insert into skill_category
         (
         `name`,
@@ -76,7 +76,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.SkillCategoryEntity">
+    <update id="update" parameterType="com.linjun.entity.SkillCategoryVo">
         update skill_category
         <set>
             <if test="name != null">`name` = #{name},</if>

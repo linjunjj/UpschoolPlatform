@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiPartTimeMapper;
-import com.linjun.entity.PartTimeEntity;
+import com.linjun.entity.PartTimeVo;
 import com.linjun.service.ApiPartTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiPartTimeServiceImpl implements ApiPartTimeService {
     @Autowired
     private ApiPartTimeMapper apiPartTimeMapper;
     @Override
-    public PartTimeEntity queryObject(Long id) {
+    public PartTimeVo queryObject(Long id) {
         return apiPartTimeMapper.queryObject(id);
     }
 
     @Override
-    public List<PartTimeEntity> queryList(Map<String, Object> map) {
+    public List<PartTimeVo> queryList(Map<String, Object> map) {
         return apiPartTimeMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiPartTimeServiceImpl implements ApiPartTimeService {
     }
 
     @Override
-    public void save(PartTimeEntity partTimeEntity) {
-    apiPartTimeMapper.save(partTimeEntity);
+    public void save(PartTimeVo partTimeVo) {
+    apiPartTimeMapper.save(partTimeVo);
     }
 
     @Override
-    public void update(PartTimeEntity partTimeEntity) {
-   apiPartTimeMapper.update(partTimeEntity);
+    public void update(PartTimeVo partTimeVo) {
+   apiPartTimeMapper.update(partTimeVo);
     }
 
     @Override

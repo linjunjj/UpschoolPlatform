@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiUserOrderMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.UserOrderEntity" id="orderMap">
+    <resultMap type="com.linjun.entity.UserOrderVo" id="orderMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="price" column="price"/>
@@ -64,7 +64,7 @@
         select count(*) from user_order
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.UserOrderEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.UserOrderVo" useGeneratedKeys="true" keyProperty="id">
         insert into user_order
         (
         `userId`,
@@ -118,7 +118,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.UserOrderEntity">
+    <update id="update" parameterType="com.linjun.entity.UserOrderVo">
         update user_order
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

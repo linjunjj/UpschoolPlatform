@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiCodeMapper;
-import com.linjun.entity.CodeEntity;
+import com.linjun.entity.CodeVo;
 import com.linjun.service.ApiCodeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiCodeServiceImpl implements ApiCodeService{
     @Autowired
     private ApiCodeMapper apiCodeMapper;
     @Override
-    public CodeEntity queryObject(Long id) {
+    public CodeVo queryObject(Long id) {
         return apiCodeMapper.queryObject(id);
     }
 
     @Override
-    public List<CodeEntity> queryList(Map<String, Object> map) {
+    public List<CodeVo> queryList(Map<String, Object> map) {
         return apiCodeMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiCodeServiceImpl implements ApiCodeService{
     }
 
     @Override
-    public void save(CodeEntity codeEntity) {
-           apiCodeMapper.save(codeEntity);
+    public void save(CodeVo codeVo) {
+           apiCodeMapper.save(codeVo);
     }
 
     @Override
-    public void update(CodeEntity codeEntity) {
-        apiCodeMapper.update(codeEntity);
+    public void update(CodeVo codeVo) {
+        apiCodeMapper.update(codeVo);
     }
 
     @Override

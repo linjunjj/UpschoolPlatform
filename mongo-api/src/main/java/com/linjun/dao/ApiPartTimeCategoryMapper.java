@@ -1,11 +1,11 @@
 package com.linjun.dao;
 
-import com.linjun.entity.PartTimeCategoryEntity;
+import com.linjun.entity.PartTimeCategoryVo;
 
 /**
  * @author 林俊
  * @create 2018/3/19.
  * @desc
  **/
-public interface ApiPartTimeCategoryMapper extends  BaseDao<PartTimeCategoryEntity>  {
+public interface ApiPartTimeCategoryMapper extends  BaseDao<PartTimeCategoryVo>  {
 }

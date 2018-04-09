@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiTaskMessageMapper;
-import com.linjun.entity.TaskMessageEntity;
+import com.linjun.entity.TaskMessageVo;
 import com.linjun.service.ApiTaskMessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiTaskMessageServiceImpl implements ApiTaskMessageService {
     @Autowired
     private ApiTaskMessageMapper apiTaskMessageMapper;
     @Override
-    public TaskMessageEntity queryObject(Long id) {
+    public TaskMessageVo queryObject(Long id) {
         return apiTaskMessageMapper.queryObject(id);
     }
 
     @Override
-    public List<TaskMessageEntity> queryList(Map<String, Object> map) {
+    public List<TaskMessageVo> queryList(Map<String, Object> map) {
         return apiTaskMessageMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiTaskMessageServiceImpl implements ApiTaskMessageService {
     }
 
     @Override
-    public void save(TaskMessageEntity taskMessageEntity) {
-  apiTaskMessageMapper.save(taskMessageEntity);
+    public void save(TaskMessageVo taskMessageVo) {
+  apiTaskMessageMapper.save(taskMessageVo);
     }
 
     @Override
-    public void update(TaskMessageEntity taskMessageEntity) {
-apiTaskMessageMapper.update(taskMessageEntity);
+    public void update(TaskMessageVo taskMessageVo) {
+apiTaskMessageMapper.update(taskMessageVo);
     }
 
     @Override

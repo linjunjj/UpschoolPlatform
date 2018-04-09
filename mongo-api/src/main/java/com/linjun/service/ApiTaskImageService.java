@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.TaskImageEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.TaskImageVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiTaskImageService {
-    TaskImageEntity queryObject(Long id);
-    List<TaskImageEntity> queryList(Map<String,Object> map);
+    TaskImageVo queryObject(Long id);
+    List<TaskImageVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(TaskImageEntity taskImageEntity);
-    void update(TaskImageEntity taskImageEntity);
+    void save(TaskImageVo taskImageVo);
+    void update(TaskImageVo taskImageVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiSkillEvaluateMapper;
-import com.linjun.entity.SkillEvaluateEntity;
+import com.linjun.entity.SkillEvaluateVo;
 import com.linjun.service.ApiSkillEvaluateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiSkillEvaluateServiceImpl implements ApiSkillEvaluateService {
     @Autowired
     private ApiSkillEvaluateMapper apiSkillEvaluateMapper;
     @Override
-    public SkillEvaluateEntity queryObject(Long id) {
+    public SkillEvaluateVo queryObject(Long id) {
         return apiSkillEvaluateMapper.queryObject(id);
     }
 
     @Override
-    public List<SkillEvaluateEntity> queryList(Map<String, Object> map) {
+    public List<SkillEvaluateVo> queryList(Map<String, Object> map) {
         return apiSkillEvaluateMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiSkillEvaluateServiceImpl implements ApiSkillEvaluateService {
     }
 
     @Override
-    public void save(SkillEvaluateEntity skillEvaluateEntity) {
-apiSkillEvaluateMapper.save(skillEvaluateEntity);
+    public void save(SkillEvaluateVo skillEvaluateVo) {
+apiSkillEvaluateMapper.save(skillEvaluateVo);
     }
 
     @Override
-    public void update(SkillEvaluateEntity skillEvaluateEntity) {
- apiSkillEvaluateMapper.update(skillEvaluateEntity);
+    public void update(SkillEvaluateVo skillEvaluateVo) {
+ apiSkillEvaluateMapper.update(skillEvaluateVo);
     }
 
     @Override

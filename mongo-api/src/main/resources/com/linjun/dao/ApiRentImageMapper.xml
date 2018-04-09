@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiRentImageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.RentImageEntity" id="rentImageMap">
+    <resultMap type="com.linjun.entity.RentImageVo" id="rentImageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="rent_id" column="rent_id"/>
@@ -48,7 +48,7 @@
         select count(*) from rent_image
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.RentImageEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.RentImageVo" useGeneratedKeys="true" keyProperty="id">
         insert into rent_image
         (
         `userId`,
@@ -67,7 +67,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.RentImageEntity">
+    <update id="update" parameterType="com.linjun.entity.RentImageVo">
         update rent_image
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

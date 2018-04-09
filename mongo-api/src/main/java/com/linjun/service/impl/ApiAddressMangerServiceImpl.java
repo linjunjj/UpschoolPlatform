@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiAddressMangerMapper;
-import com.linjun.entity.AddressManger;
+import com.linjun.entity.AddressMangerVo;
 import com.linjun.service.ApiAddressMangerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,14 +20,14 @@ public class ApiAddressMangerServiceImpl implements ApiAddressMangerService {
     private ApiAddressMangerMapper apiAddressMangerMapper;
 
     @Override
-    public AddressManger queryObject(Long id) {
+    public AddressMangerVo queryObject(Long id) {
 
 
         return apiAddressMangerMapper.queryObject(id);
     }
 
     @Override
-    public List<AddressManger> queryList(Map<String, Object> map) {
+    public List<AddressMangerVo> queryList(Map<String, Object> map) {
         return apiAddressMangerMapper.queryList(map);
     }
 
@@ -37,13 +37,13 @@ public class ApiAddressMangerServiceImpl implements ApiAddressMangerService {
     }
 
     @Override
-    public void save(AddressManger addressManger) {
-          apiAddressMangerMapper.save(addressManger);
+    public void save(AddressMangerVo addressMangerVo) {
+          apiAddressMangerMapper.save(addressMangerVo);
     }
 
     @Override
-    public void update(AddressManger addressManger) {
-        apiAddressMangerMapper.update(addressManger);
+    public void update(AddressMangerVo addressMangerVo) {
+        apiAddressMangerMapper.update(addressMangerVo);
     }
 
     @Override

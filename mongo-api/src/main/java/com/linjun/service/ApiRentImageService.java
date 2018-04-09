@@ -1,8 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.RentImageEntity;
-import org.apache.commons.fileupload.util.LimitedInputStream;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.RentImageVo;
 
 import java.util.List;
 import java.util.Map;
@@ -14,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiRentImageService {
-    RentImageEntity queryObject(Long id);
-    List<RentImageEntity> queryList(Map<String,Object> map);
+    RentImageVo queryObject(Long id);
+    List<RentImageVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(RentImageEntity rentImageEntity);
-    void update(RentImageEntity rentImageEntity);
+    void save(RentImageVo rentImageVo);
+    void update(RentImageVo rentImageVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

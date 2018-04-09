@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiPartTimeCategoryMapper;
-import com.linjun.entity.PartTimeCategoryEntity;
+import com.linjun.entity.PartTimeCategoryVo;
 import com.linjun.service.ApiPartTimeCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiPartTimeCategoryServiceImpl implements ApiPartTimeCategoryServic
     @Autowired
     private ApiPartTimeCategoryMapper apiPartTimeCategoryMapper;
     @Override
-    public PartTimeCategoryEntity queryObject(Long id) {
+    public PartTimeCategoryVo queryObject(Long id) {
         return apiPartTimeCategoryMapper.queryObject(id);
     }
 
     @Override
-    public List<PartTimeCategoryEntity> queryList(Map<String, Object> map) {
+    public List<PartTimeCategoryVo> queryList(Map<String, Object> map) {
         return apiPartTimeCategoryMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiPartTimeCategoryServiceImpl implements ApiPartTimeCategoryServic
     }
 
     @Override
-    public void save(PartTimeCategoryEntity partTimeCategoryEntity) {
-    apiPartTimeCategoryMapper.save(partTimeCategoryEntity);
+    public void save(PartTimeCategoryVo partTimeCategoryVo) {
+    apiPartTimeCategoryMapper.save(partTimeCategoryVo);
     }
 
     @Override
-    public void update(PartTimeCategoryEntity partTimeCategoryEntity) {
-apiPartTimeCategoryMapper.update(partTimeCategoryEntity);
+    public void update(PartTimeCategoryVo partTimeCategoryVo) {
+apiPartTimeCategoryMapper.update(partTimeCategoryVo);
     }
 
     @Override

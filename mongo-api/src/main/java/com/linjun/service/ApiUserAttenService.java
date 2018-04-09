@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.UserAttenEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.UserAttenVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiUserAttenService {
-    UserAttenEntity queryObject(Long id);
-    List<UserAttenEntity> queryList(Map<String,Object> map);
+    UserAttenVo queryObject(Long id);
+    List<UserAttenVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(UserAttenEntity userAttenEntity);
-    void update(UserAttenEntity userAttenEntity);
+    void save(UserAttenVo userAttenVo);
+    void update(UserAttenVo userAttenVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

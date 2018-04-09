@@ -3,13 +3,13 @@
 
 <mapper namespace="com.linjun.dao.ApiShoppingMapper">
 
-    <resultMap type="com.linjun.entity.ShippingEntity" id="shippingMap">
+    <resultMap type="com.linjun.entity.ShippingVo" id="shippingMap">
         <result property="id" column="id"/>
         <result property="code" column="code"/>
         <result property="name" column="name"/>
     </resultMap>
 
-    <select id="queryObject" resultType="com.linjun.entity.ShippingEntity">
+    <select id="queryObject" resultType="com.linjun.entity.ShippingVo">
         select
         `id`,
         `code`,
@@ -18,7 +18,7 @@
         where id = #{id}
     </select>
 
-    <select id="queryList" resultType="com.linjun.entity.ShippingEntity">
+    <select id="queryList" resultType="com.linjun.entity.ShippingVo">
         select
         `id`,
         `code`,
@@ -49,7 +49,7 @@
         </if>
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.ShippingEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.ShippingVo" useGeneratedKeys="true" keyProperty="id">
         insert into shipping(
         `code`,
         `name`)
@@ -58,7 +58,7 @@
         #{name})
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.ShippingEntity">
+    <update id="update" parameterType="com.linjun.entity.ShippingVo">
         update shipping
         <set>
             <if test="code != null">`code` = #{code},</if>

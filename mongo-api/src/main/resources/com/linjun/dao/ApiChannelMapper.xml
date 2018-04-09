@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiChannelMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.ChannelEntity" id="channelMap">
+    <resultMap type="com.linjun.entity.ChannelVo" id="channelMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="url" column="url"/>
@@ -38,7 +38,7 @@
         select count(*) from channel
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.ChannelEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.ChannelVo" useGeneratedKeys="true" keyProperty="id">
         insert into channel
         (
         `name`,
@@ -55,7 +55,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.ChannelEntity">
+    <update id="update" parameterType="com.linjun.entity.ChannelVo">
         update channel
         <set>
             <if test="name != null">`name` = #{name},</if>

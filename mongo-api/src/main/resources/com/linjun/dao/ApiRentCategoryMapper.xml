@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiRentCategoryMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.RentCategoryEntity" id="rentCategoryMap">
+    <resultMap type="com.linjun.entity.RentCategoryVo" id="rentCategoryMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="keywords" column="keywords"/>
@@ -45,7 +45,7 @@
         select count(*) from rent_category
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.RentCategoryEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.RentCategoryVo" useGeneratedKeys="true" keyProperty="id">
         insert into rent_category
         (
         `name`,
@@ -76,7 +76,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.RentCategoryEntity">
+    <update id="update" parameterType="com.linjun.entity.RentCategoryVo">
         update rent_category
         <set>
             <if test="name != null">`name` = #{name},</if>

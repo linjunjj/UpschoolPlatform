@@ -4,17 +4,17 @@
 <mapper namespace="com.linjun.dao.ApiUserLevelMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.UserLevelEntity" id="userLevelMap">
+    <resultMap type="com.linjun.entity.UserLevelVo" id="userLevelMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="description" column="description"/>
     </resultMap>
 
-    <select id="queryObject" resultType="com.linjun.entity.UserLevelEntity">
+    <select id="queryObject" resultType="com.linjun.entity.UserLevelVo">
         select * from user_level where id = #{value}
     </select>
 
-    <select id="queryList" resultType="com.linjun.entity.UserLevelEntity">
+    <select id="queryList" resultType="com.linjun.entity.UserLevelVo">
         select * from user_level
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
@@ -33,7 +33,7 @@
         select count(*) from user_level
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.UserLevelEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.UserLevelVo" useGeneratedKeys="true" keyProperty="id">
         insert into user_level
         (
         `name`,
@@ -46,7 +46,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.UserLevelEntity">
+    <update id="update" parameterType="com.linjun.entity.UserLevelVo">
         update user_level
         <set>
             <if test="name != null">`name` = #{name}, </if>

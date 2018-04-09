@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiSignMapper;
-import com.linjun.entity.SignEntity;
+import com.linjun.entity.SignVo;
 import com.linjun.service.ApiSignService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiSignServiceImpl implements ApiSignService {
     @Autowired
     private ApiSignMapper apiSignMapper;
     @Override
-    public SignEntity queryObject(Long id) {
+    public SignVo queryObject(Long id) {
         return apiSignMapper.queryObject(id);
     }
 
     @Override
-    public List<SignEntity> queryList(Map<String, Object> map) {
+    public List<SignVo> queryList(Map<String, Object> map) {
         return apiSignMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiSignServiceImpl implements ApiSignService {
     }
 
     @Override
-    public void save(SignEntity signEntity) {
-  apiSignMapper.save(signEntity);
+    public void save(SignVo signVo) {
+  apiSignMapper.save(signVo);
     }
 
     @Override
-    public void update(SignEntity signEntity) {
-apiSignMapper.update(signEntity);
+    public void update(SignVo signVo) {
+apiSignMapper.update(signVo);
     }
 
     @Override

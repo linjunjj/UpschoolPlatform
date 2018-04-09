@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiAdMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.AdEntity" id="adMap">
+    <resultMap type="com.linjun.entity.AdVo" id="adMap">
         <result property="id" column="id"/>
         <result property="ad_position_id" column="ad_position_id"/>
         <result property="media_type" column="media_type"/>
@@ -43,7 +43,7 @@
         select count(*) from ad
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.AdEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.AdVo" useGeneratedKeys="true" keyProperty="id">
         insert into ad
         (
         `ad_position_id`,
@@ -68,7 +68,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.AdEntity">
+    <update id="update" parameterType="com.linjun.entity.AdVo">
         update ad
         <set>
             <if test="ad_position_id != null">`ad_position_id` = #{adPositionId},</if>

@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiUserOrderMapper;
-import com.linjun.entity.UserOrderEntity;
+import com.linjun.entity.UserOrderVo;
 import com.linjun.service.ApiUserOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class ApiUserOrderServcieImpl implements ApiUserOrderService {
     @Autowired
     private ApiUserOrderMapper apiUserOrderMapper;
     @Override
-    public UserOrderEntity queryObject(Long id) {
+    public UserOrderVo queryObject(Long id) {
         return apiUserOrderMapper.queryObject(id);
     }
 
     @Override
-    public List<UserOrderEntity> queryList(Map<String, Object> map) {
+    public List<UserOrderVo> queryList(Map<String, Object> map) {
         return apiUserOrderMapper.queryList(map);
     }
 
@@ -35,13 +35,13 @@ public class ApiUserOrderServcieImpl implements ApiUserOrderService {
     }
 
     @Override
-    public void save(UserOrderEntity userOrderEntity) {
-  apiUserOrderMapper.save(userOrderEntity);
+    public void save(UserOrderVo userOrderVo) {
+  apiUserOrderMapper.save(userOrderVo);
     }
 
     @Override
-    public void update(UserOrderEntity userOrderEntity) {
-  apiUserOrderMapper.update(userOrderEntity);
+    public void update(UserOrderVo userOrderVo) {
+  apiUserOrderMapper.update(userOrderVo);
     }
 
     @Override

@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.SkillCategoryEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.SkillCategoryVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiSkillCategoryService {
-    SkillCategoryEntity queryObject(Long id);
-    List<SkillCategoryEntity> queryList(Map<String,Object> map);
+    SkillCategoryVo queryObject(Long id);
+    List<SkillCategoryVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(SkillCategoryEntity skillCategoryEntity);
-    void update(SkillCategoryEntity skillCategoryEntity);
+    void save(SkillCategoryVo skillCategoryVo);
+    void update(SkillCategoryVo skillCategoryVo);
     void delete(Long id);
         void deleteBatch(Long[] ids);
 

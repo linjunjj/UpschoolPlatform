@@ -2,9 +2,8 @@ package com.linjun.api;
 
 import com.alibaba.fastjson.JSONObject;
 import com.linjun.annotation.LoginUser;
-import com.linjun.dao.ApiAddressMangerMapper;
-import com.linjun.entity.AddressManger;
-import com.linjun.entity.ShippingEntity;
+import com.linjun.entity.AddressMangerVo;
+import com.linjun.entity.ShippingVo;
 import com.linjun.entity.UserVo;
 import com.linjun.service.ApiAddressMangerService;
 import com.linjun.service.ApiShippingService;
@@ -40,37 +39,37 @@ public class ApiAddressController extends ApiBaseAction {
     public JsonResult list(@LoginUser UserVo UserVo){
          Map map=new HashMap();
          map.put("userId",UserVo.getUserId());
-         List<AddressManger> list=addressService.queryList(map);
+         List<AddressMangerVo> list=addressService.queryList(map);
          return JsonResult.ok(list);
      }
    @ApiOperation(value = "获取收货地址详情")
     @GetMapping(value = "detail")
     public JsonResult detail(@LoginUser UserVo UserVo){
-      AddressManger addressManger=addressService.queryObject(UserVo.getUserId());
-      return  JsonResult.ok(addressManger);
+      AddressMangerVo addressMangerVo =addressService.queryObject(UserVo.getUserId());
+      return  JsonResult.ok(addressMangerVo);
    }
   @ApiOperation(value = "添加或者更新地址")
     @PostMapping(value = "saveOrUpdate")
     public  JsonResult saveOrUpdate(@LoginUser UserVo UserVo){
       JSONObject jsonObject=this.getJsonRequest();
-      AddressManger addressManger=new AddressManger();
+      AddressMangerVo addressMangerVo =new AddressMangerVo();
       if (jsonObject!=null){
-          addressManger.setId(jsonObject.getLong("id"));
-          addressManger.setCity_name(jsonObject.getString("city_name"));
-          addressManger.setCountry_name(jsonObject.getString("country_name"));
-          addressManger.setDetail_info(jsonObject.getString("detail_info"));
-          addressManger.setIs_default(jsonObject.getByte("is_default"));
-          addressManger.setNational_code(jsonObject.getString("national_code"));
-          addressManger.setPostal_code(jsonObject.getString("postal_code"));
-          addressManger.setProvince_name(jsonObject.getString("province_name"));
-          addressManger.setTel_number(jsonObject.getString("tel_number"));
-          addressManger.setUser_name(jsonObject.getString("user_name"));
+          addressMangerVo.setId(jsonObject.getLong("id"));
+          addressMangerVo.setCity_name(jsonObject.getString("city_name"));
+          addressMangerVo.setCountry_name(jsonObject.getString("country_name"));
+          addressMangerVo.setDetail_info(jsonObject.getString("detail_info"));
+          addressMangerVo.setIs_default(jsonObject.getByte("is_default"));
+          addressMangerVo.setNational_code(jsonObject.getString("national_code"));
+          addressMangerVo.setPostal_code(jsonObject.getString("postal_code"));
+          addressMangerVo.setProvince_name(jsonObject.getString("province_name"));
+          addressMangerVo.setTel_number(jsonObject.getString("tel_number"));
+          addressMangerVo.setUser_name(jsonObject.getString("user_name"));
       }
-      if (addressManger.getId()==null||addressManger.getId()==0){
-            addressManger.setId(null);
-            addressService.save(addressManger);
+      if (addressMangerVo.getId()==null|| addressMangerVo.getId()==0){
+            addressMangerVo.setId(null);
+            addressService.save(addressMangerVo);
       }else {
-          addressService.update(addressManger);
+          addressService.update(addressMangerVo);
       }
       return JsonResult.ok();
   }
@@ -86,9 +85,9 @@ public class ApiAddressController extends ApiBaseAction {
     @GetMapping(value = "getshippinglist")
     public  JsonResult getshippinglist(@RequestParam Map<String, Object> params){
         Query query=new Query(params);
-        List<ShippingEntity> shippingEntityList=apiShippingService.queryList(query);
+        List<ShippingVo> shippingVoList =apiShippingService.queryList(query);
         int total=apiShippingService.queryTotal(query);
-        ApiPageUtils pagerUtils=new ApiPageUtils(shippingEntityList,total,query.getLimit(),query.getPage());
+        ApiPageUtils pagerUtils=new ApiPageUtils(shippingVoList,total,query.getLimit(),query.getPage());
         return JsonResult.ok(pagerUtils);
     }
 

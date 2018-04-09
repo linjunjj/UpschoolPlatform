@@ -1,7 +1,7 @@
 package com.linjun.interceptor;
 
 import com.linjun.annotation.IgnoreAuth;
-import com.linjun.entity.TokenEntity;
+import com.linjun.entity.TokenVo;
 import com.linjun.service.TokenService;
 import com.linjun.utils.ApiRRException;
 import org.apache.commons.lang.StringUtils;
@@ -54,13 +54,13 @@ public class AuthorizationInterceptor extends HandlerInterceptorAdapter {
         }
 
         //查询token信息
-        TokenEntity tokenEntity = tokenService.queryByToken(token);
-        if (tokenEntity == null || tokenEntity.getExpireTime().getTime() < System.currentTimeMillis()) {
+        TokenVo tokenVo = tokenService.queryByToken(token);
+        if (tokenVo == null || tokenVo.getExpireTime().getTime() < System.currentTimeMillis()) {
             throw new ApiRRException("token失效，请重新登录", 401);
         }
 
         //设置userId到request里，后续根据userId，获取用户信息
-        request.setAttribute(LOGIN_USER_KEY, tokenEntity.getUserId());
+        request.setAttribute(LOGIN_USER_KEY, tokenVo.getUserId());
 
         return true;
     }

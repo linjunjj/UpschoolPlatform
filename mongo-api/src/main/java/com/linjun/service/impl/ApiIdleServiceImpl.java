@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiIdleMapper;
-import com.linjun.entity.IdleEntity;
+import com.linjun.entity.IdleVo;
 import com.linjun.service.ApiIdleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiIdleServiceImpl implements ApiIdleService {
     @Autowired
     private ApiIdleMapper apiIdleMapper;
     @Override
-    public IdleEntity queryObject(Long id) {
+    public IdleVo queryObject(Long id) {
         return apiIdleMapper.queryObject(id);
     }
 
     @Override
-    public List<IdleEntity> queryList(Map<String, Object> map) {
+    public List<IdleVo> queryList(Map<String, Object> map) {
         return apiIdleMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiIdleServiceImpl implements ApiIdleService {
     }
 
     @Override
-    public void save(IdleEntity idleEntity) {
-         apiIdleMapper.save(idleEntity);
+    public void save(IdleVo idleVo) {
+         apiIdleMapper.save(idleVo);
     }
 
     @Override
-    public void update(IdleEntity idleEntity) {
-         apiIdleMapper.update(idleEntity);
+    public void update(IdleVo idleVo) {
+         apiIdleMapper.update(idleVo);
     }
 
     @Override

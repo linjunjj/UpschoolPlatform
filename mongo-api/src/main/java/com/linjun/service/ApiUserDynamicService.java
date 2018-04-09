@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.UserDynamicEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.UserDynamicVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiUserDynamicService {
-    UserDynamicEntity queryObject(Long id);
-    List<UserDynamicEntity> queryList(Map<String,Object> map);
+    UserDynamicVo queryObject(Long id);
+    List<UserDynamicVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(UserDynamicEntity userDynamicEntity);
-    void update(UserDynamicEntity userDynamicEntity);
+    void save(UserDynamicVo userDynamicVo);
+    void update(UserDynamicVo userDynamicVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

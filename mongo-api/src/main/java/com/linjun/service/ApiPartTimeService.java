@@ -1,6 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.PartTimeEntity;
+import com.linjun.entity.PartTimeVo;
 
 import java.util.List;
 import java.util.Map;
@@ -11,11 +11,11 @@ import java.util.Map;
  * @desc
  **/
 public interface ApiPartTimeService {
-    PartTimeEntity queryObject(Long id);
-    List<PartTimeEntity> queryList(Map<String,Object> map);
+    PartTimeVo queryObject(Long id);
+    List<PartTimeVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(PartTimeEntity partTimeEntity);
-    void update(PartTimeEntity partTimeEntity);
+    void save(PartTimeVo partTimeVo);
+    void update(PartTimeVo partTimeVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

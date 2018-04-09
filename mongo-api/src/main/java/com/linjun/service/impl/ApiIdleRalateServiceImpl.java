@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiIdleRalateMapper;
-import com.linjun.entity.IdleRalateEntity;
+import com.linjun.entity.IdleRalateVo;
 import com.linjun.service.ApiIdleRalateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiIdleRalateServiceImpl implements ApiIdleRalateService{
     @Autowired
     private ApiIdleRalateMapper apiIdleRalateMapper;
     @Override
-    public IdleRalateEntity queryObject(Long id) {
+    public IdleRalateVo queryObject(Long id) {
         return apiIdleRalateMapper.queryObject(id);
     }
 
     @Override
-    public List<IdleRalateEntity> queryList(Map<String, Object> map) {
+    public List<IdleRalateVo> queryList(Map<String, Object> map) {
         return apiIdleRalateMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiIdleRalateServiceImpl implements ApiIdleRalateService{
     }
 
     @Override
-    public void save(IdleRalateEntity idleRalateEntity) {
-       apiIdleRalateMapper.save(idleRalateEntity);
+    public void save(IdleRalateVo idleRalateVo) {
+       apiIdleRalateMapper.save(idleRalateVo);
     }
 
     @Override
-    public void update(IdleRalateEntity idleRalateEntity) {
-        apiIdleRalateMapper.update(idleRalateEntity);
+    public void update(IdleRalateVo idleRalateVo) {
+        apiIdleRalateMapper.update(idleRalateVo);
     }
 
     @Override

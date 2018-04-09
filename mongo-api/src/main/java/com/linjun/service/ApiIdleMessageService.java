@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.IdleMessageEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.IdleMessageVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiIdleMessageService {
-    IdleMessageEntity queryObject(Long id);
-    List<IdleMessageEntity>  queryList(Map<String,Object> map);
+    IdleMessageVo queryObject(Long id);
+    List<IdleMessageVo>  queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void  save(IdleMessageEntity idleMessageEntity);
-    void update(IdleMessageEntity idleMessageEntity);
+    void  save(IdleMessageVo idleMessageVo);
+    void update(IdleMessageVo idleMessageVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

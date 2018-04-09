@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiAdPositionMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.AdPositionEntity" id="adPositionMap">
+    <resultMap type="com.linjun.entity.AdPositionVo" id="adPositionMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="width" column="width"/>
@@ -12,11 +12,11 @@
         <result property="desc" column="desc"/>
     </resultMap>
 
-    <select id="queryObject" resultType="com.linjun.entity.AdPositionEntity">
+    <select id="queryObject" resultType="com.linjun.entity.AdPositionVo">
         select * from ad_position where id = #{value}
     </select>
 
-    <select id="queryList" resultType="com.linjun.entity.AdPositionEntity">
+    <select id="queryList" resultType="com.linjun.entity.AdPositionVo">
         select * from ad_position
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
@@ -35,7 +35,7 @@
         select count(*) from ad_position
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.AdPositionEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.AdPositionVo" useGeneratedKeys="true" keyProperty="id">
         insert into ad_position
         (
         `name`,
@@ -52,7 +52,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.AdPositionEntity">
+    <update id="update" parameterType="com.linjun.entity.AdPositionVo">
         update ad_position
         <set>
             <if test="name != null">`name` = #{name},</if>

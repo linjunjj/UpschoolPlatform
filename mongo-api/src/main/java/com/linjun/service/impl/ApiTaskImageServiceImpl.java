@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiTaskImageMapper;
-import com.linjun.entity.TaskImageEntity;
+import com.linjun.entity.TaskImageVo;
 import com.linjun.service.ApiTaskImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiTaskImageServiceImpl implements ApiTaskImageService {
     @Autowired
     private ApiTaskImageMapper apiTaskImageMapper;
     @Override
-    public TaskImageEntity queryObject(Long id) {
+    public TaskImageVo queryObject(Long id) {
         return apiTaskImageMapper.queryObject(id);
     }
 
     @Override
-    public List<TaskImageEntity> queryList(Map<String, Object> map) {
+    public List<TaskImageVo> queryList(Map<String, Object> map) {
         return apiTaskImageMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiTaskImageServiceImpl implements ApiTaskImageService {
     }
 
     @Override
-    public void save(TaskImageEntity taskImageEntity) {
- apiTaskImageMapper.save(taskImageEntity);
+    public void save(TaskImageVo taskImageVo) {
+ apiTaskImageMapper.save(taskImageVo);
     }
 
     @Override
-    public void update(TaskImageEntity taskImageEntity) {
-  apiTaskImageMapper.update(taskImageEntity);
+    public void update(TaskImageVo taskImageVo) {
+  apiTaskImageMapper.update(taskImageVo);
     }
 
     @Override

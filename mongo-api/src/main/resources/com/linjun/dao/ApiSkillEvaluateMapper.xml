@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiSkillEvaluateMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.SkillEvaluateEntity" id="skillEvaluateMap">
+    <resultMap type="com.linjun.entity.SkillEvaluateVo" id="skillEvaluateMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="skill_id" column="skill_id"/>
@@ -50,7 +50,7 @@
         select count(*) from skill_evaluate
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.SkillEvaluateEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.SkillEvaluateVo" useGeneratedKeys="true" keyProperty="id">
         insert into skill_evaluate
         (
         `userId`,
@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.SkillEvaluateEntity">
+    <update id="update" parameterType="com.linjun.entity.SkillEvaluateVo">
         update skill_evaluate
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

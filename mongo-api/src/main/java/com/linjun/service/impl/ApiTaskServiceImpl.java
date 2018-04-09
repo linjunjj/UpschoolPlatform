@@ -1,8 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiTaskMapper;
-import com.linjun.dao.ApiTaskMessageMapper;
-import com.linjun.entity.TaskEntity;
+import com.linjun.entity.TaskVo;
 import com.linjun.service.ApiTaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +19,12 @@ public class ApiTaskServiceImpl implements ApiTaskService {
     @Autowired
     private ApiTaskMapper apiTaskMapper;
     @Override
-    public TaskEntity queryObject(Long id) {
+    public TaskVo queryObject(Long id) {
         return apiTaskMapper.queryObject(id);
     }
 
     @Override
-    public List<TaskEntity> queryList(Map<String, Object> map) {
+    public List<TaskVo> queryList(Map<String, Object> map) {
         return apiTaskMapper.queryList(map);
     }
 
@@ -35,13 +34,13 @@ public class ApiTaskServiceImpl implements ApiTaskService {
     }
 
     @Override
-    public void save(TaskEntity taskEntity) {
-  apiTaskMapper.save(taskEntity);
+    public void save(TaskVo taskVo) {
+  apiTaskMapper.save(taskVo);
     }
 
     @Override
-    public void update(TaskEntity taskEntity) {
-apiTaskMapper.update(taskEntity);
+    public void update(TaskVo taskVo) {
+apiTaskMapper.update(taskVo);
     }
 
     @Override

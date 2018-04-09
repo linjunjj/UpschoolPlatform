@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiAddressMangerMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.AddressManger" id="addressMap">
+    <resultMap type="com.linjun.entity.AddressMangerVo" id="addressMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="user_name" column="user_name"/>
@@ -46,7 +46,7 @@
         select count(*) from address_manger
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.AddressManger" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.AddressMangerVo" useGeneratedKeys="true" keyProperty="id">
         insert into address_manger(
         `userId`,
         `user_name`,
@@ -71,7 +71,7 @@
         #{is_default})
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.AddressManger">
+    <update id="update" parameterType="com.linjun.entity.AddressMangerVo">
         update address_manger
         <set>
             <if test="userId != null">`userId` = #{userId}, </if>

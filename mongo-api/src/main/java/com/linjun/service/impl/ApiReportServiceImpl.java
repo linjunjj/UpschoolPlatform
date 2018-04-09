@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiReportMapper;
-import com.linjun.entity.ReportEntity;
+import com.linjun.entity.ReportVo;
 import com.linjun.service.ApiReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class ApiReportServiceImpl implements ApiReportService
     @Autowired
     private ApiReportMapper apiReportMapper;
     @Override
-    public ReportEntity queryObject(Long id) {
+    public ReportVo queryObject(Long id) {
         return apiReportMapper.queryObject(id);
     }
 
     @Override
-    public List<ReportEntity> queryList(Map<String, Object> map) {
+    public List<ReportVo> queryList(Map<String, Object> map) {
         return apiReportMapper.queryList(map);
     }
 
@@ -35,13 +35,13 @@ public class ApiReportServiceImpl implements ApiReportService
     }
 
     @Override
-    public void save(ReportEntity reportEntity) {
-    apiReportMapper.save(reportEntity);
+    public void save(ReportVo reportVo) {
+    apiReportMapper.save(reportVo);
     }
 
     @Override
-    public void update(ReportEntity reportEntity) {
-    apiReportMapper.update(reportEntity);
+    public void update(ReportVo reportVo) {
+    apiReportMapper.update(reportVo);
     }
 
     @Override

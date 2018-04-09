@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.UserIdentityEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.UserIdentityVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiUserIdentityService {
-    UserIdentityEntity queryObject(Long id);
-    List<UserIdentityEntity> queryList(Map<String,Object> map);
+    UserIdentityVo queryObject(Long id);
+    List<UserIdentityVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(UserIdentityEntity userIdentityEntity);
-    void update(UserIdentityEntity userIdentityEntity);
+    void save(UserIdentityVo userIdentityVo);
+    void update(UserIdentityVo userIdentityVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

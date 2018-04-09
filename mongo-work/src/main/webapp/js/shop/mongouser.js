@@ -6,12 +6,12 @@ var vm = new Vue({
         user: [],
         tableHeight: 0,
         rules: {
-            username: [
+            keyword: [
                 {required: true, message: '名称不能为空', trigger: 'blur'}
             ]
         },
         q: {
-            username: ''
+            keyword: ''
         },
         userLevels: [],
         listQuery: {

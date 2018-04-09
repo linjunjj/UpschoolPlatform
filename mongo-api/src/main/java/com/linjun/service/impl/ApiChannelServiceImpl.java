@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiChannelMapper;
-import com.linjun.entity.ChannelEntity;
+import com.linjun.entity.ChannelVo;
 import com.linjun.service.ApiChannelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiChannelServiceImpl implements ApiChannelService {
     @Autowired
     private ApiChannelMapper apiChannelMapper;
     @Override
-    public ChannelEntity queryObject(Long id) {
+    public ChannelVo queryObject(Long id) {
         return apiChannelMapper.queryObject(id);
     }
 
     @Override
-    public List<ChannelEntity> queryList(Map<String, Object> map) {
+    public List<ChannelVo> queryList(Map<String, Object> map) {
         return apiChannelMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiChannelServiceImpl implements ApiChannelService {
     }
 
     @Override
-    public void save(ChannelEntity channelEntity) {
-      apiChannelMapper.save(channelEntity);
+    public void save(ChannelVo channelVo) {
+      apiChannelMapper.save(channelVo);
     }
 
     @Override
-    public void update(ChannelEntity channelEntity) {
-        apiChannelMapper.update(channelEntity);
+    public void update(ChannelVo channelVo) {
+        apiChannelMapper.update(channelVo);
     }
 
     @Override

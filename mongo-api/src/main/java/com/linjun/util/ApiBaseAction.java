@@ -2,7 +2,7 @@ package com.linjun.util;
 
 import com.alibaba.fastjson.JSONObject;
 
-import com.linjun.entity.TokenEntity;
+import com.linjun.entity.TokenVo;
 import com.linjun.interceptor.AuthorizationInterceptor;
 import com.linjun.service.TokenService;
 import org.apache.log4j.Logger;
@@ -157,10 +157,10 @@ public class ApiBaseAction {
     public Long getUserId() {
         String token = request.getHeader(AuthorizationInterceptor.LOGIN_TOKEN_KEY);
         //查询token信息
-        TokenEntity tokenEntity = tokenService.queryByToken(token);
-        if (tokenEntity == null || tokenEntity.getExpireTime().getTime() < System.currentTimeMillis()) {
+        TokenVo tokenVo = tokenService.queryByToken(token);
+        if (tokenVo == null || tokenVo.getExpireTime().getTime() < System.currentTimeMillis()) {
             return null;
         }
-        return tokenEntity.getUserId();
+        return tokenVo.getUserId();
     }
 }

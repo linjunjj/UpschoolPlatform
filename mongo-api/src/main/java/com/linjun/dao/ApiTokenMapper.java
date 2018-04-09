@@ -1,6 +1,6 @@
 package com.linjun.dao;
 
-import com.linjun.entity.TokenEntity;
+import com.linjun.entity.TokenVo;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -10,10 +10,10 @@ import org.apache.ibatis.annotations.Param;
  * @email 939961241@qq.com
  * @date 2017-03-23 15:22:07
  */
-public interface ApiTokenMapper extends BaseDao<TokenEntity> {
+public interface ApiTokenMapper extends BaseDao<TokenVo> {
 
-    TokenEntity queryByUserId(@Param("userId") Long userId);
+    TokenVo queryByUserId(@Param("userId") Long userId);
 
-    TokenEntity queryByToken(@Param("token") String token);
+    TokenVo queryByToken(@Param("token") String token);
 
 }

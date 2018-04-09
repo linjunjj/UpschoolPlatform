@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.SignEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.SignVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiSignService {
-    SignEntity queryObject(Long id);
-    List<SignEntity> queryList(Map<String,Object> map);
+    SignVo queryObject(Long id);
+    List<SignVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(SignEntity signEntity);
-    void update(SignEntity signEntity);
+    void save(SignVo signVo);
+    void update(SignVo signVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

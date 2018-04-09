@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiInviteCodeMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.InviteCodeEntity" id="inviteCodeMap">
+    <resultMap type="com.linjun.entity.InviteCodeVo" id="inviteCodeMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="is_multi" column="is_multi"/>
@@ -43,7 +43,7 @@
         select count(*) from invite_code
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.IdleRalateEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.IdleRalateVo" useGeneratedKeys="true" keyProperty="id">
         insert into invite_code
         (
         `userId`,
@@ -60,7 +60,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.IdleRalateEntity">
+    <update id="update" parameterType="com.linjun.entity.IdleRalateVo">
         update invite_code
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.RentEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.RentVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiRentServcie {
-    RentEntity queryObject(Long id);
-    List<RentEntity> queryList(Map<String,Object> map);
+    RentVo queryObject(Long id);
+    List<RentVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(RentEntity rentEntity);
-    void update(RentEntity rentEntity);
+    void save(RentVo rentVo);
+    void update(RentVo rentVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 }

@@ -1,9 +1,8 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiShoppingMapper;
-import com.linjun.entity.ShippingEntity;
+import com.linjun.entity.ShippingVo;
 import com.linjun.service.ApiShippingService;
-import com.sun.xml.internal.ws.developer.Serialization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +20,12 @@ public class ApiShippingServiceImpl implements ApiShippingService {
     @Autowired
     private ApiShoppingMapper apiShoppingMapper;
     @Override
-    public ShippingEntity queryObject(Long id) {
+    public ShippingVo queryObject(Long id) {
         return apiShoppingMapper.queryObject(id);
     }
 
     @Override
-    public List<ShippingEntity> queryList(Map<String, Object> map) {
+    public List<ShippingVo> queryList(Map<String, Object> map) {
         return apiShoppingMapper.queryList(map);
     }
 
@@ -36,13 +35,13 @@ public class ApiShippingServiceImpl implements ApiShippingService {
     }
 
     @Override
-    public void save(ShippingEntity shippingEntity) {
-     apiShoppingMapper.save(shippingEntity);
+    public void save(ShippingVo shippingVo) {
+     apiShoppingMapper.save(shippingVo);
     }
 
     @Override
-    public void update(ShippingEntity shippingEntity) {
-    apiShoppingMapper.update(shippingEntity);
+    public void update(ShippingVo shippingVo) {
+    apiShoppingMapper.update(shippingVo);
     }
 
     @Override

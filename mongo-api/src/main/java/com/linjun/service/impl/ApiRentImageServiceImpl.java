@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiRentImageMapper;
-import com.linjun.entity.RentImageEntity;
+import com.linjun.entity.RentImageVo;
 import com.linjun.service.ApiRentImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class ApiRentImageServiceImpl implements ApiRentImageService {
     private ApiRentImageMapper apiRentImageMapper;
 
     @Override
-    public RentImageEntity queryObject(Long id) {
+    public RentImageVo queryObject(Long id) {
         return apiRentImageMapper.queryObject(id);
     }
 
     @Override
-    public List<RentImageEntity> queryList(Map<String, Object> map) {
+    public List<RentImageVo> queryList(Map<String, Object> map) {
         return apiRentImageMapper.queryList(map);
     }
 
@@ -35,13 +35,13 @@ public class ApiRentImageServiceImpl implements ApiRentImageService {
     }
 
     @Override
-    public void save(RentImageEntity rentImageEntity) {
-       apiRentImageMapper.save(rentImageEntity);
+    public void save(RentImageVo rentImageVo) {
+       apiRentImageMapper.save(rentImageVo);
     }
 
     @Override
-    public void update(RentImageEntity rentImageEntity) {
-     apiRentImageMapper.update(rentImageEntity);
+    public void update(RentImageVo rentImageVo) {
+     apiRentImageMapper.update(rentImageVo);
     }
 
     @Override

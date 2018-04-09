@@ -1,20 +1,14 @@
 package com.linjun.service;
 
-import com.linjun.dao.ApiTokenMapper;
-import com.linjun.entity.TokenEntity;
-import com.linjun.utils.CharUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.TokenVo;
 
-import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 
 public interface TokenService {
-    TokenEntity queryByUserId(Long userId);
-    TokenEntity queryByToken(String token);
-    void save(TokenEntity token);
+    TokenVo queryByUserId(Long userId);
+    TokenVo queryByToken(String token);
+    void save(TokenVo token);
     Map<String, Object> createToken(long userId);
 
 
@@ -24,19 +18,19 @@ public interface TokenService {
 //
 //    private final static int EXPIRE = 3600 * 12;
 //
-//    public TokenEntity queryByUserId(Long userId) {
+//    public TokenVo queryByUserId(Long userId) {
 //        return tokenDao.queryByUserId(userId);
 //    }
 //
-//    public TokenEntity queryByToken(String token) {
+//    public TokenVo queryByToken(String token) {
 //        return tokenDao.queryByToken(token);
 //    }
 //
-//    public void save(TokenEntity token) {
+//    public void save(TokenVo token) {
 //        tokenDao.save(token);
 //    }
 //
-//    public void update(TokenEntity token) {
+//    public void update(TokenVo token) {
 //        tokenDao.update(token);
 //    }
 //
@@ -50,9 +44,9 @@ public interface TokenService {
 //        Date expireTime = new Date(now.getTime() + EXPIRE * 1000);
 //
 //        //判断是否生成过token
-//        TokenEntity tokenEntity = queryByUserId(userId);
+//        TokenVo tokenEntity = queryByUserId(userId);
 //        if (tokenEntity == null) {
-//            tokenEntity = new TokenEntity();
+//            tokenEntity = new TokenVo();
 //            tokenEntity.setUserId(userId);
 //            tokenEntity.setToken(token);
 //            tokenEntity.setUpdateTime(now);

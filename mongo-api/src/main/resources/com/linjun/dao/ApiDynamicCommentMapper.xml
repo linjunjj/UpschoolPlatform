@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiDynamicCommentMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.DynamicCommentEntity" id="dynamicCommentMap">
+    <resultMap type="com.linjun.entity.DynamicCommentVo" id="dynamicCommentMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="dynamicid" column="dynamicid"/>
@@ -46,7 +46,7 @@
 
 
 
-    <insert id="save" parameterType="com.linjun.entity.DynamicCommentEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.DynamicCommentVo" useGeneratedKeys="true" keyProperty="id">
         insert into user_dynamic_comment
         (
         `userId`,
@@ -69,7 +69,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.DynamicCommentEntity">
+    <update id="update" parameterType="com.linjun.entity.DynamicCommentVo">
         update user_dynamic_comment
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.RentCategoryEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.RentCategoryVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiRentCategoryService {
-    RentCategoryEntity queryObject(Long id);
-    List<RentCategoryEntity> queryList(Map<String,Object> map);
+    RentCategoryVo queryObject(Long id);
+    List<RentCategoryVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(RentCategoryEntity rentCategoryEntity) ;
-    void update(RentCategoryEntity rentCategoryEntity);
+    void save(RentCategoryVo rentCategoryVo) ;
+    void update(RentCategoryVo rentCategoryVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

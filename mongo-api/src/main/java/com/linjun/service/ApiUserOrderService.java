@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.UserOrderEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.UserOrderVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiUserOrderService {
-    UserOrderEntity  queryObject(Long id);
-    List<UserOrderEntity> queryList(Map<String,Object> map);
+    UserOrderVo queryObject(Long id);
+    List<UserOrderVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(UserOrderEntity userOrderEntity);
-    void update(UserOrderEntity userOrderEntity);
+    void save(UserOrderVo userOrderVo);
+    void update(UserOrderVo userOrderVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiSearchHistoryMapper;
-import com.linjun.entity.SearchHistoryEntity;
+import com.linjun.entity.SearchHistoryVo;
 import com.linjun.service.ApiSearchHistoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiSearchHistoryServiceImpl implements ApiSearchHistoryService {
     @Autowired
     private ApiSearchHistoryMapper apiSearchHistoryMapper;
     @Override
-    public SearchHistoryEntity queryObject(Integer id) {
+    public SearchHistoryVo queryObject(Integer id) {
         return apiSearchHistoryMapper.queryObject(id);
     }
 
     @Override
-    public List<SearchHistoryEntity> queryList(Map<String, Object> map) {
+    public List<SearchHistoryVo> queryList(Map<String, Object> map) {
         return apiSearchHistoryMapper.queryList(map);
     }
 
@@ -34,12 +34,12 @@ public class ApiSearchHistoryServiceImpl implements ApiSearchHistoryService {
     }
 
     @Override
-    public void save(SearchHistoryEntity reportEntity) {
+    public void save(SearchHistoryVo reportEntity) {
      apiSearchHistoryMapper.save(reportEntity);
     }
 
     @Override
-    public void update(SearchHistoryEntity reportEntity) {
+    public void update(SearchHistoryVo reportEntity) {
   apiSearchHistoryMapper.update(reportEntity);
     }
 

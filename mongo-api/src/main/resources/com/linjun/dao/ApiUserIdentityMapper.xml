@@ -3,11 +3,11 @@
 
 <mapper namespace="com.linjun.dao.ApiUserIdentityMapper">
 
-    <select id="queryObject" resultType="com.linjun.entity.UserIdentityEntity">
+    <select id="queryObject" resultType="com.linjun.entity.UserIdentityVo">
         select * from user_identity where id = #{value}
     </select>
 
-    <select id="queryList" resultType="com.linjun.entity.UserIdentityEntity">
+    <select id="queryList" resultType="com.linjun.entity.UserIdentityVo">
         select * from user_identity
         <where>
             <where>
@@ -33,7 +33,7 @@
         </where>
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.UserIdentityEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.UserIdentityVo" useGeneratedKeys="true" keyProperty="id">
         insert into user_identity
         (
         `userId`,
@@ -54,7 +54,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.UserIdentityEntity">
+    <update id="update" parameterType="com.linjun.entity.UserIdentityVo">
         update user_identity
         <set>
             <if test="userId != null">`userId` = #{userId}, </if>

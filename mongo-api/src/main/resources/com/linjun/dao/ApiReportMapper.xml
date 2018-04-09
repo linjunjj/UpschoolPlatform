@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiReportMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.ReportEntity" id="reportMap">
+    <resultMap type="com.linjun.entity.ReportVo" id="reportMap">
         <result property="id" column="id"/>
         <result property="is_reportid" column="is_reportid"/>
         <result property="reportid" column="reportid"/>
@@ -38,7 +38,7 @@
         select count(*) from report
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.ReportEntity" useGeneratedKeys="true" keyProperty="msgId">
+    <insert id="save" parameterType="com.linjun.entity.ReportVo" useGeneratedKeys="true" keyProperty="msgId">
         insert into report(
         `is_reportid`,
         `reportid`,
@@ -58,7 +58,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.ReportEntity">
+    <update id="update" parameterType="com.linjun.entity.ReportVo">
         update report
         <set>
             <if test="is_reportid != null">`is_reportid` = #{is_reportid}, </if>

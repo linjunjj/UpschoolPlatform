@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.UserQQEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.UserQQVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiUserQQService {
-    UserQQEntity queryObject(Long id);
-    List<UserQQEntity> queryList(Map<String,Object> map);
+    UserQQVo queryObject(Long id);
+    List<UserQQVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(UserQQEntity userQQEntity);
-    void update(UserQQEntity userQQEntity);
+    void save(UserQQVo userQQVo);
+    void update(UserQQVo userQQVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

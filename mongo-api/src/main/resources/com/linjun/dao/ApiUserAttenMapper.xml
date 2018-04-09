@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiUserAttenMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.UserAttenEntity" id="userAttenMap">
+    <resultMap type="com.linjun.entity.UserAttenVo" id="userAttenMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="isUserId" column="isUserId"/>
@@ -43,7 +43,7 @@
         select count(*) from userAtten
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.UserAttenEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.UserAttenVo" useGeneratedKeys="true" keyProperty="id">
         insert into userAtten
         (
         `userId`,
@@ -62,7 +62,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.UserAttenEntity">
+    <update id="update" parameterType="com.linjun.entity.UserAttenVo">
         update userAtten
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

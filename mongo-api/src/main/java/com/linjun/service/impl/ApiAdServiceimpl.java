@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiAdMapper;
-import com.linjun.entity.AdEntity;
+import com.linjun.entity.AdVo;
 import com.linjun.service.ApiAdService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiAdServiceimpl implements ApiAdService {
     @Autowired
     private ApiAdMapper apiAdMapper;
     @Override
-    public AdEntity queryObject(Long id) {
+    public AdVo queryObject(Long id) {
         return apiAdMapper.queryObject(id);
     }
 
     @Override
-    public List<AdEntity> queryList(Map<String, Object> map) {
+    public List<AdVo> queryList(Map<String, Object> map) {
         return apiAdMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiAdServiceimpl implements ApiAdService {
     }
 
     @Override
-    public void save(AdEntity adEntity) {
-        apiAdMapper.save(adEntity);
+    public void save(AdVo adVo) {
+        apiAdMapper.save(adVo);
     }
 
     @Override
-    public void update(AdEntity adEntity) {
-      apiAdMapper.update(adEntity);
+    public void update(AdVo adVo) {
+      apiAdMapper.update(adVo);
     }
 
     @Override

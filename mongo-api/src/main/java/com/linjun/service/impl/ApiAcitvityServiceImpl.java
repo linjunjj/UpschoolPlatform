@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiActivityMapper;
-import com.linjun.entity.ActivityEntity;
+import com.linjun.entity.ActivityVo;
 import com.linjun.service.ApiAcitvityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiAcitvityServiceImpl implements ApiAcitvityService{
     @Autowired
     private ApiActivityMapper apiActivityMapper;
     @Override
-    public ActivityEntity queryObject(Long id) {
+    public ActivityVo queryObject(Long id) {
         return apiActivityMapper.queryObject(id);
     }
 
     @Override
-    public List<ActivityEntity> queryList(Map<String, Object> map) {
+    public List<ActivityVo> queryList(Map<String, Object> map) {
         return apiActivityMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiAcitvityServiceImpl implements ApiAcitvityService{
     }
 
     @Override
-    public void save(ActivityEntity activityEntity) {
-         apiActivityMapper.save(activityEntity);
+    public void save(ActivityVo activityVo) {
+         apiActivityMapper.save(activityVo);
     }
 
     @Override
-    public void update(ActivityEntity activityEntity) {
-      apiActivityMapper.update(activityEntity);
+    public void update(ActivityVo activityVo) {
+      apiActivityMapper.update(activityVo);
     }
 
     @Override

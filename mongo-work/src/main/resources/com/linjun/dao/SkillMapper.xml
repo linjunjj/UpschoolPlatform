@@ -44,7 +44,7 @@
         select count(*) from skill
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.RentEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.SkillEntity" useGeneratedKeys="true" keyProperty="id">
         insert into skill
         (
         `userId`,
@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.RentEntity">
+    <update id="update" parameterType="com.linjun.entity.SkillEntity">
         update skill
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

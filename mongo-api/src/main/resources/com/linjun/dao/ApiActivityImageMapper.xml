@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiActivityImageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.ActivityImageEntity" id="activityImageMapper">
+    <resultMap type="com.linjun.entity.ActivityImageVo" id="activityImageMapper">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="activity_id" column="activity_id"/>
@@ -48,7 +48,7 @@
         select count(*) from activity_images
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.ActivityImageEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.ActivityImageVo" useGeneratedKeys="true" keyProperty="id">
         insert into activity_images
         (
         `userId`,
@@ -67,7 +67,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.ActivityImageEntity">
+    <update id="update" parameterType="com.linjun.entity.ActivityImageVo">
         update activity_images
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

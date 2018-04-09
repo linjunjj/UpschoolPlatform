@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiPartTimeImageMapper;
-import com.linjun.entity.PartTimeImageEntity;
+import com.linjun.entity.PartTimeImageVo;
 import com.linjun.service.ApiPartTimeImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiPartTimeImageServiceImpl implements ApiPartTimeImageService {
     @Autowired
     private ApiPartTimeImageMapper apiPartTimeImageMapper;
     @Override
-    public PartTimeImageEntity queryObject(Long id) {
+    public PartTimeImageVo queryObject(Long id) {
         return apiPartTimeImageMapper.queryObject(id);
     }
 
     @Override
-    public List<PartTimeImageEntity> queryList(Map<String, Object> map) {
+    public List<PartTimeImageVo> queryList(Map<String, Object> map) {
         return apiPartTimeImageMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiPartTimeImageServiceImpl implements ApiPartTimeImageService {
     }
 
     @Override
-    public void save(PartTimeImageEntity partTimeImageEntity) {
-    apiPartTimeImageMapper.save(partTimeImageEntity);
+    public void save(PartTimeImageVo partTimeImageVo) {
+    apiPartTimeImageMapper.save(partTimeImageVo);
     }
 
     @Override
-    public void update(PartTimeImageEntity partTimeImageEntity) {
-    apiPartTimeImageMapper.update(partTimeImageEntity);
+    public void update(PartTimeImageVo partTimeImageVo) {
+    apiPartTimeImageMapper.update(partTimeImageVo);
     }
 
     @Override

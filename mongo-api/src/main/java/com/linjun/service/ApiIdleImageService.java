@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.IdleImagesEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.IdleImagesVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiIdleImageService {
-    IdleImagesEntity queryObject(Long id);
-    List<IdleImagesEntity> queryList(Map<String ,Object> map);
+    IdleImagesVo queryObject(Long id);
+    List<IdleImagesVo> queryList(Map<String ,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(IdleImagesEntity idleImagesEntity);
-    void update(IdleImagesEntity idleImagesEntity);
+    void save(IdleImagesVo idleImagesVo);
+    void update(IdleImagesVo idleImagesVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 }

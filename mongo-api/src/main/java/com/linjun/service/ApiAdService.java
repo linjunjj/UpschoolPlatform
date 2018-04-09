@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.AdEntity;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.AdVo;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface ApiAdService {
-    AdEntity queryObject(Long id);
-    List<AdEntity> queryList(Map<String, Object> map);
+    AdVo queryObject(Long id);
+    List<AdVo> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);
-    void save(AdEntity adEntity);
-     void update(AdEntity adEntity);
+    void save(AdVo adVo);
+     void update(AdVo adVo);
      void delete(Long id);
     void deleteBatch(Long[] ids);
 

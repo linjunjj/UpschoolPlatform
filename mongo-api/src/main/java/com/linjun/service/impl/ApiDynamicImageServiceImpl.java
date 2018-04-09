@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiDynamicImageMapper;
-import com.linjun.entity.DynamicImageEntity;
+import com.linjun.entity.DynamicImageVo;
 import com.linjun.service.ApiDynamicImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class ApiDynamicImageServiceImpl implements ApiDynamicImageService {
     private ApiDynamicImageMapper apiDynamicImageMapper;
 
     @Override
-    public DynamicImageEntity queryObject(Long id) {
+    public DynamicImageVo queryObject(Long id) {
         return apiDynamicImageMapper.queryObject(id);
     }
 
     @Override
-    public List<DynamicImageEntity> queryList(Map<String, Object> map) {
+    public List<DynamicImageVo> queryList(Map<String, Object> map) {
         return apiDynamicImageMapper.queryList(map);
     }
 
@@ -35,13 +35,13 @@ public class ApiDynamicImageServiceImpl implements ApiDynamicImageService {
     }
 
     @Override
-    public void save(DynamicImageEntity dynamicImageEntity) {
-        apiDynamicImageMapper.save(dynamicImageEntity);
+    public void save(DynamicImageVo dynamicImageVo) {
+        apiDynamicImageMapper.save(dynamicImageVo);
     }
 
     @Override
-    public void update(DynamicImageEntity dynamicImageEntity) {
-      apiDynamicImageMapper.update(dynamicImageEntity);
+    public void update(DynamicImageVo dynamicImageVo) {
+      apiDynamicImageMapper.update(dynamicImageVo);
     }
 
     @Override

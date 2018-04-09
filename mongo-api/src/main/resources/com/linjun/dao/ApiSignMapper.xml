@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiSignMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.SignEntity" id="signMap">
+    <resultMap type="com.linjun.entity.SignVo" id="signMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="awardSum" column="awardSum"/>
@@ -53,7 +53,7 @@
         </if>
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.SignEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.SignVo" useGeneratedKeys="true" keyProperty="id">
         insert into sign
         (
         `userId`,
@@ -72,7 +72,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.SignEntity">
+    <update id="update" parameterType="com.linjun.entity.SignVo">
         update sign
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

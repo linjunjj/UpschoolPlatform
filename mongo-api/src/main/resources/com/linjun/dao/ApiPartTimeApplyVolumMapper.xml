@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiPartTimeApplyVolumMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.PartTimeApplyVolumEntity" id="partTimeApplyVolumMap">
+    <resultMap type="com.linjun.entity.PartTimeApplyVolumVo" id="partTimeApplyVolumMap">
         <result property="id" column="id"/>
         <result property="parttime_id" column="parttime_id"/>
         <result property="apply_id" column="apply_id"/>
@@ -42,7 +42,7 @@
         select count(*) from parttime_applyvolum
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.PartTimeApplyVolumEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.PartTimeApplyVolumVo" useGeneratedKeys="true" keyProperty="id">
         insert into parttime_applyvolum
         (
         `parttime_id`,
@@ -59,7 +59,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.PartTimeApplyVolumEntity">
+    <update id="update" parameterType="com.linjun.entity.PartTimeApplyVolumVo">
         update parttime_applyvolum
         <set>
             <if test="parttime_id != null">`parttime_id` = #{parttime_id},</if>

@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiIdleCategoryMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.IdleCategroyEntity" id="idleCategoryMap">
+    <resultMap type="com.linjun.entity.IdleCategroyVo" id="idleCategoryMap">
         <result property="id" column="id"/>
         <result property="name" column="name"/>
         <result property="keywords" column="keywords"/>
@@ -45,7 +45,7 @@
         select count(*) from idle_categroy
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.IdleCategroyEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.IdleCategroyVo" useGeneratedKeys="true" keyProperty="id">
         insert into idle_categroy
         (
         `name`,
@@ -76,7 +76,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.IdleCategroyEntity">
+    <update id="update" parameterType="com.linjun.entity.IdleCategroyVo">
         update idle_categroy
         <set>
             <if test="name != null">`name` = #{name},</if>

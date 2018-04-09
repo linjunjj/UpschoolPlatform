@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiUserAttenMapper;
-import com.linjun.entity.UserAttenEntity;
+import com.linjun.entity.UserAttenVo;
 import com.linjun.service.ApiUserAttenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class ApiUserAttenServiceImpl implements ApiUserAttenService {
     @Autowired
     private ApiUserAttenMapper apiUserAttenMapper;
     @Override
-    public UserAttenEntity queryObject(Long id) {
+    public UserAttenVo queryObject(Long id) {
         return apiUserAttenMapper.queryObject(id);
     }
 
     @Override
-    public List<UserAttenEntity> queryList(Map<String, Object> map) {
+    public List<UserAttenVo> queryList(Map<String, Object> map) {
         return apiUserAttenMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class ApiUserAttenServiceImpl implements ApiUserAttenService {
     }
 
     @Override
-    public void save(UserAttenEntity userAttenEntity) {
- apiUserAttenMapper.save(userAttenEntity);
+    public void save(UserAttenVo userAttenVo) {
+ apiUserAttenMapper.save(userAttenVo);
     }
 
     @Override
-    public void update(UserAttenEntity userAttenEntity) {
-  apiUserAttenMapper.update(userAttenEntity);
+    public void update(UserAttenVo userAttenVo) {
+  apiUserAttenMapper.update(userAttenVo);
     }
 
     @Override

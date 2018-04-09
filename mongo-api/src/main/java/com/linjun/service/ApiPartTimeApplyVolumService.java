@@ -1,6 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.PartTimeApplyVolumEntity;
+import com.linjun.entity.PartTimeApplyVolumVo;
 
 import java.util.List;
 import java.util.Map;
@@ -11,11 +11,11 @@ import java.util.Map;
  * @desc
  **/
 public interface ApiPartTimeApplyVolumService {
-    PartTimeApplyVolumEntity queryObject(Long id);
-    List<PartTimeApplyVolumEntity> queryList(Map<String,Object> map);
+    PartTimeApplyVolumVo queryObject(Long id);
+    List<PartTimeApplyVolumVo> queryList(Map<String,Object> map);
     int queryTotal(Map<String,Object> map);
-    void save(PartTimeApplyVolumEntity partTimeApplyVolumEntity);
-    void update(PartTimeApplyVolumEntity partTimeApplyVolumEntity);
+    void save(PartTimeApplyVolumVo partTimeApplyVolumVo);
+    void update(PartTimeApplyVolumVo partTimeApplyVolumVo);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 

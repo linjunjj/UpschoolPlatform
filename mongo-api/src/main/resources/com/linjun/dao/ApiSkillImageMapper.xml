@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiSkillImageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.SkillImageEntity" id="skillImageMap">
+    <resultMap type="com.linjun.entity.SkillImageVo" id="skillImageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="skill_id" column="skill_id"/>
@@ -48,7 +48,7 @@
         select count(*) from skill_images
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.SkillImageEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.SkillImageVo" useGeneratedKeys="true" keyProperty="id">
         insert into skill_images
         (
         `userId`,
@@ -67,7 +67,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.SkillImageEntity">
+    <update id="update" parameterType="com.linjun.entity.SkillImageVo">
         update skill_images
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

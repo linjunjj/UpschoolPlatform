@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.ApiUserWeixinMapper;
-import com.linjun.entity.UserWeixinEntity;
+import com.linjun.entity.UserWeixinVo;
 import com.linjun.service.ApiUserWeixinService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class ApiUserWeixinServiceImpl implements ApiUserWeixinService {
     @Autowired
     private ApiUserWeixinMapper apiUserWeixinMapper;
     @Override
-    public UserWeixinEntity queryObject(Long id) {
+    public UserWeixinVo queryObject(Long id) {
         return apiUserWeixinMapper.queryObject(id);
     }
 
     @Override
-    public List<UserWeixinEntity> queryList(Map<String, Object> map) {
+    public List<UserWeixinVo> queryList(Map<String, Object> map) {
         return apiUserWeixinMapper.queryList(map);
     }
 
@@ -35,13 +35,13 @@ public class ApiUserWeixinServiceImpl implements ApiUserWeixinService {
     }
 
     @Override
-    public void save(UserWeixinEntity userWeixinEntity) {
- apiUserWeixinMapper.save(userWeixinEntity);
+    public void save(UserWeixinVo userWeixinVo) {
+ apiUserWeixinMapper.save(userWeixinVo);
     }
 
     @Override
-    public void update(UserWeixinEntity userWeixinEntity) {
-apiUserWeixinMapper.update(userWeixinEntity);
+    public void update(UserWeixinVo userWeixinVo) {
+apiUserWeixinMapper.update(userWeixinVo);
     }
 
     @Override

@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.linjun.dao.ApiCodeMapper">
-    <resultMap type="com.linjun.entity.CodeEntity" id="codeMap">
+    <resultMap type="com.linjun.entity.CodeVo" id="codeMap">
         <result property="id" column="id"/>
         <result property="code" column="code"/>
         <result property="email" column="email"/>
@@ -13,7 +13,7 @@
 
     </resultMap>
 
-    <select id="queryObject" resultType="com.linjun.entity.CodeEntity">
+    <select id="queryObject" resultType="com.linjun.entity.CodeVo">
         select
         id,
         code,
@@ -26,20 +26,20 @@
         where id = #{id}
     </select>
 
-    <select id="queryByMail" resultType="com.linjun.entity.CodeEntity">
+    <select id="queryByMail" resultType="com.linjun.entity.CodeVo">
         select
         *
         from mongo_code
         where email = #{email}
     </select>
-    <select id="queryByMobile" resultType="com.linjun.entity.CodeEntity">
+    <select id="queryByMobile" resultType="com.linjun.entity.CodeVo">
         select
         *
         from mongo_code
         where mobile = #{mobile}
     </select>
 
-    <select id="queryList" resultType="com.linjun.entity.CodeEntity">
+    <select id="queryList" resultType="com.linjun.entity.CodeVo">
         select
         *
         from mongo_code
@@ -62,7 +62,7 @@
         WHERE 1=1
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.CodeEntity">
+    <insert id="save" parameterType="com.linjun.entity.CodeVo">
         insert into mongo_code(
         `code`,
         `email`,
@@ -79,7 +79,7 @@
         #{code_type})
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.CodeEntity">
+    <update id="update" parameterType="com.linjun.entity.CodeVo">
         update mongo_code
         <set>
             <if test="code != null">`code` = #{code},</if>

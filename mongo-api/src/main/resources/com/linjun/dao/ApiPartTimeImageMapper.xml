@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.ApiPartTimeImageMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.PartTimeImageEntity" id="partTimeImageMap">
+    <resultMap type="com.linjun.entity.PartTimeImageVo" id="partTimeImageMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="parrtime_id" column="parrtime_id"/>
@@ -48,7 +48,7 @@
         select count(*) from parttime_image
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.PartTimeImageEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.PartTimeImageVo" useGeneratedKeys="true" keyProperty="id">
         insert into parttime_image
         (
         `userId`,
@@ -67,7 +67,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.PartTimeImageEntity">
+    <update id="update" parameterType="com.linjun.entity.PartTimeImageVo">
         update parttime_image
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

@@ -34,6 +34,7 @@ public class UserController {
         List<UserEntity> userEntityList=userService.queryList(query);
         int total =userService.queryTotal(query);
         PageUtils pageUtils=new PageUtils(userEntityList,total,query.getLimit(),query.getPage());
+        
         return JsonResult.ok().put("page",pageUtils);
     }
     @RequestMapping("/info/{id}")
