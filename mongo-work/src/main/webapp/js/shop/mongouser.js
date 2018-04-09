@@ -44,7 +44,6 @@ var vm = new Vue({
         });
     },
     methods: {
-
         handleSizeChange: function(val) {
             this.listQuery.limit = val;
             this.getList();
@@ -76,6 +75,7 @@ var vm = new Vue({
             params.sidx="id";
             params.order="desc";
             $.get("../user/list", params,  function(response){
+                console.log(response.page.list);
                 vm.user=response.page.list;
                 vm.total=response.page.currPage;
             })
