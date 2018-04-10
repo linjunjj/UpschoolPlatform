@@ -73,7 +73,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.SkillCommentEntity\">
+    <update id="update" parameterType="com.linjun.entity.SkillCommentEntity">
         update skill_comment
         <set>
             <if test="userId != null">`userId` = #{userId},</if>
