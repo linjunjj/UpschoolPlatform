@@ -1,7 +1,6 @@
 package com.linjun.service;
 
-import com.linjun.entity.AddressManger;
-import org.springframework.stereotype.Service;
+import com.linjun.entity.AddressMangerEntity;
 
 import java.util.List;
 import java.util.Map;
@@ -13,11 +12,11 @@ import java.util.Map;
  **/
 
 public interface AddressMangerService {
-    AddressManger queryObject(Long id);
-    List<AddressManger> queryList(Map<String, Object> map);
+    AddressMangerEntity queryObject(Long id);
+    List<AddressMangerEntity> queryList(Map<String, Object> map);
     int queryTotal(Map<String, Object> map);
-    void save(AddressManger addressManger);
-    void  update(AddressManger addressManger);
+    void save(AddressMangerEntity addressMangerEntity);
+    void  update(AddressMangerEntity addressMangerEntity);
     void delete(Long id);
     void deleteBatch(Long[] ids);
 }

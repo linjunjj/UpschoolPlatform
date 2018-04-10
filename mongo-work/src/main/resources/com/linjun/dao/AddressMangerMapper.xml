@@ -3,7 +3,7 @@
 
 <mapper namespace="com.linjun.dao.AddressMangerMapper">
 
-    <resultMap type="com.linjun.entity.AddressManger" id="addressMap">
+    <resultMap type="com.linjun.entity.AddressMangerEntity" id="addressMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="user_name" column="user_name"/>
@@ -17,37 +17,37 @@
         <result property="is_default" column="is_default"/>
     </resultMap>
 
-    <select id="queryObject" resultType="com.linjun.entity.AddressManger">
+    <select id="queryObject" resultType="com.linjun.entity.AddressMangerEntity">
 		select
         address_manger.id,
 		address_manger.userId,
 		address_manger.user_name,
 		address_manger.tel_number,
-		address_manger.postal_Code,
-		address_manger.national_Code,
-		address_manger.province_Name,
-		address_manger.city_Name,
-		address_manger.county_Name,
-		address_manger.detail_Info,
-        address_manger.username shop_user_name
-        from address_manger LEFT JOIN mongo_user ON address_manger.user_id = mongo_user.id
+		address_manger.postal_code,
+		address_manger.national_code,
+		address_manger.province_name,
+		address_manger.city_name,
+		address_manger.country_name,
+		address_manger.detail_info,
+		address_manger.is_default,
+        mongo_user.user_name mongo_user_name
+        from address_manger LEFT JOIN mongo_user ON address_manger.userId = mongo_user.id
 		where address_manger.id = #{id}
 	</select>
 
-    <select id="queryList" resultType="com.linjun.entity.AddressManger">
+    <select id="queryList" resultType="com.linjun.entity.AddressMangerEntity">
         select
         address_manger.id,
         address_manger.userId,
         address_manger.user_name,
         address_manger.tel_number,
-        address_manger.postal_Code,
-        address_manger.national_Code,
-        address_manger.province_Name,
-        address_manger.city_Name,
-        address_manger.county_Name,
-        address_manger.detail_Info,
-        address_manger.is_default,
-        address_manger.username shop_user_name
+        address_manger.postal_code,
+        address_manger.national_code,
+        address_manger.province_name,
+        address_manger.city_name,
+        address_manger.country_name,
+        address_manger.detail_info,
+        mongo_user.user_name mongo_user_name
         from address_manger LEFT JOIN mongo_user ON address_manger.userId = mongo_user.id
         WHERE 1=1
         <if test="userName != null and userName != ''">
@@ -80,7 +80,7 @@
         </if>
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.AddressManger" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.AddressMangerEntity" useGeneratedKeys="true" keyProperty="id">
         insert into address_manger(
         `userId`,
         `user_name`,
@@ -105,7 +105,7 @@
         #{is_default})
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.AddressManger">
+    <update id="update" parameterType="com.linjun.entity.AddressMangerEntity">
         update address_manger
         <set>
             <if test="userId != null">`userId` = #{userId}, </if>

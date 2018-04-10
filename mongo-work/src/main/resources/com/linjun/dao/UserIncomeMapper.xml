@@ -14,12 +14,32 @@
         <result property="add_time" column="add_time"/>
     </resultMap>
 
-    <select id="queryObject" resultMap="userIncomeMap">
-        select * from user_income where id = #{value}
+    <select id="queryObject" resultType="com.linjun.entity.UserIncomeEntity">
+        select
+        user_income.id,
+        user_income.userId,
+        user_income.incomesum,
+        user_income.incoem_detail,
+        user_income.status,
+        user_income.descripton,
+        user_income.add_time,
+        mongo_user.user_name
+        from user_income LEFT JOIN mongo_user ON user_income.userId = mongo_user.id
+		where user_income.id = #{id}
     </select>
 
-    <select id="queryList" resultMap="userIncomeMap">
-        select * from user_income
+    <select id="queryList" resultType="com.linjun.entity.UserIncomeEntity">
+        select
+        user_income.id,
+        user_income.userId,
+        user_income.incomesum,
+        user_income.incoem_detail,
+        user_income.status,
+        user_income.descripton,
+        user_income.add_time,
+        mongo_user.user_name
+        from user_income LEFT JOIN mongo_user ON user_income.userId = mongo_user.id
+        WHERE 1=1
         <where>
             <if test="user_id != null">
                 and userId = #{userId}

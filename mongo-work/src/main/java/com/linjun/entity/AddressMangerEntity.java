@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @create 2018/3/15.
  * @desc
  **/
-public class AddressManger implements Serializable {
+public class AddressMangerEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     private  Long id;
     private  Long userId;
@@ -20,6 +20,15 @@ public class AddressManger implements Serializable {
     private  String country_name;
     private  String detail_info;
     private  byte is_default;
+    private  String mongo_user_name;
+
+    public String getMongo_user_name() {
+        return mongo_user_name;
+    }
+
+    public void setMongo_user_name(String mongo_user_name) {
+        this.mongo_user_name = mongo_user_name;
+    }
 
     public byte getIs_default() {
         return is_default;

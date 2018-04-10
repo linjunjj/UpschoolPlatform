@@ -1,7 +1,7 @@
 package com.linjun.service.impl;
 
 import com.linjun.dao.AddressMangerMapper;
-import com.linjun.entity.AddressManger;
+import com.linjun.entity.AddressMangerEntity;
 import com.linjun.service.AddressMangerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +19,12 @@ public class AddressMangerServiceImpl implements AddressMangerService {
     @Autowired
     private AddressMangerMapper addressMangerMapper;
     @Override
-    public AddressManger queryObject(Long id) {
+    public AddressMangerEntity queryObject(Long id) {
         return addressMangerMapper.queryObject(id);
     }
 
     @Override
-    public List<AddressManger> queryList(Map<String, Object> map) {
+    public List<AddressMangerEntity> queryList(Map<String, Object> map) {
         return addressMangerMapper.queryList(map);
     }
 
@@ -34,13 +34,13 @@ public class AddressMangerServiceImpl implements AddressMangerService {
     }
 
     @Override
-    public void save(AddressManger addressManger) {
-  addressMangerMapper.save(addressManger);
+    public void save(AddressMangerEntity addressMangerEntity) {
+  addressMangerMapper.save(addressMangerEntity);
     }
 
     @Override
-    public void update(AddressManger addressManger) {
-addressMangerMapper.update(addressManger);
+    public void update(AddressMangerEntity addressMangerEntity) {
+addressMangerMapper.update(addressMangerEntity);
     }
 
     @Override

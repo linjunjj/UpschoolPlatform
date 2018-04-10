@@ -1,6 +1,6 @@
 $(function () {
     let userId = getQueryString("userId");
-    let url = '../address/list';
+    let url = '../userincome/list';
     if (userId) {
         url += '?userId=' + userId;
     }
@@ -9,16 +9,13 @@ $(function () {
         datatype: "json",
         colModel: [
             {label: 'id', name: 'id', index: 'id', key: true, hidden: true},
-            {label: '会员', name: 'mongo_user_name', index: 'userId', width: 90},
-            {label: '收货人姓名', name: 'user_name', index: 'user_name', width: 80},
-            {label: '手机', name: 'tel_number', index: 'tel_number', width: 80},
-            {label: '收货地址国家码', name: 'national_code', index: 'national_code', width: 80},
-            {label: '省', name: 'province_name', index: 'province_name', width: 80},
-            {label: '市', name: 'city_name', index: 'city_name', width: 80},
-            {label: '区', name: 'countyName', index: 'county_Name', width: 80},
-            {label: '详细收货地址信息', name: 'detail_info', index: 'detail_info', width: 150},
-            {label: '邮编', name: 'postal_code', index: 'postal_code', width: 80}
-            ],
+            {label: '会员', name: 'username', index: 'username', width: 90},
+            {label: '收入之和', name: 'incomesum', index: 'incomesum', width: 80},
+            {label: '收入明细', name: 'incoem_detail', index: 'incoem_detail', width: 80},
+            {label: '状态', name: 'status', index: 'status', width: 80},
+            {label: '描述', name: 'descripton', index: 'descripton', width: 80},
+            {label: '添加时间', name: 'add_time', index: 'add_time', width: 80}
+        ],
         viewrecords: true,
         height: 385,
         rowNum: 10,
@@ -52,7 +49,6 @@ var vm = new Vue({
         showList: true,
         q: {
             userName: '',
-            telNumber: ''
         }
     },
     methods: {
@@ -79,7 +75,7 @@ var vm = new Vue({
             confirm('确定要删除选中的记录？', function () {
                 $.ajax({
                     type: "POST",
-                    url: "../address/delete",
+                    url: "../userincome/delete",
                     contentType: "application/json",
                     data: JSON.stringify(ids),
                     success: function (r) {
