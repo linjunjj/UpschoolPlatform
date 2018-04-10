@@ -23,7 +23,7 @@ public class OrderController {
     @Autowired
     private UserOrderService userOrderService;
     @RequestMapping("/list")
-    @RequiresPermissions("sign:list")
+    @RequiresPermissions("order:list")
     public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
@@ -41,7 +41,7 @@ public class OrderController {
      * 查看信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("sign:info")
+    @RequiresPermissions("order:info")
     public JsonResult info(@PathVariable("id") Long id) {
         UserOrderEntity userOrderEntity = userOrderService.queryObject(id);
 
@@ -52,7 +52,7 @@ public class OrderController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("sign:save")
+    @RequiresPermissions("order:save")
     public JsonResult save(@RequestBody UserOrderEntity userOrderEntity) {
         userOrderService.save(userOrderEntity);
 
@@ -63,7 +63,7 @@ public class OrderController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("sign:update")
+    @RequiresPermissions("order:update")
     public JsonResult update(@RequestBody UserOrderEntity userOrderEntity) {
         userOrderService.update(userOrderEntity);
 
@@ -74,7 +74,7 @@ public class OrderController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("sign:delete")
+    @RequiresPermissions("order:delete")
     public JsonResult delete(@RequestBody Long[] ids) {
         userOrderService.deleteBatch(ids);
         return JsonResult.ok();
