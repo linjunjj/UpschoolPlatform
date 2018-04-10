@@ -16,6 +16,15 @@ public class SignEntity implements Serializable {
     private  Long singinSum;
     private  Long monSiginSum;
     private Date endsignTime;
+    private  String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

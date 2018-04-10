@@ -12,7 +12,7 @@
                 <i-input v-model="q.userName" @on-enter="query" placeholder="联系人"/>
             </i-col>
             <i-button @click="query">查询</i-button>
-            #if($shiro.hasPermission("address:delete"))
+            #if($shiro.hasPermission("userincome:delete"))
             <i-button type="error" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</i-button>
             #end
         </Row>

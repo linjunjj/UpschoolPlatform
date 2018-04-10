@@ -13,12 +13,30 @@
         <result property="endsignTime" column="endsignTime"/>
     </resultMap>
 
-    <select id="queryObject" resultMap="signMap">
-        select * from sign where id = #{value}
+    <select id="queryObject" resultType="com.linjun.entity.SignEntity">
+        select
+        sign.id,
+        sign.userId,
+        sign.awardSum,
+        sign.singinSum,
+        sign.monSiginSum,
+        sign.endsignTime
+         mongo.user_name username
+         from sign LEFT JOIN mongo_user  ON sign.userId=mongo.id
+        where sign.id = #{id}
     </select>
 
-    <select id="queryList" resultMap="signMap">
-        select * from sign
+    <select id="queryList" resultType="com.linjun.entity.SignEntity">
+        select
+        sign.id,
+        sign.userId,
+        sign.awardSum,
+        sign.singinSum,
+        sign.monSiginSum,
+        sign.endsignTime
+        mongo.user_name username
+        from sign LEFT JOIN mongo_user  ON sign.userId=mongo.id
+        WHERE 1=1
         <if test="userId != null and userId != null">
             and userId = #{userId}
         </if>
