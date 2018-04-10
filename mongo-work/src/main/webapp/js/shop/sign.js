@@ -1,6 +1,6 @@
 $(function () {
     let userId = getQueryString("userId");
-    let url = '../userincome/list';
+    let url = '../sign/list';
     if (userId) {
         url += '?userId=' + userId;
     }
@@ -60,7 +60,6 @@ var vm = new Vue({
             $("#jqGrid").jqGrid('setGridParam', {
                 postData: {
                     'userName': vm.q.userName,
-                    'telNumber': vm.q.telNumber
                 },
                 page: page
             }).trigger("reloadGrid");
@@ -74,7 +73,7 @@ var vm = new Vue({
             confirm('确定要删除选中的记录？', function () {
                 $.ajax({
                     type: "POST",
-                    url: "../userincome/delete",
+                    url: "../sign/delete",
                     contentType: "application/json",
                     data: JSON.stringify(ids),
                     success: function (r) {

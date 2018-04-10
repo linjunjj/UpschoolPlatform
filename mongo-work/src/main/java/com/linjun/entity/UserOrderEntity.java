@@ -36,6 +36,15 @@ public class UserOrderEntity implements Serializable {
     private  String consignee;
     private  byte shipping_id;
     private String shipping_code;
+private  String username;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getShipping_code() {
         return shipping_code;

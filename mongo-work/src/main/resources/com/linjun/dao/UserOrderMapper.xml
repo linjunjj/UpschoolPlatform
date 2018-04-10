@@ -34,14 +34,16 @@
     </resultMap>
 
     <select id="queryObject" resultMap="orderMap">
-        select a.*,b.code as  shipping_code
-        from user_order a
-        left join shipping b on a.shipping_id = b.id
-        where a.id = #{value}
+       select o.*,u.username as username
+        from user_order o
+        left join mongo_user u on o.userId = u.id
+        where o.id = #{value}
     </select>
 
     <select id="queryList" resultMap="orderMap">
-        select * from user_order
+        select o.*,u.username as username
+        from user_order o
+        left join mongo_user u on o.userId = u.id
         <where>
             <if test="user_id != null">
                 and userId = #{userId}
