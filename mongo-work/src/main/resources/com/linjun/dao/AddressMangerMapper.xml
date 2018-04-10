@@ -3,32 +3,59 @@
 
 <mapper namespace="com.linjun.dao.AddressMangerMapper">
 
-    <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.linjun.entity.AddressManger" id="addressMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="user_name" column="user_name"/>
         <result property="tel_number" column="tel_number"/>
-        <result property="postal_code" column="postal_Code"/>
-        <result property="national_code" column="national_Code"/>
-        <result property="province_name" column="province_Name"/>
-        <result property="city_name" column="city_Name"/>
-        <result property="country_name" column="county_Name"/>
-        <result property="detail_info" column="detail_Info"/>
+        <result property="postal_code" column="postal_code"/>
+        <result property="national_code" column="national_code"/>
+        <result property="province_name" column="province_name"/>
+        <result property="city_name" column="city_name"/>
+        <result property="country_name" column="country_name"/>
+        <result property="detail_info" column="detail_info"/>
         <result property="is_default" column="is_default"/>
     </resultMap>
 
-    <select id="queryObject" resultMap="addressMap">
-        select * from address_manger where id = #{value}
-    </select>
+    <select id="queryObject" resultType="com.linjun.entity.AddressManger">
+		select
+        address_manger.id,
+		address_manger.userId,
+		address_manger.user_name,
+		address_manger.tel_number,
+		address_manger.postal_Code,
+		address_manger.national_Code,
+		address_manger.province_Name,
+		address_manger.city_Name,
+		address_manger.county_Name,
+		address_manger.detail_Info,
+        address_manger.username shop_user_name
+        from address_manger LEFT JOIN mongo_user ON address_manger.user_id = mongo_user.id
+		where address_manger.id = #{id}
+	</select>
 
-    <select id="queryList" resultMap="addressMap">
-        select * from address_manger
-        <where>
-            <if test="user_id != null">
-                and userId = #{user_id}
-            </if>
-        </where>
+    <select id="queryList" resultType="com.linjun.entity.AddressManger">
+        select
+        address_manger.id,
+        address_manger.userId,
+        address_manger.user_name,
+        address_manger.tel_number,
+        address_manger.postal_Code,
+        address_manger.national_Code,
+        address_manger.province_Name,
+        address_manger.city_Name,
+        address_manger.county_Name,
+        address_manger.detail_Info,
+        address_manger.is_default,
+        address_manger.username shop_user_name
+        from address_manger LEFT JOIN mongo_user ON address_manger.userId = mongo_user.id
+        WHERE 1=1
+        <if test="userName != null and userName != ''">
+            AND address_manger.user_name LIKE concat('%', #{userName},'%')
+        </if>
+        <if test="telNumber != null and telNumber != ''">
+            AND address_manger.tel_number LIKE concat('%', #{telNumber},'%')
+        </if>
         <choose>
             <when test="sidx != null and sidx.trim() != ''">
                 order by ${sidx} ${order}
@@ -44,6 +71,13 @@
 
     <select id="queryTotal" resultType="int">
         select count(*) from address_manger
+        WHERE 1=1
+        <if test="userName != null and userName != ''">
+            AND address_manger.user_name LIKE concat('%', #{userName},'%')
+        </if>
+        <if test="telNumber != null and telNumber != ''">
+            AND address_manger.tel_number LIKE concat('%', #{telNumber},'%')
+        </if>
     </select>
 
     <insert id="save" parameterType="com.linjun.entity.AddressManger" useGeneratedKeys="true" keyProperty="id">
@@ -87,10 +121,9 @@
         </set>
         where id = #{id}
     </update>
-
     <delete id="delete">
-        delete from address_manger where id = #{value}
-    </delete>
+		delete from address_manger where id = #{value}
+	</delete>
 
     <delete id="deleteBatch">
         delete from address_manger where id in
@@ -98,4 +131,5 @@
             #{id}
         </foreach>
     </delete>
+
 </mapper>
