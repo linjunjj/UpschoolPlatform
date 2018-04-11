@@ -13,8 +13,17 @@ public class InviteCodeEntity implements Serializable {
   private  Long id;
   private  Long userId;
   private  byte is_multi;
-  private Date start_time;
+    private  String code;
+    private Date start_time;
   private  Date edd_time;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

@@ -8,6 +8,7 @@
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="is_multi" column="is_multi"/>
+        <result property="code" column="code"/>
         <result property="start_time" column="start_time"/>
         <result property="edd_time" column="edd_time"/>
 
@@ -48,6 +49,7 @@
         (
         `userId`,
         `is_multi`,
+        `code`,
         `start_time`,
         `edd_time`
         )
@@ -55,6 +57,7 @@
         (
         #{userId},
         #{is_multi},
+        #{code},
         #{start_time},
         #{edd_time}
         )
@@ -65,6 +68,7 @@
         <set>
             <if test="userId != null">`userId` = #{userId},</if>
             <if test="is_multi != null">`is_multi` = #{is_multi}</if>
+            <if test="code!=null">`code`= #{code}</if>
             <if test="start_time != null">`start_time` = #{start_time},</if>
             <if test="edd_time != null">`edd_time` = #{edd_time}</if>
         </set>
@@ -72,7 +76,7 @@
     </update>
 
     <delete id="delete">
-        delete from idle_ralate where id = #{value}
+        delete from invite_code where id = #{value}
     </delete>
 
     <delete id="deleteBatch">
