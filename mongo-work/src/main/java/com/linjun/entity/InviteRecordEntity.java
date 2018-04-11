@@ -8,7 +8,7 @@ import java.util.Date;
  * @create 2018/4/11.
  * @desc
  **/
-public class InviteRecordVo implements Serializable {
+public class InviteRecordEntity implements Serializable {
     private static final long serialVersionUID = 1L;
     private  Long id;
     private  Long userId;

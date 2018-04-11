@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.linjun.dao.ApiInviteRecordMapper">
+<mapper namespace="com.linjun.dao.InviteRecordMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.InviteRecordVo" id="inviteRecordMap">
+    <resultMap type="com.linjun.entity.InviteRecordEntity" id="inviteRecordMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="username" column="username"/>
@@ -44,7 +44,7 @@
         select count(*) from invite_record
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.InviteRecordVo" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.InviteRecordEntity" useGeneratedKeys="true" keyProperty="id">
         insert into invite_record
         (
         `userId`,
@@ -63,7 +63,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.InviteRecordVo">
+    <update id="update" parameterType="com.linjun.entity.InviteRecordEntity">
         update invite_record
         <set>
             <if test="userId != null">`userId` = #{userId},</if>
