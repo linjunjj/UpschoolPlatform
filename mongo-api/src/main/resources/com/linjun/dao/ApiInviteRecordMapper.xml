@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.linjun.dao.ApiInviteCodeMapper">
+<mapper namespace="com.linjun.dao.ApiInviteRecordMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.InviteCodeVo" id="inviteCodeMap">
+    <resultMap type="com.linjun.entity.InviteRecordVo" id="inviteRecordMap">
         <result property="id" column="id"/>
         <result property="userId" column="userId"/>
         <result property="is_multi" column="is_multi"/>
@@ -14,11 +14,11 @@
 
     </resultMap>
 
-    <select id="queryObject" resultMap="inviteCodeMap">
+    <select id="queryObject" resultMap="inviteRecordMap">
         select * from invite_code where id = #{value}
     </select>
 
-    <select id="queryList" resultMap="inviteCodeMap">
+    <select id="queryList" resultMap="inviteRecordMap">
         select
         <if test="fields != null and fields != ''">
             ${fields}
@@ -44,7 +44,7 @@
         select count(*) from invite_code
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.InviteCodeVo" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.InviteRecordVo" useGeneratedKeys="true" keyProperty="id">
         insert into invite_code
         (
         `userId`,
@@ -63,7 +63,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.InviteCodeVo">
+    <update id="update" parameterType="com.linjun.entity.InviteRecordVo">
         update invite_code
         <set>
             <if test="userId != null">`userId` = #{userId},</if>

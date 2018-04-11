@@ -44,7 +44,7 @@
         select count(*) from invite_code
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.IdleRalateEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.InviteCodeEntity" useGeneratedKeys="true" keyProperty="id">
         insert into invite_code
         (
         `userId`,
@@ -63,7 +63,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.IdleRalateEntity">
+    <update id="update" parameterType="com.linjun.entity.InviteCodeEntity">
         update invite_code
         <set>
             <if test="userId != null">`userId` = #{userId},</if>
