@@ -1,13 +1,14 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: '../adposition/list',
+        url: '../inviterecord/list',
         datatype: "json",
         colModel: [
             {label: 'id', name: 'id', index: 'id', key: true, hidden: true},
-            {label: '位置名称', name: 'name', index: 'name', width: 80},
-            {label: '宽度', name: 'width', index: 'width', width: 80},
-            {label: '高度', name: 'height', index: 'height', width: 80},
-            {label: '描述', name: 'desc', index: 'desc', width: 80}],
+            {label: '用户ID', name: 'userid', index: 'userId', width: 80},
+            {label: '名字', name: 'username', index: 'username', width: 80},
+            {label: '受邀人id', name: 'isuserid', index: 'isUserId', width: 80},
+            {label: '受邀人名字', name: 'isusername', index: 'isUserName', width: 80},
+            {label: '添加时间', name: 'addTime', index: 'add_time', width: 80}],
         viewrecords: true,
         height: 385,
         rowNum: 10,
@@ -29,18 +30,17 @@ $(function () {
             order: "order"
         },
         gridComplete: function () {
-            //隐藏grid底部滚动条
             $("#jqGrid").closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});
         }
     });
 });
 
-var vm = new Vue({
+let vm = new Vue({
     el: '#rrapp',
     data: {
         showList: true,
         title: null,
-        adPosition: {},
+        inviteRecord: {},
         ruleValidate: {
             name: [
                 {required: true, message: '名称不能为空', trigger: 'blur'}
@@ -57,10 +57,10 @@ var vm = new Vue({
         add: function () {
             vm.showList = false;
             vm.title = "新增";
-            vm.adPosition = {width: 200, height: 750};
+            vm.inviteRecord = {};
         },
         update: function (event) {
-            var id = getSelectedRow();
+            let id = getSelectedRow();
             if (id == null) {
                 return;
             }
@@ -70,12 +70,12 @@ var vm = new Vue({
             vm.getInfo(id)
         },
         saveOrUpdate: function (event) {
-            var url = vm.adPosition.id == null ? "../adposition/save" : "../adposition/update";
+            let url = vm.inviteRecord.id == null ? "../inviterecord/save" : "../inviterecord/update";
             $.ajax({
                 type: "POST",
                 url: url,
                 contentType: "application/json",
-                data: JSON.stringify(vm.adPosition),
+                data: JSON.stringify(vm.inviteRecord),
                 success: function (r) {
                     if (r.code === 0) {
                         alert('操作成功', function (index) {
@@ -88,15 +88,15 @@ var vm = new Vue({
             });
         },
         del: function (event) {
-            var ids = getSelectedRows();
-            if (ids == null) {
+            let ids = getSelectedRows();
+            if (ids == null){
                 return;
             }
 
             confirm('确定要删除选中的记录？', function () {
                 $.ajax({
                     type: "POST",
-                    url: "../adposition/delete",
+                    url: "../inviterecord/delete",
                     contentType: "application/json",
                     data: JSON.stringify(ids),
                     success: function (r) {
@@ -111,14 +111,14 @@ var vm = new Vue({
                 });
             });
         },
-        getInfo: function (id) {
-            $.get("../adposition/info/" + id, function (r) {
-                vm.adPosition = r.adPosition;
+        getInfo: function(id){
+            $.get("../inviterecord/info/"+id, function (r) {
+                vm.inviteRecord = r.inviteRecord;
             });
         },
         reload: function (event) {
             vm.showList = true;
-            var page = $("#jqGrid").jqGrid('getGridParam', 'page');
+            let page = $("#jqGrid").jqGrid('getGridParam', 'page');
             $("#jqGrid").jqGrid('setGridParam', {
                 postData: {'name': vm.q.name},
                 page: page

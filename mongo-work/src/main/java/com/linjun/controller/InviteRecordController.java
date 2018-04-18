@@ -23,7 +23,6 @@ public class InviteRecordController {
     @Autowired
     private InviteRecordService inviteRecordService;
 
-
     /**
      * 查看列表
      */
