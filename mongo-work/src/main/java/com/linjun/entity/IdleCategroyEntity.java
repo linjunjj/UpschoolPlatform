@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @create 2018/3/18.
  * @desc
  **/
-public class IdleCategroyEntity implements Serializable {
+public class IdleCategroyEntity extends Tree<IdleCategroyEntity> {
     private static final long serialVersionUID = 1L;
     private  Long id;
     private  String name;
