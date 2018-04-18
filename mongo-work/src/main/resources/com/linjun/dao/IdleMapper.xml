@@ -6,26 +6,27 @@
     <!-- 可根据自己的需求，是否要使用 -->
     <resultMap type="com.linjun.entity.IdleEntity" id="idleMap">
         <result property="id" column="id"/>
-        <result property="userId" column="userId"/>
+        <result property="name" column="name"/>
         <result property="title" column="title"/>
         <result property="address" column="address"/>
         <result property="context" column="context"/>
         <result property="price" column="price"/>
         <result property="view_quality" column="view_quality"/>
         <result property="like_quality" column="like_quality"/>
-        <result property="jingdu" column="jingdu"/>
-        <result property="weidu" column="weidu"/>
         <result property="status" column="status"/>
-        <result property="category_id" column="category_id"/>
+        <result property="categoryName" column="categoryName"/>
         <result property="create_time" column="create_time"/>
     </resultMap>
 
     <select id="queryObject" resultMap="idleMap">
-        select * from idle where id = #{value}
+    select a.* ,b.user_name as name,c.name as categoryName from idle a left join mongo_user b on a.userId = b.id
+        left join idle_category c on a.category_id=c.id
+   where id = #{value}
     </select>
 
     <select id="queryList" resultMap="idleMap">
-        select * from idle
+        select a.* ,b.user_name as name,c.name as categoryName from idle a left join mongo_user b on a.userId = b.id
+        left join idle_category c on a.category_id=c.id
         <if test="userId != null and userId != null">
             and userId = #{userId}
         </if>

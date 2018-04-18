@@ -23,7 +23,7 @@
     <select id="queryObject" resultMap="rentMap">
         select a.* ,b.user_name as name,c.name as categoryName from rent a left join mongo_user b on a.userId = b.id
         left join rent_category c on a.category_id=c.id
-
+         where id = #{value}
     </select>
 
     <select id="queryList" resultMap="rentMap">
