@@ -24,6 +24,24 @@ public class RentEntity implements Serializable {
   private  byte status;
   private Long category_id;
   private Date create_time;
+  private  String name;
+  private  String categoryName;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
     public static long getSerialVersionUID() {
         return serialVersionUID;

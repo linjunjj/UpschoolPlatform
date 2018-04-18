@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @create 2018/3/18.
  * @desc
  **/
-public class RentCategoryEntity implements Serializable {
+public class RentCategoryEntity  extends Tree <RentCategoryEntity>{
     private static final long serialVersionUID = 1L;
   private  Long id;
   private  String name;
@@ -21,6 +21,7 @@ public class RentCategoryEntity implements Serializable {
   private  String icon_url;
   private  String level;
   private  String front_name;
+
 
     public static long getSerialVersionUID() {
         return serialVersionUID;
