@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @create 2018/3/19.
  * @desc
  **/
-public class PartTimeCategoryEntity implements Serializable {
+public class PartTimeCategoryEntity extends Tree<PartTimeCategoryEntity> {
     private static final long serialVersionUID = 1L;
     private  Long id;
     private  String name;
