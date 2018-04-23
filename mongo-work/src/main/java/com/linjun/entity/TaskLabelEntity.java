@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @create 2018/3/19.
  * @desc
  **/
-public class TaskLabelEntity implements Serializable {
+public class TaskLabelEntity extends Tree<TaskLabelEntity> {
     private static final long serialVersionUID = 1L;
     private  Long id;
     private  String name;

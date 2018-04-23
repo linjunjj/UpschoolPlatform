@@ -1,15 +1,17 @@
 package com.linjun.controller;
 
+import com.linjun.entity.TaskLabelEntity;
 import com.linjun.service.TaskLabelService;
 import com.linjun.utils.JsonResult;
+import com.linjun.utils.PageUtils;
 import com.linjun.utils.Query;
+import com.linjun.utils.TreeUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -32,8 +34,8 @@ public class TaskCategoryController {
         //查询列表数据
         Query query = new Query(params);
 
-        List<RentCategoryEntity> rentCategoryList = rentCategoryService.queryList(query);
-        int total = rentCategoryService.queryTotal(query);
+        List<TaskLabelEntity> rentCategoryList = taskLabelService.queryList(query);
+        int total = taskLabelService.queryTotal(query);
 
         PageUtils pageUtil = new PageUtils(rentCategoryList, total, query.getLimit(), query.getPage());
 
@@ -44,22 +46,22 @@ public class TaskCategoryController {
      * 查看信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("rentcategory:info")
+    @RequiresPermissions("taskcategory:info")
     @ResponseBody
     public JsonResult info(@PathVariable("id") Long id) {
-        RentCategoryEntity rentCategory = rentCategoryService.queryObject(id);
+        TaskLabelEntity taskLabelEntity = taskLabelService.queryObject(id);
 
-        return JsonResult.ok().put("rentCategory", rentCategory);
+        return JsonResult.ok().put("rentCategory", taskLabelEntity);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("rentcategory:save")
+    @RequiresPermissions("taskcategory:save")
     @ResponseBody
-    public JsonResult save(@RequestBody RentCategoryEntity rentCategory) {
-        rentCategoryService.save(rentCategory);
+    public JsonResult save(@RequestBody TaskLabelEntity taskLabelEntity) {
+        taskLabelService.save(taskLabelEntity);
 
         return JsonResult.ok();
     }
@@ -68,10 +70,10 @@ public class TaskCategoryController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("rentcategory:update")
+    @RequiresPermissions("taskcategory:update")
     @ResponseBody
-    public JsonResult update(@RequestBody RentCategoryEntity rentCategory) {
-        rentCategoryService.update(rentCategory);
+    public JsonResult update(@RequestBody TaskLabelEntity taskLabelEntity) {
+        taskLabelService.update(taskLabelEntity);
 
         return JsonResult.ok();
     }
@@ -80,10 +82,10 @@ public class TaskCategoryController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("rentcategory:delete")
+    @RequiresPermissions("taskcategory:delete")
     @ResponseBody
     public JsonResult delete(@RequestBody Long[]ids) {
-        rentCategoryService.deleteBatch(ids);
+        taskLabelService.deleteBatch(ids);
 
         return JsonResult.ok();
     }
@@ -95,7 +97,7 @@ public class TaskCategoryController {
     @ResponseBody
     public JsonResult queryAll(@RequestParam Map<String, Object> params) {
 
-        List<RentCategoryEntity> list = rentCategoryService.queryList(params);
+        List<TaskLabelEntity> list = taskLabelService.queryList(params);
 
         return JsonResult.ok().put("list", list);
     }
@@ -104,12 +106,12 @@ public class TaskCategoryController {
      */
     @RequestMapping("/getAreaTree")
     public JsonResult getAreaTree() {
-        List<RentCategoryEntity> list = rentCategoryService.queryList(new HashMap<String, Object>());
-        for (RentCategoryEntity sysRegionEntity : list) {
+        List<TaskLabelEntity> list = taskLabelService.queryList(new HashMap<String, Object>());
+        for (TaskLabelEntity sysRegionEntity : list) {
             sysRegionEntity.setValue(sysRegionEntity.getId() + "");
             sysRegionEntity.setLabel(sysRegionEntity.getName());
         }
-        List<RentCategoryEntity> node = TreeUtils.factorTree(list);
+        List<TaskLabelEntity> node = TreeUtils.factorTree(list);
 
         return JsonResult.ok().put("node", node);
     }
@@ -123,7 +125,7 @@ public class TaskCategoryController {
     public JsonResult getCategorySelect() {
         Map<String, Object> map = new HashMap<>();
         map.put("parentId", "0");
-        List<RentCategoryEntity> list = rentCategoryService.queryList(map);
+        List<TaskLabelEntity> list = taskLabelService.queryList(map);
         return JsonResult.ok().put("list", list);
     }
 }
