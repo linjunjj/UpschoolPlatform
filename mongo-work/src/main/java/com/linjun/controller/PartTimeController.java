@@ -18,7 +18,7 @@ import java.util.Map;
  * @desc
  **/
 @RestController
-@RequestMapping("parttimecategory")
+@RequestMapping("parttime")
 public class PartTimeController {
     @Autowired
     private PartTimeService partTimeService;
@@ -26,7 +26,7 @@ public class PartTimeController {
      * 查看列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("parttimecategory:list")
+    @RequiresPermissions("parttime:list")
     @ResponseBody
     public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
@@ -44,7 +44,7 @@ public class PartTimeController {
      * 查看信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("parttimecategory:info")
+    @RequiresPermissions("parttime:info")
     @ResponseBody
     public JsonResult info(@PathVariable("id") Long id) {
         PartTimeEntity partTimeEntity = partTimeService.queryObject(id);
@@ -56,7 +56,7 @@ public class PartTimeController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("parttimecategory:save")
+    @RequiresPermissions("parttime:save")
     @ResponseBody
     public JsonResult save(@RequestBody PartTimeEntity partTimeEntity) {
         partTimeService.save(partTimeEntity);
@@ -68,7 +68,7 @@ public class PartTimeController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("parttimecategory:update")
+    @RequiresPermissions("parttime:update")
     @ResponseBody
     public JsonResult update(@RequestBody PartTimeEntity partTimeEntity) {
         partTimeService.update(partTimeEntity);
@@ -80,7 +80,7 @@ public class PartTimeController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("parttimecategory:delete")
+    @RequiresPermissions("parttime:delete")
     @ResponseBody
     public JsonResult delete(@RequestBody Long[]ids) {
         partTimeService.deleteBatch(ids);
