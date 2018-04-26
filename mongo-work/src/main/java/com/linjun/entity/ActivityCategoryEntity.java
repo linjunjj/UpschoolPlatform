@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @create 2018/3/20.
  * @desc
  **/
-public class ActivityCategoryEntity implements Serializable {
+public class ActivityCategoryEntity extends Tree<ActivityCategoryEntity> {
     private static final long serialVersionUID = 1L;
     private  Long id;
     private  String name;
