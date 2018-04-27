@@ -25,7 +25,7 @@ public class IdleOrderController {
     @RequestMapping("/list")
     @RequiresPermissions("order:list")
     public JsonResult list(@RequestParam Map<String, Object> params) {
-        params.put("type","idle");
+        params.put("type","1");
         //查询列表数据
         Query query = new Query(params);
 
