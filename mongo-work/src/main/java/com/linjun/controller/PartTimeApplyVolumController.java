@@ -1,7 +1,8 @@
 package com.linjun.controller;
 
-import com.linjun.entity.ActivityCommentEntity;
-import com.linjun.service.ActivityCommentService;
+import com.alibaba.fastjson.JSONReader;
+import com.linjun.entity.PartTimeApplyVolumEntity;
+import com.linjun.service.PartTimeApplyVolumService;
 import com.linjun.utils.JsonResult;
 import com.linjun.utils.PageUtils;
 import com.linjun.utils.Query;
@@ -19,25 +20,25 @@ import java.util.Map;
  * @desc
  **/
 @Controller
-@RequestMapping("activitycommint")
-public class ActivityCommintController {
+@RequestMapping("parttimeapplyvolum")
+public class PartTimeApplyVolumController {
     @Autowired
-    private ActivityCommentService activityCommintService;
+    private PartTimeApplyVolumService parttimeApplyvolumService;
 
     /**
      * 查看列表
      */
     @RequestMapping("/list")
-    @RequiresPermissions("activitycommint:list")
+    @RequiresPermissions("parttimeapplyvolum:list")
     @ResponseBody
     public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
 
-        List<ActivityCommentEntity> activityCommintList = activityCommintService.queryList(query);
-        int total = activityCommintService.queryTotal(query);
+        List<PartTimeApplyVolumEntity> parttimeApplyvolumList = parttimeApplyvolumService.queryList(query);
+        int total = parttimeApplyvolumService.queryTotal(query);
 
-        PageUtils pageUtil = new PageUtils(activityCommintList, total, query.getLimit(), query.getPage());
+        PageUtils pageUtil = new PageUtils(parttimeApplyvolumList, total, query.getLimit(), query.getPage());
 
         return JsonResult.ok().put("page", pageUtil);
     }
@@ -46,22 +47,23 @@ public class ActivityCommintController {
      * 查看信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("activitycommint:info")
+    @RequiresPermissions("parttimeapplyvolum:info")
     @ResponseBody
     public JsonResult info(@PathVariable("id") Long id) {
-        ActivityCommentEntity activityCommentEntity = activityCommintService.queryObject(id);
+        PartTimeApplyVolumEntity parttimeApplyvolum = parttimeApplyvolumService.queryObject(id);
 
-        return JsonResult.ok().put("activityCommint", activityCommentEntity);
+        return JsonResult.ok().put("parttimeApplyvolum", parttimeApplyvolum);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("activitycommint:save")
+    @RequiresPermissions("parttimeapplyvolum:save")
     @ResponseBody
-    public JsonResult save(@RequestBody ActivityCommentEntity activityCommentEntity) {
-        activityCommintService.save(activityCommentEntity);
+    public JsonResult save(@RequestBody PartTimeApplyVolumEntity parttimeApplyvolum) {
+        parttimeApplyvolumService.save(parttimeApplyvolum);
+
         return JsonResult.ok();
     }
 
@@ -69,10 +71,10 @@ public class ActivityCommintController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("activitycommint:update")
+    @RequiresPermissions("parttimeapplyvolum:update")
     @ResponseBody
-    public JsonResult update(@RequestBody ActivityCommentEntity activityCommint) {
-        activityCommintService.update(activityCommint);
+    public JsonResult update(@RequestBody PartTimeApplyVolumEntity parttimeApplyvolum) {
+        parttimeApplyvolumService.update(parttimeApplyvolum);
 
         return JsonResult.ok();
     }
@@ -81,10 +83,10 @@ public class ActivityCommintController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("activitycommint:delete")
+    @RequiresPermissions("parttimeapplyvolum:delete")
     @ResponseBody
     public JsonResult delete(@RequestBody Long[]ids) {
-        activityCommintService.deleteBatch(ids);
+        parttimeApplyvolumService.deleteBatch(ids);
 
         return JsonResult.ok();
     }
@@ -96,7 +98,7 @@ public class ActivityCommintController {
     @ResponseBody
     public JsonResult queryAll(@RequestParam Map<String, Object> params) {
 
-        List<ActivityCommentEntity> list = activityCommintService.queryList(params);
+        List<PartTimeApplyVolumEntity> list = parttimeApplyvolumService.queryList(params);
 
         return JsonResult.ok().put("list", list);
     }
