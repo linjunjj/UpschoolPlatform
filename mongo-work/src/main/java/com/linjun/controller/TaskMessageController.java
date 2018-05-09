@@ -1,8 +1,7 @@
 package com.linjun.controller;
 
-import com.linjun.entity.IdleMessageEntity;
-import com.linjun.entity.RentMessageEntity;
-import com.linjun.service.IdleMessageService;
+import com.linjun.entity.TaskMessageEntity;
+import com.linjun.service.TaskMessageService;
 import com.linjun.utils.JsonResult;
 import com.linjun.utils.PageUtils;
 import com.linjun.utils.Query;
@@ -19,22 +18,19 @@ import java.util.Map;
  * @desc
  **/
 @RestController
-@RequestMapping("idlemessage")
-public class IdleMessageController {
+@RequestMapping("taskmessage")
+public class TaskMessageController {
     @Autowired
-    private IdleMessageService idleMessageService;
-    /**
-     * 查看列表
-     */
+    private TaskMessageService taskMessageService;
     @RequestMapping("/list")
-    @RequiresPermissions("rentmessage:list")
+    @RequiresPermissions("taskmessage:list")
     @ResponseBody
     public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
 
-        List<IdleMessageEntity> idleMessageEntities = idleMessageService.queryList(query);
-        int total = idleMessageService.queryTotal(query);
+        List<TaskMessageEntity> idleMessageEntities = taskMessageService.queryList(query);
+        int total = taskMessageService.queryTotal(query);
 
         PageUtils pageUtil = new PageUtils(idleMessageEntities, total, query.getLimit(), query.getPage());
 
@@ -45,22 +41,22 @@ public class IdleMessageController {
      * 查看信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("idlemessage:info")
+    @RequiresPermissions("taskmessage:info")
     @ResponseBody
     public JsonResult info(@PathVariable("id") Long id) {
-        IdleMessageEntity idleMessageEntity = idleMessageService.queryObject(id);
+        TaskMessageEntity taskMessageEntity = taskMessageService.queryObject(id);
 
-        return JsonResult.ok().put("idleMessage", idleMessageEntity);
+        return JsonResult.ok().put("taskMessage", taskMessageEntity);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("idlemessage:save")
+    @RequiresPermissions("taskmessage:save")
     @ResponseBody
-    public JsonResult save(@RequestBody IdleMessageEntity idleMessageEntity) {
-        idleMessageService.save(idleMessageEntity);
+    public JsonResult save(@RequestBody TaskMessageEntity idleMessageEntity) {
+        taskMessageService.save(idleMessageEntity);
 
         return JsonResult.ok();
     }
@@ -68,10 +64,10 @@ public class IdleMessageController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("idlemessage:update")
+    @RequiresPermissions("taskmessage:update")
     @ResponseBody
-    public JsonResult update(@RequestBody IdleMessageEntity idleMessageEntity) {
-        idleMessageService.update(idleMessageEntity);
+    public JsonResult update(@RequestBody TaskMessageEntity taskMessageEntity) {
+        taskMessageService.update(taskMessageEntity);
 
         return JsonResult.ok();
     }
@@ -80,10 +76,10 @@ public class IdleMessageController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("idlemessage:delete")
+    @RequiresPermissions("taskmessage:delete")
     @ResponseBody
     public JsonResult delete(@RequestBody Long[]ids) {
-        idleMessageService.deleteBatch(ids);
+        taskMessageService.deleteBatch(ids);
 
         return JsonResult.ok();
     }
@@ -95,7 +91,7 @@ public class IdleMessageController {
     @ResponseBody
     public JsonResult queryAll(@RequestParam Map<String, Object> params) {
 
-        List<IdleMessageEntity> list = idleMessageService.queryList(params);
+        List<TaskMessageEntity> list = taskMessageService.queryList(params);
 
         return JsonResult.ok().put("list", list);
     }

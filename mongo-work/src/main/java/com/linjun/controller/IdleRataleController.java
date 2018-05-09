@@ -1,13 +1,13 @@
 package com.linjun.controller;
 
-import com.linjun.entity.IdleMessageEntity;
-import com.linjun.entity.RentMessageEntity;
-import com.linjun.service.IdleMessageService;
+import com.linjun.entity.IdleRalateEntity;
+import com.linjun.service.IdleRalateService;
 import com.linjun.utils.JsonResult;
 import com.linjun.utils.PageUtils;
 import com.linjun.utils.Query;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,25 +18,22 @@ import java.util.Map;
  * @create 2018/5/9.
  * @desc
  **/
-@RestController
-@RequestMapping("idlemessage")
-public class IdleMessageController {
+@Controller
+@RequestMapping("idleralate")
+public class IdleRataleController {
     @Autowired
-    private IdleMessageService idleMessageService;
-    /**
-     * 查看列表
-     */
+    private IdleRalateService idleRalateService;
     @RequestMapping("/list")
-    @RequiresPermissions("rentmessage:list")
+    @RequiresPermissions("idleralate:list")
     @ResponseBody
     public JsonResult list(@RequestParam Map<String, Object> params) {
         //查询列表数据
         Query query = new Query(params);
 
-        List<IdleMessageEntity> idleMessageEntities = idleMessageService.queryList(query);
-        int total = idleMessageService.queryTotal(query);
+        List<IdleRalateEntity> idleRalateList = idleRalateService.queryList(query);
+        int total = idleRalateService.queryTotal(query);
 
-        PageUtils pageUtil = new PageUtils(idleMessageEntities, total, query.getLimit(), query.getPage());
+        PageUtils pageUtil = new PageUtils(idleRalateList, total, query.getLimit(), query.getPage());
 
         return JsonResult.ok().put("page", pageUtil);
     }
@@ -45,33 +42,34 @@ public class IdleMessageController {
      * 查看信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("idlemessage:info")
+    @RequiresPermissions("idleralate:info")
     @ResponseBody
     public JsonResult info(@PathVariable("id") Long id) {
-        IdleMessageEntity idleMessageEntity = idleMessageService.queryObject(id);
+        IdleRalateEntity idleRalate = idleRalateService.queryObject(id);
 
-        return JsonResult.ok().put("idleMessage", idleMessageEntity);
+        return JsonResult.ok().put("idleRalate", idleRalate);
     }
 
     /**
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("idlemessage:save")
+    @RequiresPermissions("idleralate:save")
     @ResponseBody
-    public JsonResult save(@RequestBody IdleMessageEntity idleMessageEntity) {
-        idleMessageService.save(idleMessageEntity);
+    public JsonResult save(@RequestBody IdleRalateEntity idleRalate) {
+        idleRalateService.save(idleRalate);
 
         return JsonResult.ok();
     }
+
     /**
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("idlemessage:update")
+    @RequiresPermissions("idleralate:update")
     @ResponseBody
-    public JsonResult update(@RequestBody IdleMessageEntity idleMessageEntity) {
-        idleMessageService.update(idleMessageEntity);
+    public JsonResult update(@RequestBody IdleRalateEntity idleRalate) {
+        idleRalateService.update(idleRalate);
 
         return JsonResult.ok();
     }
@@ -80,10 +78,10 @@ public class IdleMessageController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("idlemessage:delete")
+    @RequiresPermissions("idleralate:delete")
     @ResponseBody
     public JsonResult delete(@RequestBody Long[]ids) {
-        idleMessageService.deleteBatch(ids);
+        idleRalateService.deleteBatch(ids);
 
         return JsonResult.ok();
     }
@@ -95,7 +93,7 @@ public class IdleMessageController {
     @ResponseBody
     public JsonResult queryAll(@RequestParam Map<String, Object> params) {
 
-        List<IdleMessageEntity> list = idleMessageService.queryList(params);
+        List<IdleRalateEntity> list = idleRalateService.queryList(params);
 
         return JsonResult.ok().put("list", list);
     }
