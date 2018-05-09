@@ -1,10 +1,8 @@
 package com.linjun.controller;
 
-import java.util.List;
-import java.util.Map;
-
+import com.linjun.entity.IdleMessageEntity;
 import com.linjun.entity.RentMessageEntity;
-import com.linjun.service.RentMessageService;
+import com.linjun.service.IdleMessageService;
 import com.linjun.utils.JsonResult;
 import com.linjun.utils.PageUtils;
 import com.linjun.utils.Query;
@@ -12,19 +10,19 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Map;
 
 /**
- * 租房留言Controller
- *
- * @author lipengjun
- * @email 939961241@qq.com
- * @date 2018-04-18 21:18:49
- */
+ * @author 林俊
+ * @create 2018/5/9.
+ * @desc
+ **/
 @RestController
-@RequestMapping("rentmessage")
-public class RentMessageController {
+@RequestMapping("idlemessage")
+public class IdleMessageController {
     @Autowired
-    private RentMessageService rentMessageService;
+    private IdleMessageService idleMessageService;
 
     /**
      * 查看列表
@@ -36,10 +34,10 @@ public class RentMessageController {
         //查询列表数据
         Query query = new Query(params);
 
-        List<RentMessageEntity> rentMessageList = rentMessageService.queryList(query);
-        int total = rentMessageService.queryTotal(query);
+        List<IdleMessageEntity> idleMessageEntities = idleMessageService.queryList(query);
+        int total = idleMessageService.queryTotal(query);
 
-        PageUtils pageUtil = new PageUtils(rentMessageList, total, query.getLimit(), query.getPage());
+        PageUtils pageUtil = new PageUtils(idleMessageEntities, total, query.getLimit(), query.getPage());
 
         return JsonResult.ok().put("page", pageUtil);
     }
@@ -48,12 +46,12 @@ public class RentMessageController {
      * 查看信息
      */
     @RequestMapping("/info/{id}")
-    @RequiresPermissions("rentmessage:info")
+    @RequiresPermissions("idlemessage:info")
     @ResponseBody
     public JsonResult info(@PathVariable("id") Long id) {
-        RentMessageEntity rentMessage = rentMessageService.queryObject(id);
+        IdleMessageEntity idleMessageEntity = idleMessageService.queryObject(id);
 
-        return JsonResult.ok().put("rentMessage", rentMessage);
+        return JsonResult.ok().put("rentMessage", idleMessageEntity);
     }
 
     /**
@@ -62,8 +60,8 @@ public class RentMessageController {
     @RequestMapping("/save")
     @RequiresPermissions("rentmessage:save")
     @ResponseBody
-    public JsonResult save(@RequestBody RentMessageEntity rentMessage) {
-        rentMessageService.save(rentMessage);
+    public JsonResult save(@RequestBody IdleMessageEntity idleMessageEntity) {
+        idleMessageService.save(idleMessageEntity);
 
         return JsonResult.ok();
     }
@@ -73,8 +71,8 @@ public class RentMessageController {
     @RequestMapping("/update")
     @RequiresPermissions("rentmessage:update")
     @ResponseBody
-    public JsonResult update(@RequestBody RentMessageEntity rentMessage) {
-        rentMessageService.update(rentMessage);
+    public JsonResult update(@RequestBody IdleMessageEntity idleMessageEntity) {
+        idleMessageService.update(idleMessageEntity);
 
         return JsonResult.ok();
     }
@@ -86,7 +84,7 @@ public class RentMessageController {
     @RequiresPermissions("rentmessage:delete")
     @ResponseBody
     public JsonResult delete(@RequestBody Long[]ids) {
-        rentMessageService.deleteBatch(ids);
+        idleMessageService.deleteBatch(ids);
 
         return JsonResult.ok();
     }
@@ -98,7 +96,7 @@ public class RentMessageController {
     @ResponseBody
     public JsonResult queryAll(@RequestParam Map<String, Object> params) {
 
-        List<RentMessageEntity> list = rentMessageService.queryList(params);
+        List<IdleMessageEntity> list = idleMessageService.queryList(params);
 
         return JsonResult.ok().put("list", list);
     }
