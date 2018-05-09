@@ -23,7 +23,6 @@ import java.util.Map;
 public class IdleMessageController {
     @Autowired
     private IdleMessageService idleMessageService;
-
     /**
      * 查看列表
      */
@@ -69,7 +68,7 @@ public class IdleMessageController {
      * 修改
      */
     @RequestMapping("/update")
-    @RequiresPermissions("rentmessage:update")
+    @RequiresPermissions("idlemessage:update")
     @ResponseBody
     public JsonResult update(@RequestBody IdleMessageEntity idleMessageEntity) {
         idleMessageService.update(idleMessageEntity);
@@ -81,7 +80,7 @@ public class IdleMessageController {
      * 删除
      */
     @RequestMapping("/delete")
-    @RequiresPermissions("rentmessage:delete")
+    @RequiresPermissions("idlemessage:delete")
     @ResponseBody
     public JsonResult delete(@RequestBody Long[]ids) {
         idleMessageService.deleteBatch(ids);
