@@ -43,7 +43,6 @@ public class UserController {
         UserEntity userEntity=userService.queryObject(id);
         return JsonResult.ok().put("user",userEntity);
     }
-
     @RequestMapping("/save")
     @RequiresPermissions("user:save")
     public  JsonResult save(@RequestBody UserEntity userEntity){

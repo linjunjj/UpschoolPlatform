@@ -102,9 +102,7 @@ public class PartTimeCategoryController {
 
         return JsonResult.ok().put("list", list);
     }
-    /**
-     * 查看信息(全部加载页面渲染太慢！)
-     */
+
     @RequestMapping("/getAreaTree")
     public JsonResult getAreaTree() {
         List<PartTimeCategoryEntity> list = partTimeCategoryService.queryList(new HashMap<String, Object>());
