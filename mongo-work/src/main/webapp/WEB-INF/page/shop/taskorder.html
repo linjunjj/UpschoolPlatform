@@ -9,15 +9,17 @@
     <div v-show="showList">
         <Row :gutter="16">
             <i-col span="4">
-                <i-input v-model="q.userName" @on-enter="query" placeholder="联系人"/>
+                <i-input v-model="q.userName" @on-enter="query" placeholder="会员名"/>
             </i-col>
             <i-button @click="query">查询</i-button>
-            #if($shiro.hasPermission("userincome:delete"))
+            #if($shiro.hasPermission("order:delete"))
             <i-button type="error" @click="del"><i class="fa fa-trash-o"></i>&nbsp;删除</i-button>
-            #endevel
+            #end
         </Row>
+        <table id="jqGrid"></table>
+        <div id="jqGridPager"></div>
     </div>
 </div>
-<script src="${rc.contextPath}/js/shop/userlevel.js?_${date.systemTime}"></script>
+<script src="${rc.contextPath}/js/shop/idleorder.js?_${date.systemTime}"></script>
 </body>
 </html>
