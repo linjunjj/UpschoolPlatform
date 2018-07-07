@@ -86,7 +86,6 @@ public class IdleCategoryController {
     @ResponseBody
     public JsonResult delete(@RequestBody Long[]ids) {
         idleCategoryService.deleteBatch(ids);
-
         return JsonResult.ok();
     }
 
