@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.linjun.dao.TopicMapper">
+
+    <!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.linjun.entity.TopicEntity" id="topicMap">
+        <result property="id" column="id"/>
+        <result property="topic_position_id" column="topic_position_id"/>
+        <result property="media_type" column="media_type"/>
+        <result property="name" column="name"/>
+        <result property="link" column="link"/>
+        <result property="image_url" column="image_url"/>
+        <result property="content" column="content"/>
+        <result property="end_time" column="end_time"/>
+        <result property="enabled" column="enabled"/>
+    </resultMap>
+
+    <select id="queryObject" resultMap="topicMap">
+        select * from topic where id = #{value}
+    </select>
+
+    <select id="queryList" resultMap="topicMap">
+        select
+        topic.id,
+        topic.topic_position_id,
+        topic.media_type,
+        topic.name,
+        topic.link,
+        topic.image_url,
+        topic.content,
+        topic.end_time,
+        topic.enabled,
+        topic_position.name topic_Position_Name
+        from topic LEFT JOIN topic_position on topic.topic_position_id = topic_position.id
+        where 1=1
+        <if test="topic_position_id != null and topic_position_id != null">
+            and topic_position_id = #{topic_position_id}
+        </if>
+        <choose>
+            <when test="sidx != null and sidx.trim() != ''">
+                order by ${sidx} ${order}
+            </when>
+            <otherwise>
+                order by id desc
+            </otherwise>
+        </choose>
+        <if test="offset != null and limit != null">
+            limit #{offset}, #{limit}
+        </if>
+    </select>
+
+    <select id="queryTotal" resultType="int">
+        select count(*) from topic
+    </select>
+
+    <insert id="save" parameterType="com.linjun.entity.TopicEntity" useGeneratedKeys="true" keyProperty="id">
+        insert into topic
+        (
+        `topic_position_id`,
+        `media_type`,
+        `name`,
+        `link`,
+        `image_url`,
+        `content`,
+        `end_time`,
+        `enabled`
+        )
+        values
+        (
+        #{topic_position_id},
+        #{media_type},
+        #{name},
+        #{link},
+        #{image_url},
+        #{content},
+        #{end_time},
+        #{enabled}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.linjun.entity.TopicEntity">
+        update topic
+        <set>
+            <if test="topic_position_id != null">`topic_position_id` = #{topicPositionId},</if>
+            <if test="media_type != null">`media_type` = #{mediaType},</if>
+            <if test="name != null">`name` = #{name},</if>
+            <if test="link != null">`link` = #{link},</if>
+            <if test="image_url != null">`image_url` = #{imageUrl},</if>
+            <if test="content != null">`content` = #{content},</if>
+            <if test="end_time != null">`end_time` = #{endTime},</if>
+            <if test="enabled != null">`enabled` = #{enabled}</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from topic where id = #{value}
+    </delete>
+
+    <delete id="deleteBatch">
+        delete from topic where id in
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
