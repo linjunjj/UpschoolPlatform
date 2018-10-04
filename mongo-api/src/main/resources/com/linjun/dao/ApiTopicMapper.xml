@@ -4,7 +4,7 @@
 <mapper namespace="com.linjun.dao.TopicMapper">
 
     <!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.linjun.entity.TopicEntity" id="topicMap">
+    <resultMap type="com.linjun.entity.TopicVo" id="topicMap">
         <result property="id" column="id"/>
         <result property="topic_position_id" column="topic_position_id"/>
         <result property="media_type" column="media_type"/>
@@ -54,7 +54,7 @@
         select count(*) from topic
     </select>
 
-    <insert id="save" parameterType="com.linjun.entity.TopicEntity" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" parameterType="com.linjun.entity.TopicVo" useGeneratedKeys="true" keyProperty="id">
         insert into topic
         (
         `topic_position_id`,
@@ -79,7 +79,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.linjun.entity.TopicEntity">
+    <update id="update" parameterType="com.linjun.entity.TopicVo">
         update topic
         <set>
             <if test="topic_position_id != null">`topic_position_id` = #{topicPositionId},</if>
