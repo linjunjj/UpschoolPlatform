@@ -32,8 +32,6 @@ import java.util.Map;
 public class ApiUserController extends ApiBaseAction {
     @Autowired
     private ApiUserService apiUserService;
-
-
     @ApiOperation(value = "获取用户的基本信息")
     @IgnoreAuth
     @RequestMapping("info")

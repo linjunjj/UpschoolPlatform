@@ -1,10 +1,10 @@
 $(function () {
     $("#jqGrid").jqGrid({
-        url: '../ad/list',
+        url: '../topic/list',
         datatype: "json",
         colModel: [
             {label: 'id', name: 'id', index: 'id', key: true, hidden: true},
-            {label: '话题位置', name: 'topicPositionName', index: 'topic_Position_id', width: 80},
+            {label: '话题位置', name: 'topicPositionName', index: 'topic_position_id', width: 80},
             {label: '形式', name: 'mediaType', index: 'media_type', width: 80},
             {label: '话题名称', name: 'name', index: 'name', width: 80},
             {label: '链接', name: 'link', index: 'link', width: 80},
@@ -58,7 +58,7 @@ var vm = new Vue({
     data: {
         showList: true,
         title: null,
-        ad: {enabled: 1, imageUrl: '', mediaType: 0},
+        topic: {enabled: 1, imageUrl: '', mediaType: 0},
         ruleValidate: {
             name: [
                 {required: true, message: '广告名称不能为空', trigger: 'blur'}
@@ -70,7 +70,7 @@ var vm = new Vue({
         q: {
             name: ''
         },
-        adPositions: []
+         adPositions: []
     },
     methods: {
         query: function () {
