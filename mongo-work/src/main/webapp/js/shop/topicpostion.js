@@ -40,7 +40,7 @@ var vm = new Vue({
     data: {
         showList: true,
         title: null,
-        adPosition: {},
+        topicposition: {},
         ruleValidate: {
             name: [
                 {required: true, message: '名称不能为空', trigger: 'blur'}
