@@ -95,7 +95,7 @@
         #{userName},
         #{password},
         #{gender},
-        #{birthday})
+        #{birthday}
          #{school},
         #{major},
         #{infoFull},
