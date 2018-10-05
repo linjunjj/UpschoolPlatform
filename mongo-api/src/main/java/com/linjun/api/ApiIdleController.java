@@ -24,7 +24,7 @@ import java.util.Map;
 @Api(value = "二手交易")
 @RestController
 @RequestMapping("/api/idle/")
-public class ApiIdleContrller extends ApiBaseAction {
+public class ApiIdleController extends ApiBaseAction {
     @Autowired
     private ApiAdService apiAdService;
     @Autowired
@@ -60,9 +60,6 @@ public class ApiIdleContrller extends ApiBaseAction {
         resultObj.put("newIdle",idleVoList);
         return  toResponsSuccess(resultObj);
     }
-
-
-
 
 
 
