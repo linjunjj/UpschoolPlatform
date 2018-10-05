@@ -3,6 +3,7 @@ package com.linjun.api;
 import com.linjun.annotation.IgnoreAuth;
 import com.linjun.entity.AdVo;
 import com.linjun.entity.IdleCategroyVo;
+import com.linjun.entity.IdleVo;
 import com.linjun.service.*;
 import com.linjun.util.ApiBaseAction;
 import com.linjun.utils.JsonResult;
@@ -35,25 +36,29 @@ public class ApiIdleContrller extends ApiBaseAction {
     @Autowired
     private ApiIdleMessageService apiIdleMessageService;
     /*
-     * App首页首页数据
+     *  二手交易首页数据
      * */
     @IgnoreAuth
     @RequestMapping("index")
-    private JsonResult index(){
+    private Object index(){
         Map<String, Object> resultObj = new HashMap();
         Map param = new HashMap();
         param.put("ad_position_id", 1);
         List<AdVo> banner=apiAdService.queryList(param);
         resultObj.put("banner",banner);
         param=new HashMap();
+        param.put("sidx","sort_order");
+        param.put("order","asc");
         List<IdleCategroyVo> idleCategroyVos=apiIdleCategoryService.queryList(param);
         resultObj.put("categroy",idleCategroyVos);
         param=new HashMap();
-        param.put("",)
-
-
-
-
+        param.put("sidx","create_time");
+        param.put("order","desc");
+        param.put("offset",0);
+        param.put("limit",10);
+        List<IdleVo> idleVoList=apiIdleService.queryList(param);
+        resultObj.put("newIdle",idleVoList);
+        return  toResponsSuccess(resultObj);
     }
 
 
