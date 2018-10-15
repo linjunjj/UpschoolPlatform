@@ -60,6 +60,4 @@ public class ApiActivityController extends ApiBaseAction {
 
 
 
-
-
 }
