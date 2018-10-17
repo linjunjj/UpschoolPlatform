@@ -26,9 +26,7 @@ public class ApiRegisterContrller {
     @Autowired
     private ApiUserService userService;
 
-    /**
-     * 注册
-     */
+
     @ApiOperation(value = "根据手机号码注册")
     @IgnoreAuth
     @RequestMapping("registerbyTel")
