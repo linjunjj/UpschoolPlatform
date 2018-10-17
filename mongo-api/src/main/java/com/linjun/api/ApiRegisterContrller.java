@@ -14,11 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * @author 林俊
- * @create 2018/3/27.
- * @desc
- **/
+
 @Api(value = "注册接口")
 @RestController
 @RequestMapping("/api/register/")
