@@ -38,7 +38,7 @@ public class ApiRegisterContrller {
   }
     }
 
-    @ApiOperation(value = "  ")
+    @ApiOperation(value = "  代付的")
 
 
 }
