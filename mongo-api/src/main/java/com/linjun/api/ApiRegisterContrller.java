@@ -38,7 +38,7 @@ public class ApiRegisterContrller {
   }
     }
 
-    @ApiOperation(value = "  修改密码")
+    @ApiOperation(value = "  ")
 
 
 }
