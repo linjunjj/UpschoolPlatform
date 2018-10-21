@@ -34,7 +34,7 @@ public class ApiRegisterContrller {
       userService.save(mobile, password);
       return JsonResult.ok();
   }else {
-      return JsonResult.error(500,"用户已存在搜索，请尝试找回密码");
+      return JsonResult.error(500,"用户已存ss在搜索，请尝试找回密码");
   }
     }
 
