@@ -38,7 +38,7 @@ public class ApiRegisterContrller {
   }
     }
 
-    @ApiOperation(value = "  代付   想订单的的")
+    @ApiOperation(value = "  代付   想订多福多寿的的")
 
 
 }
