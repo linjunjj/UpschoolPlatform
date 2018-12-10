@@ -1,2 +1,2 @@
-# mongoPlatform
-芒果校园
+# UpSchoolPlatform
+UpSchool
